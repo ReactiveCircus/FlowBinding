@@ -1,0 +1,46 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'com.vanniktech.maven.publish'
+}
+
+android {
+    compileSdkVersion androidBuildConfig.compileSdk
+    buildToolsVersion androidBuildConfig.buildTools
+
+    defaultConfig {
+        minSdkVersion androidBuildConfig.minSdk
+        targetSdkVersion androidBuildConfig.targetSdk
+
+        testApplicationId 'reactivecircus.flowbinding.viewpager2.test'
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    // TODO replace with https://issuetracker.google.com/issues/72050365 once released.
+    libraryVariants.all { variant ->
+        variant.generateBuildConfigProvider.configure { task ->
+            task.enabled = false
+        }
+    }
+
+    testOptions {
+        animationsDisabled = true
+    }
+}
+
+dependencies {
+    api project(':flowbinding-common')
+    api "androidx.viewpager2:viewpager2:${versions.androidx.viewPager2}"
+
+    // TODO androidTestImplementation project(':testing-infra')
+    androidTestImplementation "androidx.test:core-ktx:${versions.androidx.test.core}"
+    androidTestImplementation "androidx.test:monitor:${versions.androidx.test.monitor}"
+    androidTestImplementation "androidx.test:runner:${versions.androidx.test.runner}"
+    androidTestImplementation "androidx.test:rules:${versions.androidx.test.rules}"
+    androidTestImplementation "androidx.test.ext:junit-ktx:${versions.androidx.test.ext.junit}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${versions.androidx.espresso}"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:${versions.androidx.espresso}"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:${versions.androidx.espresso}"
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.kotlinx.coroutines}"
+    androidTestImplementation "org.amshove.kluent:kluent-android:${versions.kluent}"
+}

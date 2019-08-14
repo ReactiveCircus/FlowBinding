@@ -1,0 +1,31 @@
+# Files for the ART/Dalvik VM
+*.dex
+
+# Java class files
+*.class
+
+# Generated files
+bin/
+gen/
+out/
+
+# Gradle files
+.gradle/
+build/
+reports/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Log Files
+*.log
+
+# Android Studio captures folder
+captures/
+
+# Intellij
+*.iml
+.idea/
+
+# External native build folder generated in Android Studio 2.2 and later
+.externalNativeBuild
