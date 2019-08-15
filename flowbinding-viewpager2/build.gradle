@@ -31,8 +31,10 @@ android {
 dependencies {
     api project(':flowbinding-common')
     api "androidx.viewpager2:viewpager2:${versions.androidx.viewPager2}"
+    implementation "androidx.fragment:fragment-ktx:${versions.androidx.fragment}"
 
-    // TODO androidTestImplementation project(':testing-infra')
+    androidTestImplementation project(':flow-assert')
+    androidTestImplementation "io.github.reactivecircus.blueprint:blueprint-testing-robot:${versions.blueprint}"
     androidTestImplementation "androidx.test:core-ktx:${versions.androidx.test.core}"
     androidTestImplementation "androidx.test:monitor:${versions.androidx.test.monitor}"
     androidTestImplementation "androidx.test:runner:${versions.androidx.test.runner}"

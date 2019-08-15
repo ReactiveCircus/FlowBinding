@@ -1,29 +1,14 @@
 plugins {
-    id 'com.android.library'
-    id 'kotlin-android'
+    id 'kotlin'
     id 'com.vanniktech.maven.publish'
-}
-
-android {
-    compileSdkVersion androidBuildConfig.compileSdk
-    buildToolsVersion androidBuildConfig.buildTools
-
-    defaultConfig {
-        minSdkVersion androidBuildConfig.minSdk
-        targetSdkVersion androidBuildConfig.targetSdk
-    }
-
-    // TODO replace with https://issuetracker.google.com/issues/72050365 once released.
-    libraryVariants.all { variant ->
-        variant.generateBuildConfigProvider.configure { task ->
-            task.enabled = false
-        }
-    }
 }
 
 dependencies {
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinx.coroutines}"
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinx.coroutines}"
-    api "androidx.annotation:annotation:${versions.androidx.annotation}"
+
+    testImplementation "junit:junit:${versions.junit}"
+    testImplementation "org.amshove.kluent:kluent:${versions.kluent}"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.kotlinx.coroutines}"
+    testImplementation project(':flow-assert')
 }

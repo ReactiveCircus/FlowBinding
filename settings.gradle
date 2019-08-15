@@ -1,3 +1,4 @@
 rootProject.name='FlowBinding'
 include ':flowbinding-common'
 include ':flowbinding-viewpager2'
+include ':flow-assert'
