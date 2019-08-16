@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
-    id 'kotlin-android-extensions'
 }
 
 android {
@@ -17,12 +16,7 @@ android {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinx.coroutines}"
-    implementation "androidx.annotation:annotation:${versions.androidx.annotation}"
-    implementation "androidx.activity:activity-ktx:${versions.androidx.activity}"
-    implementation "androidx.fragment:fragment-ktx:${versions.androidx.fragment}"
     implementation "com.google.android.material:material:${versions.material}"
-
-    implementation "androidx.viewpager2:viewpager2:${versions.androidx.viewPager2}"
 
     api "io.github.reactivecircus.blueprint:blueprint-testing-robot:${versions.blueprint}"
     api("androidx.fragment:fragment-testing:${versions.androidx.fragment}") {

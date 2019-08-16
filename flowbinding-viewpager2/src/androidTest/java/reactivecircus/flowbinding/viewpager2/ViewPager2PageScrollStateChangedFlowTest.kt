@@ -8,7 +8,6 @@ import org.junit.Test
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest
 import reactivecircus.flowbinding.testing.recordWith
-import reactivecircus.flowbinding.testing.ui.ViewPager2Fragment
 import reactivecircus.flowbinding.viewpager2.test.R
 
 @LargeTest

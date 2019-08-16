@@ -14,7 +14,7 @@ fun <T> Flow<T>.recordWith(recorder: FlowRecorder<T>) {
     onEach { recorder.values.addLast(it) }.launchIn(recorder.coroutineScope)
 }
 
-class FlowRecorder<T>(val coroutineScope: CoroutineScope) {
+class FlowRecorder<T>(internal val coroutineScope: CoroutineScope) {
 
     internal val values: BlockingDeque<T> = LinkedBlockingDeque<T>()
 
