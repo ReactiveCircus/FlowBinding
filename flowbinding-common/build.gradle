@@ -8,7 +8,6 @@ dependencies {
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinx.coroutines}"
 
     testImplementation "junit:junit:${versions.junit}"
-    testImplementation "org.amshove.kluent:kluent:${versions.kluent}"
+    testImplementation "com.google.truth:truth:${versions.truth}"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.kotlinx.coroutines}"
-    testImplementation project(':flow-assert')
 }

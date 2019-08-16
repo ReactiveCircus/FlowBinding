@@ -6,6 +6,7 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
+import reactivecircus.flowbinding.common.offerIfNotClosed
 import reactivecircus.flowbinding.common.startWithCurrentValue
 
 /**
@@ -32,7 +33,7 @@ fun ViewPager2.pageSelections(emitImmediately: Boolean = false): Flow<Int> =
     callbackFlow<Int> {
         val callback = object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
-                offer(position)
+                offerIfNotClosed(position)
             }
         }
         registerOnPageChangeCallback(callback)

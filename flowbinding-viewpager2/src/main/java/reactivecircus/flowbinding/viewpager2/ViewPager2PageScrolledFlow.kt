@@ -8,6 +8,7 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
+import reactivecircus.flowbinding.common.offerIfNotClosed
 
 /**
  * Create a [Flow] of page scroll events on the [ViewPager2] instance.
@@ -34,7 +35,7 @@ fun ViewPager2.pageScrollEvents(): Flow<ViewPager2PageScrollEvent> =
                 positionOffset: Float,
                 positionOffsetPixels: Int
             ) {
-                offer(
+                offerIfNotClosed(
                     ViewPager2PageScrollEvent(
                         position, positionOffset, positionOffsetPixels
                     )

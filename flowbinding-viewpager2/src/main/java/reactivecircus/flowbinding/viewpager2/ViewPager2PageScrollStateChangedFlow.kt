@@ -9,6 +9,7 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
+import reactivecircus.flowbinding.common.offerIfNotClosed
 
 /**
  * Create a [Flow] of page scroll state change events on the [ViewPager2] instance
@@ -32,7 +33,7 @@ fun ViewPager2.pageScrollStateChanges(): Flow<Int> =
     callbackFlow<Int> {
         val callback = object : ViewPager2.OnPageChangeCallback() {
             override fun onPageScrollStateChanged(state: Int) {
-                offer(state)
+                offerIfNotClosed(state)
             }
         }
         registerOnPageChangeCallback(callback)
