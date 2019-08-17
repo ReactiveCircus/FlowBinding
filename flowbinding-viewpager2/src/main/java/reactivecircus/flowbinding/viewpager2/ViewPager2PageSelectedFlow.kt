@@ -1,11 +1,13 @@
 package reactivecircus.flowbinding.viewpager2
 
+import androidx.annotation.CheckResult
 import androidx.viewpager2.widget.ViewPager2
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
+import reactivecircus.flowbinding.common.checkMainThread
 import reactivecircus.flowbinding.common.offerIfNotClosed
 import reactivecircus.flowbinding.common.startWithCurrentValue
 
@@ -28,9 +30,11 @@ import reactivecircus.flowbinding.common.startWithCurrentValue
  *     .launchIn(uiScope)
  * ```
  */
+@CheckResult
 @UseExperimental(ExperimentalCoroutinesApi::class)
 fun ViewPager2.pageSelections(emitImmediately: Boolean = false): Flow<Int> =
     callbackFlow<Int> {
+        checkMainThread()
         val callback = object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 offerIfNotClosed(position)
