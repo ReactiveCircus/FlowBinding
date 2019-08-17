@@ -1,5 +1,6 @@
 package reactivecircus.flowbinding.viewpager2
 
+import androidx.annotation.CheckResult
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.SCROLL_STATE_DRAGGING
 import androidx.viewpager2.widget.ViewPager2.SCROLL_STATE_IDLE
@@ -9,6 +10,7 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
+import reactivecircus.flowbinding.common.checkMainThread
 import reactivecircus.flowbinding.common.offerIfNotClosed
 
 /**
@@ -28,9 +30,11 @@ import reactivecircus.flowbinding.common.offerIfNotClosed
  *     .launchIn(uiScope)
  * ```
  */
+@CheckResult
 @UseExperimental(ExperimentalCoroutinesApi::class)
 fun ViewPager2.pageScrollStateChanges(): Flow<Int> =
     callbackFlow<Int> {
+        checkMainThread()
         val callback = object : ViewPager2.OnPageChangeCallback() {
             override fun onPageScrollStateChanged(state: Int) {
                 offerIfNotClosed(state)
