@@ -1,5 +1,7 @@
 # FlowBinding (work in progress)
 
+[![CircleCI](https://circleci.com/gh/ReactiveCircus/FlowBinding.svg?style=svg)](https://circleci.com/gh/ReactiveCircus/FlowBinding) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a418e7a6e5364f3aa0f15c44fc71cc09)](https://www.codacy.com/app/ReactiveCircus/FlowBinding?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ReactiveCircus/FlowBinding&amp;utm_campaign=Badge_Grade) [![Android API](https://img.shields.io/badge/API-21%2B-blue.svg?style=flat-square&label=API&maxAge=300)](https://www.android.com/history/) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
 Kotlin Flow binding APIs for Android's platform and unbundled UI widgets, inspired by [RxBinding][rxbinding].
 
 TODO
