@@ -1,4 +1,4 @@
-# FlowBinding
+# FlowBinding (work in progress)
 
 Kotlin Flow binding APIs for Android's platform and unbundled UI widgets, inspired by [RxBinding][rxbinding].
 
