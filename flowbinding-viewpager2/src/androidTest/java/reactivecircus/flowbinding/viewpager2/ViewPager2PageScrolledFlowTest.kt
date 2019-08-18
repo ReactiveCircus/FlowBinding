@@ -3,7 +3,6 @@ package reactivecircus.flowbinding.viewpager2
 import androidx.test.filters.LargeTest
 import androidx.viewpager2.widget.ViewPager2
 import com.google.common.truth.Truth.assertThat
-import kotlinx.coroutines.cancel
 import org.junit.Test
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest
@@ -29,8 +28,8 @@ class ViewPager2PageScrolledFlowTest {
             assertThat(event.positionOffset).isGreaterThan(0f)
             assertThat(event.positionOffsetPixel).isGreaterThan(0)
 
+            cancelTestScope()
             recorder.clearValues()
-            testScope.cancel()
 
             swipeRightOnView(R.id.viewPager)
             recorder.assertNoMoreValues()
@@ -52,8 +51,8 @@ class ViewPager2PageScrolledFlowTest {
             assertThat(event.positionOffset).isGreaterThan(0f)
             assertThat(event.positionOffsetPixel).isGreaterThan(0)
 
+            cancelTestScope()
             recorder.clearValues()
-            testScope.cancel()
 
             viewPager.currentItem = 0
             recorder.assertNoMoreValues()

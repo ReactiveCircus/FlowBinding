@@ -27,4 +27,9 @@ class TestLauncher(val testScope: CoroutineScope) : RobotActions() {
     fun <T : View> getViewById(@IdRes viewId: Int): T {
         return currentActivity()!!.findViewById(viewId)
     }
+
+    fun cancelTestScope() {
+        testScope.cancel()
+        Espresso.onIdle()
+    }
 }

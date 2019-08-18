@@ -3,7 +3,6 @@ package reactivecircus.flowbinding.viewpager2
 import androidx.test.filters.LargeTest
 import androidx.viewpager2.widget.ViewPager2
 import com.google.common.truth.Truth.assertThat
-import kotlinx.coroutines.cancel
 import org.junit.Test
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest
@@ -27,7 +26,7 @@ class ViewPager2PageSelectedFlowTest {
             assertThat(recorder.takeValue()).isEqualTo(1)
             recorder.assertNoMoreValues()
 
-            testScope.cancel()
+            cancelTestScope()
 
             swipeRightOnView(R.id.viewPager)
             recorder.assertNoMoreValues()
@@ -47,7 +46,7 @@ class ViewPager2PageSelectedFlowTest {
             assertThat(recorder.takeValue()).isEqualTo(1)
             recorder.assertNoMoreValues()
 
-            testScope.cancel()
+            cancelTestScope()
 
             viewPager.currentItem = 0
             recorder.assertNoMoreValues()
@@ -68,7 +67,7 @@ class ViewPager2PageSelectedFlowTest {
             assertThat(recorder.takeValue()).isEqualTo(1)
             recorder.assertNoMoreValues()
 
-            testScope.cancel()
+            cancelTestScope()
 
             viewPager.currentItem = 0
             recorder.assertNoMoreValues()
