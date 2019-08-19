@@ -15,7 +15,7 @@ echo no | avdmanager create avd --force --name "api-${API_LEVEL}" --abi "google_
 
 "$ANDROID_HOME"/emulator/emulator-headless -avd "api-${API_LEVEL}" -gpu swiftshader -no-snapshot -noaudio -no-boot-anim -camera-back none > /dev/null 2>&1 &
 
-adb wait-for-device
+adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 5; done; input keyevent 82'
 
 "$ANDROID_HOME"/platform-tools/adb shell settings put global window_animation_scale 0.0
 "$ANDROID_HOME"/platform-tools/adb shell settings put global transition_animation_scale 0.0
