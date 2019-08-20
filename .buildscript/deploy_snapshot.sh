@@ -18,6 +18,6 @@ elif [ ! -z "$CIRCLE_PULL_REQUEST" ]; then
   echo "Skipping snapshot deployment: was pull request."
 else
   echo "Deploying snapshot..."
-  ./gradlew clean kotlinSourcesJar javadocsJar androidSourcesJar androidJavadocsJar uploadArchives --no-daemon --no-parallel
+  ./gradlew clean androidSourcesJar androidJavadocsJar uploadArchives --no-daemon --no-parallel
   echo "Snapshot deployed!"
 fi
