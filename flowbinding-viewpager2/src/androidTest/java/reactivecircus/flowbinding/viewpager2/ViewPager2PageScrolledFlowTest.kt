@@ -4,6 +4,8 @@ import androidx.test.filters.LargeTest
 import androidx.viewpager2.widget.ViewPager2
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
+import reactivecircus.blueprint.testing.action.swipeLeftOnView
+import reactivecircus.blueprint.testing.action.swipeRightOnView
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest
 import reactivecircus.flowbinding.testing.recordWith
