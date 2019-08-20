@@ -22,7 +22,7 @@ inline fun <reified F : Fragment> launchTest(
     testScope.cancel()
 }
 
-class TestLauncher(val testScope: CoroutineScope) : RobotActions() {
+class TestLauncher(val testScope: CoroutineScope) : RobotActions {
 
     fun <T : View> getViewById(@IdRes viewId: Int): T {
         return currentActivity()!!.findViewById(viewId)
