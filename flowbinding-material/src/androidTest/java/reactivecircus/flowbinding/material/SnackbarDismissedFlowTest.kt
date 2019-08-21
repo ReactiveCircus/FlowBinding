@@ -1,5 +1,6 @@
 package reactivecircus.flowbinding.material
 
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.test.filters.LargeTest
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.snackbar.Snackbar.Callback.DISMISS_EVENT_ACTION
@@ -21,7 +22,7 @@ class SnackbarDismissedFlowTest {
         launchTest<MaterialFragment> {
             val recorder = FlowRecorder<Int>(testScope)
             val snackbar = Snackbar.make(
-                getViewById(R.id.rootView),
+                getViewById<CoordinatorLayout>(R.id.rootView),
                 "Yo",
                 Snackbar.LENGTH_INDEFINITE
             ).setAction("Dismiss") {}
@@ -49,7 +50,7 @@ class SnackbarDismissedFlowTest {
         launchTest<MaterialFragment> {
             val recorder = FlowRecorder<Int>(testScope)
             val snackbar = Snackbar.make(
-                getViewById(R.id.rootView),
+                getViewById<CoordinatorLayout>(R.id.rootView),
                 "Yo",
                 Snackbar.LENGTH_INDEFINITE
             )
