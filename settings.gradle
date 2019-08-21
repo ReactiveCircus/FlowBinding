@@ -1,5 +1,6 @@
 rootProject.name='FlowBinding'
 include ':flowbinding-common'
+include ':flowbinding-material'
 include ':flowbinding-viewpager2'
 
 include ':testing-infra'
