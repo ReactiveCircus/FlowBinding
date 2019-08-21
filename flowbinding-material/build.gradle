@@ -1,0 +1,39 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'com.vanniktech.maven.publish'
+}
+
+android {
+    compileSdkVersion androidBuildConfig.compileSdk
+    buildToolsVersion androidBuildConfig.buildTools
+
+    defaultConfig {
+        minSdkVersion androidBuildConfig.minSdk
+        targetSdkVersion androidBuildConfig.targetSdk
+
+        testApplicationId 'reactivecircus.flowbinding.material.test'
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    // TODO replace with https://issuetracker.google.com/issues/72050365 once released.
+    libraryVariants.all { variant ->
+        variant.generateBuildConfigProvider.configure { task ->
+            task.enabled = false
+        }
+    }
+
+    testOptions {
+        animationsDisabled = true
+    }
+}
+
+dependencies {
+    implementation project(':flowbinding-common')
+
+    api "com.google.android.material:material:${versions.material}"
+    implementation "androidx.fragment:fragment-ktx:${versions.androidx.fragment}"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinx.coroutines}"
+
+    androidTestImplementation project(':testing-infra')
+}
