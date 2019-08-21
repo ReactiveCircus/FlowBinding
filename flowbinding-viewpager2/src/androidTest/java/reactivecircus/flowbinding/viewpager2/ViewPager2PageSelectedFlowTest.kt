@@ -18,9 +18,7 @@ class ViewPager2PageSelectedFlowTest {
     fun pageSelections_swipe() {
         launchTest<ViewPager2Fragment> {
             val recorder = FlowRecorder<Int>(testScope)
-            getViewById<ViewPager2>(R.id.viewPager)
-                .pageSelections()
-                .recordWith(recorder)
+            getViewById<ViewPager2>(R.id.viewPager).pageSelections().recordWith(recorder)
 
             recorder.assertNoMoreValues()
 

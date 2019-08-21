@@ -11,7 +11,7 @@ import reactivecircus.flowbinding.common.checkMainThread
 import reactivecircus.flowbinding.common.offerIfNotClosed
 
 /**
- * Create a [Flow] of dismiss events on the [Snackbar] instance,
+ * Create a [Flow] of dismiss events on the [Snackbar] instance
  * where the value emitted can be one of the DISMISS_EVENT_* events
  * from [com.google.android.material.snackbar.Snackbar.Callback].
  *

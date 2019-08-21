@@ -26,8 +26,7 @@ class SnackbarDismissedFlowTest {
                 "Yo",
                 Snackbar.LENGTH_INDEFINITE
             ).setAction("Dismiss") {}
-            snackbar.dismissEvents()
-                .recordWith(recorder)
+            snackbar.dismissEvents().recordWith(recorder)
 
             recorder.assertNoMoreValues()
 
@@ -54,8 +53,7 @@ class SnackbarDismissedFlowTest {
                 "Yo",
                 Snackbar.LENGTH_INDEFINITE
             )
-            snackbar.dismissEvents()
-                .recordWith(recorder)
+            snackbar.dismissEvents().recordWith(recorder)
 
             recorder.assertNoMoreValues()
 

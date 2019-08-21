@@ -23,8 +23,7 @@ class SnackbarShownFlowTest {
                 "Yo",
                 Snackbar.LENGTH_INDEFINITE
             )
-            snackbar.shownEvents()
-                .recordWith(recorder)
+            snackbar.shownEvents().recordWith(recorder)
 
             recorder.assertNoMoreValues()
 
