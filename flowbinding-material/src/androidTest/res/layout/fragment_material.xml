@@ -61,6 +61,36 @@
 
     </com.google.android.material.card.MaterialCardView>
 
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/buttonToggleGroup"
+        app:singleSelection="true"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button1"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="button 1"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button2"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="button 2"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button3"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="button 3"/>
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
