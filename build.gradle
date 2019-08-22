@@ -63,6 +63,7 @@ buildscript {
         classpath "com.vanniktech:gradle-maven-publish-plugin:${versions.mavenPublishPlugin}"
     }
 }
+
 allprojects {
     repositories {
         mavenCentral()
