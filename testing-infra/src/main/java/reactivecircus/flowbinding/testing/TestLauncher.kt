@@ -17,7 +17,7 @@ inline fun <reified F : Fragment> launchTest(
 ) {
     launchFragmentInContainer<F>(themeResId = R.style.Theme_MaterialComponents_DayNight)
     Espresso.onIdle()
-    val testScope = CoroutineScope(Job() + Dispatchers.Main)
+    val testScope = CoroutineScope(Job() + Dispatchers.Main.immediate)
     TestLauncher(testScope).block()
     testScope.cancel()
 }
