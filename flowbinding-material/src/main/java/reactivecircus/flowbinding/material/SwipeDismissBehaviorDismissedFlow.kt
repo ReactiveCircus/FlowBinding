@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.offerIfNotClosed
+import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of dismissed events on the [View] instance with a [SwipeDismissBehavior]
@@ -33,24 +33,23 @@ import reactivecircus.flowbinding.common.offerIfNotClosed
  */
 @CheckResult
 @UseExperimental(ExperimentalCoroutinesApi::class)
-fun View.dismisses(): Flow<View> =
-    callbackFlow<View> {
-        checkMainThread()
-        val params = layoutParams
-        check(params is CoordinatorLayout.LayoutParams) {
-            "View is not in a CoordinatorLayout."
+fun View.dismisses(): Flow<View> = callbackFlow<View> {
+    checkMainThread()
+    val params = layoutParams
+    check(params is CoordinatorLayout.LayoutParams) {
+        "View is not in a CoordinatorLayout."
+    }
+    val behavior = params.behavior
+    check(behavior is SwipeDismissBehavior) {
+        "Behavior is not a SwipeDismissBehavior."
+    }
+    val listener = object : SwipeDismissBehavior.OnDismissListener {
+        override fun onDismiss(view: View) {
+            safeOffer(view)
         }
-        val behavior = params.behavior
-        check(behavior is SwipeDismissBehavior) {
-            "Behavior is not a SwipeDismissBehavior."
-        }
-        val listener = object : SwipeDismissBehavior.OnDismissListener {
-            override fun onDismiss(view: View) {
-                offerIfNotClosed(view)
-            }
 
-            override fun onDragStateChanged(state: Int) = Unit
-        }
-        behavior.setListener(listener)
-        awaitClose { behavior.setListener(null) }
-    }.conflate()
+        override fun onDragStateChanged(state: Int) = Unit
+    }
+    behavior.setListener(listener)
+    awaitClose { behavior.setListener(null) }
+}.conflate()
