@@ -8,7 +8,7 @@ import kotlinx.coroutines.channels.SendChannel
 
 @RestrictTo(LIBRARY_GROUP)
 @UseExperimental(ExperimentalCoroutinesApi::class)
-fun <E> SendChannel<E>.offerIfNotClosed(value: E) = !isClosedForSend && try {
+fun <E> SendChannel<E>.safeOffer(value: E) = !isClosedForSend && try {
     offer(value)
 } catch (e: CancellationException) {
     false

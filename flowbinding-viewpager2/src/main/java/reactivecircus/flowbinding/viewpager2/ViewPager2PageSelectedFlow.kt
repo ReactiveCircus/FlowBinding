@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.offerIfNotClosed
+import reactivecircus.flowbinding.common.safeOffer
 import reactivecircus.flowbinding.common.startWithCurrentValue
 
 /**
@@ -32,16 +32,15 @@ import reactivecircus.flowbinding.common.startWithCurrentValue
  */
 @CheckResult
 @UseExperimental(ExperimentalCoroutinesApi::class)
-fun ViewPager2.pageSelections(emitImmediately: Boolean = false): Flow<Int> =
-    callbackFlow<Int> {
-        checkMainThread()
-        val callback = object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                offerIfNotClosed(position)
-            }
+fun ViewPager2.pageSelections(emitImmediately: Boolean = false): Flow<Int> = callbackFlow<Int> {
+    checkMainThread()
+    val callback = object : ViewPager2.OnPageChangeCallback() {
+        override fun onPageSelected(position: Int) {
+            safeOffer(position)
         }
-        registerOnPageChangeCallback(callback)
-        awaitClose { unregisterOnPageChangeCallback(callback) }
     }
-        .startWithCurrentValue(emitImmediately) { currentItem }
-        .conflate()
+    registerOnPageChangeCallback(callback)
+    awaitClose { unregisterOnPageChangeCallback(callback) }
+}
+    .startWithCurrentValue(emitImmediately) { currentItem }
+    .conflate()

@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.offerIfNotClosed
+import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of page scroll events on the [ViewPager2] instance.
@@ -30,25 +30,24 @@ import reactivecircus.flowbinding.common.offerIfNotClosed
  */
 @CheckResult
 @UseExperimental(ExperimentalCoroutinesApi::class)
-fun ViewPager2.pageScrollEvents(): Flow<ViewPager2PageScrollEvent> =
-    callbackFlow<ViewPager2PageScrollEvent> {
-        checkMainThread()
-        val callback = object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-                offerIfNotClosed(
-                    ViewPager2PageScrollEvent(
-                        position, positionOffset, positionOffsetPixels
-                    )
+fun ViewPager2.pageScrollEvents(): Flow<ViewPager2PageScrollEvent> = callbackFlow<ViewPager2PageScrollEvent> {
+    checkMainThread()
+    val callback = object : ViewPager2.OnPageChangeCallback() {
+        override fun onPageScrolled(
+            position: Int,
+            positionOffset: Float,
+            positionOffsetPixels: Int
+        ) {
+            safeOffer(
+                ViewPager2PageScrollEvent(
+                    position, positionOffset, positionOffsetPixels
                 )
-            }
+            )
         }
-        registerOnPageChangeCallback(callback)
-        awaitClose { unregisterOnPageChangeCallback(callback) }
-    }.conflate()
+    }
+    registerOnPageChangeCallback(callback)
+    awaitClose { unregisterOnPageChangeCallback(callback) }
+}.conflate()
 
 data class ViewPager2PageScrollEvent(
     val position: Int,

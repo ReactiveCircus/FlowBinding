@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.offerIfNotClosed
+import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of material button checked state change events on the [MaterialButtonToggleGroup] instance.
@@ -31,17 +31,16 @@ import reactivecircus.flowbinding.common.offerIfNotClosed
  */
 @CheckResult
 @UseExperimental(ExperimentalCoroutinesApi::class)
-fun MaterialButtonToggleGroup.buttonCheckedChanges(): Flow<MaterialButtonCheckedChangedEvent> =
-    callbackFlow {
-        checkMainThread()
-        val listener = MaterialButtonToggleGroup.OnButtonCheckedListener { _, checkedId, isChecked ->
-            offerIfNotClosed(
-                MaterialButtonCheckedChangedEvent(checkedId, isChecked)
-            )
-        }
-        addOnButtonCheckedListener(listener)
-        awaitClose { removeOnButtonCheckedListener(listener) }
-    }.conflate()
+fun MaterialButtonToggleGroup.buttonCheckedChanges(): Flow<MaterialButtonCheckedChangedEvent> = callbackFlow {
+    checkMainThread()
+    val listener = MaterialButtonToggleGroup.OnButtonCheckedListener { _, checkedId, isChecked ->
+        safeOffer(
+            MaterialButtonCheckedChangedEvent(checkedId, isChecked)
+        )
+    }
+    addOnButtonCheckedListener(listener)
+    awaitClose { removeOnButtonCheckedListener(listener) }
+}.conflate()
 
 data class MaterialButtonCheckedChangedEvent(
     @IdRes
