@@ -11,11 +11,12 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
 import reactivecircus.blueprint.testing.RobotActions
 import reactivecircus.blueprint.testing.currentActivity
+import com.google.android.material.R as MaterialR
 
 inline fun <reified F : Fragment> launchTest(
     block: TestLauncher.() -> Unit
 ) {
-    launchFragmentInContainer<F>(themeResId = R.style.Theme_MaterialComponents_DayNight)
+    launchFragmentInContainer<F>(themeResId = MaterialR.style.Theme_MaterialComponents_DayNight)
     Espresso.onIdle()
     val testScope = CoroutineScope(Job() + Dispatchers.Main.immediate)
     TestLauncher(testScope).block()
