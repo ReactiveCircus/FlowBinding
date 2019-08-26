@@ -12,7 +12,7 @@ buildscript {
             androidGradlePlugin: '3.6.0-alpha07',
             mavenPublishPlugin : '0.9.0-SNAPSHOT',
             kotlin             : '1.3.50',
-            detekt             : '1.0.0',
+            detekt             : '1.0.1',
             kotlinx            : [
                     coroutines: '1.3.0',
             ],
@@ -78,6 +78,15 @@ allprojects {
                 if (details.requested.group == 'org.jetbrains.kotlin' && details.requested.name.startsWith('kotlin-stdlib')) {
                     details.useVersion versions.kotlin
                 }
+            }
+        }
+    }
+
+    plugins.withType(com.android.build.gradle.LibraryPlugin) {
+        project.android.libraryVariants.all { variant ->
+            // TODO replace with https://issuetracker.google.com/issues/72050365 once released.
+            variant.generateBuildConfigProvider.configure { task ->
+                task.enabled = false
             }
         }
     }
