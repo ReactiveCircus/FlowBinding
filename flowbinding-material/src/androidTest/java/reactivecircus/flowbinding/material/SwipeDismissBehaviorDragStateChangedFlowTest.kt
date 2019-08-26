@@ -24,7 +24,7 @@ class SwipeDismissBehaviorDragStateChangedFlowTest {
             val viewToDismiss1 = getViewById<MaterialCardView>(R.id.materialCardViewTop)
             (viewToDismiss1.layoutParams as CoordinatorLayout.LayoutParams).behavior =
                 SwipeDismissBehavior<View>()
-            viewToDismiss1.dragStateChanges().recordWith(recorder)
+            viewToDismiss1.swipeDismissDragStateChanges().recordWith(recorder)
             recorder.assertNoMoreValues()
 
             hardSwipeRight(R.id.materialCardViewTop)
@@ -38,7 +38,7 @@ class SwipeDismissBehaviorDragStateChangedFlowTest {
             val viewToDismiss2 = getViewById<MaterialCardView>(R.id.materialCardViewBottom)
             (viewToDismiss2.layoutParams as CoordinatorLayout.LayoutParams).behavior =
                 SwipeDismissBehavior<View>()
-            viewToDismiss2.dragStateChanges().recordWith(recorder)
+            viewToDismiss2.swipeDismissDragStateChanges().recordWith(recorder)
             hardSwipeLeft(R.id.materialCardViewBottom)
             recorder.assertNoMoreValues()
         }
