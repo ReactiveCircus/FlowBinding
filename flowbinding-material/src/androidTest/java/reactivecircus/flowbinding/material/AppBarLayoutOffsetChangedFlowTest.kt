@@ -6,6 +6,7 @@ import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.swipeDownOnView
 import reactivecircus.blueprint.testing.action.swipeUpOnView
+import reactivecircus.flowbinding.material.fixtures.MaterialFragment
 import reactivecircus.flowbinding.material.test.R
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest

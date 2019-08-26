@@ -29,4 +29,5 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinx.coroutines}"
 
     androidTestImplementation project(':testing-infra')
+    androidTestImplementation project(':flowbinding-material:fixtures')
 }

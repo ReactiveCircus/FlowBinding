@@ -1,0 +1,21 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdkVersion androidBuildConfig.compileSdk
+    buildToolsVersion androidBuildConfig.buildTools
+
+    defaultConfig {
+        minSdkVersion androidBuildConfig.minSdk
+        targetSdkVersion androidBuildConfig.targetSdk
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"
+    implementation "com.google.android.material:material:${versions.material}"
+    implementation "androidx.fragment:fragment-ktx:${versions.androidx.fragment}"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:${versions.androidx.coordinatorLayout}"
+}

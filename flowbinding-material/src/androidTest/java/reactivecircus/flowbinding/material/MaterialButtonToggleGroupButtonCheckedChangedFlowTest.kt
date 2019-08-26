@@ -6,6 +6,7 @@ import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.clickView
+import reactivecircus.flowbinding.material.fixtures.MaterialFragment
 import reactivecircus.flowbinding.material.test.R
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest

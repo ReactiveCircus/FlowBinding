@@ -1,10 +1,9 @@
-package reactivecircus.flowbinding.material
+package reactivecircus.flowbinding.material.fixtures
 
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import reactivecircus.flowbinding.material.test.R
 
 class MaterialFragment : Fragment(R.layout.fragment_material) {
 

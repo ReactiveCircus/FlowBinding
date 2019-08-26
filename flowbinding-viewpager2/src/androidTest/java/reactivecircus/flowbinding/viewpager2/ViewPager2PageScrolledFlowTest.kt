@@ -9,6 +9,7 @@ import reactivecircus.blueprint.testing.action.swipeRightOnView
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest
 import reactivecircus.flowbinding.testing.recordWith
+import reactivecircus.flowbinding.viewpager2.fixtures.ViewPager2Fragment
 import reactivecircus.flowbinding.viewpager2.test.R
 
 @LargeTest

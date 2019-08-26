@@ -1,4 +1,4 @@
-package reactivecircus.flowbinding.viewpager2
+package reactivecircus.flowbinding.viewpager2.fixtures
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import reactivecircus.flowbinding.viewpager2.test.R
 
 class ViewPager2Fragment : Fragment(R.layout.fragment_viewpager2) {
 
