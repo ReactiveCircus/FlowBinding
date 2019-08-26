@@ -1,6 +1,25 @@
-rootProject.name='FlowBinding'
-include ':flowbinding-common'
-include ':flowbinding-material'
-include ':flowbinding-viewpager2'
+rootProject.name = "FlowBinding"
+include ":flowbinding-common"
+include ":flowbinding-material"
+includeProject(":flowbinding-material:fixtures", "flowbinding-material/fixtures")
+include ":flowbinding-viewpager2"
+includeProject(":flowbinding-viewpager2:fixtures", "flowbinding-viewpager2/fixtures")
+include ":testing-infra"
 
-include ':testing-infra'
+/**
+ * Calling includeProject(name, filePath) is shorthand for:
+ *
+ * include(name)
+ * project(name).projectDir = new File(filePath)
+ */
+def includeProject(name, filePath) {
+    settings.include(name)
+    def file
+    if (filePath instanceof String) {
+        file = new File(filePath)
+    } else {
+        file = filePath
+    }
+    project(name).projectDir = file
+}
+
