@@ -15,13 +15,6 @@ android {
         testApplicationId 'reactivecircus.flowbinding.common.test'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
-    // TODO replace with https://issuetracker.google.com/issues/72050365 once released.
-    libraryVariants.all { variant ->
-        variant.generateBuildConfigProvider.configure { task ->
-            task.enabled = false
-        }
-    }
 }
 
 dependencies {
