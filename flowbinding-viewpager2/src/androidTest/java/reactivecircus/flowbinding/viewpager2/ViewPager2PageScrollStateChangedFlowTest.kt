@@ -2,7 +2,7 @@ package reactivecircus.flowbinding.viewpager2
 
 import androidx.test.filters.LargeTest
 import androidx.viewpager2.widget.ViewPager2
-import com.google.common.truth.Truth.assertThat
+import org.amshove.kluent.shouldEqual
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.swipeLeftOnView
 import reactivecircus.blueprint.testing.action.swipeRightOnView
@@ -24,9 +24,9 @@ class ViewPager2PageScrollStateChangedFlowTest {
             recorder.assertNoMoreValues()
 
             swipeLeftOnView(R.id.viewPager)
-            assertThat(recorder.takeValue()).isEqualTo(ViewPager2.SCROLL_STATE_DRAGGING)
-            assertThat(recorder.takeValue()).isEqualTo(ViewPager2.SCROLL_STATE_SETTLING)
-            assertThat(recorder.takeValue()).isEqualTo(ViewPager2.SCROLL_STATE_IDLE)
+            recorder.takeValue() shouldEqual ViewPager2.SCROLL_STATE_DRAGGING
+            recorder.takeValue() shouldEqual ViewPager2.SCROLL_STATE_SETTLING
+            recorder.takeValue() shouldEqual ViewPager2.SCROLL_STATE_IDLE
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -47,8 +47,8 @@ class ViewPager2PageScrollStateChangedFlowTest {
 
             viewPager.currentItem = 1
             // SCROLL_STATE_DRAGGING state is not emitted for programmatic page change
-            assertThat(recorder.takeValue()).isEqualTo(ViewPager2.SCROLL_STATE_SETTLING)
-            assertThat(recorder.takeValue()).isEqualTo(ViewPager2.SCROLL_STATE_IDLE)
+            recorder.takeValue() shouldEqual ViewPager2.SCROLL_STATE_SETTLING
+            recorder.takeValue() shouldEqual ViewPager2.SCROLL_STATE_IDLE
             recorder.assertNoMoreValues()
 
             cancelTestScope()
