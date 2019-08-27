@@ -5,7 +5,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.test.filters.LargeTest
 import com.google.android.material.behavior.SwipeDismissBehavior
 import com.google.android.material.card.MaterialCardView
-import com.google.common.truth.Truth.assertThat
+import org.amshove.kluent.shouldEqual
 import org.junit.Test
 import reactivecircus.flowbinding.material.fixtures.MaterialFragment
 import reactivecircus.flowbinding.material.test.R
@@ -29,8 +29,7 @@ class SwipeDismissBehaviorDismissedFlowTest {
             recorder.assertNoMoreValues()
 
             hardSwipeRight(R.id.materialCardViewTop)
-            val dismissedView = recorder.takeValue()
-            assertThat(dismissedView).isEqualTo(viewToDismiss1)
+            recorder.takeValue() shouldEqual viewToDismiss1
 
             cancelTestScope()
             recorder.clearValues()

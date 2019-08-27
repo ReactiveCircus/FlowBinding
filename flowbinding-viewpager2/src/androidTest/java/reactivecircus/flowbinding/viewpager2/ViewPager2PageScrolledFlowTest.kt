@@ -2,7 +2,8 @@ package reactivecircus.flowbinding.viewpager2
 
 import androidx.test.filters.LargeTest
 import androidx.viewpager2.widget.ViewPager2
-import com.google.common.truth.Truth.assertThat
+import org.amshove.kluent.shouldBeGreaterThan
+import org.amshove.kluent.shouldEqual
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.swipeLeftOnView
 import reactivecircus.blueprint.testing.action.swipeRightOnView
@@ -25,9 +26,9 @@ class ViewPager2PageScrolledFlowTest {
 
             swipeLeftOnView(R.id.viewPager)
             val event = recorder.takeValue()
-            assertThat(event.position).isEqualTo(0)
-            assertThat(event.positionOffset).isGreaterThan(0f)
-            assertThat(event.positionOffsetPixel).isGreaterThan(0)
+            event.position shouldEqual 0
+            event.positionOffset shouldBeGreaterThan 0f
+            event.positionOffsetPixel shouldBeGreaterThan 0
 
             cancelTestScope()
             recorder.clearValues()
@@ -48,9 +49,9 @@ class ViewPager2PageScrolledFlowTest {
 
             viewPager.currentItem = 1
             val event = recorder.takeValue()
-            assertThat(event.position).isEqualTo(0)
-            assertThat(event.positionOffset).isGreaterThan(0f)
-            assertThat(event.positionOffsetPixel).isGreaterThan(0)
+            event.position shouldEqual 0
+            event.positionOffset shouldBeGreaterThan 0f
+            event.positionOffsetPixel shouldBeGreaterThan 0
 
             cancelTestScope()
             recorder.clearValues()

@@ -2,12 +2,12 @@ package reactivecircus.flowbinding.common
 
 import androidx.test.annotation.UiThreadTest
 import androidx.test.filters.MediumTest
-import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.single
 import kotlinx.coroutines.test.runBlockingTest
+import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
 @MediumTest
@@ -22,7 +22,7 @@ class CheckMainThreadTest {
     @Test
     @UiThreadTest
     fun checkMainThread_onMainThread() = runBlockingTest {
-        assertThat(mainThreadFlow.single()).isTrue()
+        mainThreadFlow.single() shouldEqual true
     }
 
     @Test(expected = IllegalStateException::class)

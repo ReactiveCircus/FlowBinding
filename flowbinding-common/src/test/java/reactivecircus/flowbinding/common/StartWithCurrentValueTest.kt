@@ -1,28 +1,65 @@
 package reactivecircus.flowbinding.common
 
-import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.single
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runBlockingTest
+import org.amshove.kluent.invoking
+import org.amshove.kluent.shouldEqual
+import org.amshove.kluent.shouldThrow
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
 class StartWithCurrentValueTest {
 
     @Test
-    fun `invoke and emit value from block on flow collection when emitImmediately is true`() =
+    fun `invoke and emit value from block on flow collection when emitImmediately is true and block returns value`() =
         runBlockingTest {
+            var invokedBlock = false
             val result = flowOf<Int>()
-                .startWithCurrentValue(emitImmediately = true, block = { 0 })
+                .startWithCurrentValue(emitImmediately = true, block = {
+                    invokedBlock = true
+                    0
+                })
                 .single()
 
-            assertThat(result).isEqualTo(0)
+            invokedBlock shouldEqual true
+            result shouldEqual 0
         }
 
-    @Test(expected = NoSuchElementException::class)
+    @Test
     fun `does not invoke and emit value from block on flow collection when emitImmediately is false`() =
         runBlockingTest {
-            flowOf<Int>().startWithCurrentValue(emitImmediately = false, block = { 0 }).single()
+            var invokedBlock = false
+            // TODO replace with https://github.com/MarkusAmshove/Kluent/issues/151
+            invoking {
+                runBlocking {
+                    flowOf<Int>().startWithCurrentValue(emitImmediately = false, block = {
+                        invokedBlock = true
+                        0
+                    }).single()
+                }
+            } shouldThrow NoSuchElementException::class
+
+            invokedBlock shouldEqual false
+        }
+
+    @Test
+    fun `invoke block but does not emit value on flow collection when emitImmediately is true but block returns null`() =
+        runBlockingTest {
+            var invokedBlock = false
+            // TODO replace with https://github.com/MarkusAmshove/Kluent/issues/151
+            invoking {
+                runBlocking {
+                    flowOf<Int>()
+                        .startWithCurrentValue(emitImmediately = true, block = {
+                            invokedBlock = true
+                            null
+                        }).single()
+                }
+            } shouldThrow NoSuchElementException::class
+
+            invokedBlock shouldEqual true
         }
 }

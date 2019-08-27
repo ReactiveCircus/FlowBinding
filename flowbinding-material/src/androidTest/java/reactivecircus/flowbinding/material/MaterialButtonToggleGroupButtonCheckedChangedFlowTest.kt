@@ -3,7 +3,7 @@ package reactivecircus.flowbinding.material
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import com.google.android.material.button.MaterialButtonToggleGroup
-import com.google.common.truth.Truth.assertThat
+import org.amshove.kluent.shouldEqual
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.clickView
 import reactivecircus.flowbinding.material.fixtures.MaterialFragment
@@ -19,29 +19,30 @@ class MaterialButtonToggleGroupButtonCheckedChangedFlowTest {
     fun materialButtonToggleGroupButtonCheckedChanges_click() {
         launchTest<MaterialFragment> {
             val recorder = FlowRecorder<MaterialButtonCheckedChangedEvent>(testScope)
-            getViewById<MaterialButtonToggleGroup>(R.id.buttonToggleGroup).buttonCheckedChanges().recordWith(recorder)
+            getViewById<MaterialButtonToggleGroup>(R.id.buttonToggleGroup).buttonCheckedChanges()
+                .recordWith(recorder)
 
             recorder.assertNoMoreValues()
 
             clickView(R.id.button1)
             val event1 = recorder.takeValue()
-            assertThat(event1.checked).isEqualTo(true)
-            assertThat(event1.checkedId).isEqualTo(R.id.button1)
+            event1.checked shouldEqual true
+            event1.checkedId shouldEqual R.id.button1
             recorder.assertNoMoreValues()
 
             clickView(R.id.button2)
             val event2 = recorder.takeValue()
-            assertThat(event2.checked).isEqualTo(true)
-            assertThat(event2.checkedId).isEqualTo(R.id.button2)
+            event2.checked shouldEqual true
+            event2.checkedId shouldEqual R.id.button2
             val event3 = recorder.takeValue()
-            assertThat(event3.checked).isEqualTo(false)
-            assertThat(event3.checkedId).isEqualTo(R.id.button1)
+            event3.checked shouldEqual false
+            event3.checkedId shouldEqual R.id.button1
             recorder.assertNoMoreValues()
 
             clickView(R.id.button2)
             val event4 = recorder.takeValue()
-            assertThat(event4.checked).isEqualTo(false)
-            assertThat(event4.checkedId).isEqualTo(R.id.button2)
+            event4.checked shouldEqual false
+            event4.checkedId shouldEqual R.id.button2
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -62,14 +63,14 @@ class MaterialButtonToggleGroupButtonCheckedChangedFlowTest {
 
             runOnUiThread { buttonGroup.check(R.id.button1) }
             val event1 = recorder.takeValue()
-            assertThat(event1.checked).isEqualTo(true)
-            assertThat(event1.checkedId).isEqualTo(R.id.button1)
+            event1.checked shouldEqual true
+            event1.checkedId shouldEqual R.id.button1
             recorder.assertNoMoreValues()
 
             runOnUiThread { buttonGroup.uncheck(R.id.button1) }
             val event2 = recorder.takeValue()
-            assertThat(event2.checked).isEqualTo(false)
-            assertThat(event2.checkedId).isEqualTo(R.id.button1)
+            event2.checked shouldEqual false
+            event2.checkedId shouldEqual R.id.button1
             recorder.assertNoMoreValues()
 
             cancelTestScope()

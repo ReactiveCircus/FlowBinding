@@ -23,11 +23,11 @@ dependencies {
     api "androidx.annotation:annotation:${versions.androidx.annotation}"
 
     testImplementation "junit:junit:${versions.junit}"
-    testImplementation "com.google.truth:truth:${versions.truth}"
+    testImplementation "org.amshove.kluent:kluent-android:${versions.kluent}"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.kotlinx.coroutines}"
 
     androidTestImplementation "androidx.test:runner:${versions.androidx.test.runner}"
     androidTestImplementation "androidx.test:rules:${versions.androidx.test.rules}"
-    androidTestImplementation "com.google.truth:truth:${versions.truth}"
+    androidTestImplementation "org.amshove.kluent:kluent-android:${versions.kluent}"
     androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.kotlinx.coroutines}"
 }

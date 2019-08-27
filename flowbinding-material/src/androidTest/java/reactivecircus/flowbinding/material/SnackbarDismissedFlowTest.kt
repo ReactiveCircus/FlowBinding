@@ -5,7 +5,7 @@ import androidx.test.filters.LargeTest
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.snackbar.Snackbar.Callback.DISMISS_EVENT_ACTION
 import com.google.android.material.snackbar.Snackbar.Callback.DISMISS_EVENT_MANUAL
-import com.google.common.truth.Truth.assertThat
+import org.amshove.kluent.shouldEqual
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.clickSnackbarActionButton
 import reactivecircus.blueprint.testing.asViewAction
@@ -33,8 +33,7 @@ class SnackbarDismissedFlowTest {
 
             snackbar.show().asViewAction()
             clickSnackbarActionButton()
-            val event = recorder.takeValue()
-            assertThat(event).isEqualTo(DISMISS_EVENT_ACTION)
+            recorder.takeValue() shouldEqual DISMISS_EVENT_ACTION
 
             cancelTestScope()
             recorder.clearValues()
@@ -60,8 +59,7 @@ class SnackbarDismissedFlowTest {
 
             snackbar.show().asViewAction()
             snackbar.dismiss().asViewAction()
-            val event = recorder.takeValue()
-            assertThat(event).isEqualTo(DISMISS_EVENT_MANUAL)
+            recorder.takeValue() shouldEqual DISMISS_EVENT_MANUAL
 
             cancelTestScope()
             recorder.clearValues()
