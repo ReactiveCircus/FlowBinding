@@ -13,7 +13,7 @@ import reactivecircus.flowbinding.testing.launchTest
 import reactivecircus.flowbinding.testing.recordWith
 
 @LargeTest
-class MaterialButtonToggleGroupButtonCheckedChangedFlowTest {
+class MaterialButtonToggleGroupCheckedChangedFlowTest {
 
     @Test
     fun materialButtonToggleGroupButtonCheckedChanges_click() {
