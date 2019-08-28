@@ -6,6 +6,7 @@ import androidx.test.espresso.action.GeneralLocation
 import androidx.test.espresso.action.GeneralSwipeAction
 import androidx.test.espresso.action.Press
 import androidx.test.espresso.action.Swipe
+import androidx.test.espresso.contrib.NavigationViewActions
 import androidx.test.espresso.matcher.ViewMatchers
 import reactivecircus.blueprint.testing.RobotActions
 
@@ -25,4 +26,14 @@ fun RobotActions.hardSwipeRight(@IdRes viewId: Int) {
             GeneralLocation.CENTER_RIGHT, Press.FINGER
         )
     )
+}
+
+/**
+ * Select the navigation item associated with [menuItemResId]
+ * from the navigation view associated with [navigationViewResId].
+ * TODO remove once blueprint-testing-robot 1.3.0 is released
+ */
+fun RobotActions.selectNavigationItem(@IdRes navigationViewResId: Int, @IdRes menuItemResId: Int) {
+    Espresso.onView(ViewMatchers.withId(navigationViewResId))
+        .perform(NavigationViewActions.navigateTo(menuItemResId))
 }
