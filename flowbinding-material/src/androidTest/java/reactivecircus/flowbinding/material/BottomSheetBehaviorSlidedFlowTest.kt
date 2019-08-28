@@ -7,7 +7,7 @@ import org.amshove.kluent.shouldBeGreaterThan
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.swipeDownOnView
 import reactivecircus.blueprint.testing.action.swipeUpOnView
-import reactivecircus.flowbinding.material.fixtures.MaterialFragment
+import reactivecircus.flowbinding.material.fixtures.MaterialFragment1
 import reactivecircus.flowbinding.material.test.R
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest
@@ -18,7 +18,7 @@ class BottomSheetBehaviorSlidedFlowTest {
 
     @Test
     fun bottomSheetSlides_drag() {
-        launchTest<MaterialFragment> {
+        launchTest<MaterialFragment1> {
             val recorder = FlowRecorder<Float>(testScope)
             val bottomSheet = getViewById<View>(R.id.bottomSheetLayout)
             bottomSheet.bottomSheetSlides().recordWith(recorder)
@@ -38,7 +38,7 @@ class BottomSheetBehaviorSlidedFlowTest {
 
     @Test
     fun bottomSheetSlides_programmatic() {
-        launchTest<MaterialFragment> {
+        launchTest<MaterialFragment1> {
             val recorder = FlowRecorder<Float>(testScope)
             val bottomSheet = getViewById<View>(R.id.bottomSheetLayout)
             val behavior = BottomSheetBehavior.from(bottomSheet)

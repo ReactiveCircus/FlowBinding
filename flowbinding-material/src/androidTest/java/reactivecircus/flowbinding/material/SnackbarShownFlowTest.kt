@@ -6,7 +6,7 @@ import com.google.android.material.snackbar.Snackbar
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 import reactivecircus.blueprint.testing.asViewAction
-import reactivecircus.flowbinding.material.fixtures.MaterialFragment
+import reactivecircus.flowbinding.material.fixtures.MaterialFragment1
 import reactivecircus.flowbinding.material.test.R
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest
@@ -17,7 +17,7 @@ class SnackbarShownFlowTest {
 
     @Test
     fun snackbarShownEvents() {
-        launchTest<MaterialFragment> {
+        launchTest<MaterialFragment1> {
             val recorder = FlowRecorder<Unit>(testScope)
             val snackbar = Snackbar.make(
                 getViewById<CoordinatorLayout>(R.id.rootView),
