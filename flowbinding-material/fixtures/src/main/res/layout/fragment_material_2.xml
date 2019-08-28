@@ -12,7 +12,6 @@
         android:layout_height="match_parent">
 
         <androidx.core.widget.NestedScrollView
-            android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true"
@@ -22,12 +21,38 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/materialTextView"
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroup"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Material Bindings" />
+                    android:layout_gravity="center_horizontal"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip1"
+                        app:closeIconVisible="true"
+                        style="@style/Widget.MaterialComponents.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chip 1"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip2"
+                        app:closeIconVisible="true"
+                        style="@style/Widget.MaterialComponents.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chip 2"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip3"
+                        app:closeIconVisible="true"
+                        style="@style/Widget.MaterialComponents.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chip 3"/>
+
+                </com.google.android.material.chip.ChipGroup>
 
             </FrameLayout>
 
