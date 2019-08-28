@@ -7,7 +7,7 @@ import com.google.android.material.behavior.SwipeDismissBehavior
 import com.google.android.material.card.MaterialCardView
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
-import reactivecircus.flowbinding.material.fixtures.MaterialFragment
+import reactivecircus.flowbinding.material.fixtures.MaterialFragment1
 import reactivecircus.flowbinding.material.test.R
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.hardSwipeLeft
@@ -20,7 +20,7 @@ class SwipeDismissBehaviorDismissedFlowTest {
 
     @Test
     fun swipeDismissBehaviorDismisses() {
-        launchTest<MaterialFragment> {
+        launchTest<MaterialFragment1> {
             val recorder = FlowRecorder<View>(testScope)
             val viewToDismiss1 = getViewById<MaterialCardView>(R.id.materialCardViewTop)
             (viewToDismiss1.layoutParams as CoordinatorLayout.LayoutParams).behavior =

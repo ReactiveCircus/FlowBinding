@@ -7,7 +7,7 @@ import com.google.android.material.button.MaterialButtonToggleGroup
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.clickView
-import reactivecircus.flowbinding.material.fixtures.MaterialFragment
+import reactivecircus.flowbinding.material.fixtures.MaterialFragment1
 import reactivecircus.flowbinding.material.test.R
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest
@@ -18,7 +18,7 @@ class MaterialButtonCheckedChangedFlowTest {
 
     @Test
     fun materialButtonCheckedChanges_click() {
-        launchTest<MaterialFragment> {
+        launchTest<MaterialFragment1> {
             val recorder = FlowRecorder<Boolean>(testScope)
             getViewById<MaterialButton>(R.id.button1).checkedChanges().recordWith(recorder)
 
@@ -41,7 +41,7 @@ class MaterialButtonCheckedChangedFlowTest {
 
     @Test
     fun materialButtonCheckedChanges_programmatic() {
-        launchTest<MaterialFragment> {
+        launchTest<MaterialFragment1> {
             val recorder = FlowRecorder<Boolean>(testScope)
             val buttonGroup = getViewById<MaterialButtonToggleGroup>(R.id.buttonToggleGroup)
             val button = getViewById<MaterialButton>(R.id.button1)

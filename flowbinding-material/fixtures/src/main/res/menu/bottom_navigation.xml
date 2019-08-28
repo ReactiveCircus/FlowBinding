@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="HardcodedText">
+
+    <item
+        android:id="@+id/dest1"
+        android:title="Destination 1" />
+
+    <item
+        android:id="@+id/dest2"
+        android:title="Destination 2" />
+
+    <item
+        android:id="@+id/dest3"
+        android:title="Destination 3" />
+
+</menu>

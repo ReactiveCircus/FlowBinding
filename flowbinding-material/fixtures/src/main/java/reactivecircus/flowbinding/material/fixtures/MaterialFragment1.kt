@@ -5,7 +5,7 @@ import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 
-class MaterialFragment : Fragment(R.layout.fragment_material) {
+class MaterialFragment1 : Fragment(R.layout.fragment_material_1) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

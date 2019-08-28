@@ -6,7 +6,7 @@ import org.amshove.kluent.shouldBeLessThan
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.swipeDownOnView
 import reactivecircus.blueprint.testing.action.swipeUpOnView
-import reactivecircus.flowbinding.material.fixtures.MaterialFragment
+import reactivecircus.flowbinding.material.fixtures.MaterialFragment1
 import reactivecircus.flowbinding.material.test.R
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest
@@ -17,7 +17,7 @@ class AppBarLayoutOffsetChangedFlowTest {
 
     @Test
     fun appBarLayoutOffsetChanges() {
-        launchTest<MaterialFragment> {
+        launchTest<MaterialFragment1> {
             val recorder = FlowRecorder<Int>(testScope)
             getViewById<AppBarLayout>(R.id.appBarLayout).offsetChanges().recordWith(recorder)
 

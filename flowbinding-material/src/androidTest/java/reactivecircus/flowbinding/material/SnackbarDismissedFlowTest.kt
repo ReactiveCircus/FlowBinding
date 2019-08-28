@@ -9,7 +9,7 @@ import org.amshove.kluent.shouldEqual
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.clickSnackbarActionButton
 import reactivecircus.blueprint.testing.asViewAction
-import reactivecircus.flowbinding.material.fixtures.MaterialFragment
+import reactivecircus.flowbinding.material.fixtures.MaterialFragment1
 import reactivecircus.flowbinding.material.test.R
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest
@@ -20,7 +20,7 @@ class SnackbarDismissedFlowTest {
 
     @Test
     fun snackbarDismissEvents_actionClick() {
-        launchTest<MaterialFragment> {
+        launchTest<MaterialFragment1> {
             val recorder = FlowRecorder<Int>(testScope)
             val snackbar = Snackbar.make(
                 getViewById<CoordinatorLayout>(R.id.rootView),
@@ -46,7 +46,7 @@ class SnackbarDismissedFlowTest {
 
     @Test
     fun snackbarDismissEvents_programmatic() {
-        launchTest<MaterialFragment> {
+        launchTest<MaterialFragment1> {
             val recorder = FlowRecorder<Int>(testScope)
             val snackbar = Snackbar.make(
                 getViewById<CoordinatorLayout>(R.id.rootView),
