@@ -10,7 +10,6 @@ import org.junit.Test
 import reactivecircus.blueprint.testing.action.clickSnackbarActionButton
 import reactivecircus.blueprint.testing.asViewAction
 import reactivecircus.flowbinding.material.fixtures.MaterialFragment1
-import reactivecircus.flowbinding.material.test.R
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest
 import reactivecircus.flowbinding.testing.recordWith
@@ -23,7 +22,7 @@ class SnackbarDismissedFlowTest {
         launchTest<MaterialFragment1> {
             val recorder = FlowRecorder<Int>(testScope)
             val snackbar = Snackbar.make(
-                getViewById<CoordinatorLayout>(R.id.rootView),
+                getViewById<CoordinatorLayout>(android.R.id.content),
                 "Yo",
                 Snackbar.LENGTH_INDEFINITE
             ).setAction("Dismiss") {}
@@ -49,7 +48,7 @@ class SnackbarDismissedFlowTest {
         launchTest<MaterialFragment1> {
             val recorder = FlowRecorder<Int>(testScope)
             val snackbar = Snackbar.make(
-                getViewById<CoordinatorLayout>(R.id.rootView),
+                getViewById<CoordinatorLayout>(android.R.id.content),
                 "Yo",
                 Snackbar.LENGTH_INDEFINITE
             )
