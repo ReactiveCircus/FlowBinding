@@ -17,7 +17,7 @@ import reactivecircus.flowbinding.testing.recordWith
 class BottomNavigationViewItemSelectedFlowTest {
 
     @Test
-    fun bottomNavigationViewItemSelections_click() {
+    fun bottomNavigationViewItemSelections_manual() {
         launchTest<MaterialFragment2> {
             val recorder = FlowRecorder<MenuItem>(testScope)
             val bottomNavigationView = getViewById<BottomNavigationView>(R.id.bottomNavigationView)
