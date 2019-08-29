@@ -3,12 +3,11 @@ package reactivecircus.flowbinding.common
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.single
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runBlockingTest
-import org.amshove.kluent.invoking
 import org.amshove.kluent.shouldEqual
-import org.amshove.kluent.shouldThrow
 import org.junit.Test
+import reactivecircus.kluentsuspend.invokingSuspend
+import reactivecircus.kluentsuspend.shouldThrow
 
 @ExperimentalCoroutinesApi
 class StartWithCurrentValueTest {
@@ -32,14 +31,11 @@ class StartWithCurrentValueTest {
     fun `does not invoke and emit value from block on flow collection when emitImmediately is false`() =
         runBlockingTest {
             var invokedBlock = false
-            // TODO replace with https://github.com/MarkusAmshove/Kluent/issues/151
-            invoking {
-                runBlocking {
-                    flowOf<Int>().startWithCurrentValue(emitImmediately = false, block = {
-                        invokedBlock = true
-                        0
-                    }).single()
-                }
+            invokingSuspend {
+                flowOf<Int>().startWithCurrentValue(emitImmediately = false, block = {
+                    invokedBlock = true
+                    0
+                }).single()
             } shouldThrow NoSuchElementException::class
 
             invokedBlock shouldEqual false
@@ -49,15 +45,12 @@ class StartWithCurrentValueTest {
     fun `invoke block but does not emit value on flow collection when emitImmediately is true but block returns null`() =
         runBlockingTest {
             var invokedBlock = false
-            // TODO replace with https://github.com/MarkusAmshove/Kluent/issues/151
-            invoking {
-                runBlocking {
-                    flowOf<Int>()
-                        .startWithCurrentValue(emitImmediately = true, block = {
-                            invokedBlock = true
-                            null
-                        }).single()
-                }
+            invokingSuspend {
+                flowOf<Int>()
+                    .startWithCurrentValue(emitImmediately = true, block = {
+                        invokedBlock = true
+                        null
+                    }).single()
             } shouldThrow NoSuchElementException::class
 
             invokedBlock shouldEqual true
