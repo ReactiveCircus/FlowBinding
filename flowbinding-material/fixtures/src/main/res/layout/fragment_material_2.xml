@@ -17,9 +17,10 @@
             android:fillViewport="true"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <FrameLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <com.google.android.material.chip.ChipGroup
                     android:id="@+id/chipGroup"
@@ -30,31 +31,54 @@
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip1"
-                        app:closeIconVisible="true"
                         style="@style/Widget.MaterialComponents.Chip.Filter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Chip 1"/>
+                        android:text="Chip 1"
+                        app:closeIconVisible="true" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip2"
-                        app:closeIconVisible="true"
                         style="@style/Widget.MaterialComponents.Chip.Filter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Chip 2"/>
+                        android:text="Chip 2"
+                        app:closeIconVisible="true" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip3"
-                        app:closeIconVisible="true"
                         style="@style/Widget.MaterialComponents.Chip.Filter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Chip 3"/>
+                        android:text="Chip 3"
+                        app:closeIconVisible="true" />
 
                 </com.google.android.material.chip.ChipGroup>
 
-            </FrameLayout>
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tab 1" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tab 2" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tab 3" />
+
+                </com.google.android.material.tabs.TabLayout>
+
+            </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
 
