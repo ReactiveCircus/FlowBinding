@@ -1,6 +1,5 @@
 package reactivecircus.flowbinding.material
 
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.test.filters.LargeTest
 import com.google.android.material.snackbar.Snackbar
 import org.amshove.kluent.shouldEqual
@@ -19,7 +18,7 @@ class SnackbarShownFlowTest {
         launchTest<MaterialFragment1> {
             val recorder = FlowRecorder<Unit>(testScope)
             val snackbar = Snackbar.make(
-                getViewById<CoordinatorLayout>(android.R.id.content),
+                getViewById(android.R.id.content),
                 "Yo",
                 Snackbar.LENGTH_INDEFINITE
             )
