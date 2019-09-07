@@ -45,7 +45,7 @@ buildscript {
             material             : '1.1.0-alpha10',
             blueprint            : '1.2.0',
             junit                : '4.12',
-            kluent               : '1.53'
+            kluent               : '1.54'
     ]
 
     repositories {

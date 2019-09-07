@@ -5,7 +5,6 @@ includeProject(":flowbinding-material:fixtures", "flowbinding-material/fixtures"
 include ":flowbinding-viewpager2"
 includeProject(":flowbinding-viewpager2:fixtures", "flowbinding-viewpager2/fixtures")
 include ":testing-infra"
-include ":kluent-suspend"
 
 /**
  * Calling includeProject(name, filePath) is shorthand for:
