@@ -38,6 +38,7 @@ TBA.
     - [x] `fun MaterialButtonToggleGroup.buttonCheckedChanges(): Flow<MaterialButtonCheckedChangedEvent>`
 - [x] NavigationView
     - [x] `fun NavigationView.itemSelections(emitImmediately: Boolean = false): Flow<MenuItem>`
+- [ ] Picker - TBA
 - [x] Snackbar
     - [x] `fun Snackbar.dismissEvents(): Flow<Int>`
     - [x] `fun Snackbar.shownEvents(): Flow<Unit>`
@@ -46,7 +47,11 @@ TBA.
     - [x] `fun View.swipeDismissDragStateChanges(): Flow<Int>`
 - [x] TabLayout
     - [x] `fun TabLayout.tabSelectionEvents(emitImmediately: Boolean = false): Flow<TabLayoutSelectionEvent>`
-- [ ] Picker - TBA
+- [x] TextInputLayout
+    - [x] `fun TabLayout.textInputLayoutStartIconClicks(): Flow<Unit>`
+    - [x] `fun TabLayout.textInputLayoutEndIconClicks(): Flow<Unit>`
+    - [x] `fun TabLayout.textInputLayoutStartIconLongClicks(): Flow<Unit>`
+    - [x] `fun TabLayout.textInputLayoutEndIconLongClicks(): Flow<Unit>`
 
 
 ### AndroidX Bindings
