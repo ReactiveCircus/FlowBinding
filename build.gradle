@@ -11,7 +11,7 @@ buildscript {
     ext.versions = [
             androidGradlePlugin  : '3.6.0-alpha10',
             mavenPublishPlugin   : '0.9.0-SNAPSHOT',
-            firestormGradlePlugin: '0.1.0',
+            firestormGradlePlugin: '0.1.1',
             kotlin               : '1.3.50',
             detekt               : '1.0.1',
             kotlinx              : [
