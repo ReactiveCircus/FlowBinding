@@ -70,25 +70,12 @@ fun LibraryExtension.configureAndroidLibraryOptions() {
 /**
  * Apply configuration options for Android Application projects.
  */
-fun AppExtension.configureAndroidApplicationOptions(project: Project) {
-    packagingOptions.excludes = setOf(
-        "kotlin/**",
-        "**/*.kotlin_metadata",
-        "META-INF/*.kotlin_module",
-        "META-INF/*.version"
-    )
-
-    lintOptions.apply {
-        disable("ParcelCreator")
-        disable("GoogleAppIndexingWarning")
-        isQuiet = false
-        isIgnoreWarnings = false
-        htmlReport = true
-        xmlReport = true
-        htmlOutput = File("${project.buildDir}/reports/lint/lint-reports.html")
-        xmlOutput = File("${project.buildDir}/reports/lint/lint-reports.xml")
-        isCheckDependencies = true
-        isIgnoreTestSources = true
+fun AppExtension.configureAndroidApplicationOptions() {
+    packagingOptions.apply {
+        exclude("kotlin/**")
+        exclude("**/*.kotlin_metadata")
+        exclude("META-INF/*.kotlin_module")
+        exclude("META-INF/*.version")
     }
 }
 
