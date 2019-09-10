@@ -1,0 +1,34 @@
+buildscript {
+    apply from: 'dependencies.gradle'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
+    }
+}
+
+apply plugin: 'java-gradle-plugin'
+apply plugin: 'kotlin'
+
+repositories {
+    google()
+    gradlePluginPortal()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
+    implementation "com.android.tools.build:gradle:${versions.androidGradlePlugin}"
+    implementation "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${versions.detekt}"
+}
+
+gradlePlugin {
+    plugins {
+        flowbinding {
+            id = 'flowbinding-plugin'
+            implementationClass = 'reactivecircus.flowbinding.FlowBindingPlugin'
+        }
+    }
+}

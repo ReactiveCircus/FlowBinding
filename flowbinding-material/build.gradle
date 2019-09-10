@@ -1,4 +1,5 @@
 plugins {
+    id 'flowbinding-plugin'
     id 'com.android.library'
     id 'kotlin-android'
     id 'com.vanniktech.maven.publish'
@@ -6,19 +7,9 @@ plugins {
 }
 
 android {
-    compileSdkVersion androidBuildConfig.compileSdk
-    buildToolsVersion androidBuildConfig.buildTools
-
     defaultConfig {
-        minSdkVersion androidBuildConfig.minSdk
-        targetSdkVersion androidBuildConfig.targetSdk
-
         testApplicationId 'reactivecircus.flowbinding.material.test'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    testOptions {
-        animationsDisabled = true
     }
 }
 

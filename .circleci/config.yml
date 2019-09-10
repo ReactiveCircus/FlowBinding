@@ -10,13 +10,13 @@ extract_cache_version: &extract_cache_version
 
 save_gradle_cache: &save_gradle_cache
   save_cache:
-    key: gradle-{{ checksum "cacheVersion" }}-{{ checksum "build.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
+    key: gradle-{{ checksum "cacheVersion" }}-{{ checksum "buildSrc/dependencies.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
     paths:
       - ~/.gradle
 
 restore_gradle_cache: &restore_gradle_cache
   restore_cache:
-    key: gradle-{{ checksum "cacheVersion" }}-{{ checksum "build.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
+    key: gradle-{{ checksum "cacheVersion" }}-{{ checksum "buildSrc/dependencies.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
 
 executors:
   android:
