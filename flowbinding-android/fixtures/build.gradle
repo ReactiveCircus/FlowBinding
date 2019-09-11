@@ -1,0 +1,10 @@
+plugins {
+    id 'flowbinding-plugin'
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"
+    implementation "androidx.fragment:fragment-ktx:${versions.androidx.fragment}"
+}

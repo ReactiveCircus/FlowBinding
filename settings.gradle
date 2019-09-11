@@ -1,9 +1,15 @@
 rootProject.name = "FlowBinding"
 include ":flowbinding-common"
+
+include ":flowbinding-android"
+includeProject(":flowbinding-android:fixtures", "flowbinding-android/fixtures")
+
 include ":flowbinding-material"
 includeProject(":flowbinding-material:fixtures", "flowbinding-material/fixtures")
+
 include ":flowbinding-viewpager2"
 includeProject(":flowbinding-viewpager2:fixtures", "flowbinding-viewpager2/fixtures")
+
 include ":testing-infra"
 
 /**
