@@ -467,4 +467,3 @@ style:
     active: false
   WildcardImport:
     active: true
-    excludeImports: 'java.util.*,kotlinx.android.synthetic.*'
