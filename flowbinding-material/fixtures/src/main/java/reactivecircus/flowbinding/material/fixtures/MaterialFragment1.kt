@@ -1,14 +1,27 @@
 package reactivecircus.flowbinding.material.fixtures
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import androidx.appcompat.widget.Toolbar
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import reactivecircus.flowbinding.material.fixtures.databinding.FragmentMaterial1Binding
 
-class MaterialFragment1 : Fragment(R.layout.fragment_material_1) {
+class MaterialFragment1 : Fragment() {
+
+    private lateinit var binding: FragmentMaterial1Binding
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ) = FragmentMaterial1Binding.inflate(inflater, container, false).let {
+        binding = it
+        it.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<Toolbar>(R.id.toolbar).title = "Material Component Bindings"
+        binding.toolbar.title = "Material Component Bindings"
     }
 }

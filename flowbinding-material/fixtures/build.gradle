@@ -4,6 +4,8 @@ plugins {
     id 'kotlin-android'
 }
 
+android.viewBinding.enabled = true
+
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"
     implementation "com.google.android.material:material:${versions.material}"
