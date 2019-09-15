@@ -31,7 +31,7 @@ import reactivecircus.flowbinding.common.startWithCurrentValue
  * ```
  * // observe all 3 types of events
  * tabLayout.tabSelectionEvents()
- *      .onEach { selectedEvent ->
+ *      .onEach { event ->
  *          when(event) {
  *              is TabLayoutSelectionEvent.TabSelected -> {
  *                  // handle selected event
