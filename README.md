@@ -17,6 +17,8 @@ The library is a work in progress. We currently have bindings for the **Material
 ### Platform Bindings
 
 - [ ] View
+    - [x] `fun MenuItem.actionViewEvents(handled: (MenuItemActionViewEvent) -> Boolean): Flow<MenuItemActionViewEvent>`
+    - [x] `fun MenuItem.clicks(handled: (MenuItem) -> Boolean): Flow<Unit>`
     - [x] `fun View.clicks(): Flow<Unit>`
     - [x] `fun View.focusChanges(emitImmediately: Boolean = false): Flow<Boolean>`
     - [x] `fun View.longClicks(): Flow<Unit>`
