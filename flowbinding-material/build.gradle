@@ -16,7 +16,7 @@ android {
 dependencies {
     implementation project(':flowbinding-common')
 
-    api "com.google.android.material:material:${versions.material}"
+    implementation "com.google.android.material:material:${versions.material}"
     implementation "androidx.fragment:fragment-ktx:${versions.androidx.fragment}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinx.coroutines}"
 
