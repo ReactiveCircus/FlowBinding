@@ -18,7 +18,7 @@ class MenuItemActionViewEventFlowTest {
     private val appContext = ApplicationProvider.getApplicationContext<Context>().applicationContext
 
     @Test
-    fun menuItemActionViewEvents_Expand() {
+    fun menuItemActionViewEvents_expand() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<MenuItemActionViewEvent.Expand>(testScope)
             val menuItem = TestMenuItem(appContext)
@@ -41,7 +41,7 @@ class MenuItemActionViewEventFlowTest {
     }
 
     @Test
-    fun menuItemActionViewEvents_Expand_notHandled() {
+    fun menuItemActionViewEvents_expand_notHandled() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<MenuItemActionViewEvent.Expand>(testScope)
             val menuItem = TestMenuItem(appContext)
@@ -63,7 +63,7 @@ class MenuItemActionViewEventFlowTest {
     }
 
     @Test
-    fun menuItemActionViewEvents_Collapse() {
+    fun menuItemActionViewEvents_collapse() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<MenuItemActionViewEvent.Collapse>(testScope)
             val menuItem = TestMenuItem(appContext)
@@ -87,7 +87,7 @@ class MenuItemActionViewEventFlowTest {
     }
 
     @Test
-    fun menuItemActionViewEvents_Collapse_notHandled() {
+    fun menuItemActionViewEvents_collapse_notHandled() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<MenuItemActionViewEvent.Collapse>(testScope)
             val menuItem = TestMenuItem(appContext)
