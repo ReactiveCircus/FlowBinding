@@ -32,7 +32,7 @@ import reactivecircus.flowbinding.common.startWithCurrentValue
  */
 @CheckResult
 @UseExperimental(ExperimentalCoroutinesApi::class)
-fun View.focusChanges(emitImmediately: Boolean = false): Flow<Boolean> = callbackFlow<Boolean> {
+fun View.focusChanges(emitImmediately: Boolean = false): Flow<Boolean> = callbackFlow {
     checkMainThread()
     val listener = View.OnFocusChangeListener { _, hasFocus ->
         safeOffer(hasFocus)

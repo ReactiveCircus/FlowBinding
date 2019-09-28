@@ -16,7 +16,7 @@ import reactivecircus.flowbinding.testing.recordWith
 class TabLayoutTabSelectionEventFlowTest {
 
     @Test
-    fun tabSelectionEvents_TabSelected() {
+    fun tabSelectionEvents_tabSelected() {
         launchTest<MaterialFragment2> {
             val recorder = FlowRecorder<TabLayoutSelectionEvent.TabSelected>(testScope)
             val tabLayout = getViewById<TabLayout>(R.id.tabLayout)
@@ -42,7 +42,7 @@ class TabLayoutTabSelectionEventFlowTest {
     }
 
     @Test
-    fun tabSelectionEvents_TabReselected() {
+    fun tabSelectionEvents_tabReselected() {
         launchTest<MaterialFragment2> {
             val recorder = FlowRecorder<TabLayoutSelectionEvent.TabReselected>(testScope)
             val tabLayout = getViewById<TabLayout>(R.id.tabLayout)
@@ -67,7 +67,7 @@ class TabLayoutTabSelectionEventFlowTest {
     }
 
     @Test
-    fun tabSelectionEvents_TabUnselected() {
+    fun tabSelectionEvents_tabUnselected() {
         launchTest<MaterialFragment2> {
             val recorder = FlowRecorder<TabLayoutSelectionEvent.TabUnselected>(testScope)
             val tabLayout = getViewById<TabLayout>(R.id.tabLayout)
@@ -93,7 +93,7 @@ class TabLayoutTabSelectionEventFlowTest {
     }
 
     @Test
-    fun tabSelectionEvents_TabSelected_emitImmediately() {
+    fun tabSelectionEvents_tabSelected_emitImmediately() {
         launchTest<MaterialFragment2> {
             val recorder = FlowRecorder<TabLayoutSelectionEvent.TabSelected>(testScope)
             val tabLayout = getViewById<TabLayout>(R.id.tabLayout)
