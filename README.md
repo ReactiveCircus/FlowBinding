@@ -21,6 +21,7 @@ The library is a work in progress. We currently have bindings for the **Material
     - [x] `fun MenuItem.clicks(handled: (MenuItem) -> Boolean): Flow<Unit>`
     - [x] `fun View.attachEvents(): Flow<ViewAttachEvent>`
     - [x] `fun View.clicks(): Flow<Unit>`
+    - [x] `fun View.drags(handled: (DragEvent) -> Boolean = { true }): Flow<DragEvent>`
     - [x] `fun View.focusChanges(emitImmediately: Boolean = false): Flow<Boolean>`
     - [x] `fun View.longClicks(): Flow<Unit>`
 - [ ] Widget
