@@ -40,6 +40,6 @@ fun View.bottomSheetSlides(): Flow<Float> = callbackFlow<Float> {
             safeOffer(slideOffset)
         }
     }
-    behavior.bottomSheetCallback = callback
-    awaitClose { behavior.setBottomSheetCallback(null) }
+    behavior.addBottomSheetCallback(callback)
+    awaitClose { behavior.removeBottomSheetCallback(callback) }
 }.conflate()

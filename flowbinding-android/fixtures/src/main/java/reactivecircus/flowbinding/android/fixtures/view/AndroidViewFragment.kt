@@ -34,6 +34,7 @@ class AndroidViewFragment : Fragment(R.layout.fragment_android_view) {
                     0
                 )
             } else {
+                @Suppress("deprecation")
                 binding.draggableView.startDrag(
                     ClipData.newPlainText("", ""),
                     View.DragShadowBuilder(binding.draggableView),
