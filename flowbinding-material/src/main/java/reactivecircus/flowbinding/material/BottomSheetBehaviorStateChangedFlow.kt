@@ -47,6 +47,6 @@ fun View.bottomSheetStateChanges(): Flow<Int> = callbackFlow<Int> {
 
         override fun onSlide(bottomSheet: View, slideOffset: Float) = Unit
     }
-    behavior.bottomSheetCallback = callback
-    awaitClose { behavior.setBottomSheetCallback(null) }
+    behavior.addBottomSheetCallback(callback)
+    awaitClose { behavior.removeBottomSheetCallback(callback) }
 }.conflate()
