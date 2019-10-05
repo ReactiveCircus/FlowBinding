@@ -6,8 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.espresso.Espresso
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
 import reactivecircus.blueprint.testing.RobotActions
 import reactivecircus.blueprint.testing.currentActivity
@@ -18,7 +17,7 @@ inline fun <reified F : Fragment> launchTest(
 ) {
     launchFragmentInContainer<F>(themeResId = MaterialR.style.Theme_MaterialComponents_DayNight)
     Espresso.onIdle()
-    val testScope = CoroutineScope(Job() + Dispatchers.Main.immediate)
+    val testScope = MainScope()
     TestLauncher(testScope).block()
     testScope.cancel()
 }
