@@ -48,6 +48,8 @@ comments:
     searchInInnerInterface: true
   UndocumentedPublicFunction:
     active: false
+  UndocumentedPublicProperty:
+    active: false
   excludes: "**/test/**, **/androidTest/**"
 
 complexity:
