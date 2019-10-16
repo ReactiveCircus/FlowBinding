@@ -4,11 +4,11 @@ import androidx.test.filters.LargeTest
 import com.google.android.material.textfield.TextInputLayout
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
+import reactivecircus.blueprint.testing.action.longClickTextInputLayoutIcon
 import reactivecircus.flowbinding.material.fixtures.MaterialFragment2
 import reactivecircus.flowbinding.material.test.R
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest
-import reactivecircus.flowbinding.testing.longClickTextInputLayoutIcon
 import reactivecircus.flowbinding.testing.recordWith
 
 @LargeTest

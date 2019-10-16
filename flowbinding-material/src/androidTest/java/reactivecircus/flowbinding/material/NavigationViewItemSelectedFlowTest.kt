@@ -7,12 +7,12 @@ import com.google.android.material.navigation.NavigationView
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.openDrawer
+import reactivecircus.blueprint.testing.action.selectNavigationItem
 import reactivecircus.flowbinding.material.fixtures.MaterialFragment2
 import reactivecircus.flowbinding.material.test.R
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest
 import reactivecircus.flowbinding.testing.recordWith
-import reactivecircus.flowbinding.testing.selectNavigationItem
 
 @LargeTest
 class NavigationViewItemSelectedFlowTest {
