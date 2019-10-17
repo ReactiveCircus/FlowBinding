@@ -61,7 +61,7 @@ fun View.attachEvents(): Flow<ViewAttachEvent> =
 sealed class ViewAttachEvent {
     abstract val view: View
 
-    data class Attached(override val view: View) : ViewAttachEvent()
+    class Attached(override val view: View) : ViewAttachEvent()
 
-    data class Detached(override val view: View) : ViewAttachEvent()
+    class Detached(override val view: View) : ViewAttachEvent()
 }

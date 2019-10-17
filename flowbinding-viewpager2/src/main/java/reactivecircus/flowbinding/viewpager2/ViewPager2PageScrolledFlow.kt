@@ -22,8 +22,8 @@ import reactivecircus.flowbinding.common.safeOffer
  *
  * ```
  * viewPager2.pageScrollEvents()
- *     .onEach { pageScrollEvent ->
- *          // handle pageScrollEvent
+ *     .onEach { event ->
+ *          // handle page scroll event
  *     }
  *     .launchIn(uiScope)
  * ```
@@ -49,7 +49,7 @@ fun ViewPager2.pageScrollEvents(): Flow<ViewPager2PageScrollEvent> = callbackFlo
     awaitClose { unregisterOnPageChangeCallback(callback) }
 }.conflate()
 
-data class ViewPager2PageScrollEvent(
+class ViewPager2PageScrollEvent(
     val position: Int,
     val positionOffset: Float,
     val positionOffsetPixel: Int

@@ -23,8 +23,8 @@ import reactivecircus.flowbinding.common.safeOffer
  *
  * ```
  * materialButtonToggleGroup.buttonCheckedChanges()
- *     .onEach { buttonCheckedEvent ->
- *          // handle buttonCheckedEvent
+ *     .onEach { event ->
+ *          // handle button checked event
  *     }
  *     .launchIn(uiScope)
  * ```
@@ -42,7 +42,7 @@ fun MaterialButtonToggleGroup.buttonCheckedChanges(): Flow<MaterialButtonChecked
     awaitClose { removeOnButtonCheckedListener(listener) }
 }.conflate()
 
-data class MaterialButtonCheckedChangedEvent(
+class MaterialButtonCheckedChangedEvent(
     @IdRes
     val checkedId: Int,
     val checked: Boolean

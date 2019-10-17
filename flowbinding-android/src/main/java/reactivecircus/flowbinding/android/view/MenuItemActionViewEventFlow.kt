@@ -75,11 +75,11 @@ fun MenuItem.actionViewEvents(handled: (MenuItemActionViewEvent) -> Boolean = { 
 sealed class MenuItemActionViewEvent {
     abstract val menuItem: MenuItem
 
-    data class Collapse(
+    class Collapse(
         override val menuItem: MenuItem
     ) : MenuItemActionViewEvent()
 
-    data class Expand(
+    class Expand(
         override val menuItem: MenuItem
     ) : MenuItemActionViewEvent()
 }
