@@ -25,7 +25,7 @@ import reactivecircus.flowbinding.common.safeOffer
  *
  * ```
  * view.drags { it.action == DragEvent.ACTION_DRAG_ENDED }
- *     .onEach { dragEvent ->
+ *     .onEach { event ->
  *          // handle drag event
  *     }
  *     .launchIn(uiScope)
