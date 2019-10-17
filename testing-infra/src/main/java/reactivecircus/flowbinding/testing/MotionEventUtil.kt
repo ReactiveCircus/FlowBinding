@@ -5,6 +5,7 @@ import android.view.InputDevice
 import android.view.MotionEvent
 import android.view.View
 
+@Suppress("MagicNumber")
 fun motionEventAtPosition(view: View, action: Int, xPercent: Int, yPercent: Int): MotionEvent {
     val paddingLeft = view.paddingLeft
     val paddingRight = view.paddingRight
