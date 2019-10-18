@@ -33,18 +33,17 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @UseExperimental(ExperimentalCoroutinesApi::class)
-fun View.keys(handled: (KeyEvent) -> Boolean = { true }): Flow<KeyEvent> =
-    callbackFlow<KeyEvent> {
-        checkMainThread()
-        val listener = View.OnKeyListener { _, _, event ->
-            if (handled(event)) {
-                event.keyCode == KeyEvent.KEYCODE_ENTER
-                safeOffer(event)
-                true
-            } else {
-                false
-            }
+fun View.keys(handled: (KeyEvent) -> Boolean = { true }): Flow<KeyEvent> = callbackFlow<KeyEvent> {
+    checkMainThread()
+    val listener = View.OnKeyListener { _, _, event ->
+        if (handled(event)) {
+            event.keyCode == KeyEvent.KEYCODE_ENTER
+            safeOffer(event)
+            true
+        } else {
+            false
         }
-        setOnKeyListener(listener)
-        awaitClose { setOnKeyListener(null) }
-    }.conflate()
+    }
+    setOnKeyListener(listener)
+    awaitClose { setOnKeyListener(null) }
+}.conflate()
