@@ -22,13 +22,16 @@ The library is a work in progress. We currently have bindings for the **Material
     - [x] `fun View.attachEvents(): Flow<ViewAttachEvent>`
     - [x] `fun View.clicks(): Flow<Unit>`
     - [x] `fun View.drags(handled: (DragEvent) -> Boolean = { true }): Flow<DragEvent>`
+    - [x] `fun View.draws(): Flow<Unit>`
     - [x] `fun View.focusChanges(emitImmediately: Boolean = false): Flow<Boolean>`
+    - [x] `fun View.globalLayouts(): Flow<Unit>`
     - [x] `fun ViewGroup.hierarchyChangeEvents(): Flow<HierarchyChangeEvent>`
     - [x] `fun View.hovers(handled: (MotionEvent) -> Boolean = { true }): Flow<MotionEvent>`
     - [x] `fun View.keys(handled: (KeyEvent) -> Boolean = { true }): Flow<KeyEvent>`
     - [x] `fun View.layoutChangeEvents(): Flow<LayoutChangeEvent>`
     - [x] `fun View.layoutChanges(): Flow<Unit>`
     - [x] `fun View.longClicks(): Flow<Unit>`
+    - [x] `fun View.preDraws(proceedDrawingPass: () -> Boolean): Flow<Unit>`
     - [x] `fun View.scrollChangeEvents(): Flow<ScrollChangeEvent>`
     - [x] `fun View.systemUiVisibilityChanges(): Flow<Int>`
     - [x] `fun View.touches(handled: (MotionEvent) -> Boolean = { true }): Flow<MotionEvent>`
