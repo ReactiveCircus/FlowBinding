@@ -42,21 +42,20 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @UseExperimental(ExperimentalCoroutinesApi::class)
-fun View.attachEvents(): Flow<ViewAttachEvent> =
-    callbackFlow<ViewAttachEvent> {
-        checkMainThread()
-        val listener = object : View.OnAttachStateChangeListener {
-            override fun onViewAttachedToWindow(v: View) {
-                safeOffer(ViewAttachEvent.Attached(v))
-            }
-
-            override fun onViewDetachedFromWindow(v: View) {
-                safeOffer(ViewAttachEvent.Detached(v))
-            }
+fun View.attachEvents(): Flow<ViewAttachEvent> = callbackFlow<ViewAttachEvent> {
+    checkMainThread()
+    val listener = object : View.OnAttachStateChangeListener {
+        override fun onViewAttachedToWindow(v: View) {
+            safeOffer(ViewAttachEvent.Attached(v))
         }
-        addOnAttachStateChangeListener(listener)
-        awaitClose { removeOnAttachStateChangeListener(listener) }
-    }.conflate()
+
+        override fun onViewDetachedFromWindow(v: View) {
+            safeOffer(ViewAttachEvent.Detached(v))
+        }
+    }
+    addOnAttachStateChangeListener(listener)
+    awaitClose { removeOnAttachStateChangeListener(listener) }
+}.conflate()
 
 sealed class ViewAttachEvent {
     abstract val view: View
