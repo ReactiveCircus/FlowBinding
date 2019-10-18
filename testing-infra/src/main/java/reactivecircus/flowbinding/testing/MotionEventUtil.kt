@@ -34,14 +34,14 @@ fun hoverMotionEventAtPosition(view: View, action: Int, xPercent: Int, yPercent:
 
     val pointerProperties = arrayOf(MotionEvent.PointerProperties())
 
-    val pointerCoordinates = arrayOf(MotionEvent.PointerCoords()).apply {
+    val pointerCoords = arrayOf(MotionEvent.PointerCoords()).apply {
         get(0).x = event.x
         get(0).y = event.y
     }
 
     return MotionEvent.obtain(
         event.downTime, event.eventTime,
-        event.action, 1, pointerProperties, pointerCoordinates, event.metaState, 0,
+        event.action, 1, pointerProperties, pointerCoords, event.metaState, 0,
         event.xPrecision, event.yPrecision, event.deviceId, event.edgeFlags,
         InputDevice.SOURCE_CLASS_POINTER, event.flags
     )

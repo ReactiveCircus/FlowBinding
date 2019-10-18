@@ -28,6 +28,10 @@ class TestLauncher(val testScope: CoroutineScope) : RobotActions {
         return currentActivity()!!.findViewById(viewId)
     }
 
+    fun getRootView(): View {
+        return currentActivity()!!.window.decorView.rootView
+    }
+
     fun cancelTestScope() {
         testScope.cancel()
         Espresso.onIdle()
