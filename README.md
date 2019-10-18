@@ -26,7 +26,10 @@ The library is a work in progress. We currently have bindings for the **Material
     - [x] `fun ViewGroup.hierarchyChangeEvents(): Flow<HierarchyChangeEvent>`
     - [x] `fun View.hovers(handled: (MotionEvent) -> Boolean = { true }): Flow<MotionEvent>`
     - [x] `fun View.keys(handled: (KeyEvent) -> Boolean = { true }): Flow<KeyEvent>`
+    - [x] `fun View.layoutChangeEvents(): Flow<LayoutChangeEvent>`
+    - [x] `fun View.layoutChanges(): Flow<Unit>`
     - [x] `fun View.longClicks(): Flow<Unit>`
+    - [x] `fun View.scrollChangeEvents(): Flow<ScrollChangeEvent>`
 - [ ] Widget
     TBA
 
