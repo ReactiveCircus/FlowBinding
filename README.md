@@ -30,6 +30,7 @@ The library is a work in progress. We currently have bindings for the **Material
     - [x] `fun View.layoutChanges(): Flow<Unit>`
     - [x] `fun View.longClicks(): Flow<Unit>`
     - [x] `fun View.scrollChangeEvents(): Flow<ScrollChangeEvent>`
+    - [x] `fun View.systemUiVisibilityChanges(): Flow<Int>`
     - [x] `fun View.touches(handled: (MotionEvent) -> Boolean = { true }): Flow<MotionEvent>`
 - [ ] Widget
     TBA

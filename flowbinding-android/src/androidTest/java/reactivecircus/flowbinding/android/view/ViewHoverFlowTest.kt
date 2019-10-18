@@ -1,12 +1,13 @@
 package reactivecircus.flowbinding.android.view
 
+import android.content.Context
 import android.view.MotionEvent
 import android.view.View
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.filters.LargeTest
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 import reactivecircus.flowbinding.android.fixtures.view.AndroidViewFragment
-import reactivecircus.flowbinding.android.test.R
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.hoverMotionEventAtPosition
 import reactivecircus.flowbinding.testing.launchTest
@@ -15,11 +16,13 @@ import reactivecircus.flowbinding.testing.recordWith
 @LargeTest
 class ViewHoverFlowTest {
 
+    private val appContext = ApplicationProvider.getApplicationContext<Context>().applicationContext
+
     @Test
     fun viewHovers() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<MotionEvent>(testScope)
-            val view = getViewById<View>(R.id.draggableView)
+            val view = View(appContext)
             view.hovers().recordWith(recorder)
 
             recorder.assertNoMoreValues()
@@ -44,7 +47,7 @@ class ViewHoverFlowTest {
     fun viewHovers_notHandled() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<MotionEvent>(testScope)
-            val view = getViewById<View>(R.id.draggableView)
+            val view = View(appContext)
             view.hovers { false }
                 .recordWith(recorder)
 

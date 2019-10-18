@@ -1,13 +1,14 @@
 package reactivecircus.flowbinding.android.view
 
+import android.content.Context
 import android.view.KeyEvent
 import android.view.View
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 import reactivecircus.flowbinding.android.fixtures.view.AndroidViewFragment
-import reactivecircus.flowbinding.android.test.R
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest
 import reactivecircus.flowbinding.testing.recordWith
@@ -15,11 +16,13 @@ import reactivecircus.flowbinding.testing.recordWith
 @LargeTest
 class ViewKeyEventFlowTest {
 
+    private val appContext = ApplicationProvider.getApplicationContext<Context>().applicationContext
+
     @Test
     fun viewKeys() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<KeyEvent>(testScope)
-            val view = getViewById<View>(R.id.editText1)
+            val view = View(appContext)
             view.keys().recordWith(recorder)
 
             recorder.assertNoMoreValues()
@@ -51,7 +54,7 @@ class ViewKeyEventFlowTest {
     fun viewKeys_notHandled() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<KeyEvent>(testScope)
-            val view = getViewById<View>(R.id.editText1)
+            val view = View(appContext)
             view.keys { false }
                 .recordWith(recorder)
 
