@@ -16,7 +16,7 @@ The library is a work in progress. We currently have bindings for the **Material
 
 ### Platform Bindings
 
-- [ ] View
+- [x] View
     - [x] `fun MenuItem.actionViewEvents(handled: (MenuItemActionViewEvent) -> Boolean): Flow<MenuItemActionViewEvent>`
     - [x] `fun MenuItem.clicks(handled: (MenuItem) -> Boolean): Flow<Unit>`
     - [x] `fun View.attachEvents(): Flow<ViewAttachEvent>`
@@ -36,7 +36,14 @@ The library is a work in progress. We currently have bindings for the **Material
     - [x] `fun View.systemUiVisibilityChanges(): Flow<Int>`
     - [x] `fun View.touches(handled: (MotionEvent) -> Boolean = { true }): Flow<MotionEvent>`
 - [ ] Widget
-    TBA
+    - [x] `fun AbsListView.scrollEvents(): Flow<ScrollEvent>`
+    - [x] `fun Adapter.dataChanges(emitImmediately: Boolean = false): Flow<Adapter>`
+    - [x] `fun <T : Adapter> AdapterView<T>.itemClickEvents(): Flow<AdapterViewItemClickEvent>`
+    - [x] `fun <T : Adapter> AdapterView<T>.itemClicks(): Flow<Int>`
+    - [x] `fun <T : Adapter> AdapterView<T>.itemLongClickEvents(handled: (AdapterViewItemLongClickEvent) -> Boolean = { true }): Flow<AdapterViewItemLongClickEvent>`
+    - [x] `fun <T : Adapter> AdapterView<T>.itemLongClicks(handled: () -> Boolean = { true }): Flow<Int>`
+    - [x] `fun <T : Adapter> AdapterView<T>.itemSelections(emitImmediately: Boolean = false): Flow<Int>`
+    - [x] `fun <T : Adapter> AdapterView<T>.selectionEvents(emitImmediately: Boolean = false): Flow<AdapterViewSelectionEvent>`
 
 ### Material Components Bindings
 

@@ -15,7 +15,7 @@ import reactivecircus.flowbinding.common.checkMainThread
 import reactivecircus.flowbinding.common.safeOffer
 
 /**
- * Create a [Flow] of view scroll change events on the [View] instance.
+ * Create a [Flow] of scroll change events on the [View] instance.
  *
  * Note: Created flow keeps a strong reference to the [View] instance
  * until the coroutine that launched the flow collector is cancelled.
