@@ -2,7 +2,7 @@ package reactivecircus.flowbinding.android.view
 
 import android.view.View
 import androidx.test.filters.LargeTest
-import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
+import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 import reactivecircus.flowbinding.android.fixtures.view.AndroidViewFragment
@@ -25,19 +25,19 @@ class ViewSystemUiVisibilityChangeFlowTest {
 
             recorder.assertNoMoreValues()
 
-            getInstrumentation().runOnMainSync {
+            runOnUiThread {
                 rootView.systemUiVisibility = View.SYSTEM_UI_FLAG_LOW_PROFILE
             }
             recorder.takeValue() shouldEqual View.SYSTEM_UI_FLAG_LOW_PROFILE
             recorder.assertNoMoreValues()
 
-            getInstrumentation().runOnMainSync {
+            runOnUiThread {
                 rootView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
             }
             recorder.takeValue() shouldEqual View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
             recorder.assertNoMoreValues()
 
-            getInstrumentation().runOnMainSync {
+            runOnUiThread {
                 rootView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
             }
             recorder.takeValue() shouldEqual View.SYSTEM_UI_FLAG_FULLSCREEN
@@ -45,7 +45,7 @@ class ViewSystemUiVisibilityChangeFlowTest {
 
             cancelTestScope()
 
-            getInstrumentation().runOnMainSync {
+            runOnUiThread {
                 rootView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
             }
             recorder.assertNoMoreValues()
