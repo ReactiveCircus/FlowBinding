@@ -49,6 +49,7 @@ The library is a work in progress. We currently have bindings for the **Material
     - [x] `fun CompoundButton.checkedChanges(emitImmediately: Boolean = false): Flow<Boolean>`
     - [x] `fun PopupMenu.dismisses(): Flow<Unit>`
     - [x] `fun PopupMenu.itemClicks(): Flow<MenuItem>`
+    - [x] `fun RadioGroup.checkedChanges(emitImmediately: Boolean = false): Flow<Int>`
 
 ### Material Components Bindings
 

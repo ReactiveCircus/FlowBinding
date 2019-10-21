@@ -40,7 +40,5 @@ fun CompoundButton.checkedChanges(emitImmediately: Boolean = false): Flow<Boolea
     setOnCheckedChangeListener(listener)
     awaitClose { setOnCheckedChangeListener(null) }
 }
-    .startWithCurrentValue(emitImmediately) {
-        isChecked
-    }
+    .startWithCurrentValue(emitImmediately) { isChecked }
     .conflate()
