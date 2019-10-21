@@ -1,10 +1,7 @@
-@file:Suppress("MatchingDeclarationName")
-
 package reactivecircus.flowbinding.android.widget
 
-import android.view.View
-import android.widget.Adapter
 import android.widget.AdapterView
+import android.widget.AutoCompleteTextView
 import androidx.annotation.CheckResult
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
@@ -15,24 +12,24 @@ import reactivecircus.flowbinding.common.checkMainThread
 import reactivecircus.flowbinding.common.safeOffer
 
 /**
- * Create a [Flow] of item click events on the [AdapterView] instance.
+ * Create a [Flow] of item click events on the [AutoCompleteTextView] instance.
  *
- * Note: Created flow keeps a strong reference to the [AdapterView] instance
+ * Note: Created flow keeps a strong reference to the [AutoCompleteTextView] instance
  * until the coroutine that launched the flow collector is cancelled.
  *
  * Example of usage:
  *
  * ```
- * adapterView.itemClickEvents()
+ * autoCompleteTextView.itemClickEvents()
  *     .onEach { event ->
- *          // handle adapter view item click event
+ *          // handle auto-complete text view item click event
  *     }
  *     .launchIn(uiScope)
  * ```
  */
 @CheckResult
 @UseExperimental(ExperimentalCoroutinesApi::class)
-fun <T : Adapter> AdapterView<T>.itemClickEvents(): Flow<AdapterViewItemClickEvent> = callbackFlow {
+fun AutoCompleteTextView.itemClickEvents(): Flow<AdapterViewItemClickEvent> = callbackFlow {
     checkMainThread()
     val listener = AdapterView.OnItemClickListener { parent, view, position, id ->
         safeOffer(
@@ -47,10 +44,3 @@ fun <T : Adapter> AdapterView<T>.itemClickEvents(): Flow<AdapterViewItemClickEve
     onItemClickListener = listener
     awaitClose { onItemClickListener = null }
 }.conflate()
-
-class AdapterViewItemClickEvent(
-    val view: AdapterView<*>,
-    val clickedView: View?,
-    val position: Int,
-    val id: Long
-)
