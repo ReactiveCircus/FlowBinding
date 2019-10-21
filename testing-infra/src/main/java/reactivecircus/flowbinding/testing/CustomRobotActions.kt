@@ -6,8 +6,9 @@ import androidx.test.espresso.action.GeneralLocation
 import androidx.test.espresso.action.GeneralSwipeAction
 import androidx.test.espresso.action.Press
 import androidx.test.espresso.action.Swipe
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.longClick
-import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.RootMatchers.isPlatformPopup
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import org.hamcrest.CoreMatchers.anything
 import reactivecircus.blueprint.testing.RobotActions
@@ -30,7 +31,14 @@ fun RobotActions.hardSwipeRight(@IdRes viewId: Int) {
     )
 }
 
-fun RobotActions.longClickItem(@IdRes viewId: Int, position: Int) {
+fun RobotActions.clickPopupItemAt(position: Int) {
+    Espresso.onData(anything())
+        .inRoot(isPlatformPopup())
+        .atPosition(position)
+        .perform(click())
+}
+
+fun RobotActions.longClickAdapterViewItemAt(@IdRes viewId: Int, position: Int) {
     Espresso.onData(anything())
         .inAdapterView(withId(viewId))
         .atPosition(position)

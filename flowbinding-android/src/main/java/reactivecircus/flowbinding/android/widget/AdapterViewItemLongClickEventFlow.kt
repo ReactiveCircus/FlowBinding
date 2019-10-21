@@ -15,7 +15,7 @@ import reactivecircus.flowbinding.common.checkMainThread
 import reactivecircus.flowbinding.common.safeOffer
 
 /**
- * Create a [Flow] of item long click events events on the [AdapterView] instance.
+ * Create a [Flow] of item long click events on the [AdapterView] instance.
  *
  * @param handled function to be invoked with each value to determine the return value of
  * the underlying [AdapterView.OnItemLongClickListener]. Note that the [Flow] will only emit when this function

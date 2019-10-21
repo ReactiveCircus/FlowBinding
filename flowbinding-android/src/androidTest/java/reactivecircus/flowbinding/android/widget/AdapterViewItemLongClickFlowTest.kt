@@ -8,7 +8,7 @@ import reactivecircus.flowbinding.android.fixtures.widget.AndroidWidgetFragment
 import reactivecircus.flowbinding.android.test.R
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest
-import reactivecircus.flowbinding.testing.longClickItem
+import reactivecircus.flowbinding.testing.longClickAdapterViewItemAt
 import reactivecircus.flowbinding.testing.recordWith
 
 @LargeTest
@@ -24,14 +24,14 @@ class AdapterViewItemLongClickFlowTest {
 
             recorder.assertNoMoreValues()
 
-            longClickItem(R.id.listView, 2)
+            longClickAdapterViewItemAt(R.id.listView, 2)
             recorder.takeValue() shouldEqual 2
 
             recorder.assertNoMoreValues()
 
             cancelTestScope()
 
-            longClickItem(R.id.listView, 1)
+            longClickAdapterViewItemAt(R.id.listView, 1)
             recorder.assertNoMoreValues()
         }
     }
@@ -46,12 +46,12 @@ class AdapterViewItemLongClickFlowTest {
 
             recorder.assertNoMoreValues()
 
-            longClickItem(R.id.listView, 2)
+            longClickAdapterViewItemAt(R.id.listView, 2)
             recorder.assertNoMoreValues()
 
             cancelTestScope()
 
-            longClickItem(R.id.listView, 1)
+            longClickAdapterViewItemAt(R.id.listView, 1)
             recorder.assertNoMoreValues()
         }
     }
