@@ -1,12 +1,11 @@
 package reactivecircus.flowbinding.android.widget
 
-import android.widget.AdapterView
 import android.widget.ListView
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
-import reactivecircus.flowbinding.android.fixtures.widget.AndroidWidgetFragment
+import reactivecircus.flowbinding.android.fixtures.widget.ListFragment
 import reactivecircus.flowbinding.android.test.R
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest
@@ -17,7 +16,7 @@ class AdapterViewItemSelectionFlowTest {
 
     @Test
     fun adapterViewItemSelections() {
-        launchTest<AndroidWidgetFragment> {
+        launchTest<ListFragment> {
             val recorder = FlowRecorder<Int>(testScope)
             val listView = getViewById<ListView>(R.id.listView).apply {
                 runOnUiThread { requestFocusFromTouch() }
@@ -49,7 +48,7 @@ class AdapterViewItemSelectionFlowTest {
 
     @Test
     fun adapterViewItemSelections_emitImmediately() {
-        launchTest<AndroidWidgetFragment> {
+        launchTest<ListFragment> {
             val recorder = FlowRecorder<Int>(testScope)
             val listView = getViewById<ListView>(R.id.listView).apply {
                 runOnUiThread { requestFocusFromTouch() }

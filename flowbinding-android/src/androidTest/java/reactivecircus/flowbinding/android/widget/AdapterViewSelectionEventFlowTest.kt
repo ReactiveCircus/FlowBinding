@@ -6,7 +6,7 @@ import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiT
 import org.amshove.kluent.shouldEqual
 import org.amshove.kluent.shouldNotBe
 import org.junit.Test
-import reactivecircus.flowbinding.android.fixtures.widget.AndroidWidgetFragment
+import reactivecircus.flowbinding.android.fixtures.widget.ListFragment
 import reactivecircus.flowbinding.android.test.R
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest
@@ -17,7 +17,7 @@ class AdapterViewSelectionEventFlowTest {
 
     @Test
     fun adapterViewSelectionEvents() {
-        launchTest<AndroidWidgetFragment> {
+        launchTest<ListFragment> {
             val recorder = FlowRecorder<AdapterViewSelectionEvent>(testScope)
             val listView = getViewById<ListView>(R.id.listView).apply {
                 runOnUiThread { requestFocusFromTouch() }
@@ -57,7 +57,7 @@ class AdapterViewSelectionEventFlowTest {
 
     @Test
     fun adapterViewSelectionEvents_emitImmediately() {
-        launchTest<AndroidWidgetFragment> {
+        launchTest<ListFragment> {
             val recorder = FlowRecorder<AdapterViewSelectionEvent>(testScope)
             val listView = getViewById<ListView>(R.id.listView).apply {
                 runOnUiThread { requestFocusFromTouch() }

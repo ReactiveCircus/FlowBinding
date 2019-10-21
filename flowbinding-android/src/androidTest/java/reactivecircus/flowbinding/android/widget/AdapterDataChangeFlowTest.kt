@@ -4,7 +4,7 @@ import android.widget.Adapter
 import androidx.test.filters.LargeTest
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
-import reactivecircus.flowbinding.android.fixtures.widget.AndroidWidgetFragment
+import reactivecircus.flowbinding.android.fixtures.widget.ListFragment
 import reactivecircus.flowbinding.android.testutil.TestAdapter
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest
@@ -15,7 +15,7 @@ class AdapterDataChangeFlowTest {
 
     @Test
     fun adapterDataChanges() {
-        launchTest<AndroidWidgetFragment> {
+        launchTest<ListFragment> {
             val recorder = FlowRecorder<Adapter>(testScope)
             val adapter = TestAdapter()
 
@@ -40,7 +40,7 @@ class AdapterDataChangeFlowTest {
 
     @Test
     fun adapterDataChanges_emitImmediately() {
-        launchTest<AndroidWidgetFragment> {
+        launchTest<ListFragment> {
             val recorder = FlowRecorder<Adapter>(testScope)
             val adapter = TestAdapter()
 

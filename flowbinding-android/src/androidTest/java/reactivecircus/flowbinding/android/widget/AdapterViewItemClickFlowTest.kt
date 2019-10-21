@@ -5,7 +5,7 @@ import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
-import reactivecircus.flowbinding.android.fixtures.widget.AndroidWidgetFragment
+import reactivecircus.flowbinding.android.fixtures.widget.ListFragment
 import reactivecircus.flowbinding.android.test.R
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest
@@ -16,7 +16,7 @@ class AdapterViewItemClickFlowTest {
 
     @Test
     fun adapterViewItemClicks() {
-        launchTest<AndroidWidgetFragment> {
+        launchTest<ListFragment> {
             val recorder = FlowRecorder<Int>(testScope)
             val listView = getViewById<ListView>(R.id.listView)
 
