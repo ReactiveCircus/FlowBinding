@@ -46,6 +46,7 @@ The library is a work in progress. We currently have bindings for the **Material
     - [x] `fun <T : Adapter> AdapterView<T>.selectionEvents(emitImmediately: Boolean = false): Flow<AdapterViewSelectionEvent>`
     - [x] `fun AutoCompleteTextView.dismisses(): Flow<Unit>`
     - [x] `fun AutoCompleteTextView.itemClickEvents(): Flow<AdapterViewItemClickEvent>`
+    - [x] `fun CompoundButton.checkedChanges(emitImmediately: Boolean = false): Flow<Boolean>`
 
 ### Material Components Bindings
 

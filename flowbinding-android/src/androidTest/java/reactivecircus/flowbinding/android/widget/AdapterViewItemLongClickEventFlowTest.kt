@@ -5,7 +5,7 @@ import androidx.test.filters.LargeTest
 import org.amshove.kluent.shouldEqual
 import org.amshove.kluent.shouldNotBe
 import org.junit.Test
-import reactivecircus.flowbinding.android.fixtures.widget.AndroidWidgetFragment
+import reactivecircus.flowbinding.android.fixtures.widget.ListFragment
 import reactivecircus.flowbinding.android.test.R
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest
@@ -17,7 +17,7 @@ class AdapterViewItemLongClickEventFlowTest {
 
     @Test
     fun adapterViewItemLongClickEvents() {
-        launchTest<AndroidWidgetFragment> {
+        launchTest<ListFragment> {
             val recorder = FlowRecorder<AdapterViewItemLongClickEvent>(testScope)
             val listView = getViewById<ListView>(R.id.listView)
 
@@ -43,7 +43,7 @@ class AdapterViewItemLongClickEventFlowTest {
 
     @Test
     fun adapterViewItemLongClickEvents_notHandled() {
-        launchTest<AndroidWidgetFragment> {
+        launchTest<ListFragment> {
             val recorder = FlowRecorder<AdapterViewItemLongClickEvent>(testScope)
             val listView = getViewById<ListView>(R.id.listView)
 
