@@ -47,6 +47,8 @@ The library is a work in progress. We currently have bindings for the **Material
     - [x] `fun AutoCompleteTextView.dismisses(): Flow<Unit>`
     - [x] `fun AutoCompleteTextView.itemClickEvents(): Flow<AdapterViewItemClickEvent>`
     - [x] `fun CompoundButton.checkedChanges(emitImmediately: Boolean = false): Flow<Boolean>`
+    - [x] `fun PopupMenu.dismisses(): Flow<Unit>`
+    - [x] `fun PopupMenu.itemClicks(): Flow<MenuItem>`
 
 ### Material Components Bindings
 
