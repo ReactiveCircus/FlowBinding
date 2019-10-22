@@ -15,10 +15,10 @@ import reactivecircus.flowbinding.common.startWithCurrentValue
  * Create a [Flow] of focus changed events on the [View] instance,
  * where the value emitted indicates whether the [View] has focus.
  *
+ * @param emitImmediately whether to emit the current value (if any) immediately on flow collection.
+ *
  * Note: Created flow keeps a strong reference to the [View] instance
  * until the coroutine that launched the flow collector is cancelled.
- *
- * @param emitImmediately whether to emit the current value (if any) immediately on flow collection.
  *
  * Example of usage:
  *
