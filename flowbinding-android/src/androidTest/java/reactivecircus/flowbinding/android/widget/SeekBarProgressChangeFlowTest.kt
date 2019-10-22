@@ -67,21 +67,15 @@ class SeekBarProgressChangeFlowTest {
     @Test
     fun seekBarProgressChanges_emitImmediately() {
         launchTest<AndroidWidgetFragment> {
-            val recorder = FlowRecorder<SeekBarChangeEvent>(testScope)
+            val recorder = FlowRecorder<Int>(testScope)
             val seekBar = getViewById<SeekBar>(R.id.seekBar)
-            seekBar.changeEvents(emitImmediately = true).recordWith(recorder)
+            seekBar.progressChanges(emitImmediately = true).recordWith(recorder)
 
-            val initialEvent = recorder.takeValue() as SeekBarChangeEvent.ProgressChanged
-            initialEvent.view shouldEqual seekBar
-            initialEvent.progress shouldEqual 0
-            initialEvent.fromUser shouldEqual false
+            recorder.takeValue() shouldEqual 0
             recorder.assertNoMoreValues()
 
             seekBar.progress = 50
-            val event1 = recorder.takeValue() as SeekBarChangeEvent.ProgressChanged
-            event1.view shouldEqual seekBar
-            event1.progress shouldEqual 50
-            event1.fromUser shouldEqual false
+            recorder.takeValue() shouldEqual 50
             recorder.assertNoMoreValues()
 
             cancelTestScope()
