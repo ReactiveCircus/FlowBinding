@@ -24,7 +24,7 @@ import reactivecircus.flowbinding.common.safeOffer
  *
  * ```
  * view.systemUiVisibilityChanges()
- *     .onEach { event
+ *     .onEach { event ->
  *          when(event) {
  *              View.SYSTEM_UI_FLAG_LOW_PROFILE -> {
  *                  // handle system UI low profile event
