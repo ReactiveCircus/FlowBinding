@@ -52,6 +52,8 @@ The library is a work in progress. We currently have bindings for the **Material
     - [x] `fun RadioGroup.checkedChanges(emitImmediately: Boolean = false): Flow<Int>`
     - [x] `fun RatingBar.ratingChangeEvents(emitImmediately: Boolean = false): Flow<RatingChangeEvent>`
     - [x] `fun RatingBar.ratingChanges(emitImmediately: Boolean = false): Flow<Float>`
+    - [x] `fun SearchView.queryTextChanges(emitImmediately: Boolean = false): Flow<CharSequence> = callbackFlow<CharSequence>`
+    - [x] `fun SearchView.queryTextEvents(emitImmediately: Boolean = false): Flow<QueryTextEvent> = callbackFlow<QueryTextEvent>`
 
 ### Material Components Bindings
 
