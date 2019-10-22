@@ -35,7 +35,7 @@ The library is a work in progress. We currently have bindings for the **Material
     - [x] `fun View.scrollChangeEvents(): Flow<ScrollChangeEvent>`
     - [x] `fun View.systemUiVisibilityChanges(): Flow<Int>`
     - [x] `fun View.touches(handled: (MotionEvent) -> Boolean = { true }): Flow<MotionEvent>`
-- [ ] Widget
+- [x] Widget
     - [x] `fun AbsListView.scrollEvents(): Flow<ScrollEvent>`
     - [x] `fun Adapter.dataChanges(emitImmediately: Boolean = false): Flow<Adapter>`
     - [x] `fun <T : Adapter> AdapterView<T>.itemClickEvents(): Flow<AdapterViewItemClickEvent>`
@@ -56,6 +56,11 @@ The library is a work in progress. We currently have bindings for the **Material
     - [x] `fun SearchView.queryTextEvents(emitImmediately: Boolean = false): Flow<QueryTextEvent>`
     - [x] `fun SeekBar.changeEvents(emitImmediately: Boolean = false): Flow<SeekBarChangeEvent>`
     - [x] `fun SeekBar.progressChanges(emitImmediately: Boolean = false): Flow<Int>`
+    - [x] `fun TextView.afterTextChanges(emitImmediately: Boolean = false): Flow<AfterTextChangeEvent>`
+    - [x] `fun TextView.beforeTextChanges(emitImmediately: Boolean = false): Flow<BeforeTextChangeEvent>`
+    - [x] `fun TextView.editorActionEvents(handled: (EditorActionEvent) -> Boolean = { true }): Flow<EditorActionEvent>`
+    - [x] `fun TextView.textChangeEvents(emitImmediately: Boolean = false): Flow<TextChangeEvent>`
+    - [x] `fun TextView.textChanges(emitImmediately: Boolean = false): Flow<CharSequence>`
 
 ### Material Components Bindings
 
@@ -78,6 +83,7 @@ The library is a work in progress. We currently have bindings for the **Material
 - [x] NavigationView
     - [x] `fun NavigationView.itemSelections(emitImmediately: Boolean = false): Flow<MenuItem>`
 - [ ] Picker - TBA
+- [ ] Slider - TBA
 - [x] Snackbar
     - [x] `fun Snackbar.dismissEvents(): Flow<Int>`
     - [x] `fun Snackbar.shownEvents(): Flow<Unit>`

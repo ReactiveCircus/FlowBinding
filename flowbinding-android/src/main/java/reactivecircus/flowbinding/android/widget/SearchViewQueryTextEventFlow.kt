@@ -19,10 +19,10 @@ import reactivecircus.flowbinding.common.startWithCurrentValue
  * [QueryTextEvent.QueryChanged],
  * [QueryTextEvent.QuerySubmitted]
  *
+ * @param emitImmediately whether to emit the current value (if any) immediately on flow collection.
+ *
  * Note: Created flow keeps a strong reference to the [SearchView] instance
  * until the coroutine that launched the flow collector is cancelled.
- *
- * @param emitImmediately whether to emit the current value (if any) immediately on flow collection.
  *
  * Example of usage:
  *

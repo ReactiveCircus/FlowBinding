@@ -15,10 +15,10 @@ import reactivecircus.flowbinding.common.startWithCurrentValue
  * Create a [Flow] of query text changes on the [SearchView] instance
  * where the value emitted is latest query text.
  *
+ * @param emitImmediately whether to emit the current value (if any) immediately on flow collection.
+ *
  * Note: Created flow keeps a strong reference to the [SearchView] instance
  * until the coroutine that launched the flow collector is cancelled.
- *
- * @param emitImmediately whether to emit the current value (if any) immediately on flow collection.
  *
  * Example of usage:
  *

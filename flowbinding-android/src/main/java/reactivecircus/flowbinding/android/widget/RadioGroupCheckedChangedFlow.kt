@@ -18,10 +18,10 @@ import reactivecircus.flowbinding.common.startWithCurrentValue
  * Create a [Flow] of checked state change events on the [RadioButton] instance
  * where the value emitted is the currently checked radio button id.
  *
+ * @param emitImmediately whether to emit the current value (if any) immediately on flow collection.
+ *
  * Note: Created flow keeps a strong reference to the [RadioButton] instance
  * until the coroutine that launched the flow collector is cancelled.
- *
- * @param emitImmediately whether to emit the current value (if any) immediately on flow collection.
  *
  * Example of usage:
  *

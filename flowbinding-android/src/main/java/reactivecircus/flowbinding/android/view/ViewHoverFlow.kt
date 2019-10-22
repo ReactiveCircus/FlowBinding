@@ -18,7 +18,7 @@ import reactivecircus.flowbinding.common.safeOffer
  * the underlying [View.OnHoverListener]. Note that the [Flow] will only emit when this function
  * evaluates to true.
  *
- * Note: Values emitted by this observable are **mutable** and part of a shared
+ * Note: Values emitted by this flow are **mutable** and part of a shared
  * object pool and thus are **not safe** to cache or delay reading (such as by observing
  * on a different thread). If you want to cache or delay reading the items emitted then you must
  * map values through a function which calls [MotionEvent.obtain] or
