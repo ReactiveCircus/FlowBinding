@@ -50,6 +50,8 @@ The library is a work in progress. We currently have bindings for the **Material
     - [x] `fun PopupMenu.dismisses(): Flow<Unit>`
     - [x] `fun PopupMenu.itemClicks(): Flow<MenuItem>`
     - [x] `fun RadioGroup.checkedChanges(emitImmediately: Boolean = false): Flow<Int>`
+    - [x] `fun RatingBar.ratingChangeEvents(emitImmediately: Boolean = false): Flow<RatingChangeEvent>`
+    - [x] `fun RatingBar.ratingChanges(emitImmediately: Boolean = false): Flow<Float>`
 
 ### Material Components Bindings
 
