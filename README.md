@@ -83,7 +83,8 @@ The library is a work in progress. We currently have bindings for the **Material
 - [x] NavigationView
     - [x] `fun NavigationView.itemSelections(emitImmediately: Boolean = false): Flow<MenuItem>`
 - [ ] Picker - TBA
-- [ ] Slider - TBA
+- [x] Slider
+    - [x] `fun Slider.valueChanges(emitImmediately: Boolean = false): Flow<Float>`
 - [x] Snackbar
     - [x] `fun Snackbar.dismissEvents(): Flow<Int>`
     - [x] `fun Snackbar.shownEvents(): Flow<Unit>`
