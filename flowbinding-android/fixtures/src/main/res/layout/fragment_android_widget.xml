@@ -38,4 +38,9 @@
             android:text="radio button 3" />
     </RadioGroup>
 
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

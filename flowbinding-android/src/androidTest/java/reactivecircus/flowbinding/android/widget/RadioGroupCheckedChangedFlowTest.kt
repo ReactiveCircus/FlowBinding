@@ -19,8 +19,7 @@ class RadioGroupCheckedChangedFlowTest {
     fun radioGroupCheckedChanges_click() {
         launchTest<AndroidWidgetFragment> {
             val recorder = FlowRecorder<Int>(testScope)
-            getViewById<RadioGroup>(R.id.radioGroup).checkedChanges()
-                .recordWith(recorder)
+            getViewById<RadioGroup>(R.id.radioGroup).checkedChanges().recordWith(recorder)
 
             recorder.assertNoMoreValues()
 
