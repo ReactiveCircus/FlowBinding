@@ -1,8 +1,8 @@
-package reactivecircus.flowbinding.android.widget
+package reactivecircus.flowbinding.appcompat
 
 import android.view.MenuItem
-import android.widget.PopupMenu
 import androidx.annotation.CheckResult
+import androidx.appcompat.widget.ActionMenuView
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -12,16 +12,16 @@ import reactivecircus.flowbinding.common.checkMainThread
 import reactivecircus.flowbinding.common.safeOffer
 
 /**
- * Create a [Flow] of item clicked events on the [PopupMenu] instance
+ * Create a [Flow] of item clicked events on the [ActionMenuView] instance
  * where the value emitted is the clicked menu item.
  *
- * Note: Created flow keeps a strong reference to the [PopupMenu] instance
+ * Note: Created flow keeps a strong reference to the [ActionMenuView] instance
  * until the coroutine that launched the flow collector is cancelled.
  *
  * Example of usage:
  *
  * ```
- * popupMenu.itemClicks()
+ * actionMenuView.itemClicks()
  *     .onEach { menuItem ->
  *          // handle menuItem
  *     }
@@ -30,9 +30,9 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @UseExperimental(ExperimentalCoroutinesApi::class)
-fun PopupMenu.itemClicks(): Flow<MenuItem> = callbackFlow {
+fun ActionMenuView.itemClicks(): Flow<MenuItem> = callbackFlow {
     checkMainThread()
-    val listener = PopupMenu.OnMenuItemClickListener {
+    val listener = ActionMenuView.OnMenuItemClickListener {
         safeOffer(it)
     }
     setOnMenuItemClickListener(listener)

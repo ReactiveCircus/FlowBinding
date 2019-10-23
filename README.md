@@ -99,14 +99,18 @@ The library is a work in progress. We currently have bindings for the **Material
     - [x] `fun TabLayout.textInputLayoutStartIconLongClicks(): Flow<Unit>`
     - [x] `fun TabLayout.textInputLayoutEndIconLongClicks(): Flow<Unit>`
 
-
 ### AndroidX Bindings
 
+- [x] AppCompat
+    - [x] `fun ActionMenuView.itemClicks(): Flow<MenuItem>`
+    - [x] `fun PopupMenu.dismisses(): Flow<Unit>`
+    - [x] `fun PopupMenu.itemClicks(): Flow<MenuItem>`
+    - [x] `fun SearchView.queryTextChanges(emitImmediately: Boolean = false): Flow<CharSequence>`
+    - [x] `fun SearchView.queryTextEvents(emitImmediately: Boolean = false): Flow<QueryTextEvent>`
+    - [x] `fun Toolbar.itemClicks(): Flow<MenuItem>`
+    - [x] `fun Toolbar.navigationClicks(): Flow<Unit>`
+
 - [ ] Core
-
-TBA.
-
-- [ ] AppCompat
 
 TBA.
 

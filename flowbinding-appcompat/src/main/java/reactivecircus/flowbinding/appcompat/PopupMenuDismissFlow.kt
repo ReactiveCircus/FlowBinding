@@ -1,7 +1,7 @@
-package reactivecircus.flowbinding.android.widget
+package reactivecircus.flowbinding.appcompat
 
-import android.widget.PopupMenu
 import androidx.annotation.CheckResult
+import androidx.appcompat.widget.PopupMenu
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow

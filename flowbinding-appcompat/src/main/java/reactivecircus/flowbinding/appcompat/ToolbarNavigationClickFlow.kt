@@ -1,7 +1,8 @@
-package reactivecircus.flowbinding.android.widget
+package reactivecircus.flowbinding.appcompat
 
-import android.widget.PopupMenu
+import android.view.View
 import androidx.annotation.CheckResult
+import androidx.appcompat.widget.Toolbar
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -11,9 +12,9 @@ import reactivecircus.flowbinding.common.checkMainThread
 import reactivecircus.flowbinding.common.safeOffer
 
 /**
- * Create a [Flow] of dismiss events on the [PopupMenu] instance.
+ * Create a [Flow] of navigation click events on the [Toolbar] instance.
  *
- * Note: Created flow keeps a strong reference to the [PopupMenu] instance
+ * Note: Created flow keeps a strong reference to the [Toolbar] instance
  * until the coroutine that launched the flow collector is cancelled.
  *
  * Example of usage:
@@ -21,18 +22,18 @@ import reactivecircus.flowbinding.common.safeOffer
  * ```
  * popupMenu.dismisses()
  *     .onEach {
- *          // handle popup menu dismiss event
+ *          // handle toolbar navigation click event
  *     }
  *     .launchIn(uiScope)
  * ```
  */
 @CheckResult
 @UseExperimental(ExperimentalCoroutinesApi::class)
-fun PopupMenu.dismisses(): Flow<Unit> = callbackFlow {
+fun Toolbar.navigationClicks(): Flow<Unit> = callbackFlow {
     checkMainThread()
-    val listener = PopupMenu.OnDismissListener {
+    val listener = View.OnClickListener {
         safeOffer(Unit)
     }
-    setOnDismissListener(listener)
-    awaitClose { setOnDismissListener(null) }
+    setNavigationOnClickListener(listener)
+    awaitClose { setNavigationOnClickListener(null) }
 }.conflate()

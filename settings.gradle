@@ -4,6 +4,9 @@ include ":flowbinding-common"
 include ":flowbinding-android"
 includeProject(":flowbinding-android:fixtures", "flowbinding-android/fixtures")
 
+include ":flowbinding-appcompat"
+includeProject(":flowbinding-appcompat:fixtures", "flowbinding-appcompat/fixtures")
+
 include ":flowbinding-material"
 includeProject(":flowbinding-material:fixtures", "flowbinding-material/fixtures")
 
