@@ -55,7 +55,6 @@ fun DrawerLayout.drawerStateChanges(gravity: Int, emitImmediately: Boolean = fal
             override fun onDrawerSlide(drawerView: View, slideOffset: Float) = Unit
 
             override fun onDrawerStateChanged(newState: Int) = Unit
-
         }
         addDrawerListener(listener)
         awaitClose { removeDrawerListener(listener) }

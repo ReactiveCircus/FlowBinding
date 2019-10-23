@@ -1,19 +1,14 @@
 package reactivecircus.flowbinding.android.widget
 
 import android.content.Context
-import android.view.MotionEvent
-import android.widget.SeekBar
 import android.widget.TextView
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.filters.LargeTest
-import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 import reactivecircus.flowbinding.android.fixtures.widget.AndroidWidgetFragment
-import reactivecircus.flowbinding.android.test.R
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest
-import reactivecircus.flowbinding.testing.motionEventAtPosition
 import reactivecircus.flowbinding.testing.recordWith
 
 @LargeTest
