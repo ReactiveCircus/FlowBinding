@@ -82,7 +82,6 @@ The library is a work in progress. The goal is to cover most of the bindings pro
     - [x] `fun MaterialButtonToggleGroup.buttonCheckedChanges(): Flow<MaterialButtonCheckedChangedEvent>`
 - [x] NavigationView
     - [x] `fun NavigationView.itemSelections(emitImmediately: Boolean = false): Flow<MenuItem>`
-- [ ] Picker - TBA
 - [x] Slider
     - [x] `fun Slider.valueChanges(emitImmediately: Boolean = false): Flow<Float>`
 - [x] Snackbar
@@ -113,9 +112,8 @@ The library is a work in progress. The goal is to cover most of the bindings pro
 - [x] Core
     - [x] `fun NestedScrollView.scrollChangeEvents(): Flow<ScrollChangeEvent>`
 
-- [ ] DrawerLayout
-
-TBA.
+- [x] DrawerLayout
+    - [x] `fun DrawerLayout.drawerStateChanges(gravity: Int, emitImmediately: Boolean = false): Flow<Boolean>`
 
 - [ ] RecyclerView
 
