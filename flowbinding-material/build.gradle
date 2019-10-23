@@ -17,7 +17,7 @@ dependencies {
     implementation project(':flowbinding-common')
 
     implementation "com.google.android.material:material:${versions.material}"
-    implementation "androidx.fragment:fragment-ktx:${versions.androidx.fragment}"
+    implementation "androidx.fragment:fragment:${versions.androidx.fragment}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinx.coroutines}"
 
     androidTestImplementation project(':testing-infra')
