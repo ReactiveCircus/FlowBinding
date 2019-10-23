@@ -35,3 +35,7 @@ allprojects {
         }
     }
 }
+
+subprojects {
+    apply from: "$project.rootDir/gradle/detekt.gradle"
+}
