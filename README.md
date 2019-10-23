@@ -8,11 +8,11 @@ Kotlin Flow binding APIs for Android's platform and unbundled UI widgets, inspir
 
 **FlowBinding** offers an extensive set of extension functions that turn traditional callbacks / listeners on Android UI widgets into the `Flow` type.
 
-The binding implementation respects the `CoroutineScope` used for collecting the flows by unregistering the callback / listener automatically when the scope is cancelled.
+The binding implementation respects the `CoroutineScope` used for **collecting** the flows by unregistering the callback / listener automatically when the scope is cancelled.
 
 ## Roadmap
 
-The library is a work in progress. We currently have bindings for the **Material Components** and **ViewPager2** and we are actively adding more. The ultimate goal is to cover most of the bindings provided by **RxBinding** plus some of the new widgets from **Material Components** (e.g. Pickers).
+The library is a work in progress. The goal is to cover most of the bindings provided by **RxBinding** plus some of the new components from **Material Components**.
 
 ### Platform Bindings
 
@@ -110,9 +110,8 @@ The library is a work in progress. We currently have bindings for the **Material
     - [x] `fun Toolbar.itemClicks(): Flow<MenuItem>`
     - [x] `fun Toolbar.navigationClicks(): Flow<Unit>`
 
-- [ ] Core
-
-TBA.
+- [x] Core
+    - [x] `fun NestedScrollView.scrollChangeEvents(): Flow<ScrollChangeEvent>`
 
 - [ ] DrawerLayout
 
