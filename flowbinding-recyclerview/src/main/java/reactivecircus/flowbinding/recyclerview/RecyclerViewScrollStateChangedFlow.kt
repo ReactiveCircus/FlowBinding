@@ -34,11 +34,11 @@ import reactivecircus.flowbinding.common.safeOffer
 @UseExperimental(ExperimentalCoroutinesApi::class)
 fun RecyclerView.scrollStateChanges(): Flow<Int> = callbackFlow<Int> {
     checkMainThread()
-    val callback = object : RecyclerView.OnScrollListener() {
+    val listener = object : RecyclerView.OnScrollListener() {
         override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
             safeOffer(newState)
         }
     }
-    addOnScrollListener(callback)
-    awaitClose { removeOnScrollListener(callback) }
+    addOnScrollListener(listener)
+    awaitClose { removeOnScrollListener(listener) }
 }.conflate()
