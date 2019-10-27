@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-internal class TestAdapter : RecyclerView.Adapter<TestViewHolder>() {
+internal class TestAdapter(private val size: Int) : RecyclerView.Adapter<TestViewHolder>() {
 
     init {
         setHasStableIds(true)
@@ -18,7 +18,7 @@ internal class TestAdapter : RecyclerView.Adapter<TestViewHolder>() {
         return TestViewHolder(view)
     }
 
-    override fun getItemCount(): Int = 100
+    override fun getItemCount(): Int = size
 
     override fun getItemId(position: Int): Long = position.toLong()
 
