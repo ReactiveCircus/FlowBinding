@@ -8,10 +8,13 @@ import androidx.test.espresso.action.Press
 import androidx.test.espresso.action.Swipe
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.longClick
+import androidx.test.espresso.matcher.RootMatchers.isDialog
 import androidx.test.espresso.matcher.RootMatchers.isPlatformPopup
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import org.hamcrest.CoreMatchers.anything
 import reactivecircus.blueprint.testing.RobotActions
+import com.google.android.material.R as MaterialR
 
 fun RobotActions.hardSwipeLeft(@IdRes viewId: Int) {
     Espresso.onView(withId(viewId)).perform(
@@ -43,4 +46,18 @@ fun RobotActions.longClickAdapterViewItemAt(@IdRes viewId: Int, position: Int) {
         .inAdapterView(withId(viewId))
         .atPosition(position)
         .perform(longClick())
+}
+
+fun RobotActions.clickOkButtonOnDatePicker() {
+    Espresso.onView(withId(MaterialR.id.confirm_button))
+        .inRoot(isDialog())
+        .perform(click())
+    getInstrumentation().waitForIdleSync()
+}
+
+fun RobotActions.clickCancelButtonOnDatePicker() {
+    Espresso.onView(withId(MaterialR.id.cancel_button))
+        .inRoot(isDialog())
+        .perform(click())
+    getInstrumentation().waitForIdleSync()
 }
