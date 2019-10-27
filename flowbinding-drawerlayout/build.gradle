@@ -17,7 +17,6 @@ dependencies {
     implementation project(':flowbinding-common')
 
     implementation "androidx.drawerlayout:drawerlayout:${versions.androidx.drawerLayout}"
-    implementation "androidx.fragment:fragment:${versions.androidx.fragment}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinx.coroutines}"
 
     androidTestImplementation project(':testing-infra')

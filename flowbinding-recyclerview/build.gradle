@@ -8,7 +8,7 @@ plugins {
 
 android {
     defaultConfig {
-        testApplicationId 'reactivecircus.flowbinding.core.test'
+        testApplicationId 'reactivecircus.flowbinding.recyclerview.test'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 }
@@ -16,9 +16,9 @@ android {
 dependencies {
     implementation project(':flowbinding-common')
 
-    implementation "androidx.core:core:${versions.androidx.core}"
+    implementation "androidx.recyclerview:recyclerview:${versions.androidx.recyclerView}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinx.coroutines}"
 
     androidTestImplementation project(':testing-infra')
-    androidTestImplementation project(':flowbinding-core:fixtures')
+    androidTestImplementation project(':flowbinding-recyclerview:fixtures')
 }

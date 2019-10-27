@@ -40,7 +40,10 @@ fun ViewPager2.pageScrollEvents(): Flow<ViewPager2PageScrollEvent> = callbackFlo
         ) {
             safeOffer(
                 ViewPager2PageScrollEvent(
-                    position, positionOffset, positionOffsetPixels
+                    view = this@pageScrollEvents,
+                    position = position,
+                    positionOffset = positionOffset,
+                    positionOffsetPixel = positionOffsetPixels
                 )
             )
         }
@@ -50,6 +53,7 @@ fun ViewPager2.pageScrollEvents(): Flow<ViewPager2PageScrollEvent> = callbackFlo
 }.conflate()
 
 class ViewPager2PageScrollEvent(
+    val view: ViewPager2,
     val position: Int,
     val positionOffset: Float,
     val positionOffsetPixel: Int
