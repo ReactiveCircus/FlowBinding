@@ -122,9 +122,8 @@ The library is a work in progress. The goal is to cover most of the bindings pro
     - [x] `fun RecyclerView.scrollEvents(): Flow<RecyclerViewScrollEvent>`
     - [x] `fun RecyclerView.scrollStateChanges(): Flow<Int>`
 
-- [ ] SwipeRefreshLayout
-
-TBA.
+- [x] SwipeRefreshLayout
+    - [x] `fun SwipeRefreshLayout.refreshes(): Flow<Unit>`
 
 - [x] ViewPager 2
     - [x] `fun ViewPager2.pageScrollEvents(): Flow<ViewPager2PageScrollEvent>`
