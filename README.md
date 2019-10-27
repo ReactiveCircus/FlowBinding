@@ -130,9 +130,8 @@ The library is a work in progress. The goal is to cover most of the bindings pro
     - [x] `fun ViewPager2.pageScrollStateChanges(): Flow<Int>`
     - [x] `fun ViewPager2.pageSelections(emitImmediately: Boolean = false): Flow<Int>`
 
-- [ ] Navigation Component
-
-TBA.
+- [x] Navigation Component
+    - [x] `fun NavController.destinationChangeEvents(): Flow<DestinationChangeEvent>`
 
 ## License
 

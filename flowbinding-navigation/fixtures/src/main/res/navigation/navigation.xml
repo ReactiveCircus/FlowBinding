@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="HardcodedText"
+    app:startDestination="@id/fragmentA">
+
+    <fragment
+        android:id="@+id/fragmentA"
+        android:name="reactivecircus.flowbinding.navigation.fixtures.FragmentA"
+        android:label="A"
+        tools:layout="@layout/fragment_a"/>
+
+    <fragment
+        android:id="@+id/fragmentB"
+        android:name="reactivecircus.flowbinding.navigation.fixtures.FragmentB"
+        android:label="B"
+        tools:layout="@layout/fragment_b"/>
+
+    <fragment
+        android:id="@+id/fragmentC"
+        android:name="reactivecircus.flowbinding.navigation.fixtures.FragmentC"
+        android:label="C"
+        tools:layout="@layout/fragment_c"/>
+
+</navigation>
