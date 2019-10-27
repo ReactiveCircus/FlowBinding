@@ -4,6 +4,7 @@ import android.view.Gravity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
+import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.closeDrawer
@@ -53,16 +54,19 @@ class DrawerLayoutDrawerStateChangedFlowTest {
             recorder.assertNoMoreValues()
 
             runOnUiThread { drawerLayout.openDrawer(Gravity.START) }
+            getInstrumentation().waitForIdleSync()
             recorder.takeValue() shouldEqual true
             recorder.assertNoMoreValues()
 
             runOnUiThread { drawerLayout.closeDrawer(Gravity.START) }
+            getInstrumentation().waitForIdleSync()
             recorder.takeValue() shouldEqual false
             recorder.assertNoMoreValues()
 
             cancelTestScope()
 
             runOnUiThread { drawerLayout.openDrawer(Gravity.START) }
+            getInstrumentation().waitForIdleSync()
             recorder.assertNoMoreValues()
         }
     }
@@ -79,16 +83,19 @@ class DrawerLayoutDrawerStateChangedFlowTest {
             recorder.assertNoMoreValues()
 
             runOnUiThread { drawerLayout.openDrawer(Gravity.START) }
+            getInstrumentation().waitForIdleSync()
             recorder.takeValue() shouldEqual true
             recorder.assertNoMoreValues()
 
             runOnUiThread { drawerLayout.closeDrawer(Gravity.START) }
+            getInstrumentation().waitForIdleSync()
             recorder.takeValue() shouldEqual false
             recorder.assertNoMoreValues()
 
             cancelTestScope()
 
             runOnUiThread { drawerLayout.openDrawer(Gravity.START) }
+            getInstrumentation().waitForIdleSync()
             recorder.assertNoMoreValues()
         }
     }
