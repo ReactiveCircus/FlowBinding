@@ -12,8 +12,6 @@ The binding implementation respects the `CoroutineScope` used for **collecting**
 
 ## Roadmap
 
-The library is a work in progress. The goal is to cover most of the bindings provided by **RxBinding** plus some of the new components from **Material Components**.
-
 ### Platform Bindings
 
 - [x] View
@@ -80,6 +78,11 @@ The library is a work in progress. The goal is to cover most of the bindings pro
     - [x] `fun MaterialButton.checkedChanges(): Flow<Boolean>`
 - [x] MaterialButtonToggleGroup
     - [x] `fun MaterialButtonToggleGroup.buttonCheckedChanges(): Flow<MaterialButtonCheckedChangedEvent>`
+- [x] MaterialDatePicker
+    - [x] `fun <S> MaterialDatePicker<S>.cancels(): Flow<Unit>`
+    - [x] `fun <S> MaterialDatePicker<S>.dismisses(): Flow<Unit>`
+    - [x] `fun <S> MaterialDatePicker<S>.negativeButtonClicks(): Flow<Unit>`
+    - [x] `fun <S> MaterialDatePicker<S>.positiveButtonClicks(): Flow<S>`    
 - [x] NavigationView
     - [x] `fun NavigationView.itemSelections(emitImmediately: Boolean = false): Flow<MenuItem>`
 - [x] Slider
