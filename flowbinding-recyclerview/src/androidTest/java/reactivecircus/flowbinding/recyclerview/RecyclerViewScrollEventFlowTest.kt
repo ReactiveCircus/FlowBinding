@@ -22,7 +22,7 @@ class RecyclerViewScrollEventFlowTest {
             val recorder = FlowRecorder<RecyclerViewScrollEvent>(testScope)
             val recyclerView = getViewById<RecyclerView>(R.id.recyclerView).apply {
                 runOnUiThread {
-                    adapter = TestAdapter()
+                    adapter = TestAdapter(50)
                 }
             }
             getInstrumentation().waitForIdleSync()
@@ -54,7 +54,7 @@ class RecyclerViewScrollEventFlowTest {
             val recorder = FlowRecorder<RecyclerViewScrollEvent>(testScope)
             val recyclerView = getViewById<RecyclerView>(R.id.recyclerView).apply {
                 runOnUiThread {
-                    adapter = TestAdapter()
+                    adapter = TestAdapter(20)
                     (layoutManager as LinearLayoutManager).orientation = LinearLayoutManager.HORIZONTAL
                 }
             }

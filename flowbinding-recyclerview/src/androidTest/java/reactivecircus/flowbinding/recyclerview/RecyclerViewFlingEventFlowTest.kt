@@ -21,7 +21,7 @@ class RecyclerViewFlingEventFlowTest {
             val recorder = FlowRecorder<FlingEvent>(testScope)
             val recyclerView = getViewById<RecyclerView>(R.id.recyclerView).apply {
                 runOnUiThread {
-                    adapter = TestAdapter()
+                    adapter = TestAdapter(50)
                 }
             }
             recyclerView.flingEvents().recordWith(recorder)
@@ -48,7 +48,7 @@ class RecyclerViewFlingEventFlowTest {
             val recorder = FlowRecorder<FlingEvent>(testScope)
             val recyclerView = getViewById<RecyclerView>(R.id.recyclerView).apply {
                 runOnUiThread {
-                    adapter = TestAdapter()
+                    adapter = TestAdapter(20)
                     (layoutManager as LinearLayoutManager).orientation = LinearLayoutManager.HORIZONTAL
                 }
             }
@@ -76,7 +76,7 @@ class RecyclerViewFlingEventFlowTest {
             val recorder = FlowRecorder<FlingEvent>(testScope)
             val recyclerView = getViewById<RecyclerView>(R.id.recyclerView).apply {
                 runOnUiThread {
-                    adapter = TestAdapter()
+                    adapter = TestAdapter(50)
                 }
             }
             recyclerView.flingEvents { false }.recordWith(recorder)

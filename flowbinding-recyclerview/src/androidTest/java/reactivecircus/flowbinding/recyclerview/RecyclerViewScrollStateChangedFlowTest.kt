@@ -26,7 +26,7 @@ class RecyclerViewScrollStateChangedFlowTest {
             val recorder = FlowRecorder<Int>(testScope)
             val recyclerView = getViewById<RecyclerView>(R.id.recyclerView).apply {
                 runOnUiThread {
-                    adapter = TestAdapter()
+                    adapter = TestAdapter(50)
                 }
             }
             getInstrumentation().waitForIdleSync()
@@ -37,6 +37,7 @@ class RecyclerViewScrollStateChangedFlowTest {
             swipeUpOnView(R.id.recyclerView)
             recorder.takeValue() shouldEqual RecyclerView.SCROLL_STATE_DRAGGING
             recorder.takeValue() shouldEqual RecyclerView.SCROLL_STATE_SETTLING
+            recorder.takeValue() shouldEqual RecyclerView.SCROLL_STATE_IDLE
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -53,7 +54,7 @@ class RecyclerViewScrollStateChangedFlowTest {
             val recorder = FlowRecorder<Int>(testScope)
             val recyclerView = getViewById<RecyclerView>(R.id.recyclerView).apply {
                 runOnUiThread {
-                    adapter = TestAdapter()
+                    adapter = TestAdapter(20)
                     (layoutManager as LinearLayoutManager).orientation = LinearLayoutManager.HORIZONTAL
                 }
             }
