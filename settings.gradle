@@ -16,6 +16,9 @@ includeProject(":flowbinding-drawerlayout:fixtures", "flowbinding-drawerlayout/f
 include ":flowbinding-material"
 includeProject(":flowbinding-material:fixtures", "flowbinding-material/fixtures")
 
+include ":flowbinding-recyclerview"
+includeProject(":flowbinding-recyclerview:fixtures", "flowbinding-recyclerview/fixtures")
+
 include ":flowbinding-viewpager2"
 includeProject(":flowbinding-viewpager2:fixtures", "flowbinding-viewpager2/fixtures")
 

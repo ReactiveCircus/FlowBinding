@@ -1,0 +1,13 @@
+plugins {
+    id 'flowbinding-plugin'
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+android.viewBinding.enabled = true
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"
+    implementation "androidx.viewpager2:viewpager2:${versions.androidx.viewPager2}"
+    implementation "androidx.fragment:fragment:${versions.androidx.fragment}"
+}

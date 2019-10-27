@@ -10,9 +10,7 @@ dependencies {
     implementation "com.google.android.material:material:${versions.material}"
 
     api "io.github.reactivecircus.blueprint:blueprint-testing-robot:${versions.blueprint}"
-    api("androidx.fragment:fragment-testing:${versions.androidx.fragment}") {
-        exclude group: 'androidx.test'
-    }
+    api "androidx.fragment:fragment-testing:${versions.androidx.fragment}"
     api "androidx.test:core-ktx:${versions.androidx.test.core}"
     api "androidx.test:monitor:${versions.androidx.test.monitor}"
     api "androidx.test:runner:${versions.androidx.test.runner}"

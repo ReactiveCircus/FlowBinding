@@ -115,9 +115,12 @@ The library is a work in progress. The goal is to cover most of the bindings pro
 - [x] DrawerLayout
     - [x] `fun DrawerLayout.drawerStateChanges(gravity: Int, emitImmediately: Boolean = false): Flow<Boolean>`
 
-- [ ] RecyclerView
-
-TBA.
+- [x] RecyclerView
+    - [x] `fun <T : RecyclerView.Adapter<out RecyclerView.ViewHolder>> T.dataChanges(emitImmediately: Boolean = false): Flow<T>`
+    - [x] `fun RecyclerView.childAttachStateChangeEvents(): Flow<RecyclerViewChildAttachStateChangeEvent>`
+    - [x] `fun RecyclerView.flingEvents(handled: (FlingEvent) -> Boolean = { true }): Flow<FlingEvent>`
+    - [x] `fun RecyclerView.scrollEvents(): Flow<RecyclerViewScrollEvent>`
+    - [x] `fun RecyclerView.scrollStateChanges(): Flow<Int>`
 
 - [ ] SwipeRefreshLayout
 

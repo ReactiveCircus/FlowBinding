@@ -20,12 +20,14 @@ class ViewPager2PageScrolledFlowTest {
     fun pageScrollEvents_swipe() {
         launchTest<ViewPager2Fragment> {
             val recorder = FlowRecorder<ViewPager2PageScrollEvent>(testScope)
-            getViewById<ViewPager2>(R.id.viewPager).pageScrollEvents().recordWith(recorder)
+            val viewPager = getViewById<ViewPager2>(R.id.viewPager)
+            viewPager.pageScrollEvents().recordWith(recorder)
 
             recorder.assertNoMoreValues()
 
             swipeLeftOnView(R.id.viewPager)
             val event = recorder.takeValue()
+            event.view shouldEqual viewPager
             event.position shouldEqual 0
             event.positionOffset shouldBeGreaterThan 0f
             event.positionOffsetPixel shouldBeGreaterThan 0
@@ -49,6 +51,7 @@ class ViewPager2PageScrolledFlowTest {
 
             viewPager.currentItem = 1
             val event = recorder.takeValue()
+            event.view shouldEqual viewPager
             event.position shouldEqual 0
             event.positionOffset shouldBeGreaterThan 0f
             event.positionOffsetPixel shouldBeGreaterThan 0

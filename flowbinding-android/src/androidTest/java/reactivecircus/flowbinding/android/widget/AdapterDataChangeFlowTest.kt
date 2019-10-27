@@ -1,11 +1,13 @@
 package reactivecircus.flowbinding.android.widget
 
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Adapter
+import android.widget.BaseAdapter
 import androidx.test.filters.LargeTest
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 import reactivecircus.flowbinding.android.fixtures.widget.ListFragment
-import reactivecircus.flowbinding.android.testutil.TestAdapter
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest
 import reactivecircus.flowbinding.testing.recordWith
@@ -60,4 +62,14 @@ class AdapterDataChangeFlowTest {
             recorder.assertNoMoreValues()
         }
     }
+}
+
+private class TestAdapter : BaseAdapter() {
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? = null
+
+    override fun getItem(position: Int): Any? = null
+
+    override fun getItemId(position: Int): Long = 0
+
+    override fun getCount(): Int = 0
 }

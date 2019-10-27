@@ -18,8 +18,6 @@ import reactivecircus.flowbinding.common.safeOffer
  * [ViewAttachEvent.Attached],
  * [ViewAttachEvent.Detached]
  *
- * This receiver [View] of the extension is the child view being attached / detached.
- *
  * Note: Created flow keeps a strong reference to the [View] instance
  * until the coroutine that launched the flow collector is cancelled.
  *
