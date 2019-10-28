@@ -1,6 +1,10 @@
 # FlowBinding
 
-[![CircleCI](https://circleci.com/gh/ReactiveCircus/FlowBinding.svg?style=svg)](https://circleci.com/gh/ReactiveCircus/FlowBinding) [![Build Status](https://app.bitrise.io/app/6ff0212a079f16f3/status.svg?token=dtE8nQVs12zS4l61-fJfFw&branch=master)](https://app.bitrise.io/app/6ff0212a079f16f3) [![Android API](https://img.shields.io/badge/API-21%2B-blue.svg?label=API&maxAge=300)](https://www.android.com/history/) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![CircleCI](https://circleci.com/gh/ReactiveCircus/FlowBinding.svg?style=svg)](https://circleci.com/gh/ReactiveCircus/FlowBinding)
+[![Build Status](https://app.bitrise.io/app/6ff0212a079f16f3/status.svg?token=dtE8nQVs12zS4l61-fJfFw&branch=master)](https://app.bitrise.io/app/6ff0212a079f16f3)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.reactivecircus.flowbinding/flowbinding-android/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.reactivecircus.flowbinding/flowbinding-android)
+[![Android API](https://img.shields.io/badge/API-21%2B-blue.svg?label=API&maxAge=300)](https://www.android.com/history/)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 Kotlin Flow binding APIs for Android's platform and unbundled UI widgets, inspired by [RxBinding][rxbinding].
 
@@ -8,133 +12,151 @@ Kotlin Flow binding APIs for Android's platform and unbundled UI widgets, inspir
 
 **FlowBinding** offers an extensive set of extension functions that turn traditional callbacks / listeners on Android UI widgets into the `Flow` type.
 
-The binding implementation respects the `CoroutineScope` used for **collecting** the flows by unregistering the callback / listener automatically when the scope is cancelled.
+## Download
 
-## Roadmap
+Dependencies are hosted on [Maven Central][maven-central].
+
+Latest version:
+
+```groovy
+def flowbinding_version = "0.5.0"
+```
 
 ### Platform Bindings
 
-- [x] View
-    - [x] `fun MenuItem.actionViewEvents(handled: (MenuItemActionViewEvent) -> Boolean): Flow<MenuItemActionViewEvent>`
-    - [x] `fun MenuItem.clicks(handled: (MenuItem) -> Boolean): Flow<Unit>`
-    - [x] `fun View.attachEvents(): Flow<ViewAttachEvent>`
-    - [x] `fun View.clicks(): Flow<Unit>`
-    - [x] `fun View.drags(handled: (DragEvent) -> Boolean = { true }): Flow<DragEvent>`
-    - [x] `fun View.draws(): Flow<Unit>`
-    - [x] `fun View.focusChanges(emitImmediately: Boolean = false): Flow<Boolean>`
-    - [x] `fun View.globalLayouts(): Flow<Unit>`
-    - [x] `fun ViewGroup.hierarchyChangeEvents(): Flow<HierarchyChangeEvent>`
-    - [x] `fun View.hovers(handled: (MotionEvent) -> Boolean = { true }): Flow<MotionEvent>`
-    - [x] `fun View.keys(handled: (KeyEvent) -> Boolean = { true }): Flow<KeyEvent>`
-    - [x] `fun View.layoutChangeEvents(): Flow<LayoutChangeEvent>`
-    - [x] `fun View.layoutChanges(): Flow<Unit>`
-    - [x] `fun View.longClicks(): Flow<Unit>`
-    - [x] `fun View.preDraws(proceedDrawingPass: () -> Boolean): Flow<Unit>`
-    - [x] `fun View.scrollChangeEvents(): Flow<ScrollChangeEvent>`
-    - [x] `fun View.systemUiVisibilityChanges(): Flow<Int>`
-    - [x] `fun View.touches(handled: (MotionEvent) -> Boolean = { true }): Flow<MotionEvent>`
-- [x] Widget
-    - [x] `fun AbsListView.scrollEvents(): Flow<ScrollEvent>`
-    - [x] `fun Adapter.dataChanges(emitImmediately: Boolean = false): Flow<Adapter>`
-    - [x] `fun <T : Adapter> AdapterView<T>.itemClickEvents(): Flow<AdapterViewItemClickEvent>`
-    - [x] `fun <T : Adapter> AdapterView<T>.itemClicks(): Flow<Int>`
-    - [x] `fun <T : Adapter> AdapterView<T>.itemLongClickEvents(handled: (AdapterViewItemLongClickEvent) -> Boolean = { true }): Flow<AdapterViewItemLongClickEvent>`
-    - [x] `fun <T : Adapter> AdapterView<T>.itemLongClicks(handled: () -> Boolean = { true }): Flow<Int>`
-    - [x] `fun <T : Adapter> AdapterView<T>.itemSelections(emitImmediately: Boolean = false): Flow<Int>`
-    - [x] `fun <T : Adapter> AdapterView<T>.selectionEvents(emitImmediately: Boolean = false): Flow<AdapterViewSelectionEvent>`
-    - [x] `fun AutoCompleteTextView.dismisses(): Flow<Unit>`
-    - [x] `fun AutoCompleteTextView.itemClickEvents(): Flow<AdapterViewItemClickEvent>`
-    - [x] `fun CompoundButton.checkedChanges(emitImmediately: Boolean = false): Flow<Boolean>`
-    - [x] `fun PopupMenu.dismisses(): Flow<Unit>`
-    - [x] `fun PopupMenu.itemClicks(): Flow<MenuItem>`
-    - [x] `fun RadioGroup.checkedChanges(emitImmediately: Boolean = false): Flow<Int>`
-    - [x] `fun RatingBar.ratingChangeEvents(emitImmediately: Boolean = false): Flow<RatingChangeEvent>`
-    - [x] `fun RatingBar.ratingChanges(emitImmediately: Boolean = false): Flow<Float>`
-    - [x] `fun SearchView.queryTextChanges(emitImmediately: Boolean = false): Flow<CharSequence>`
-    - [x] `fun SearchView.queryTextEvents(emitImmediately: Boolean = false): Flow<QueryTextEvent>`
-    - [x] `fun SeekBar.changeEvents(emitImmediately: Boolean = false): Flow<SeekBarChangeEvent>`
-    - [x] `fun SeekBar.progressChanges(emitImmediately: Boolean = false): Flow<Int>`
-    - [x] `fun TextView.afterTextChanges(emitImmediately: Boolean = false): Flow<AfterTextChangeEvent>`
-    - [x] `fun TextView.beforeTextChanges(emitImmediately: Boolean = false): Flow<BeforeTextChangeEvent>`
-    - [x] `fun TextView.editorActionEvents(handled: (EditorActionEvent) -> Boolean = { true }): Flow<EditorActionEvent>`
-    - [x] `fun TextView.textChangeEvents(emitImmediately: Boolean = false): Flow<TextChangeEvent>`
-    - [x] `fun TextView.textChanges(emitImmediately: Boolean = false): Flow<CharSequence>`
-
-### Material Components Bindings
-
-- [x] AppBarLayout
-    - [x] `fun AppBarLayout.offsetChanges(): Flow<Int>`
-- [x] BottomNavigationView
-    - [x] `fun BottomNavigationView.itemReselections(): Flow<MenuItem>`
-    - [x] `fun BottomNavigationView.itemSelections(emitImmediately: Boolean = false): Flow<MenuItem>`
-- [x] BottomSheetBehavior
-    - [x] `fun View.bottomSheetSlides(): Flow<Float>`
-    - [x] `fun View.bottomSheetStateChanges(): Flow<Int>`
-- [x] Chip
-    - [x] `fun Chip.closeIconClicks(): Flow<Unit>`
-- [x] ChipGroup
-    - [x] `fun ChipGroup.chipCheckedChanges(emitImmediately: Boolean = false): Flow<Int>`
-- [x] MaterialButton
-    - [x] `fun MaterialButton.checkedChanges(): Flow<Boolean>`
-- [x] MaterialButtonToggleGroup
-    - [x] `fun MaterialButtonToggleGroup.buttonCheckedChanges(): Flow<MaterialButtonCheckedChangedEvent>`
-- [x] MaterialDatePicker
-    - [x] `fun <S> MaterialDatePicker<S>.cancels(): Flow<Unit>`
-    - [x] `fun <S> MaterialDatePicker<S>.dismisses(): Flow<Unit>`
-    - [x] `fun <S> MaterialDatePicker<S>.negativeButtonClicks(): Flow<Unit>`
-    - [x] `fun <S> MaterialDatePicker<S>.positiveButtonClicks(): Flow<S>`    
-- [x] NavigationView
-    - [x] `fun NavigationView.itemSelections(emitImmediately: Boolean = false): Flow<MenuItem>`
-- [x] Slider
-    - [x] `fun Slider.valueChanges(emitImmediately: Boolean = false): Flow<Float>`
-- [x] Snackbar
-    - [x] `fun Snackbar.dismissEvents(): Flow<Int>`
-    - [x] `fun Snackbar.shownEvents(): Flow<Unit>`
-- [x] SwipeDismissBehavior
-    - [x] `fun View.dismisses(): Flow<View>`
-    - [x] `fun View.swipeDismissDragStateChanges(): Flow<Int>`
-- [x] TabLayout
-    - [x] `fun TabLayout.tabSelectionEvents(emitImmediately: Boolean = false): Flow<TabLayoutSelectionEvent>`
-- [x] TextInputLayout
-    - [x] `fun TabLayout.textInputLayoutStartIconClicks(): Flow<Unit>`
-    - [x] `fun TabLayout.textInputLayoutEndIconClicks(): Flow<Unit>`
-    - [x] `fun TabLayout.textInputLayoutStartIconLongClicks(): Flow<Unit>`
-    - [x] `fun TabLayout.textInputLayoutEndIconLongClicks(): Flow<Unit>`
+```groovy
+implementation "io.github.reactivecircus.flowbinding:flowbinding-android:${flowbinding_version}"
+```
 
 ### AndroidX Bindings
 
-- [x] AppCompat
-    - [x] `fun ActionMenuView.itemClicks(): Flow<MenuItem>`
-    - [x] `fun PopupMenu.dismisses(): Flow<Unit>`
-    - [x] `fun PopupMenu.itemClicks(): Flow<MenuItem>`
-    - [x] `fun SearchView.queryTextChanges(emitImmediately: Boolean = false): Flow<CharSequence>`
-    - [x] `fun SearchView.queryTextEvents(emitImmediately: Boolean = false): Flow<QueryTextEvent>`
-    - [x] `fun Toolbar.itemClicks(): Flow<MenuItem>`
-    - [x] `fun Toolbar.navigationClicks(): Flow<Unit>`
+```groovy
+implementation "io.github.reactivecircus.flowbinding:flowbinding-appcompat:${flowbinding_version}"
+implementation "io.github.reactivecircus.flowbinding:flowbinding-core:${flowbinding_version}"
+implementation "io.github.reactivecircus.flowbinding:flowbinding-drawerlayout:${flowbinding_version}"
+implementation "io.github.reactivecircus.flowbinding:flowbinding-navigation:${flowbinding_version}"
+implementation "io.github.reactivecircus.flowbinding:flowbinding-recyclerview:${flowbinding_version}"
+implementation "io.github.reactivecircus.flowbinding:flowbinding-swiperefreshlayout:${flowbinding_version}"
+implementation "io.github.reactivecircus.flowbinding:flowbinding-viewpager2:${flowbinding_version}"
+```
 
-- [x] Core
-    - [x] `fun NestedScrollView.scrollChangeEvents(): Flow<ScrollChangeEvent>`
+### Material Components Bindings
 
-- [x] DrawerLayout
-    - [x] `fun DrawerLayout.drawerStateChanges(gravity: Int, emitImmediately: Boolean = false): Flow<Boolean>`
+```groovy
+implementation "io.github.reactivecircus.flowbinding:flowbinding-material:${flowbinding_version}"
+```
 
-- [x] RecyclerView
-    - [x] `fun <T : RecyclerView.Adapter<out RecyclerView.ViewHolder>> T.dataChanges(emitImmediately: Boolean = false): Flow<T>`
-    - [x] `fun RecyclerView.childAttachStateChangeEvents(): Flow<RecyclerViewChildAttachStateChangeEvent>`
-    - [x] `fun RecyclerView.flingEvents(handled: (FlingEvent) -> Boolean = { true }): Flow<FlingEvent>`
-    - [x] `fun RecyclerView.scrollEvents(): Flow<RecyclerViewScrollEvent>`
-    - [x] `fun RecyclerView.scrollStateChanges(): Flow<Int>`
+Snapshots of the development version are available in [Sonatype's `snapshots` repository][snap].
 
-- [x] SwipeRefreshLayout
-    - [x] `fun SwipeRefreshLayout.refreshes(): Flow<Unit>`
+## Usage
 
-- [x] ViewPager 2
-    - [x] `fun ViewPager2.pageScrollEvents(): Flow<ViewPager2PageScrollEvent>`
-    - [x] `fun ViewPager2.pageScrollStateChanges(): Flow<Int>`
-    - [x] `fun ViewPager2.pageSelections(emitImmediately: Boolean = false): Flow<Int>`
+### Binding UI Events 
 
-- [x] Navigation Component
-    - [x] `fun NavController.destinationChangeEvents(): Flow<DestinationChangeEvent>`
+To observe click events on an Android `View`:
+
+```kotlin
+findViewById<Button>(R.id.button)
+    .clicks() // binding API available in flowbinding-android
+    .onEach {
+        // handle button clicked
+    }
+    .launchIn(uiScope)
+```
+
+### Binding Scope
+
+`launchIn(scope)` is a shorthand for `scope.launch { flow.collect() }` provided by the **kotlinx-coroutines-core** library.
+
+This `uiScope` in the example above is a `CoroutineScope` that defines the lifecycle of this `Flow`. The binding implementation will respect this scope by unregistering the callback / listener automatically when the scope is cancelled.
+
+In this context of Android lifecycle this means the `uiScope` passed in here should be a scope that's bounded to the `Lifecycle` of the view the widget lives in.
+
+`lifecycle-runtime-ktx:2.2.0` introduced an extension property `LifecycleOwner.lifecycleScope: LifecycleCoroutineScope` which will be cancelled when the `Lifecycle` is destroyed.
+
+In an `Activity` it might look something like this:
+
+
+```kotlin
+class ExampleActivity : AppCompatActivity() {
+    
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_example)
+
+        findViewById<ViewPager2>(R.id.viewPager)
+            .pageSelections() // binding API available in flowbinding-viewpager2
+            .onEach { pagePosition ->
+                // handle pagePosition
+            }
+            .launchIn(lifecycleScope) // provided by lifecycle-runtime-ktx 
+            
+    }
+}
+```
+
+Note that with **FlowBinding** you no longer need to unregister / remove listeners or callbacks in `onDestroy()` as this is done automatically for you.
+
+### Binding UI Events with Additional Information
+
+Some UI widgets might hold a state internally which you might want to observe with a `Flow`.
+
+For example with a `TabLayout` you might want to observe and react to the Tab selection events. In this case the binding API returns a `Flow` of custom `TabLayoutSelectionEvent` type which contains the currently selected `Tab`:
+
+```kotlin
+tabLayout.tabSelectionEvents()
+    .filterIsInstance<TabLayoutSelectionEvent.TabSelected>() // only care about TabSelected events
+    .onEach { event ->
+        // sync selected tab title to some other UI element
+        selectedTabTitle.text = event.tab.text
+    }
+    .launchIn(uiScope)
+``` 
+
+### Eager Mode
+
+In some cases you might want the `Flow` to emit the **current** value immediately when the `Flow` is collected.
+
+For example a **Slider** might have a default `value` which was set in XML, and we want to bind the current value of the Slider to some other UI element as soon as the screen is launched without the value of the slider being changed by user.
+
+The binding APIs for this kind of widgets have an optional `emitImmediately: Boolean` parameter which controls whether to emit the current value immediately on flow collection:
+
+```kotlin
+slider.valueChanges(emitImmediately = true)
+    .onEach { value ->
+        // handle value
+    }
+    .launchIn(uiScope)
+```
+
+### Additional Samples
+
+All binding APIs are documented with **Example of usage**.
+
+All bindings are covered by **instrumented tests** which you may want to refer to.  
+
+## Roadmap
+
+Our goal is to provide most of the bindings provided by **RxBinding**, while shifting our focus to supporting more modern **AndroidX** APIs such as **ViewPager2** and the new components in **Material Components** as they become available.
+
+List of all bindings available:
+
+* [Platform bindings][flowbinding-android]
+* [AndroidX AppCompat bindings][flowbinding-appcompat]
+* [AndroidX Core bindings][flowbinding-core]
+* [AndroidX DrawerLayout bindings][flowbinding-drawerlayout]
+* [AndroidX Navigation Component bindings][flowbinding-navigation]
+* [AndroidX RecyclerView bindings][flowbinding-recyclerview]
+* [AndroidX SwipeRefreshLayout bindings][flowbinding-swiperefreshlayout]
+* [AndroidX ViewPager2 bindings][flowbinding-viewpager2]
+* [Material Components bindings][flowbinding-material]
+
+Please feel free to create an issue if you think a useful binding is missing or you want a new binding added to the library.
+
+## Credits
+
+This library is inspired by [RxBinding][rxbinding] which provides RxJava binding APIs for Android's UI widgets.
+
+Many thanks to RxBinding's author [Jake Wharton][jake] and its contributors.
 
 ## License
 
@@ -157,5 +179,15 @@ limitations under the License.
 [maven-central]: https://search.maven.org/search?q=g:io.github.reactivecircus.flowbinding
 [snap]: https://oss.sonatype.org/content/repositories/snapshots/
 [rxbinding]: https://github.com/JakeWharton/RxBinding
+[jake]: https://github.com/JakeWharton
 [flow]: https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/
 [kotlinx-coroutines]: https://github.com/Kotlin/kotlinx.coroutines
+[flowbinding-android]: flowbinding-android/
+[flowbinding-appcompat]: flowbinding-appcompat/
+[flowbinding-core]: flowbinding-core/
+[flowbinding-drawerlayout]: flowbinding-drawerlayout/
+[flowbinding-material]: flowbinding-material/
+[flowbinding-navigation]: flowbinding-navigation/
+[flowbinding-recyclerview]: flowbinding-recyclerview/
+[flowbinding-swiperefreshlayout]: flowbinding-swiperefreshlayout/
+[flowbinding-viewpager2]: flowbinding-viewpager2/
