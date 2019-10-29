@@ -69,9 +69,9 @@ findViewById<Button>(R.id.button)
 
 This `uiScope` in the example above is a `CoroutineScope` that defines the lifecycle of this `Flow`. The binding implementation will respect this scope by unregistering the callback / listener automatically when the scope is cancelled.
 
-In this context of Android lifecycle this means the `uiScope` passed in here should be a scope that's bounded to the `Lifecycle` of the view the widget lives in.
+In the context of Android lifecycle this means the `uiScope` passed in here should be a scope that's bound to the `Lifecycle` of the view the widget lives in.
 
-`lifecycle-runtime-ktx:2.2.0` introduced an extension property `LifecycleOwner.lifecycleScope: LifecycleCoroutineScope` which will be cancelled when the `Lifecycle` is destroyed.
+`androidx.lifecycle:lifecycle-runtime-ktx:2.2.0` introduced an extension property `LifecycleOwner.lifecycleScope: LifecycleCoroutineScope` which will be cancelled when the `Lifecycle` is destroyed.
 
 In an `Activity` it might look something like this:
 
