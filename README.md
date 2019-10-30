@@ -12,6 +12,9 @@ Kotlin Flow binding APIs for Android's platform and unbundled UI widgets, inspir
 
 **FlowBinding** offers an extensive set of extension functions that turn traditional callbacks / listeners on Android UI widgets into the `Flow` type.
 
+## Article
+[Binding Android UI with Kotlin Flow][article]
+
 ## Download
 
 Dependencies are hosted on [Maven Central][maven-central].
@@ -175,7 +178,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
-
+[article]: https://dev.to/ychescale9/binding-android-ui-with-kotlin-flow-22ok
 [maven-central]: https://search.maven.org/search?q=g:io.github.reactivecircus.flowbinding
 [snap]: https://oss.sonatype.org/content/repositories/snapshots/
 [rxbinding]: https://github.com/JakeWharton/RxBinding
