@@ -38,6 +38,9 @@ fun MaterialButton.checkedChanges(): Flow<Boolean>
 // MaterialButtonToggleGroup
 fun MaterialButtonToggleGroup.buttonCheckedChanges(): Flow<MaterialButtonCheckedChangedEvent>
 
+// MaterialCardView
+fun MaterialCardView.checkedChanges(emitImmediately: Boolean = false): Flow<Boolean>
+
 // MaterialDatePicker
 fun <S> MaterialDatePicker<S>.cancels(): Flow<Unit>
 fun <S> MaterialDatePicker<S>.dismisses(): Flow<Unit>
