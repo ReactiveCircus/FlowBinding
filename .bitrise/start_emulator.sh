@@ -13,7 +13,7 @@ echo "y" | sdkmanager --update
 
 echo no | avdmanager create avd --force --name "api-${API_LEVEL}" --abi "google_apis/x86" --package "system-images;android-${API_LEVEL};google_apis;x86" --device "Nexus 5X"
 
-"$ANDROID_HOME"/emulator/emulator-headless -avd "api-${API_LEVEL}" -gpu swiftshader -no-snapshot -noaudio -no-boot-anim -camera-back none > /dev/null 2>&1 &
+"$ANDROID_HOME"/emulator/emulator -avd "api-${API_LEVEL}" -gpu swiftshader -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none > /dev/null 2>&1 &
 
 adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 5; done; input keyevent 82'
 
