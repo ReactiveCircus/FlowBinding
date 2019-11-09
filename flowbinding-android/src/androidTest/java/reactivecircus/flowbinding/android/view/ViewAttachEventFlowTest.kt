@@ -1,9 +1,7 @@
 package reactivecircus.flowbinding.android.view
 
-import android.content.Context
 import android.view.View
 import android.view.ViewGroup
-import androidx.test.core.app.ApplicationProvider
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import kotlinx.coroutines.flow.filterIsInstance
@@ -18,15 +16,13 @@ import reactivecircus.flowbinding.testing.recordWith
 @LargeTest
 class ViewAttachEventFlowTest {
 
-    private val appContext = ApplicationProvider.getApplicationContext<Context>().applicationContext
-
     @Test
     fun viewAttachEvents_attached() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<ViewAttachEvent.Attached>(testScope)
             val viewGroup = getViewById<ViewGroup>(R.id.parentView)
-            val childView1 = View(appContext)
-            val childView2 = View(appContext)
+            val childView1 = View(getRootView().context)
+            val childView2 = View(getRootView().context)
             childView1.attachEvents()
                 .filterIsInstance<ViewAttachEvent.Attached>()
                 .recordWith(recorder)
@@ -51,8 +47,8 @@ class ViewAttachEventFlowTest {
     fun viewAttachEvents_detached() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<ViewAttachEvent.Detached>(testScope)
-            val childView1 = View(appContext)
-            val childView2 = View(appContext)
+            val childView1 = View(getRootView().context)
+            val childView2 = View(getRootView().context)
             val viewGroup = getViewById<ViewGroup>(R.id.parentView).apply {
                 runOnUiThread {
                     addView(childView1)

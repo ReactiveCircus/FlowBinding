@@ -1,8 +1,6 @@
 package reactivecircus.flowbinding.android.view
 
-import android.content.Context
 import android.view.View
-import androidx.test.core.app.ApplicationProvider
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import org.amshove.kluent.shouldEqual
@@ -15,13 +13,11 @@ import reactivecircus.flowbinding.testing.recordWith
 @LargeTest
 class ViewLayoutChangeEventFlowTest {
 
-    private val appContext = ApplicationProvider.getApplicationContext<Context>().applicationContext
-
     @Test
     fun viewLayoutChangeEvents() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<LayoutChangeEvent>(testScope)
-            val view = View(appContext)
+            val view = View(getRootView().context)
 
             view.layoutChangeEvents().recordWith(recorder)
 
