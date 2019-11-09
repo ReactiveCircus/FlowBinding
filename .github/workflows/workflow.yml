@@ -1,0 +1,35 @@
+name: Instrumented test workflow
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+jobs:
+  instrumented-tests:
+    name: Run tests
+    runs-on: macOS-latest
+    strategy:
+      matrix:
+        api-level: [21, 29]
+        arch: [x86, x86_64]
+        exclude:
+          - api-level: 21
+            arch: x86_64
+          - api-level: 29
+            arch: x86
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+      - uses: reactivecircus/android-emulator-runner@v1
+        with:
+          api-level: ${{ matrix.api-level }}
+          arch: ${{ matrix.arch }}
+          script: ./gradlew connectedCheck
+        env:
+          JAVA_TOOL_OPTIONS: -Xmx3g
+          GRADLE_OPTS: -Dorg.gradle.daemon=false -Dkotlin.incremental=false
