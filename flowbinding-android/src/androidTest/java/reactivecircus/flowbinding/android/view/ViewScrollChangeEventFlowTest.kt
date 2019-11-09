@@ -3,9 +3,8 @@ package reactivecircus.flowbinding.android.view
 import android.os.Build
 import android.view.View
 import androidx.test.filters.LargeTest
+import androidx.test.filters.SdkSuppress
 import org.amshove.kluent.shouldEqual
-import org.junit.Assume.assumeTrue
-import org.junit.Before
 import org.junit.Test
 import reactivecircus.flowbinding.android.fixtures.view.AndroidViewFragment
 import reactivecircus.flowbinding.testing.FlowRecorder
@@ -13,15 +12,8 @@ import reactivecircus.flowbinding.testing.launchTest
 import reactivecircus.flowbinding.testing.recordWith
 
 @LargeTest
+@SdkSuppress(minSdkVersion = Build.VERSION_CODES.M)
 class ViewScrollChangeEventFlowTest {
-
-    @Before
-    fun setUp() {
-        assumeTrue(
-            "Requires API level 23.",
-            Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
-        )
-    }
 
     @Test
     fun viewScrollChangeEvents() {
