@@ -1,7 +1,7 @@
 # FlowBinding
 
 [![CircleCI](https://circleci.com/gh/ReactiveCircus/FlowBinding.svg?style=svg)](https://circleci.com/gh/ReactiveCircus/FlowBinding)
-[![Build Status](https://app.bitrise.io/app/6ff0212a079f16f3/status.svg?token=dtE8nQVs12zS4l61-fJfFw&branch=master)](https://app.bitrise.io/app/6ff0212a079f16f3)
+[![GitHub Actions status](https://github.com/ReactiveCircus/FlowBinding/workflows/Instrumented%20test%20workflow/badge.svg)](https://github.com/ReactiveCircus/FlowBinding/actions)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.reactivecircus.flowbinding/flowbinding-android/badge.svg)](https://search.maven.org/search?q=g:io.github.reactivecircus.flowbinding)
 [![Android API](https://img.shields.io/badge/API-21%2B-blue.svg?label=API&maxAge=300)](https://www.android.com/history/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
