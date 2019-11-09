@@ -1,11 +1,9 @@
 package reactivecircus.flowbinding.android.widget
 
-import android.content.Context
 import android.view.inputmethod.EditorInfo.IME_ACTION_DONE
 import android.view.inputmethod.EditorInfo.IME_ACTION_GO
 import android.view.inputmethod.EditorInfo.IME_ACTION_NEXT
 import android.widget.TextView
-import androidx.test.core.app.ApplicationProvider
 import androidx.test.filters.LargeTest
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
@@ -17,13 +15,11 @@ import reactivecircus.flowbinding.testing.recordWith
 @LargeTest
 class TextViewEditorActionEventFlowTest {
 
-    private val appContext = ApplicationProvider.getApplicationContext<Context>().applicationContext
-
     @Test
     fun textViewEditorActionChangeEvents() {
         launchTest<AndroidWidgetFragment> {
             val recorder = FlowRecorder<EditorActionEvent>(testScope)
-            val textView = TextView(appContext)
+            val textView = TextView(getRootView().context)
             textView.editorActionEvents().recordWith(recorder)
 
             recorder.assertNoMoreValues()
@@ -53,7 +49,7 @@ class TextViewEditorActionEventFlowTest {
     fun textViewEditorActionChangeEvents_notHandled() {
         launchTest<AndroidWidgetFragment> {
             val recorder = FlowRecorder<EditorActionEvent>(testScope)
-            val textView = TextView(appContext)
+            val textView = TextView(getRootView().context)
             textView.editorActionEvents { false }.recordWith(recorder)
 
             recorder.assertNoMoreValues()

@@ -1,7 +1,5 @@
 package reactivecircus.flowbinding.android.view
 
-import android.content.Context
-import androidx.test.core.app.ApplicationProvider
 import androidx.test.filters.LargeTest
 import kotlinx.coroutines.flow.filterIsInstance
 import org.amshove.kluent.shouldEqual
@@ -15,13 +13,11 @@ import reactivecircus.flowbinding.testing.recordWith
 @LargeTest
 class MenuItemActionViewEventFlowTest {
 
-    private val appContext = ApplicationProvider.getApplicationContext<Context>().applicationContext
-
     @Test
     fun menuItemActionViewEvents_expand() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<MenuItemActionViewEvent.Expand>(testScope)
-            val menuItem = TestMenuItem(appContext)
+            val menuItem = TestMenuItem(getRootView().context)
             menuItem.actionViewEvents()
                 .filterIsInstance<MenuItemActionViewEvent.Expand>()
                 .recordWith(recorder)
@@ -44,7 +40,7 @@ class MenuItemActionViewEventFlowTest {
     fun menuItemActionViewEvents_expand_notHandled() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<MenuItemActionViewEvent.Expand>(testScope)
-            val menuItem = TestMenuItem(appContext)
+            val menuItem = TestMenuItem(getRootView().context)
             menuItem.actionViewEvents { false }
                 .filterIsInstance<MenuItemActionViewEvent.Expand>()
                 .recordWith(recorder)
@@ -66,7 +62,7 @@ class MenuItemActionViewEventFlowTest {
     fun menuItemActionViewEvents_collapse() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<MenuItemActionViewEvent.Collapse>(testScope)
-            val menuItem = TestMenuItem(appContext)
+            val menuItem = TestMenuItem(getRootView().context)
             menuItem.actionViewEvents()
                 .filterIsInstance<MenuItemActionViewEvent.Collapse>()
                 .recordWith(recorder)
@@ -90,7 +86,7 @@ class MenuItemActionViewEventFlowTest {
     fun menuItemActionViewEvents_collapse_notHandled() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<MenuItemActionViewEvent.Collapse>(testScope)
-            val menuItem = TestMenuItem(appContext)
+            val menuItem = TestMenuItem(getRootView().context)
             menuItem.actionViewEvents { false }
                 .filterIsInstance<MenuItemActionViewEvent.Collapse>()
                 .recordWith(recorder)

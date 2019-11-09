@@ -1,10 +1,8 @@
 package reactivecircus.flowbinding.recyclerview
 
-import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.test.core.app.ApplicationProvider
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import kotlinx.coroutines.flow.filterIsInstance
@@ -19,14 +17,12 @@ import reactivecircus.flowbinding.testing.recordWith
 @LargeTest
 class RecyclerViewChildAttachStateChangeEventFlowTest {
 
-    private val appContext = ApplicationProvider.getApplicationContext<Context>().applicationContext
-
     @Test
     fun recyclerViewChildAttachStateChangeEvents_attached() {
         launchTest<RecyclerViewFragment> {
             val recorder = FlowRecorder<RecyclerViewChildAttachStateChangeEvent>(testScope)
             val recyclerView = getViewById<RecyclerView>(R.id.recyclerView)
-            val childView = View(appContext)
+            val childView = View(getRootView().context)
             recyclerView.childAttachStateChangeEvents()
                 .filterIsInstance<RecyclerViewChildAttachStateChangeEvent.Attached>()
                 .recordWith(recorder)
@@ -55,7 +51,7 @@ class RecyclerViewChildAttachStateChangeEventFlowTest {
     fun recyclerViewChildAttachStateChangeEvents_detached() {
         launchTest<RecyclerViewFragment> {
             val recorder = FlowRecorder<RecyclerViewChildAttachStateChangeEvent>(testScope)
-            val childView = View(appContext)
+            val childView = View(getRootView().context)
             val simpleAdapter = SimpleAdapter(childView)
             val recyclerView = getViewById<RecyclerView>(R.id.recyclerView).apply {
                 runOnUiThread {

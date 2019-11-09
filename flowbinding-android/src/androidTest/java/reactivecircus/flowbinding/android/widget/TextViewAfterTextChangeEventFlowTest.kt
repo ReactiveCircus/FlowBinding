@@ -1,8 +1,6 @@
 package reactivecircus.flowbinding.android.widget
 
-import android.content.Context
 import android.widget.TextView
-import androidx.test.core.app.ApplicationProvider
 import androidx.test.filters.LargeTest
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
@@ -14,13 +12,11 @@ import reactivecircus.flowbinding.testing.recordWith
 @LargeTest
 class TextViewAfterTextChangeEventFlowTest {
 
-    private val appContext = ApplicationProvider.getApplicationContext<Context>().applicationContext
-
     @Test
     fun textViewAfterTextChangeEvents() {
         launchTest<AndroidWidgetFragment> {
             val recorder = FlowRecorder<AfterTextChangeEvent>(testScope)
-            val textView = TextView(appContext)
+            val textView = TextView(getRootView().context)
             textView.afterTextChanges().recordWith(recorder)
 
             recorder.assertNoMoreValues()
@@ -48,7 +44,7 @@ class TextViewAfterTextChangeEventFlowTest {
     fun textViewAfterTextChangeEvents_emitImmediately() {
         launchTest<AndroidWidgetFragment> {
             val recorder = FlowRecorder<AfterTextChangeEvent>(testScope)
-            val textView = TextView(appContext)
+            val textView = TextView(getRootView().context)
             textView.afterTextChanges(emitImmediately = true).recordWith(recorder)
 
             val initialEvent = recorder.takeValue()

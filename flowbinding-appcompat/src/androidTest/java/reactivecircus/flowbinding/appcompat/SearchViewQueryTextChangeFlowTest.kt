@@ -5,6 +5,7 @@ import androidx.test.filters.LargeTest
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 import reactivecircus.flowbinding.appcompat.fixtures.AppCompatFragment
+import reactivecircus.flowbinding.appcompat.test.R
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest
 import reactivecircus.flowbinding.testing.recordWith
@@ -16,7 +17,7 @@ class SearchViewQueryTextChangeFlowTest {
     fun searchViewQueryTextChanges() {
         launchTest<AppCompatFragment> {
             val recorder = FlowRecorder<CharSequence>(testScope)
-            val searchView = SearchView(getRootView().context)
+            val searchView = getViewById<SearchView>(R.id.searchView)
             searchView.queryTextChanges().recordWith(recorder)
 
             recorder.assertNoMoreValues()
@@ -40,7 +41,7 @@ class SearchViewQueryTextChangeFlowTest {
     fun searchViewQueryTextChanges_emitImmediately() {
         launchTest<AppCompatFragment> {
             val recorder = FlowRecorder<CharSequence>(testScope)
-            val searchView = SearchView(getRootView().context).apply {
+            val searchView = getViewById<SearchView>(R.id.searchView).apply {
                 setQuery("ABC", false)
             }
             searchView.queryTextChanges(emitImmediately = true).recordWith(recorder)

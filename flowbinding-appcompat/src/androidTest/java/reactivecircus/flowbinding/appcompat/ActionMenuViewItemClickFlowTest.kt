@@ -1,9 +1,7 @@
 package reactivecircus.flowbinding.appcompat
 
-import android.content.Context
 import android.view.MenuItem
 import androidx.appcompat.widget.ActionMenuView
-import androidx.test.core.app.ApplicationProvider
 import androidx.test.filters.LargeTest
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
@@ -15,13 +13,11 @@ import reactivecircus.flowbinding.testing.recordWith
 @LargeTest
 class ActionMenuViewItemClickFlowTest {
 
-    private val appContext = ApplicationProvider.getApplicationContext<Context>().applicationContext
-
     @Test
     fun actionMenuViewItemClicks() {
         launchTest<AppCompatFragment> {
             val recorder = FlowRecorder<MenuItem>(testScope)
-            val actionMenuView = ActionMenuView(appContext)
+            val actionMenuView = ActionMenuView(getRootView().context)
             val menu = actionMenuView.menu
             val item1 = menu.add(0, 1, 0, "menu 1")
             val item2 = menu.add(0, 2, 0, "menu 2")

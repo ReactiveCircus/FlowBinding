@@ -1,9 +1,7 @@
 package reactivecircus.flowbinding.android.view
 
-import android.content.Context
 import android.view.MotionEvent
 import android.view.View
-import androidx.test.core.app.ApplicationProvider
 import androidx.test.filters.LargeTest
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
@@ -16,13 +14,11 @@ import reactivecircus.flowbinding.testing.recordWith
 @LargeTest
 class ViewTouchFlowTest {
 
-    private val appContext = ApplicationProvider.getApplicationContext<Context>().applicationContext
-
     @Test
     fun viewTouches() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<MotionEvent>(testScope)
-            val view = View(appContext)
+            val view = View(getRootView().context)
             view.touches().recordWith(recorder)
 
             recorder.assertNoMoreValues()
@@ -44,7 +40,7 @@ class ViewTouchFlowTest {
     fun viewTouches_notHandled() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<MotionEvent>(testScope)
-            val view = View(appContext)
+            val view = View(getRootView().context)
             view.touches { false }
                 .recordWith(recorder)
 
