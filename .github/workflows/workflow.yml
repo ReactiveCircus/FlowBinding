@@ -12,16 +12,13 @@ jobs:
   instrumented-tests:
     name: Run tests
     runs-on: macOS-latest
-    strategy:
-      matrix:
-        api-level: [21, 23]
     steps:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1
       - uses: reactivecircus/android-emulator-runner@v1
         with:
-          api-level: ${{ matrix.api-level }}
+          api-level: 23
           script: ./gradlew connectedCheck
         env:
           CI: true
