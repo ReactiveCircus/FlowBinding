@@ -13,15 +13,8 @@ jobs:
     name: Run tests
     runs-on: macOS-latest
     strategy:
-      fail-fast: false
       matrix:
-        api-level: [23, 29]
-        target: [default, google_apis]
-        exclude:
-          - api-level: 23
-            target: google_apis
-          - api-level: 29
-            target: default
+        api-level: [21, 23]
     steps:
       - uses: actions/checkout@v1
         with:
@@ -29,8 +22,6 @@ jobs:
       - uses: reactivecircus/android-emulator-runner@v1
         with:
           api-level: ${{ matrix.api-level }}
-          target: ${{ matrix.target }}
-          arch: x86_64
           script: ./gradlew connectedCheck
         env:
           CI: true
