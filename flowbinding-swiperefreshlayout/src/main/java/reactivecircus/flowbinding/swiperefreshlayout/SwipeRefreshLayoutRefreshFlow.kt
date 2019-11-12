@@ -34,5 +34,5 @@ fun SwipeRefreshLayout.refreshes(): Flow<Unit> = callbackFlow {
         safeOffer(Unit)
     }
     setOnRefreshListener(listener)
-    awaitClose { setOnRefreshListener(listener) }
+    awaitClose { setOnRefreshListener(null) }
 }.conflate()
