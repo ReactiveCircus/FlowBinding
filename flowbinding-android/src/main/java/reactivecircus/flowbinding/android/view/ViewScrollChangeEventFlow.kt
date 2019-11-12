@@ -47,7 +47,7 @@ fun View.scrollChangeEvents(): Flow<ScrollChangeEvent> = callbackFlow {
         )
     }
     setOnScrollChangeListener(listener)
-    awaitClose { setOnScrollChangeListener(listener) }
+    awaitClose { setOnScrollChangeListener(null) }
 }.conflate()
 
 class ScrollChangeEvent(

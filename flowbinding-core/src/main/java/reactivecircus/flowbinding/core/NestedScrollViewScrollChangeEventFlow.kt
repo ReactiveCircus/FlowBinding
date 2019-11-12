@@ -45,7 +45,7 @@ fun NestedScrollView.scrollChangeEvents(): Flow<ScrollChangeEvent> = callbackFlo
         )
     }
     setOnScrollChangeListener(listener)
-    awaitClose { setOnScrollChangeListener(listener) }
+    awaitClose { setOnScrollChangeListener(null as NestedScrollView.OnScrollChangeListener?) }
 }.conflate()
 
 class ScrollChangeEvent(

@@ -35,7 +35,7 @@ fun TextInputLayout.startIconClicks(): Flow<Unit> = callbackFlow {
         safeOffer(Unit)
     }
     setStartIconOnClickListener(listener)
-    awaitClose { setStartIconOnClickListener(listener) }
+    awaitClose { setStartIconOnClickListener(null) }
 }.conflate()
 
 /**
@@ -62,5 +62,5 @@ fun TextInputLayout.endIconClicks(): Flow<Unit> = callbackFlow {
         safeOffer(Unit)
     }
     setEndIconOnClickListener(listener)
-    awaitClose { setEndIconOnClickListener(listener) }
+    awaitClose { setEndIconOnClickListener(null) }
 }.conflate()

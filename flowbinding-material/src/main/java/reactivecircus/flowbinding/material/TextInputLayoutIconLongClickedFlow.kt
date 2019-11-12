@@ -35,7 +35,7 @@ fun TextInputLayout.startIconLongClicks(): Flow<Unit> = callbackFlow {
         safeOffer(Unit)
     }
     setStartIconOnLongClickListener(listener)
-    awaitClose { setStartIconOnLongClickListener(listener) }
+    awaitClose { setStartIconOnLongClickListener(null) }
 }.conflate()
 
 /**
@@ -62,5 +62,5 @@ fun TextInputLayout.endIconLongClicks(): Flow<Unit> = callbackFlow {
         safeOffer(Unit)
     }
     setEndIconOnLongClickListener(listener)
-    awaitClose { setEndIconOnLongClickListener(listener) }
+    awaitClose { setEndIconOnLongClickListener(null) }
 }.conflate()
