@@ -1,5 +1,16 @@
 # Change Log
 
+## Version 0.6.0
+
+_2019-11-14_
+
+* New: Added new binding `fun MaterialCardView.checkedChanges(emitImmediately: Boolean = false): Flow<Boolean>` 
+* Enhancement: Migrated from **bitrise.io** to a [custom GitHub Action](https://github.com/ReactiveCircus/android-emulator-runner) for running instrumented tests on macOS VMs. Tests now take **~21 mins** compared **30+ mins** with bitrise.
+* Fix: Added `@SdkSuppress` to `ViewScrollChangeEventFlowTest` which requires API 23.
+* Enhancement: Updated Gradle, AGP and AndroidX.
+* Fix: Added a bunch of missing event listener removals ([PR](https://github.com/ReactiveCircus/FlowBinding/pull/52)). Thanks @hoc081098 for contribution!
+* Enhancement: Added a custom lint check `MissingListenerRemoval` for detecting missing listener removals in `awaitClose` within a `callbackFlow` implementation.
+
 ## Version 0.5.0
 
 _2019-10-28_
