@@ -1,0 +1,20 @@
+plugins {
+    id 'flowbinding-plugin'
+    id 'kotlin'
+}
+
+dependencies {
+    compileOnly "com.android.tools.lint:lint-api:${versions.androidLint}"
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"
+
+    testImplementation "junit:junit:${versions.junit}"
+    testImplementation "com.android.tools.lint:lint:${versions.androidLint}"
+    testImplementation "com.android.tools.lint:lint-tests:${versions.androidLint}"
+    testImplementation "com.android.tools:testutils:${versions.androidLint}"
+}
+
+jar {
+    manifest {
+        attributes("Lint-Registry-v2": "reactivecircus.flowbinding.lint.FlowBindingIssueRegistry")
+    }
+}

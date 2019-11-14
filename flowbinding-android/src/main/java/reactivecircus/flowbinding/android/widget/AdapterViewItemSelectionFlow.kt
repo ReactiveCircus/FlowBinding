@@ -47,7 +47,7 @@ fun <T : Adapter> AdapterView<T>.itemSelections(emitImmediately: Boolean = false
             }
         }
         onItemSelectedListener = listener
-        awaitClose { onItemSelectedListener = listener }
+        awaitClose { onItemSelectedListener = null }
     }
         .startWithCurrentValue(emitImmediately) { selectedItemPosition }
         .conflate()

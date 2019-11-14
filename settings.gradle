@@ -30,6 +30,8 @@ includeProject(":flowbinding-viewpager2:fixtures", "flowbinding-viewpager2/fixtu
 
 include ":testing-infra"
 
+include ':lint-rules'
+
 /**
  * Calling includeProject(name, filePath) is shorthand for:
  *

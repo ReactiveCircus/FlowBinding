@@ -60,7 +60,7 @@ fun <T : Adapter> AdapterView<T>.selectionEvents(emitImmediately: Boolean = fals
             }
         }
         onItemSelectedListener = listener
-        awaitClose { onItemSelectedListener = listener }
+        awaitClose { onItemSelectedListener = null }
     }
         .startWithCurrentValue(emitImmediately) {
             val selectedPosition = selectedItemPosition

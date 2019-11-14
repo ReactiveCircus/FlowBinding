@@ -19,6 +19,8 @@ dependencies {
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:${versions.androidx.swipeRefreshLayout}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinx.coroutines}"
 
+    lintChecks project(":lint-rules")
+
     androidTestImplementation project(':testing-infra')
     androidTestImplementation project(':flowbinding-swiperefreshlayout:fixtures')
 }

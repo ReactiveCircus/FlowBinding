@@ -19,6 +19,8 @@ dependencies {
     implementation "androidx.appcompat:appcompat:${versions.androidx.appCompat}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinx.coroutines}"
 
+    lintChecks project(":lint-rules")
+
     androidTestImplementation project(':testing-infra')
     androidTestImplementation project(':flowbinding-appcompat:fixtures')
 }
