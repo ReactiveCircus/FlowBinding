@@ -2,6 +2,7 @@ package reactivecircus.flowbinding.material
 
 import android.view.MotionEvent
 import androidx.test.filters.LargeTest
+import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import com.google.android.material.slider.Slider
 import org.amshove.kluent.shouldEqual
@@ -51,17 +52,23 @@ class SliderValueChangeFlowTest {
 
             recorder.assertNoMoreValues()
 
-            slider.value = 0.5f
+            runOnUiThread {
+                slider.value = 0.5f
+            }
             recorder.takeValue() shouldEqual 0.5f
             recorder.assertNoMoreValues()
 
-            slider.value = 0.75f
+            runOnUiThread {
+                slider.value = 0.75f
+            }
             recorder.takeValue() shouldEqual 0.75f
             recorder.assertNoMoreValues()
 
             cancelTestScope()
 
-            slider.value = 1f
+            runOnUiThread {
+                slider.value = 1f
+            }
             recorder.assertNoMoreValues()
         }
     }
@@ -76,13 +83,17 @@ class SliderValueChangeFlowTest {
             recorder.takeValue() shouldEqual 0f
             recorder.assertNoMoreValues()
 
-            slider.value = 0.5f
+            runOnUiThread {
+                slider.value = 0.5f
+            }
             recorder.takeValue() shouldEqual 0.5f
             recorder.assertNoMoreValues()
 
             cancelTestScope()
 
-            slider.value = 1f
+            runOnUiThread {
+                slider.value = 1f
+            }
             recorder.assertNoMoreValues()
         }
     }
