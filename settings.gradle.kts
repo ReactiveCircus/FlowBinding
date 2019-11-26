@@ -1,50 +1,39 @@
 rootProject.name = "FlowBinding"
-include ":flowbinding-common"
 
-include ":flowbinding-android"
+include(":flowbinding-common")
+
+include(":flowbinding-android")
 includeProject(":flowbinding-android:fixtures", "flowbinding-android/fixtures")
 
-include ":flowbinding-appcompat"
+include(":flowbinding-appcompat")
 includeProject(":flowbinding-appcompat:fixtures", "flowbinding-appcompat/fixtures")
 
-include ":flowbinding-core"
+include(":flowbinding-core")
 includeProject(":flowbinding-core:fixtures", "flowbinding-core/fixtures")
 
-include ":flowbinding-drawerlayout"
+include(":flowbinding-drawerlayout")
 includeProject(":flowbinding-drawerlayout:fixtures", "flowbinding-drawerlayout/fixtures")
 
-include ":flowbinding-material"
+include(":flowbinding-material")
 includeProject(":flowbinding-material:fixtures", "flowbinding-material/fixtures")
 
-include ":flowbinding-navigation"
+include(":flowbinding-navigation")
 includeProject(":flowbinding-navigation:fixtures", "flowbinding-navigation/fixtures")
 
-include ":flowbinding-recyclerview"
+include(":flowbinding-recyclerview")
 includeProject(":flowbinding-recyclerview:fixtures", "flowbinding-recyclerview/fixtures")
 
-include ":flowbinding-swiperefreshlayout"
+include(":flowbinding-swiperefreshlayout")
 includeProject(":flowbinding-swiperefreshlayout:fixtures", "flowbinding-swiperefreshlayout/fixtures")
 
-include ":flowbinding-viewpager2"
+include(":flowbinding-viewpager2")
 includeProject(":flowbinding-viewpager2:fixtures", "flowbinding-viewpager2/fixtures")
 
-include ":testing-infra"
+include(":testing-infra")
 
-include ':lint-rules'
+include(":lint-rules")
 
-/**
- * Calling includeProject(name, filePath) is shorthand for:
- *
- * include(name)
- * project(name).projectDir = new File(filePath)
- */
-def includeProject(name, filePath) {
-    settings.include(name)
-    def file
-    if (filePath instanceof String) {
-        file = new File(filePath)
-    } else {
-        file = filePath
-    }
-    project(name).projectDir = file
+fun includeProject(name: String, filePath: String) {
+    include(name)
+    project(name).projectDir = File(filePath)
 }
