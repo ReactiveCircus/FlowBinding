@@ -11,7 +11,7 @@ import org.gradle.api.tasks.testing.Test
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.dsl.KotlinCompile
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile
-import java.io.File
+import java.net.URI
 
 /**
  * Configure root project.
@@ -82,6 +82,8 @@ fun Project.configureForAllProjects() {
         mavenCentral()
         google()
         jcenter()
+        // TODO remove once AGP switches to kotlin 1.3.60
+        maven { it.url = URI("https://dl.bintray.com/kotlin/kotlin-eap") }
     }
 
     tasks.withType(JavaCompile::class.java).configureEach { task ->
