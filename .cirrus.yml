@@ -3,13 +3,13 @@ task:
   only_if: $CIRRUS_BRANCH == "master" || CIRRUS_PR != ""
   env:
     matrix:
-      - API_LEVEL: 21
-      - API_LEVEL: 22
-      - API_LEVEL: 23
-      - API_LEVEL: 24
-      - API_LEVEL: 25
-      - API_LEVEL: 26
-      - API_LEVEL: 27
+#      - API_LEVEL: 21
+#      - API_LEVEL: 22
+#      - API_LEVEL: 23
+#      - API_LEVEL: 24
+#      - API_LEVEL: 25
+#      - API_LEVEL: 26
+#      - API_LEVEL: 27
       - API_LEVEL: 28
     JAVA_TOOL_OPTIONS: -Xmx6g
     GRADLE_OPTS: -Dorg.gradle.daemon=false -Dorg.gradle.workers.max=4 -Dkotlin.incremental=false -Dkotlin.compiler.execution.strategy=in-process
@@ -20,21 +20,22 @@ task:
     memory: 24G
   gradle_cache:
     folder: ~/.gradle/caches
-#    fingerprint_script: cat buildSrc/dependencies.gradle && cat gradle/wrapper/gradle-wrapper.properties
-  create_device_script:
-    echo no | avdmanager create avd --force --name "api-${API_LEVEL}" --abi "${TARGET}/${ARCH}" --package "system-images;android-${API_LEVEL};${TARGET};${ARCH}"
-  start_emulator_background_script:
-    $ANDROID_HOME/emulator/emulator -avd "api-${API_LEVEL}" -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none
-  wait_for_emulator_script:
-    adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 3; done; input keyevent 82'
-  disable_animations_script:
-    - adb shell settings put global window_animation_scale 0.0
-    - adb shell settings put global transition_animation_scale 0.0
-    - adb shell settings put global animator_duration_scale 0.0
+    fingerprint_script: cat buildSrc/dependencies.gradle && cat gradle/wrapper/gradle-wrapper.properties
+#  create_device_script:
+#    echo no | avdmanager create avd --force --name "api-${API_LEVEL}" --abi "${TARGET}/${ARCH}" --package "system-images;android-${API_LEVEL};${TARGET};${ARCH}"
+#  start_emulator_background_script:
+#    $ANDROID_HOME/emulator/emulator -avd "api-${API_LEVEL}" -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none
+#  wait_for_emulator_script:
+#    adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 3; done; input keyevent 82'
+#  disable_animations_script:
+#    - adb shell settings put global window_animation_scale 0.0
+#    - adb shell settings put global transition_animation_scale 0.0
+#    - adb shell settings put global animator_duration_scale 0.0
   run_instrumented_tests_script:
-    ./gradlew connectedCheck
-#  cleanup_script:
-#    - rm -rf ~/.gradle/caches/$GRADLE_VERSION/
-#    - rm -rf ~/.gradle/caches/transforms-1
-#    - rm -rf ~/.gradle/caches/journal-1
-#    - find ~/.gradle/caches/ -name "*.lock" -type f -delete
+#    ./gradlew connectedCheck
+    ./gradlew help
+  cleanup_script:
+    - rm -rf ~/.gradle/caches/~/.gradle/caches/[0-9].*
+    - rm -rf ~/.gradle/caches/transforms-1
+    - rm -rf ~/.gradle/caches/journal-1
+    - find ~/.gradle/caches/ -name "*.lock" -type f -delete
