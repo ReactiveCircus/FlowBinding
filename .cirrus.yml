@@ -1,6 +1,6 @@
 task:
   name: Run Android Instrumented Tests
-  only_if: $CIRRUS_BRANCH == 'master' || CIRRUS_PR != ""
+  only_if: $CIRRUS_BRANCH == "master" || CIRRUS_PR != ""
   env:
     API_LEVEL: 29
     JAVA_TOOL_OPTIONS: -Xmx8g
@@ -11,7 +11,7 @@ task:
     cpu: 8
     memory: 24G
   create_device_script:
-    echo no | $ANDROID_HOME/tools/bin/avdmanager create avd --force --name "api-${API_LEVEL}" --abi "google_apis/x86_64" --package "system-images;android-${API_LEVEL};google_apis;x86_64"
+    echo no | avdmanager create avd --force --name "api-${API_LEVEL}" --abi "google_apis/x86_64" --package "system-images;android-${API_LEVEL};google_apis;x86_64"
   start_emulator_background_script:
     $ANDROID_HOME/emulator/emulator -avd "api-${API_LEVEL}" -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none
   wait_for_emulator_script:
