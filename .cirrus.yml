@@ -1,0 +1,24 @@
+task:
+  name: Run Android Instrumented Tests
+  only_if: $CIRRUS_BRANCH == 'master' || $CIRRUS_BRANCH =~ 'pull/.*'
+  env:
+    API_LEVEL: 29
+    JAVA_TOOL_OPTIONS: -Xmx8g
+    GRADLE_OPTS: -Dorg.gradle.daemon=false -Dorg.gradle.workers.max=4 -Dkotlin.incremental=false -Dkotlin.compiler.execution.strategy=in-process
+  container:
+    image: reactivecircus/android-emulator-${API_LEVEL}:latest
+    kvm: true
+    cpu: 8
+    memory: 24G
+  create_device_script:
+    echo no | avdmanager create avd --force --name "api-${API_LEVEL}" --abi "google_apis/x86_64" --package "system-images;android-${API_LEVEL};google_apis;x86_64"
+  start_emulator_background_script:
+    $ANDROID_HOME/emulator/emulator -avd "api-${API_LEVEL}" -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none
+  wait_for_emulator_script:
+    adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 3; done; input keyevent 82'
+  disable_animations_script:
+    - adb shell settings put global window_animation_scale 0.0
+    - adb shell settings put global transition_animation_scale 0.0
+    - adb shell settings put global animator_duration_scale 0.0
+  run_instrumented_tests_script:
+    ./gradlew connectedCheck
