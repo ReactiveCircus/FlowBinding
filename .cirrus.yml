@@ -20,7 +20,7 @@ task:
     memory: 24G
   gradle_cache:
     folder: ~/.gradle/caches
-    fingerprint_script: cat buildSrc/dependencies.gradle && cat gradle/wrapper/gradle-wrapper.properties
+#    fingerprint_script: cat buildSrc/dependencies.gradle && cat gradle/wrapper/gradle-wrapper.properties
   create_device_script:
     echo no | avdmanager create avd --force --name "api-${API_LEVEL}" --abi "${TARGET}/${ARCH}" --package "system-images;android-${API_LEVEL};${TARGET};${ARCH}"
   start_emulator_background_script:
