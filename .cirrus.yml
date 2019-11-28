@@ -1,6 +1,6 @@
 task:
   name: Run Android Instrumented Tests
-  only_if: $CIRRUS_BRANCH == 'master' || CIRRUS_BASE_BRANCH == 'master'
+  only_if: $CIRRUS_BRANCH == 'master' || CIRRUS_PR != ""
   env:
     API_LEVEL: 29
     JAVA_TOOL_OPTIONS: -Xmx8g
