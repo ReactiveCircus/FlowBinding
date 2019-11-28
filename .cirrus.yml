@@ -3,7 +3,7 @@ task:
   only_if: $CIRRUS_BRANCH == "master" || CIRRUS_PR != ""
   env:
     matrix:
-      - API_LEVEL: 21
+#      - API_LEVEL: 21
       - API_LEVEL: 22
       - API_LEVEL: 23
       - API_LEVEL: 24
@@ -12,7 +12,7 @@ task:
       - API_LEVEL: 27
       - API_LEVEL: 28
       - API_LEVEL: 29
-    JAVA_TOOL_OPTIONS: -Xmx4g
+    JAVA_TOOL_OPTIONS: -Xmx6g
     GRADLE_OPTS: -Dorg.gradle.daemon=false -Dorg.gradle.workers.max=4 -Dkotlin.incremental=false -Dkotlin.compiler.execution.strategy=in-process
   container:
     image: reactivecircus/android-emulator-${API_LEVEL}:latest
@@ -24,8 +24,8 @@ task:
     fingerprint_script: cat buildSrc/dependencies.gradle && cat gradle/wrapper/gradle-wrapper.properties
   create_device_script:
     echo no | avdmanager create avd --force --name "api-${API_LEVEL}" --abi "${TARGET}/${ARCH}" --package "system-images;android-${API_LEVEL};${TARGET};${ARCH}"
-  start_emulator_background_script:
-    $ANDROID_HOME/emulator/emulator -avd "api-${API_LEVEL}" -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none
+  start_emulator_script:
+    $ANDROID_HOME/emulator/emulator -avd "api-${API_LEVEL}" -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none > /dev/null 2>&1 &
   wait_for_emulator_script:
     adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 3; done; input keyevent 82'
   disable_animations_script:
