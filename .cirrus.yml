@@ -1,4 +1,4 @@
-task:
+connected_check_task:
   name: Run Android Instrumented Tests (API $API_LEVEL)
   only_if: $CIRRUS_BRANCH == "master" || CIRRUS_PR != ""
   env:
