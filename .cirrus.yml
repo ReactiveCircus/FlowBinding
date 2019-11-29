@@ -56,4 +56,4 @@ publish_artifacts_task:
     cpu: 8
     memory: 24G
   deploy_snapshot_script:
-    .buildscript/deploy_snapshot.sh
+    ./gradlew clean androidSourcesJar androidJavadocsJar uploadArchives --no-daemon --no-parallel
