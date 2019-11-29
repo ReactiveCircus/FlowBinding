@@ -11,7 +11,7 @@ connected_check_task:
       - API_LEVEL: 26
       - API_LEVEL: 27
       - API_LEVEL: 28
-    JAVA_TOOL_OPTIONS: -Xmx6g
+    JAVA_TOOL_OPTIONS: -Xmx4g
     GRADLE_OPTS: -Dorg.gradle.daemon=false
   container:
     image: reactivecircus/android-emulator-${API_LEVEL}:latest
