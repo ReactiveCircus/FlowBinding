@@ -12,7 +12,7 @@ task:
 #      - API_LEVEL: 27
 #      - API_LEVEL: 28
     JAVA_TOOL_OPTIONS: -Xmx6g
-    GRADLE_OPTS: -Dorg.gradle.daemon=false -Dorg.gradle.workers.max=4 -Dkotlin.incremental=false -Dkotlin.compiler.execution.strategy=in-process
+    GRADLE_OPTS: -Dorg.gradle.daemon=false
   container:
     image: reactivecircus/android-emulator-${API_LEVEL}:latest
     kvm: false
