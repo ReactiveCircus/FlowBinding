@@ -3,19 +3,19 @@ task:
   only_if: $CIRRUS_BRANCH == "master" || CIRRUS_PR != ""
   env:
     matrix:
-#      - API_LEVEL: 21
-#      - API_LEVEL: 22
-#      - API_LEVEL: 23
-#      - API_LEVEL: 24
-#      - API_LEVEL: 25
-#      - API_LEVEL: 26
-#      - API_LEVEL: 27
+      - API_LEVEL: 21
+      - API_LEVEL: 22
+      - API_LEVEL: 23
+      - API_LEVEL: 24
+      - API_LEVEL: 25
+      - API_LEVEL: 26
+      - API_LEVEL: 27
       - API_LEVEL: 28
     JAVA_TOOL_OPTIONS: -Xmx4g
     GRADLE_OPTS: -Dorg.gradle.daemon=false -Dorg.gradle.workers.max=4 -Dkotlin.incremental=false -Dkotlin.compiler.execution.strategy=in-process
   container:
     image: reactivecircus/android-emulator-${API_LEVEL}:latest
-    kvm: false
+    kvm: true
     cpu: 8
     memory: 24G
   gradle_cache:
