@@ -4,6 +4,8 @@ assemble_and_check_task:
   env:
     JAVA_TOOL_OPTIONS: -Xmx6g
     GRADLE_OPTS: -Dorg.gradle.daemon=false
+    SONATYPE_NEXUS_USERNAME: ENCRYPTED[f069134619c2f5ce997a1f2ee51498198c54bc49b61a73ff24d92a8490eb375e76f897f3230a25f74a8fb442930cda37]
+    SONATYPE_NEXUS_PASSWORD: ENCRYPTED[91c4fd8f13e41d5dc00af3ed7022308b10085b35df6384e6a46107cee1f14a405b82b19fcd1abe3749655766f66da4dc]
   container:
     image: reactivecircus/android-sdk:latest
     cpu: 8
@@ -27,7 +29,7 @@ connected_check_task:
     cpu: 8
     memory: 24G
   create_device_script:
-    echo no | avdmanager create avd --force --name "api-${API_LEVEL}" --abi "${TARGET}/${ARCH}" --package "system-images;android-${API_LEVEL};${TARGET};${ARCH}"
+    avdmanager create avd --force --name "api-${API_LEVEL}" --abi "${TARGET}/${ARCH}" --package "system-images;android-${API_LEVEL};${TARGET};${ARCH}" --device "Nexus 6"
   start_emulator_background_script:
     $ANDROID_HOME/emulator/emulator -avd "api-${API_LEVEL}" -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none
   assemble_instrumented_tests_script:
@@ -40,8 +42,18 @@ connected_check_task:
     - adb shell settings put global animator_duration_scale 0.0
   run_instrumented_tests_script:
     ./gradlew connectedDebugAndroidTest
-  always:
-    junit_artifacts:
-      path: "**/androidTest-results/**/*.xml"
-      type: text/xml
-      format: junit
+
+publish_artifacts_task:
+  name: Deploy snapshot
+  depends_on:
+    - assemble_and_check
+    - connected_check
+  env:
+    JAVA_TOOL_OPTIONS: -Xmx6g
+    GRADLE_OPTS: -Dorg.gradle.daemon=false
+  container:
+    image: reactivecircus/android-sdk:latest
+    cpu: 8
+    memory: 24G
+  deploy_snapshot_script:
+    .buildscript/deploy_snapshot.sh
