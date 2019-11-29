@@ -40,3 +40,8 @@ connected_check_task:
     - adb shell settings put global animator_duration_scale 0.0
   run_instrumented_tests_script:
     ./gradlew connectedDebugAndroidTest
+  always:
+    junit_artifacts:
+      path: "**/androidTest-results/**/*.xml"
+      type: text/xml
+      format: junit
