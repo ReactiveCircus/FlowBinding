@@ -32,7 +32,8 @@ task:
 #    - adb shell settings put global transition_animation_scale 0.0
 #    - adb shell settings put global animator_duration_scale 0.0
   run_instrumented_tests_script:
-    ./gradlew assemble
+    - echo $CIRRUS_HTTP_CACHE_HOST
+    - ./gradlew assemble
 #  cleanup_script:
 #    - rm -rf ~/.gradle/caches/[0-9].*
 #    - rm -rf ~/.gradle/caches/transforms-1
