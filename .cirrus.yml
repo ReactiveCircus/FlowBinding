@@ -46,8 +46,8 @@ connected_check_task:
 publish_artifacts_task:
   name: Deploy snapshot
   depends_on:
-    - assemble_and_check
-    - connected_check
+    - Assemble libraries and run checks (test, detekt and lint)
+    - Run Android instrumented tests (API $API_LEVEL)
   env:
     JAVA_TOOL_OPTIONS: -Xmx6g
     GRADLE_OPTS: -Dorg.gradle.daemon=false
