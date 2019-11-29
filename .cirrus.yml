@@ -42,7 +42,7 @@ connected_check_task:
     ./gradlew connectedDebugAndroidTest
 
 publish_artifacts_task:
-  name: Deploy snapshot
+  trigger_type: manual
   depends_on:
     - assemble_and_check
     - connected_check
