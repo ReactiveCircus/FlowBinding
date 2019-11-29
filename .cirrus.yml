@@ -4,8 +4,6 @@ assemble_and_check_task:
   env:
     JAVA_TOOL_OPTIONS: -Xmx6g
     GRADLE_OPTS: -Dorg.gradle.daemon=false
-    SONATYPE_NEXUS_USERNAME: ENCRYPTED[f069134619c2f5ce997a1f2ee51498198c54bc49b61a73ff24d92a8490eb375e76f897f3230a25f74a8fb442930cda37]
-    SONATYPE_NEXUS_PASSWORD: ENCRYPTED[91c4fd8f13e41d5dc00af3ed7022308b10085b35df6384e6a46107cee1f14a405b82b19fcd1abe3749655766f66da4dc]
   container:
     image: reactivecircus/android-sdk:latest
     cpu: 8
@@ -51,6 +49,8 @@ publish_artifacts_task:
   env:
     JAVA_TOOL_OPTIONS: -Xmx6g
     GRADLE_OPTS: -Dorg.gradle.daemon=false
+    SONATYPE_NEXUS_USERNAME: ENCRYPTED[f069134619c2f5ce997a1f2ee51498198c54bc49b61a73ff24d92a8490eb375e76f897f3230a25f74a8fb442930cda37]
+    SONATYPE_NEXUS_PASSWORD: ENCRYPTED[91c4fd8f13e41d5dc00af3ed7022308b10085b35df6384e6a46107cee1f14a405b82b19fcd1abe3749655766f66da4dc]
   container:
     image: reactivecircus/android-sdk:latest
     cpu: 8
