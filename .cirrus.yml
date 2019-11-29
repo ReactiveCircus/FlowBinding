@@ -1,5 +1,5 @@
 assemble_and_check_task:
-  name: Assemble libraries and run checks (test, detekt and lint)
+#  name: Assemble libraries and run checks (test, detekt and lint)
   only_if: $CIRRUS_BRANCH == "master" || CIRRUS_PR != ""
   env:
     JAVA_TOOL_OPTIONS: -Xmx6g
@@ -14,7 +14,7 @@ assemble_and_check_task:
     ./gradlew assemble check
 
 connected_check_task:
-  name: Run Android instrumented tests (API $API_LEVEL)
+#  name: Run Android instrumented tests (API $API_LEVEL)
   only_if: $CIRRUS_BRANCH == "master" || CIRRUS_PR != ""
   env:
     matrix:
@@ -46,8 +46,8 @@ connected_check_task:
 publish_artifacts_task:
   name: Deploy snapshot
   depends_on:
-    - Assemble libraries and run checks (test, detekt and lint)
-    - Run Android instrumented tests (API $API_LEVEL)
+    - assemble_and_check
+    - connected_check
   env:
     JAVA_TOOL_OPTIONS: -Xmx6g
     GRADLE_OPTS: -Dorg.gradle.daemon=false
