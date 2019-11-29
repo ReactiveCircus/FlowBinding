@@ -15,7 +15,7 @@ task:
     GRADLE_OPTS: -Dorg.gradle.daemon=false -Dorg.gradle.workers.max=4 -Dkotlin.incremental=false -Dkotlin.compiler.execution.strategy=in-process
   container:
     image: reactivecircus/android-emulator-${API_LEVEL}:latest
-    kvm: true
+    kvm: false
     cpu: 8
     memory: 24G
   gradle_cache:
@@ -38,5 +38,5 @@ task:
     - rm -rf ~/.gradle/caches/[0-9].*
     - rm -rf ~/.gradle/caches/transforms-1
     - rm -rf ~/.gradle/caches/journal-1
-    - rm -rf ~/.gradle/caches/jars-3/*/buildSrc.jar
+#    - rm -rf ~/.gradle/caches/jars-3/*/buildSrc.jar
     - find ~/.gradle/caches/ -name "*.lock" -type f -delete
