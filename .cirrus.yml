@@ -9,7 +9,7 @@ assemble_and_check_task:
     cpu: 8
     memory: 24G
   assemble_and_check_script:
-    exit 1
+    ./gradlew sometask
 #    ./gradlew assemble check
 
 #connected_check_task:
