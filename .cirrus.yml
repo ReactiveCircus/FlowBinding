@@ -9,33 +9,32 @@ assemble_and_check_task:
     cpu: 8
     memory: 24G
   assemble_and_check_script:
-    ./gradlew sometask
-#    ./gradlew assemble check
+    ./gradlew assemble check
 
-#connected_check_task:
-#  name: Run Android instrumented tests (API $API_LEVEL)
-#  only_if: $CIRRUS_BRANCH == "master" || CIRRUS_PR != ""
-#  env:
-#    matrix:
-#      - API_LEVEL: 21
-#      - API_LEVEL: 23
-#      - API_LEVEL: 28
-#    JAVA_TOOL_OPTIONS: -Xmx6g
-#    GRADLE_OPTS: -Dorg.gradle.daemon=false
-#  container:
-#    image: reactivecircus/android-emulator-${API_LEVEL}:latest
-#    kvm: true
-#    cpu: 8
-#    memory: 24G
-#  create_device_script:
-#    avdmanager create avd --force --name "api-${API_LEVEL}" --abi "${TARGET}/${ARCH}" --package "system-images;android-${API_LEVEL};${TARGET};${ARCH}" --device "Nexus 6"
-#  start_emulator_background_script:
-#    $ANDROID_HOME/emulator/emulator -avd "api-${API_LEVEL}" -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none
-#  wait_for_emulator_script:
-#    adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 3; done; input keyevent 82'
-#  disable_animations_script:
-#    - adb shell settings put global window_animation_scale 0.0
-#    - adb shell settings put global transition_animation_scale 0.0
-#    - adb shell settings put global animator_duration_scale 0.0
-#  run_instrumented_tests_script:
-#    ./gradlew connectedDebugAndroidTest
+connected_check_task:
+  name: Run Android instrumented tests (API $API_LEVEL)
+  only_if: $CIRRUS_BRANCH == "master" || CIRRUS_PR != ""
+  env:
+    matrix:
+      - API_LEVEL: 21
+      - API_LEVEL: 23
+      - API_LEVEL: 28
+    JAVA_TOOL_OPTIONS: -Xmx6g
+    GRADLE_OPTS: -Dorg.gradle.daemon=false
+  container:
+    image: reactivecircus/android-emulator-${API_LEVEL}:latest
+    kvm: true
+    cpu: 8
+    memory: 24G
+  create_device_script:
+    avdmanager create avd --force --name "api-${API_LEVEL}" --abi "${TARGET}/${ARCH}" --package "system-images;android-${API_LEVEL};${TARGET};${ARCH}" --device "Nexus 6"
+  start_emulator_background_script:
+    $ANDROID_HOME/emulator/emulator -avd "api-${API_LEVEL}" -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none
+  wait_for_emulator_script:
+    adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 3; done; input keyevent 82'
+  disable_animations_script:
+    - adb shell settings put global window_animation_scale 0.0
+    - adb shell settings put global transition_animation_scale 0.0
+    - adb shell settings put global animator_duration_scale 0.0
+  run_instrumented_tests_script:
+    ./gradlew connectedDebugAndroidTest
