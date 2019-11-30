@@ -1,5 +1,5 @@
 name: Notifications
-#on: [check_suite]
+on: [push]
 jobs:
   notifications:
     runs-on: ubuntu-latest
