@@ -1,5 +1,6 @@
 connected_check_task:
   name: Run Android instrumented tests (API $API_LEVEL)
+  required_pr_labels: initial-review
   only_if: $CIRRUS_BRANCH == "master" || CIRRUS_PR != ""
   skip: "!changesInclude('.cirrus.yml', '*.gradle', '*.gradle.kts', '**/*.gradle', '**/*.gradle.kts', '*.properties', '**/*.properties', '**/*.kt', '**/*.xml')"
   env:
