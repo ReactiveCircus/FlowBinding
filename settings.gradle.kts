@@ -37,3 +37,6 @@ fun includeProject(name: String, filePath: String) {
     include(name)
     project(name).projectDir = File(filePath)
 }
+
+// apply build cache configuration
+apply(from = File(settingsDir, "gradle/buildCacheSettings.gradle"))
