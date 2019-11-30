@@ -36,5 +36,5 @@ rootProject.ext.versions = [
         material             : '1.2.0-alpha02',
         blueprint            : '1.3.0',
         junit                : '4.12',
-        kluent               : '1.56'
+        kluent               : '1.58'
 ]
