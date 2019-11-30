@@ -1,3 +1,20 @@
+name: Notifications
+on: [check_suite]
+jobs:
+  notifications:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send email when GitHub Check Suites failed
+        uses: docker://cirrusactions/email:latest
+        env:
+          APP_NAME: "FlowBinding"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MAIL_FROM: ${{ secrets.MAIL_FROM }}
+          MAIL_HOST: ${{ secrets.MAIL_HOST }}
+          MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
+          MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+
+
 #name: Instrumented test workflow
 #
 #on:
