@@ -1,5 +1,7 @@
 name: Notifications
-on: [check_suite]
+on:
+  check_run:
+    types: [completed]
 jobs:
   notifications:
     runs-on: ubuntu-latest
