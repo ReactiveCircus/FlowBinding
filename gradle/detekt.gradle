@@ -1,9 +1,7 @@
 apply plugin: "io.gitlab.arturbosch.detekt"
 
-if (System.getenv("CI") != "true") {
-    dependencies {
-        detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:${versions.detekt}"
-    }
+dependencies {
+    detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:${versions.detekt}"
 }
 
 detekt {
