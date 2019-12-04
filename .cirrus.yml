@@ -1,29 +1,16 @@
-assemble_and_check_task:
-  name: Assemble libraries and run checks (test, detekt and lint)
-  only_if: $CIRRUS_BRANCH == "master" || CIRRUS_PR != ""
-  env:
-    JAVA_TOOL_OPTIONS: -Xmx6g
-    GRADLE_OPTS: -Dorg.gradle.daemon=false
-  container:
-    image: reactivecircus/android-sdk:latest
-    cpu: 8
-    memory: 24G
-  assemble_and_check_script:
-    ./gradlew assemble check
-
 connected_check_task:
   name: Run Android instrumented tests (API $API_LEVEL)
   only_if: $CIRRUS_BRANCH == "master" || CIRRUS_PR != ""
   skip: "!changesInclude('.cirrus.yml', '*.gradle', '*.gradle.kts', '**/*.gradle.kts', '*.properties', '**/*.properties', '**/*.kt', '**/*.xml')"
   env:
     matrix:
-      - API_LEVEL: 21
-      - API_LEVEL: 23
+#      - API_LEVEL: 21
+#      - API_LEVEL: 23
       - API_LEVEL: 28
     JAVA_TOOL_OPTIONS: -Xmx6g
     GRADLE_OPTS: -Dorg.gradle.daemon=false
   container:
-    image: reactivecircus/android-emulator-${API_LEVEL}:latest
+    image: reactivecircus/android-emulator-${API_LEVEL}:v2019_12_04-02-08-08
     kvm: true
     cpu: 8
     memory: 24G
@@ -31,13 +18,13 @@ connected_check_task:
     avdmanager create avd --force --name "api-${API_LEVEL}" --abi "${TARGET}/${ARCH}" --package "system-images;android-${API_LEVEL};${TARGET};${ARCH}" --device "Nexus 6"
   start_emulator_background_script:
     $ANDROID_HOME/emulator/emulator -avd "api-${API_LEVEL}" -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none
-  assemble_instrumented_tests_script:
-    ./gradlew assembleDebugAndroidTest
-  wait_for_emulator_script:
-    adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 3; done; input keyevent 82'
-  disable_animations_script: |
-    adb shell settings put global window_animation_scale 0.0
-    adb shell settings put global transition_animation_scale 0.0
-    adb shell settings put global animator_duration_scale 0.0
-  run_instrumented_tests_script:
-    ./gradlew connectedDebugAndroidTest
+#  assemble_instrumented_tests_script:
+#    ./gradlew assembleDebugAndroidTest
+#  wait_for_emulator_script:
+#    adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 3; done; input keyevent 82'
+#  disable_animations_script: |
+#    adb shell settings put global window_animation_scale 0.0
+#    adb shell settings put global transition_animation_scale 0.0
+#    adb shell settings put global animator_duration_scale 0.0
+#  run_instrumented_tests_script:
+#    ./gradlew connectedDebugAndroidTest
