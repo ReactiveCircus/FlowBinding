@@ -10,7 +10,7 @@ connected_check_task:
     JAVA_TOOL_OPTIONS: -Xmx6g
     GRADLE_OPTS: -Dorg.gradle.daemon=false
   container:
-    image: reactivecircus/android-emulator-${API_LEVEL}:v2019_12_04-02-08-08
+    image: reactivecircus/android-emulator-${API_LEVEL}:latest
     kvm: true
     cpu: 8
     memory: 24G
@@ -20,8 +20,8 @@ connected_check_task:
     $ANDROID_HOME/emulator/emulator -avd "api-${API_LEVEL}" -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none
 #  assemble_instrumented_tests_script:
 #    ./gradlew assembleDebugAndroidTest
-#  wait_for_emulator_script:
-#    adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 3; done; input keyevent 82'
+  wait_for_emulator_script:
+    adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 3; done; input keyevent 82'
 #  disable_animations_script: |
 #    adb shell settings put global window_animation_scale 0.0
 #    adb shell settings put global transition_animation_scale 0.0
