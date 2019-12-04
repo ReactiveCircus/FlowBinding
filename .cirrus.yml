@@ -10,14 +10,14 @@ connected_check_task:
     JAVA_TOOL_OPTIONS: -Xmx6g
     GRADLE_OPTS: -Dorg.gradle.daemon=false
   container:
-    image: reactivecircus/android-emulator-${API_LEVEL}:latest
+    image: reactivecircus/android-emulator-${API_LEVEL}:v2019_12_04-02-08-08
     kvm: true
     cpu: 8
     memory: 24G
   create_device_script:
-    avdmanager create avd --force --name "api-${API_LEVEL}" --abi "${TARGET}/${ARCH}" --package "system-images;android-${API_LEVEL};${TARGET};${ARCH}" --device "Nexus 6"
+    echo no | avdmanager create avd --force --name "api-${API_LEVEL}" --abi "${TARGET}/${ARCH}" --package "system-images;android-${API_LEVEL};${TARGET};${ARCH}"
   start_emulator_background_script:
-    $ANDROID_HOME/emulator/emulator -avd "api-${API_LEVEL}" -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none
+    $ANDROID_HOME/emulator/emulator -avd "api-${API_LEVEL}" -port 6554 -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none
 #  assemble_instrumented_tests_script:
 #    ./gradlew assembleDebugAndroidTest
   wait_for_emulator_script:
