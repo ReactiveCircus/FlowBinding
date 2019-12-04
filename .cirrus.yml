@@ -17,11 +17,12 @@ connected_check_task:
   create_device_script:
     echo no | avdmanager create avd --force --name "api-${API_LEVEL}" --abi "${TARGET}/${ARCH}" --package "system-images;android-${API_LEVEL};${TARGET};${ARCH}"
   start_emulator_background_script:
-    $ANDROID_HOME/emulator/emulator -avd "api-${API_LEVEL}" -verbose -show-kernel -no-window -no-snapshot -noaudio -no-jni -no-boot-anim -camera-back none
+    $ANDROID_HOME/emulator/emulator -avd "api-${API_LEVEL}" -verbose -show-kernel
 #  assemble_instrumented_tests_script:
 #    ./gradlew assembleDebugAndroidTest
   wait_for_emulator_script:
-    adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 3; done; input keyevent 82'
+    - adb shell top
+#    - adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 3; done; input keyevent 82'
 #  disable_animations_script: |
 #    adb shell settings put global window_animation_scale 0.0
 #    adb shell settings put global transition_animation_scale 0.0
