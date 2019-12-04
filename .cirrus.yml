@@ -17,7 +17,7 @@ connected_check_task:
   create_device_script:
     echo no | avdmanager create avd --force --name "api-${API_LEVEL}" --abi "${TARGET}/${ARCH}" --package "system-images;android-${API_LEVEL};${TARGET};${ARCH}"
   start_emulator_background_script:
-    $ANDROID_HOME/emulator/emulator -avd "api-${API_LEVEL}" -verbose -show-kernel
+    $ANDROID_HOME/emulator/emulator -avd "api-${API_LEVEL}" -verbose -show-kernel -no-window
 #  assemble_instrumented_tests_script:
 #    ./gradlew assembleDebugAndroidTest
   wait_for_emulator_script:
