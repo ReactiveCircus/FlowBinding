@@ -10,7 +10,7 @@ connected_check_task:
     JAVA_TOOL_OPTIONS: -Xmx6g
     GRADLE_OPTS: -Dorg.gradle.daemon=false
   container:
-    image: reactivecircus/android-emulator-${API_LEVEL}:v2019_12_04-02-08-08
+    image: reactivecircus/android-emulator-${API_LEVEL}:v2019_12_05-12-05-32
     kvm: true
     cpu: 8
     memory: 24G
