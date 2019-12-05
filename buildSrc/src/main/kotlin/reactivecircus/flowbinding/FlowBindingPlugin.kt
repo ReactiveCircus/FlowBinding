@@ -52,7 +52,6 @@ class FlowBindingPlugin : Plugin<Project> {
                     }
                     is AppPlugin -> {
                         project.appExtension.configureCommonAndroidOptions()
-                        project.appExtension.configureAndroidApplicationOptions()
                     }
                 }
             }

@@ -6,8 +6,6 @@ buildscript {
         google()
         gradlePluginPortal()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-        // TODO remove once AGP switches to kotlin 1.3.60
-        maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
     }
 
     dependencies {
