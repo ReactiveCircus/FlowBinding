@@ -23,7 +23,10 @@ connected_check_task:
 #  assemble_instrumented_tests_script:
 #    ./gradlew assembleDebugAndroidTest
   wait_for_emulator_script:
-    - adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 3; done; input keyevent 82'
+    - sleep 90
+    - adb devices
+    - adb shell top
+#    - adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 3; done; input keyevent 82'
 #  disable_animations_script: |
 #    adb shell settings put global window_animation_scale 0.0
 #    adb shell settings put global transition_animation_scale 0.0
