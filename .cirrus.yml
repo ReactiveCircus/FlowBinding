@@ -6,19 +6,19 @@ connected_check_task:
     matrix:
 #      - API_LEVEL: 21
 #      - API_LEVEL: 23
-      - API_LEVEL: 29
+      - API_LEVEL: 28
     JAVA_TOOL_OPTIONS: -Xmx6g
     GRADLE_OPTS: -Dorg.gradle.daemon=false
   container:
-    image: reactivecircus/android-emulator-${API_LEVEL}:v2019_12_06-02-20-06
+    image: reactivecircus/android-emulator-${API_LEVEL}:v2019_12_06-02-40-59
     kvm: true
     cpu: 8
     memory: 24G
   create_device_script:
     echo no | avdmanager create avd --force --name "api-${API_LEVEL}" --abi "${TARGET}/${ARCH}" --package "system-images;android-${API_LEVEL};${TARGET};${ARCH}"
   start_emulator_background_script:
-#    - export ASAN_OPTIONS=detect_leaks=0:detect_container_overflow=0:detect_odr_violation=0:symbolize=1
-    - ls /usr/bin/llvm-symbolizer*
+    - export ASAN_OPTIONS=detect_leaks=0:detect_container_overflow=0:detect_odr_violation=0:symbolize=1
+    - llvm-symbolizer
     - $ANDROID_HOME/emulator/emulator -avd "api-${API_LEVEL}" -verbose -show-kernel -no-window
 #  assemble_instrumented_tests_script:
 #    ./gradlew assembleDebugAndroidTest
