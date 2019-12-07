@@ -19,14 +19,11 @@ connected_check_task:
   start_emulator_background_script:
     - export ASAN_OPTIONS=detect_leaks=0:detect_container_overflow=0:detect_odr_violation=0:symbolize=1
     - whereis llvm-symbolizer
-    - $ANDROID_HOME/emulator/emulator -avd "api-${API_LEVEL}" -verbose -show-kernel -no-window
+    - $ANDROID_HOME/emulator/emulator -avd "api-${API_LEVEL}" -verbose -show-kernel -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none
 #  assemble_instrumented_tests_script:
 #    ./gradlew assembleDebugAndroidTest
   wait_for_emulator_script:
-    - sleep 90
-    - adb devices
-    - adb shell top
-#    - adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 3; done; input keyevent 82'
+    - adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 3; done; input keyevent 82'
 #  disable_animations_script: |
 #    adb shell settings put global window_animation_scale 0.0
 #    adb shell settings put global transition_animation_scale 0.0
