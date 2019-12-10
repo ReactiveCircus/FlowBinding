@@ -19,13 +19,14 @@ connected_check_task:
   start_emulator_background_script:
     - export ASAN_OPTIONS=detect_leaks=0:detect_container_overflow=0:detect_odr_violation=0:symbolize=1
     - whereis llvm-symbolizer
-    - cat ~/.android/avd/api-28.avd/config.ini
+#    - cat ~/.android/avd/api-28.avd/config.ini
     - ulimit -c unlimited
     - $ANDROID_HOME/emulator/emulator -avd "api-${API_LEVEL}" -verbose -show-kernel -no-window -no-snapshot -noaudio -no-boot-anim
 #  assemble_instrumented_tests_script:
 #    ./gradlew assembleDebugAndroidTest
   wait_for_emulator_script:
-    - sleep 10
+    - sleep 30
+    - gdb ~/.android/avd/api-28.avd/ -c /var/crash/
 #    - adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 3; done; input keyevent 82'
 #  disable_animations_script: |
 #    adb shell settings put global window_animation_scale 0.0
