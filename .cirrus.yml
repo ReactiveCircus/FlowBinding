@@ -1,8 +1,7 @@
 connected_check_task:
   name: Run Android instrumented tests (API $API_LEVEL)
   timeout_in: 30m
-  only_if: $CI == "false" # TODO re-enable once https://issuetracker.google.com/issues/145622251 is fixed
-  # only_if: $CIRRUS_BRANCH == "master" || CIRRUS_PR != ""
+  only_if: $CIRRUS_BRANCH == "master" || CIRRUS_PR != ""
   skip: "!changesInclude('.cirrus.yml', '*.gradle', '*.gradle.kts', '**/*.gradle', '**/*.gradle.kts', '*.properties', '**/*.properties', '**/*.kt', '**/*.xml')"
   env:
     matrix:
