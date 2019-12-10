@@ -4,8 +4,8 @@ connected_check_task:
   skip: "!changesInclude('.cirrus.yml', '*.gradle', '*.gradle.kts', '**/*.gradle.kts', '*.properties', '**/*.properties', '**/*.kt', '**/*.xml')"
   env:
     matrix:
-      - API_LEVEL: 21
-      - API_LEVEL: 23
+#      - API_LEVEL: 21
+#      - API_LEVEL: 23
       - API_LEVEL: 28
     JAVA_TOOL_OPTIONS: -Xmx6g
     GRADLE_OPTS: -Dorg.gradle.daemon=false
