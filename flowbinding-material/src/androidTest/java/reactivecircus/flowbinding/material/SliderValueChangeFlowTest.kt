@@ -26,9 +26,8 @@ class SliderValueChangeFlowTest {
 
             recorder.assertNoMoreValues()
 
-            getInstrumentation().sendPointerSync(motionEventAtPosition(slider, MotionEvent.ACTION_DOWN, 0, 50))
+            getInstrumentation().sendPointerSync(motionEventAtPosition(slider, MotionEvent.ACTION_DOWN, 20, 50))
             getInstrumentation().sendPointerSync(motionEventAtPosition(slider, MotionEvent.ACTION_MOVE, 100, 50))
-            recorder.takeValue() shouldEqual 0f
             recorder.takeValue() shouldEqual 1f
             recorder.assertNoMoreValues()
 
