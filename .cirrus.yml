@@ -9,7 +9,7 @@ connected_check_task:
       - API_LEVEL: 23
       - API_LEVEL: 28
     JAVA_TOOL_OPTIONS: -Xmx6g
-    GRADLE_OPTS: -Dorg.gradle.daemon=false
+    GRADLE_OPTS: -Dorg.gradle.daemon=false -Dkotlin.incremental=false -Dkotlin.compiler.execution.strategy=in-process
   container:
     image: reactivecircus/android-emulator-${API_LEVEL}:latest
     kvm: true
