@@ -61,8 +61,7 @@ fun BaseExtension.configureCommonAndroidOptions() {
 @Suppress("UnstableApiUsage")
 fun LibraryExtension.configureAndroidLibraryOptions() {
     // Disable generating BuildConfig.java
-    // TODO disable buildConfig once androidTest works without it
-    buildFeatures.buildConfig = true
+    buildFeatures.buildConfig = false
 }
 
 /**
