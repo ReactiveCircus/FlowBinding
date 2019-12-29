@@ -16,7 +16,7 @@ class ViewPreDrawFlowTest {
     fun viewPreDraws() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<Unit>(testScope)
-            val view = View(getRootView().context)
+            val view = View(rootView.context)
 
             view.preDraws(proceedDrawingPass = { false }).recordWith(recorder)
 

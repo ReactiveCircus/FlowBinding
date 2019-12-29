@@ -16,7 +16,7 @@ class ViewDrawFlowTest {
     fun viewDraws() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<Unit>(testScope)
-            val view = View(getRootView().context)
+            val view = View(rootView.context)
 
             view.draws().recordWith(recorder)
 

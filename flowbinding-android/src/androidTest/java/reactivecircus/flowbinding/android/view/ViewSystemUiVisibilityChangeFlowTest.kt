@@ -17,7 +17,7 @@ class ViewSystemUiVisibilityChangeFlowTest {
     fun viewLayoutChanges() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<Int>(testScope)
-            val rootView = getRootView().apply {
+            val rootView = rootView.apply {
                 systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
             }
 

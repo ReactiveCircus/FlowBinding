@@ -19,7 +19,7 @@ class TextViewEditorActionEventFlowTest {
     fun textViewEditorActionChangeEvents() {
         launchTest<AndroidWidgetFragment> {
             val recorder = FlowRecorder<EditorActionEvent>(testScope)
-            val textView = TextView(getRootView().context)
+            val textView = TextView(rootView.context)
             textView.editorActionEvents().recordWith(recorder)
 
             recorder.assertNoMoreValues()
@@ -49,7 +49,7 @@ class TextViewEditorActionEventFlowTest {
     fun textViewEditorActionChangeEvents_notHandled() {
         launchTest<AndroidWidgetFragment> {
             val recorder = FlowRecorder<EditorActionEvent>(testScope)
-            val textView = TextView(getRootView().context)
+            val textView = TextView(rootView.context)
             textView.editorActionEvents { false }.recordWith(recorder)
 
             recorder.assertNoMoreValues()

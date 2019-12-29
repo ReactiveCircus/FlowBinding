@@ -21,8 +21,8 @@ class ViewAttachEventFlowTest {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<ViewAttachEvent.Attached>(testScope)
             val viewGroup = getViewById<ViewGroup>(R.id.parentView)
-            val childView1 = View(getRootView().context)
-            val childView2 = View(getRootView().context)
+            val childView1 = View(rootView.context)
+            val childView2 = View(rootView.context)
             childView1.attachEvents()
                 .filterIsInstance<ViewAttachEvent.Attached>()
                 .recordWith(recorder)
@@ -47,8 +47,8 @@ class ViewAttachEventFlowTest {
     fun viewAttachEvents_detached() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<ViewAttachEvent.Detached>(testScope)
-            val childView1 = View(getRootView().context)
-            val childView2 = View(getRootView().context)
+            val childView1 = View(rootView.context)
+            val childView2 = View(rootView.context)
             val viewGroup = getViewById<ViewGroup>(R.id.parentView).apply {
                 runOnUiThread {
                     addView(childView1)

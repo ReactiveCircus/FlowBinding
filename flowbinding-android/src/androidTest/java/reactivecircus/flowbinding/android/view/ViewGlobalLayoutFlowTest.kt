@@ -16,7 +16,7 @@ class ViewGlobalLayoutFlowTest {
     fun viewGlobalLayouts() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<Unit>(testScope)
-            val view = View(getRootView().context)
+            val view = View(rootView.context)
 
             view.globalLayouts().recordWith(recorder)
 

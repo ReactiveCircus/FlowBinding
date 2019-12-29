@@ -18,7 +18,7 @@ class ViewTouchFlowTest {
     fun viewTouches() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<MotionEvent>(testScope)
-            val view = View(getRootView().context)
+            val view = View(rootView.context)
             view.touches().recordWith(recorder)
 
             recorder.assertNoMoreValues()
@@ -40,7 +40,7 @@ class ViewTouchFlowTest {
     fun viewTouches_notHandled() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<MotionEvent>(testScope)
-            val view = View(getRootView().context)
+            val view = View(rootView.context)
             view.touches { false }
                 .recordWith(recorder)
 

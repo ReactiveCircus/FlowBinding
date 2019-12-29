@@ -16,7 +16,7 @@ class MenuItemClickedFlowTest {
     fun menuItemClicks() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<Unit>(testScope)
-            val menuItem = TestMenuItem(getRootView().context)
+            val menuItem = TestMenuItem(rootView.context)
             menuItem.clicks().recordWith(recorder)
 
             recorder.assertNoMoreValues()
@@ -36,7 +36,7 @@ class MenuItemClickedFlowTest {
     fun menuItemClicks_notHandled() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<Unit>(testScope)
-            val menuItem = TestMenuItem(getRootView().context)
+            val menuItem = TestMenuItem(rootView.context)
             menuItem.clicks { false }.recordWith(recorder)
 
             recorder.assertNoMoreValues()

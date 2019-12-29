@@ -17,7 +17,7 @@ class ActionMenuViewItemClickFlowTest {
     fun actionMenuViewItemClicks() {
         launchTest<AppCompatFragment> {
             val recorder = FlowRecorder<MenuItem>(testScope)
-            val actionMenuView = ActionMenuView(getRootView().context)
+            val actionMenuView = ActionMenuView(rootView.context)
             val menu = actionMenuView.menu
             val item1 = menu.add(0, 1, 0, "menu 1")
             val item2 = menu.add(0, 2, 0, "menu 2")

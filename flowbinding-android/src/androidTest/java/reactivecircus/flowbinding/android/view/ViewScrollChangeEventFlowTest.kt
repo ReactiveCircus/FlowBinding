@@ -19,7 +19,7 @@ class ViewScrollChangeEventFlowTest {
     fun viewScrollChangeEvents() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<ScrollChangeEvent>(testScope)
-            val view = View(getRootView().context)
+            val view = View(rootView.context)
 
             view.scrollChangeEvents().recordWith(recorder)
 

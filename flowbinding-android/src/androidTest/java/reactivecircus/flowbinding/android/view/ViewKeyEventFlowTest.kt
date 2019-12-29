@@ -18,7 +18,7 @@ class ViewKeyEventFlowTest {
     fun viewKeys() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<KeyEvent>(testScope)
-            val view = View(getRootView().context)
+            val view = View(rootView.context)
             view.keys().recordWith(recorder)
 
             recorder.assertNoMoreValues()
@@ -50,7 +50,7 @@ class ViewKeyEventFlowTest {
     fun viewKeys_notHandled() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<KeyEvent>(testScope)
-            val view = View(getRootView().context)
+            val view = View(rootView.context)
             view.keys { false }
                 .recordWith(recorder)
 

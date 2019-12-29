@@ -17,7 +17,7 @@ class MenuItemActionViewEventFlowTest {
     fun menuItemActionViewEvents_expand() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<MenuItemActionViewEvent.Expand>(testScope)
-            val menuItem = TestMenuItem(getRootView().context)
+            val menuItem = TestMenuItem(rootView.context)
             menuItem.actionViewEvents()
                 .filterIsInstance<MenuItemActionViewEvent.Expand>()
                 .recordWith(recorder)
@@ -40,7 +40,7 @@ class MenuItemActionViewEventFlowTest {
     fun menuItemActionViewEvents_expand_notHandled() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<MenuItemActionViewEvent.Expand>(testScope)
-            val menuItem = TestMenuItem(getRootView().context)
+            val menuItem = TestMenuItem(rootView.context)
             menuItem.actionViewEvents { false }
                 .filterIsInstance<MenuItemActionViewEvent.Expand>()
                 .recordWith(recorder)
@@ -62,7 +62,7 @@ class MenuItemActionViewEventFlowTest {
     fun menuItemActionViewEvents_collapse() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<MenuItemActionViewEvent.Collapse>(testScope)
-            val menuItem = TestMenuItem(getRootView().context)
+            val menuItem = TestMenuItem(rootView.context)
             menuItem.actionViewEvents()
                 .filterIsInstance<MenuItemActionViewEvent.Collapse>()
                 .recordWith(recorder)
@@ -86,7 +86,7 @@ class MenuItemActionViewEventFlowTest {
     fun menuItemActionViewEvents_collapse_notHandled() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<MenuItemActionViewEvent.Collapse>(testScope)
-            val menuItem = TestMenuItem(getRootView().context)
+            val menuItem = TestMenuItem(rootView.context)
             menuItem.actionViewEvents { false }
                 .filterIsInstance<MenuItemActionViewEvent.Collapse>()
                 .recordWith(recorder)

@@ -22,7 +22,7 @@ class RecyclerViewChildAttachStateChangeEventFlowTest {
         launchTest<RecyclerViewFragment> {
             val recorder = FlowRecorder<RecyclerViewChildAttachStateChangeEvent>(testScope)
             val recyclerView = getViewById<RecyclerView>(R.id.recyclerView)
-            val childView = View(getRootView().context)
+            val childView = View(rootView.context)
             recyclerView.childAttachStateChangeEvents()
                 .filterIsInstance<RecyclerViewChildAttachStateChangeEvent.Attached>()
                 .recordWith(recorder)
@@ -51,7 +51,7 @@ class RecyclerViewChildAttachStateChangeEventFlowTest {
     fun recyclerViewChildAttachStateChangeEvents_detached() {
         launchTest<RecyclerViewFragment> {
             val recorder = FlowRecorder<RecyclerViewChildAttachStateChangeEvent>(testScope)
-            val childView = View(getRootView().context)
+            val childView = View(rootView.context)
             val simpleAdapter = SimpleAdapter(childView)
             val recyclerView = getViewById<RecyclerView>(R.id.recyclerView).apply {
                 runOnUiThread {
