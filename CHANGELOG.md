@@ -1,11 +1,20 @@
 # Change Log
 
+## Version 0.7.0
+
+_2019-12-30_
+
+* New: Added **flowbinding-preference** artifact with bindings for the AndroidX Preference library.
+* Enhancement: Migrated from [custom GitHub Action](https://github.com/ReactiveCircus/android-emulator-runner) to [Cirrus CI](https://cirrus-ci.org/) for running instrumented tests. Tests now take **~15 mins** compared to **~21 mins** with GitHub Actions.
+* Enhancement: Updated Gradle, AGP, AndroidX, Material Components, Kotlin, Coroutines, detekt, kluent, blueprint.
+* Enhancement: Stopped generating `BuildConfig` for libraries.
+
 ## Version 0.6.0
 
 _2019-11-14_
 
 * New: Added new binding `fun MaterialCardView.checkedChanges(emitImmediately: Boolean = false): Flow<Boolean>` 
-* Enhancement: Migrated from **bitrise.io** to a [custom GitHub Action](https://github.com/ReactiveCircus/android-emulator-runner) for running instrumented tests on macOS VMs. Tests now take **~21 mins** compared **30+ mins** with bitrise.
+* Enhancement: Migrated from **bitrise.io** to a [custom GitHub Action](https://github.com/ReactiveCircus/android-emulator-runner) for running instrumented tests on macOS VMs. Tests now take **~21 mins** compared to **30+ mins** with bitrise.
 * Fix: Added `@SdkSuppress` to `ViewScrollChangeEventFlowTest` which requires API 23.
 * Enhancement: Updated Gradle, AGP and AndroidX.
 * Fix: Added a bunch of missing event listener removals ([PR](https://github.com/ReactiveCircus/FlowBinding/pull/52)). Thanks @hoc081098 for contribution!
