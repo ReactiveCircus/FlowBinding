@@ -11,6 +11,7 @@ import androidx.test.espresso.action.ViewActions.longClick
 import androidx.test.espresso.matcher.RootMatchers.isDialog
 import androidx.test.espresso.matcher.RootMatchers.isPlatformPopup
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import org.hamcrest.CoreMatchers.anything
 import reactivecircus.blueprint.testing.RobotActions
@@ -60,4 +61,8 @@ fun RobotActions.clickCancelButtonOnDatePicker() {
         .inRoot(isDialog())
         .perform(click())
     getInstrumentation().waitForIdleSync()
+}
+
+fun RobotActions.clickView(text: CharSequence) {
+    Espresso.onView(withText(text.toString())).perform(click())
 }

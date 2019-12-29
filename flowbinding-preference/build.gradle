@@ -1,0 +1,26 @@
+plugins {
+    id 'flowbinding-plugin'
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'com.vanniktech.maven.publish'
+    id 'io.github.reactivecircus.firestorm'
+}
+
+android {
+    defaultConfig {
+        testApplicationId 'reactivecircus.flowbinding.preference.test'
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+}
+
+dependencies {
+    implementation project(':flowbinding-common')
+
+    implementation "androidx.preference:preference:${versions.androidx.preference}"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinx.coroutines}"
+
+    lintChecks project(":lint-rules")
+
+    androidTestImplementation project(':testing-infra')
+    androidTestImplementation project(':flowbinding-preference:fixtures')
+}
