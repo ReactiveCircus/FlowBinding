@@ -17,8 +17,7 @@ class PopupMenuItemClickFlowTest {
     fun popupMenuItemClicks() {
         launchTest<AndroidWidgetFragment> {
             val recorder = FlowRecorder<MenuItem>(testScope)
-            val root = getRootView()
-            val popupMenu = PopupMenu(root.context, root)
+            val popupMenu = PopupMenu(rootView.context, rootView)
             val menu = popupMenu.menu
             val item1 = menu.add(0, 1, 0, "menu 1")
             val item2 = menu.add(0, 2, 0, "menu 2")

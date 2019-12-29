@@ -17,8 +17,7 @@ class PopupMenuDismissFlowTest {
     fun popupMenuDismisses() {
         launchTest<AndroidWidgetFragment> {
             val recorder = FlowRecorder<Unit>(testScope)
-            val root = getRootView()
-            val popupMenu = PopupMenu(root.context, root)
+            val popupMenu = PopupMenu(rootView.context, rootView)
 
             popupMenu.dismisses().recordWith(recorder)
 

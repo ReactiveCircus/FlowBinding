@@ -17,7 +17,7 @@ class ViewLayoutChangeEventFlowTest {
     fun viewLayoutChangeEvents() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<LayoutChangeEvent>(testScope)
-            val view = View(getRootView().context)
+            val view = View(rootView.context)
 
             view.layoutChangeEvents().recordWith(recorder)
 

@@ -29,9 +29,8 @@ class TestLauncher(val testScope: CoroutineScope) : RobotActions {
         return currentActivity()!!.findViewById(viewId)
     }
 
-    fun getRootView(): View {
-        return currentActivity()!!.window.decorView.rootView
-    }
+    val rootView: View
+        get() = currentActivity()!!.window.decorView.rootView
 
     val fragment: Fragment
         get() = (currentActivity() as FragmentActivity)

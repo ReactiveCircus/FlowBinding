@@ -18,7 +18,7 @@ class ViewHoverFlowTest {
     fun viewHovers() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<MotionEvent>(testScope)
-            val view = View(getRootView().context)
+            val view = View(rootView.context)
             view.hovers().recordWith(recorder)
 
             recorder.assertNoMoreValues()
@@ -43,7 +43,7 @@ class ViewHoverFlowTest {
     fun viewHovers_notHandled() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<MotionEvent>(testScope)
-            val view = View(getRootView().context)
+            val view = View(rootView.context)
             view.hovers { false }
                 .recordWith(recorder)
 

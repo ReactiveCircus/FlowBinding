@@ -21,8 +21,8 @@ class ViewGroupHierarchyChangeEventFlowTest {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<HierarchyChangeEvent.ChildAdded>(testScope)
             val viewGroup = getViewById<ViewGroup>(R.id.parentView)
-            val childView1 = View(getRootView().context)
-            val childView2 = View(getRootView().context)
+            val childView1 = View(rootView.context)
+            val childView2 = View(rootView.context)
             viewGroup.hierarchyChangeEvents()
                 .filterIsInstance<HierarchyChangeEvent.ChildAdded>()
                 .recordWith(recorder)
@@ -46,8 +46,8 @@ class ViewGroupHierarchyChangeEventFlowTest {
     fun viewGroupHierarchyChangeEvents_childRemoved() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<HierarchyChangeEvent.ChildRemoved>(testScope)
-            val childView1 = View(getRootView().context)
-            val childView2 = View(getRootView().context)
+            val childView1 = View(rootView.context)
+            val childView2 = View(rootView.context)
             val viewGroup = getViewById<ViewGroup>(R.id.parentView).apply {
                 runOnUiThread {
                     addView(childView1)
