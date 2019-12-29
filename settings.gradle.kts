@@ -20,6 +20,9 @@ includeProject(":flowbinding-material:fixtures", "flowbinding-material/fixtures"
 include(":flowbinding-navigation")
 includeProject(":flowbinding-navigation:fixtures", "flowbinding-navigation/fixtures")
 
+include(":flowbinding-preference")
+includeProject(":flowbinding-preference:fixtures", "flowbinding-preference/fixtures")
+
 include(":flowbinding-recyclerview")
 includeProject(":flowbinding-recyclerview:fixtures", "flowbinding-recyclerview/fixtures")
 

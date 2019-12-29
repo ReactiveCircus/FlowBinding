@@ -39,6 +39,7 @@ implementation "io.github.reactivecircus.flowbinding:flowbinding-appcompat:${flo
 implementation "io.github.reactivecircus.flowbinding:flowbinding-core:${flowbinding_version}"
 implementation "io.github.reactivecircus.flowbinding:flowbinding-drawerlayout:${flowbinding_version}"
 implementation "io.github.reactivecircus.flowbinding:flowbinding-navigation:${flowbinding_version}"
+implementation "io.github.reactivecircus.flowbinding:flowbinding-preference:${flowbinding_version}"
 implementation "io.github.reactivecircus.flowbinding:flowbinding-recyclerview:${flowbinding_version}"
 implementation "io.github.reactivecircus.flowbinding:flowbinding-swiperefreshlayout:${flowbinding_version}"
 implementation "io.github.reactivecircus.flowbinding:flowbinding-viewpager2:${flowbinding_version}"
@@ -149,6 +150,7 @@ List of all bindings available:
 * [AndroidX Core bindings][flowbinding-core]
 * [AndroidX DrawerLayout bindings][flowbinding-drawerlayout]
 * [AndroidX Navigation Component bindings][flowbinding-navigation]
+* [AndroidX Preference bindings][flowbinding-preference]
 * [AndroidX RecyclerView bindings][flowbinding-recyclerview]
 * [AndroidX SwipeRefreshLayout bindings][flowbinding-swiperefreshlayout]
 * [AndroidX ViewPager2 bindings][flowbinding-viewpager2]
@@ -193,6 +195,7 @@ limitations under the License.
 [flowbinding-drawerlayout]: flowbinding-drawerlayout/
 [flowbinding-material]: flowbinding-material/
 [flowbinding-navigation]: flowbinding-navigation/
+[flowbinding-preference]: flowbinding-preference/
 [flowbinding-recyclerview]: flowbinding-recyclerview/
 [flowbinding-swiperefreshlayout]: flowbinding-swiperefreshlayout/
 [flowbinding-viewpager2]: flowbinding-viewpager2/

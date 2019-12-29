@@ -3,6 +3,7 @@ package reactivecircus.flowbinding.testing
 import android.view.View
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.espresso.Espresso
 import kotlinx.coroutines.CoroutineScope
@@ -32,8 +33,17 @@ class TestLauncher(val testScope: CoroutineScope) : RobotActions {
         return currentActivity()!!.window.decorView.rootView
     }
 
+    val fragment: Fragment
+        get() = (currentActivity() as FragmentActivity)
+            .supportFragmentManager
+            .findFragmentByTag(FRAGMENT_TAG)!!
+
     fun cancelTestScope() {
         testScope.cancel()
         Espresso.onIdle()
+    }
+
+    companion object {
+        private const val FRAGMENT_TAG = "FragmentScenario_Fragment_Tag"
     }
 }

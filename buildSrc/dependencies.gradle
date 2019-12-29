@@ -22,6 +22,7 @@ rootProject.ext.versions = [
                 constraintLayout  : '1.1.3',
                 arch              : '2.1.0',
                 navigation        : '2.2.0-rc04',
+                preference        : '1.1.0',
                 test              : [
                         core   : '1.3.0-alpha03',
                         monitor: '1.3.0-alpha03',
