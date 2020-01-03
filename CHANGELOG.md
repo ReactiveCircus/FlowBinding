@@ -2,6 +2,12 @@
 
 ## Version 0.7.0
 
+_2020-01-04_
+
+* Fix: Removed incorrect `packagingOptions` exclusion.
+
+## Version 0.7.0
+
 _2019-12-30_
 
 * New: Added **flowbinding-preference** artifact with bindings for the AndroidX Preference library.
