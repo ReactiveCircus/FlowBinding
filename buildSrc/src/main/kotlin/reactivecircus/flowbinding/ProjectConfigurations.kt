@@ -46,13 +46,6 @@ fun BaseExtension.configureCommonAndroidOptions() {
         it.sourceCompatibility = JavaVersion.VERSION_1_8
         it.targetCompatibility = JavaVersion.VERSION_1_8
     })
-
-    packagingOptions.apply {
-        exclude("kotlin/**")
-        exclude("**/*.kotlin_metadata")
-        exclude("META-INF/*.kotlin_module")
-        exclude("META-INF/*.version")
-    }
 }
 
 /**
