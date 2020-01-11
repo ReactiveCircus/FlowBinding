@@ -13,7 +13,7 @@ rootProject.ext.versions = [
                 annotation        : '1.1.0',
                 appCompat         : '1.2.0-alpha01',
                 activity          : '1.1.0-rc03',
-                fragment          : '1.2.0-rc04',
+                fragment          : '1.2.0-rc05',
                 coordinatorLayout : '1.1.0',
                 recyclerView      : '1.1.0',
                 viewPager2        : '1.0.0',
