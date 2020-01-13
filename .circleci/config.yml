@@ -41,7 +41,7 @@ jobs:
       - run:
           name: Run Checks (test, detekt and lint)
           command: |
-            ./gradlew check
+            ./gradlew test detekt lintDebug
       - *save_gradle_cache
 
   publish_artifacts:

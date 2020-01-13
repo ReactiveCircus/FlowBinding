@@ -8,6 +8,7 @@ import com.android.tools.lint.detector.api.Issue
 import com.android.tools.lint.detector.api.JavaContext
 import com.android.tools.lint.detector.api.Scope
 import com.android.tools.lint.detector.api.Severity
+import com.android.tools.lint.detector.api.SourceCodeScanner
 import com.android.tools.lint.detector.api.isJava
 import com.intellij.openapi.util.Ref
 import org.jetbrains.uast.UBinaryExpression
@@ -41,7 +42,7 @@ import java.util.EnumSet
  * `unregister*(*)`
  */
 @Suppress("UnstableApiUsage", "ComplexCondition", "ReturnCount")
-class MissingListenerRemovalDetector : Detector(), Detector.UastScanner {
+class MissingListenerRemovalDetector : Detector(), SourceCodeScanner {
 
     companion object {
         val ISSUE: Issue = Issue.create(
