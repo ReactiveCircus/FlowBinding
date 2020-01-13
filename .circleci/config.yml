@@ -40,8 +40,7 @@ jobs:
           command: ./gradlew assemble
       - run:
           name: Run Checks (test, detekt and lint)
-          command: |
-            ./gradlew test detekt lintDebug
+          command: ./gradlew test detekt # TODO revert to `./gradlew check` once https://issuetracker.google.com/issues/147374439 is fixed
       - *save_gradle_cache
 
   publish_artifacts:
