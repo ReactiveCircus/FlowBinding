@@ -9,15 +9,21 @@ import reactivecircus.flowbinding.material.fixtures.databinding.FragmentMaterial
 
 class MaterialFragment1 : Fragment() {
 
-    private lateinit var binding: FragmentMaterial1Binding
+    private var _binding: FragmentMaterial1Binding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) = FragmentMaterial1Binding.inflate(inflater, container, false).let {
-        binding = it
-        it.root
+    ): View? {
+        _binding = FragmentMaterial1Binding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

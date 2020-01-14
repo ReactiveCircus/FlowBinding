@@ -10,15 +10,21 @@ import reactivecircus.flowbinding.recyclerview.fixtures.databinding.FragmentRecy
 
 class RecyclerViewFragment : Fragment() {
 
-    private lateinit var binding: FragmentRecyclerViewBinding
+    private var _binding: FragmentRecyclerViewBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) = FragmentRecyclerViewBinding.inflate(inflater, container, false).let {
-        binding = it
-        it.root
+    ): View? {
+        _binding = FragmentRecyclerViewBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

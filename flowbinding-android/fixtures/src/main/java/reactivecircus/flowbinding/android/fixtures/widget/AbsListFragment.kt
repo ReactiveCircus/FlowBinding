@@ -6,20 +6,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
-import reactivecircus.flowbinding.android.fixtures.R
 import reactivecircus.flowbinding.android.fixtures.databinding.FragmentAbsListBinding
 
-class AbsListFragment : Fragment(R.layout.fragment_abs_list) {
+class AbsListFragment : Fragment() {
 
-    private lateinit var binding: FragmentAbsListBinding
+    private var _binding: FragmentAbsListBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) = FragmentAbsListBinding.inflate(inflater, container, false).let {
-        binding = it
-        it.root
+    ): View? {
+        _binding = FragmentAbsListBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

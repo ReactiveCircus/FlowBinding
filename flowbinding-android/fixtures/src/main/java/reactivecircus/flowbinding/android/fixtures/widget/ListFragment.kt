@@ -6,20 +6,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
-import reactivecircus.flowbinding.android.fixtures.R
 import reactivecircus.flowbinding.android.fixtures.databinding.FragmentListBinding
 
-class ListFragment : Fragment(R.layout.fragment_list) {
+class ListFragment : Fragment() {
 
-    private lateinit var binding: FragmentListBinding
+    private var _binding: FragmentListBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) = FragmentListBinding.inflate(inflater, container, false).let {
-        binding = it
-        it.root
+    ): View? {
+        _binding = FragmentListBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -11,15 +11,21 @@ import reactivecircus.flowbinding.viewpager2.fixtures.databinding.ItemViewpagerB
 
 class ViewPager2Fragment : Fragment() {
 
-    private lateinit var binding: FragmentViewpager2Binding
+    private var _binding: FragmentViewpager2Binding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) = FragmentViewpager2Binding.inflate(inflater, container, false).let {
-        binding = it
-        it.root
+    ): View? {
+        _binding = FragmentViewpager2Binding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
