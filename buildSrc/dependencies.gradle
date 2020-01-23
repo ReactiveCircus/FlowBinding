@@ -4,7 +4,7 @@ rootProject.ext.versions = [
         mavenPublishPlugin   : '0.9.0-SNAPSHOT',
         firestormGradlePlugin: '0.1.1',
         kotlin               : '1.3.61',
-        detekt               : '1.3.1',
+        detekt               : '1.4.0',
         kotlinx              : [
                 coroutines: '1.3.3',
         ],
@@ -12,8 +12,8 @@ rootProject.ext.versions = [
                 core              : '1.2.0-rc01',
                 annotation        : '1.1.0',
                 appCompat         : '1.2.0-alpha01',
-                activity          : '1.1.0-rc03',
-                fragment          : '1.2.0-rc05',
+                activity          : '1.1.0',
+                fragment          : '1.2.0',
                 coordinatorLayout : '1.1.0',
                 recyclerView      : '1.1.0',
                 viewPager2        : '1.0.0',
@@ -21,7 +21,7 @@ rootProject.ext.versions = [
                 drawerLayout      : '1.1.0-alpha03',
                 constraintLayout  : '1.1.3',
                 arch              : '2.1.0',
-                navigation        : '2.2.0-rc04',
+                navigation        : '2.2.0',
                 preference        : '1.1.0',
                 test              : [
                         core   : '1.3.0-alpha03',
