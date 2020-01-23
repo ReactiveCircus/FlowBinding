@@ -14,6 +14,9 @@ includeProject(":flowbinding-core:fixtures", "flowbinding-core/fixtures")
 include(":flowbinding-drawerlayout")
 includeProject(":flowbinding-drawerlayout:fixtures", "flowbinding-drawerlayout/fixtures")
 
+include(":flowbinding-lifecycle")
+includeProject(":flowbinding-lifecycle:fixtures", "flowbinding-lifecycle/fixtures")
+
 include(":flowbinding-material")
 includeProject(":flowbinding-material:fixtures", "flowbinding-material/fixtures")
 

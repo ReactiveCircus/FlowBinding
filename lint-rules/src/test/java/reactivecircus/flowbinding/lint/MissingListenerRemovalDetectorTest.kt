@@ -134,6 +134,32 @@ class MissingListenerRemovalDetectorTest {
     }
 
     @Test
+    fun `observer removed`() {
+        lint()
+            .files(
+                kotlin(
+                    """
+                fun Lifecycle.events(): Flow<Lifecycle.Event> = callbackFlow<Lifecycle.Event> {
+                    checkMainThread()
+                    val observer = object : LifecycleObserver {
+                        @OnLifecycleEvent(Lifecycle.Event.ON_ANY)
+                        fun onEvent(owner: LifecycleOwner, event: Lifecycle.Event) {
+                            safeOffer(event)
+                        }
+                    }
+                    addObserver(observer)
+                    awaitClose { removeObserver(observer) }
+                }.conflate()
+                """.trimIndent()
+                )
+            )
+            .allowMissingSdk()
+            .issues(MissingListenerRemovalDetector.ISSUE)
+            .run()
+            .expectClean()
+    }
+
+    @Test
     fun `callback unregistered`() {
         lint()
             .files(

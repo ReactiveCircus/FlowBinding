@@ -32,6 +32,7 @@ import java.util.EnumSet
  * `*Listener = *`,
  * `add*Listener(*)`
  * `add*Callback(*)`
+ * `add*Observer(*)`
  * `register*(*)`
  *
  * then one of the following must be present in an `awaitClose` block:
@@ -39,6 +40,7 @@ import java.util.EnumSet
  * `*Listener = null`,
  * `remove*Listener(*)`
  * `remove*Callback(*)`
+ * `remove*Observer(*)`
  * `unregister*(*)`
  */
 @Suppress("UnstableApiUsage", "ComplexCondition", "ReturnCount")
@@ -58,11 +60,17 @@ class MissingListenerRemovalDetector : Detector(), SourceCodeScanner {
         )
 
         private const val CALLBACK_FLOW = "callbackFlow"
+
         private const val AWAIT_CLOSE = "awaitClose"
 
-        private const val PATTERN_ADD_LISTENER_METHOD = "add.+Listener|add.*Callback|register.+"
-        private const val PATTERN_REMOVE_LISTENER_METHOD = "remove.+Listener|remove.*Callback|unregister.+"
+        private const val PATTERN_ADD_LISTENER_METHOD =
+            "add.+Listener|add.*Callback|add.*Observer|register.+"
+
+        private const val PATTERN_REMOVE_LISTENER_METHOD =
+            "remove.+Listener|remove.*Callback|remove.*Observer|unregister.+"
+
         private const val PATTERN_SET_LISTENER = "set.+Listener"
+
         private const val SUFFIX_LISTENER = "listener"
     }
 

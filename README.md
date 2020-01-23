@@ -38,6 +38,7 @@ implementation "io.github.reactivecircus.flowbinding:flowbinding-android:${flowb
 implementation "io.github.reactivecircus.flowbinding:flowbinding-appcompat:${flowbinding_version}"
 implementation "io.github.reactivecircus.flowbinding:flowbinding-core:${flowbinding_version}"
 implementation "io.github.reactivecircus.flowbinding:flowbinding-drawerlayout:${flowbinding_version}"
+implementation "io.github.reactivecircus.flowbinding:flowbinding-lifecycle:${flowbinding_version}"
 implementation "io.github.reactivecircus.flowbinding:flowbinding-navigation:${flowbinding_version}"
 implementation "io.github.reactivecircus.flowbinding:flowbinding-preference:${flowbinding_version}"
 implementation "io.github.reactivecircus.flowbinding:flowbinding-recyclerview:${flowbinding_version}"
@@ -149,6 +150,7 @@ List of all bindings available:
 * [AndroidX AppCompat bindings][flowbinding-appcompat]
 * [AndroidX Core bindings][flowbinding-core]
 * [AndroidX DrawerLayout bindings][flowbinding-drawerlayout]
+* [AndroidX Lifecycle bindings][flowbinding-lifecycle]
 * [AndroidX Navigation Component bindings][flowbinding-navigation]
 * [AndroidX Preference bindings][flowbinding-preference]
 * [AndroidX RecyclerView bindings][flowbinding-recyclerview]
@@ -194,6 +196,7 @@ limitations under the License.
 [flowbinding-core]: flowbinding-core/
 [flowbinding-drawerlayout]: flowbinding-drawerlayout/
 [flowbinding-material]: flowbinding-material/
+[flowbinding-lifecycle]: flowbinding-lifecycle/
 [flowbinding-navigation]: flowbinding-navigation/
 [flowbinding-preference]: flowbinding-preference/
 [flowbinding-recyclerview]: flowbinding-recyclerview/
