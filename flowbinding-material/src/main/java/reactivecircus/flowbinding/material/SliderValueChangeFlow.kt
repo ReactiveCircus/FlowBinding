@@ -34,11 +34,11 @@ import reactivecircus.flowbinding.common.startWithCurrentValue
 @UseExperimental(ExperimentalCoroutinesApi::class)
 fun Slider.valueChanges(emitImmediately: Boolean = false): Flow<Float> = callbackFlow {
     checkMainThread()
-    val listener = Slider.OnChangeListener { _, value ->
+    val listener = Slider.OnChangeListener { _, value, _ ->
         safeOffer(value)
     }
-    setOnChangeListener(listener)
-    awaitClose { setOnChangeListener(null) }
+    addOnChangeListener(listener)
+    awaitClose { removeOnChangeListener(listener) }
 }
     .startWithCurrentValue(emitImmediately) { value }
     .conflate()
