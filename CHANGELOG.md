@@ -7,7 +7,7 @@ _2020-01-24_
 * New: Added **flowbinding-lifecycle** artifact with a binding for lifecycle events.
 * New: Added **flowbinding-activity** artifact with a binding for back pressed events.
 * Enhancement: Updated AndroidX - **activity 1.1.0**, **fragment 1.2.0** and **navigation 2.2.0**.
-* Enhancement: Updated Material Components to 1.2.0-alpha04.
+* Enhancement: Updated **Material Components** to **1.2.0-alpha04**.
 
 ## Version 0.8.0
 
