@@ -35,6 +35,7 @@ implementation "io.github.reactivecircus.flowbinding:flowbinding-android:${flowb
 ### AndroidX Bindings
 
 ```groovy
+implementation "io.github.reactivecircus.flowbinding:flowbinding-activity:${flowbinding_version}"
 implementation "io.github.reactivecircus.flowbinding:flowbinding-appcompat:${flowbinding_version}"
 implementation "io.github.reactivecircus.flowbinding:flowbinding-core:${flowbinding_version}"
 implementation "io.github.reactivecircus.flowbinding:flowbinding-drawerlayout:${flowbinding_version}"
@@ -147,6 +148,7 @@ Our goal is to provide most of the bindings provided by **RxBinding**, while shi
 List of all bindings available:
 
 * [Platform bindings][flowbinding-android]
+* [AndroidX Activity bindings][flowbinding-activity]
 * [AndroidX AppCompat bindings][flowbinding-appcompat]
 * [AndroidX Core bindings][flowbinding-core]
 * [AndroidX DrawerLayout bindings][flowbinding-drawerlayout]
@@ -192,6 +194,7 @@ limitations under the License.
 [flow]: https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/
 [kotlinx-coroutines]: https://github.com/Kotlin/kotlinx.coroutines
 [flowbinding-android]: flowbinding-android/
+[flowbinding-activity]: flowbinding-activity/
 [flowbinding-appcompat]: flowbinding-appcompat/
 [flowbinding-core]: flowbinding-core/
 [flowbinding-drawerlayout]: flowbinding-drawerlayout/
