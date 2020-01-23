@@ -21,6 +21,7 @@ rootProject.ext.versions = [
                 drawerLayout      : '1.1.0-alpha03',
                 constraintLayout  : '1.1.3',
                 arch              : '2.1.0',
+                lifecycle         : '2.2.0',
                 navigation        : '2.2.0',
                 preference        : '1.1.0',
                 test              : [

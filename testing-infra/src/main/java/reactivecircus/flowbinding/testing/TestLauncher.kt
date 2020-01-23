@@ -4,6 +4,7 @@ import android.view.View
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.testing.FragmentScenario
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.espresso.Espresso
 import kotlinx.coroutines.CoroutineScope
@@ -14,12 +15,12 @@ import reactivecircus.blueprint.testing.currentActivity
 import com.google.android.material.R as MaterialR
 
 inline fun <reified F : Fragment> launchTest(
-    block: TestLauncher.() -> Unit
+    block: TestLauncher.(FragmentScenario<F>) -> Unit
 ) {
-    launchFragmentInContainer<F>(themeResId = MaterialR.style.Theme_MaterialComponents_DayNight)
+    val scenario = launchFragmentInContainer<F>(themeResId = MaterialR.style.Theme_MaterialComponents_DayNight)
     Espresso.onIdle()
     val testScope = MainScope()
-    TestLauncher(testScope).block()
+    TestLauncher(testScope).block(scenario)
     testScope.cancel()
 }
 
