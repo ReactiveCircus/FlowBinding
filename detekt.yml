@@ -1,6 +1,3 @@
-build:
-  maxIssues: 0
-
 processors:
   active: true
 
