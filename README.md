@@ -119,7 +119,7 @@ tabLayout.tabSelectionEvents()
     .launchIn(uiScope)
 ``` 
 
-### Eager Mode
+### Emitting Current Value Immediately
 
 In some cases you might want the `Flow` to emit the **current** value immediately when the `Flow` is collected.
 
