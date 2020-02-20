@@ -4,6 +4,14 @@ plugins {
     id 'kotlin-android'
     id 'com.vanniktech.maven.publish'
     id 'io.github.reactivecircus.firestorm'
+    id 'org.jetbrains.dokka'
+}
+
+afterEvaluate { project ->
+    project.tasks.dokka {
+        outputDirectory = "$rootDir/docs/api"
+        outputFormat = 'gfm'
+    }
 }
 
 android {

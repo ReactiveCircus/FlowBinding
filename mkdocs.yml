@@ -1,0 +1,82 @@
+site_name: 'FlowBinding'
+site_description: "Kotlin Coroutines Flow binding APIs for Android's platform and unbundled UI widgets, inspired by RxBinding."
+site_author: 'Yang Chen'
+site_url: 'https://reactivecircus.github.io/FlowBinding'
+remote_branch: gh-pages
+
+repo_name: 'FlowBinding'
+repo_url: 'https://github.com/ReactiveCircus/FlowBinding'
+
+copyright: 'Copyright &copy; 2019 Yang Chen'
+
+theme:
+  name: 'material'
+  language: 'en'
+  favicon: 'images/reactive_cirrus_logo.png'
+  logo: 'images/reactive_cirrus_logo.png'
+  palette:
+    primary: 'white'
+    accent: 'white'
+  font:
+    text: 'Fira Sans'
+    code: 'Fira Code'
+
+extra:
+  social:
+    - type: 'github'
+      link: 'https://github.com/ReactiveCircus/FlowBinding'
+
+nav:
+  - 'Overview': index.md
+  - 'Platform Bindings': flowbinding-android/index.md
+  - 'AndroidX Activity Bindings': flowbinding-activity/index.md
+  - 'AndroidX AppCompat Bindings': flowbinding-appcompat/index.md
+  - 'AndroidX Core Bindings': flowbinding-core/index.md
+  - 'AndroidX DrawerLayout Bindings': flowbinding-drawerlayout/index.md
+  - 'AndroidX Lifecycle Bindings': flowbinding-lifecycle/index.md
+  - 'AndroidX Navigation Component Bindings': flowbinding-navigation/index.md
+  - 'AndroidX Preference Bindings': flowbinding-preference/index.md
+  - 'AndroidX RecyclerView Bindings': flowbinding-recyclerview/index.md
+  - 'AndroidX SwipeRefreshLayout Bindings': flowbinding-swiperefreshlayout/index.md
+  - 'AndroidX ViewPager2 Bindings': flowbinding-viewpager2/index.md
+  - 'Material Components Bindings': flowbinding-material/index.md
+  - 'Change Log': changelog.md
+  - 'API':
+      - 'flowbinding-activity': api/flowbinding-activity/index.md
+      - 'flowbinding-android': api/flowbinding-android/index.md
+      - 'flowbinding-appcompat': api/flowbinding-appcompat/index.md
+      - 'flowbinding-common': api/flowbinding-common/index.md
+      - 'flowbinding-core': api/flowbinding-core/index.md
+      - 'flowbinding-drawerlayout': api/flowbinding-drawerlayout/index.md
+      - 'flowbinding-lifecycle': api/flowbinding-lifecycle/index.md
+      - 'flowbinding-material': api/flowbinding-material/index.md
+      - 'flowbinding-navigation': api/flowbinding-navigation/index.md
+      - 'flowbinding-preference': api/flowbinding-preference/index.md
+      - 'flowbinding-recyclerview': api/flowbinding-recyclerview/index.md
+      - 'flowbinding-swiperefreshlayout': api/flowbinding-swiperefreshlayout/index.md
+      - 'flowbinding-viewpager2': api/flowbinding-viewpager2/index.md
+
+markdown_extensions:
+  - admonition
+  - smarty
+  - codehilite:
+      guess_lang: false
+      linenums: True
+  - footnotes
+  - meta
+  - toc:
+      permalink: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - tables
+
+plugins:
+  - search
+  - minify:
+      minify_html: true
