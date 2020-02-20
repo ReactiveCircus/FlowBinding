@@ -1,0 +1,30 @@
+name: Deploy Website
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - '**.md'
+      - 'mkdocs.yml'
+
+jobs:
+  deploy-website:
+    name: Generate API docs and deploy website
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: gradle/wrapper-validation-action@v1
+      - uses: actions/cache@v1
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
+          restore-keys: ${{ runner.os }}-gradle-
+      - run: |
+          pip3 install mkdocs mkdocs-material mkdocs-minify-plugin pymdown-extensions
+          .buildscript/deploy_website.sh
+        env:
+          CI: true
+          JAVA_TOOL_OPTIONS: -Xmx3g
+          GRADLE_OPTS: -Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2 -Dkotlin.incremental=false -Dkotlin.compiler.execution.strategy=in-process
+          DEPLOY_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
