@@ -1,0 +1,6 @@
+$dokka.format:gfm
+$dokka.linkExtension:md
+$dokka.location:reactivecircus.flowbinding.preference$editTextBindEvents(androidx.preference.EditTextPreference)reactivecircus.flowbinding.preference/androidx.preference.-edit-text-preference/edit-text-bind-events.md
+$dokka.location:reactivecircus.flowbinding.preference$preferenceChanges(androidx.preference.Preference)reactivecircus.flowbinding.preference/androidx.preference.-preference/preference-changes.md
+$dokka.location:reactivecircus.flowbinding.preference$preferenceClicks(androidx.preference.Preference)reactivecircus.flowbinding.preference/androidx.preference.-preference/preference-clicks.md
+reactivecircus.flowbinding.preference

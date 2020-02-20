@@ -1,0 +1,4 @@
+$dokka.format:gfm
+$dokka.linkExtension:md
+$dokka.location:reactivecircus.flowbinding.lifecycle$events(androidx.lifecycle.Lifecycle)reactivecircus.flowbinding.lifecycle/androidx.lifecycle.-lifecycle/events.md
+reactivecircus.flowbinding.lifecycle

@@ -1,0 +1,4 @@
+$dokka.format:gfm
+$dokka.linkExtension:md
+$dokka.location:reactivecircus.flowbinding.activity$backPresses(androidx.activity.OnBackPressedDispatcher, androidx.lifecycle.LifecycleOwner)reactivecircus.flowbinding.activity/androidx.activity.-on-back-pressed-dispatcher/back-presses.md
+reactivecircus.flowbinding.activity

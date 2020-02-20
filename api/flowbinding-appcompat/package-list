@@ -1,0 +1,10 @@
+$dokka.format:gfm
+$dokka.linkExtension:md
+$dokka.location:reactivecircus.flowbinding.appcompat$dismisses(androidx.appcompat.widget.PopupMenu)reactivecircus.flowbinding.appcompat/androidx.appcompat.widget.-popup-menu/dismisses.md
+$dokka.location:reactivecircus.flowbinding.appcompat$itemClicks(androidx.appcompat.widget.ActionMenuView)reactivecircus.flowbinding.appcompat/androidx.appcompat.widget.-action-menu-view/item-clicks.md
+$dokka.location:reactivecircus.flowbinding.appcompat$itemClicks(androidx.appcompat.widget.PopupMenu)reactivecircus.flowbinding.appcompat/androidx.appcompat.widget.-popup-menu/item-clicks.md
+$dokka.location:reactivecircus.flowbinding.appcompat$itemClicks(androidx.appcompat.widget.Toolbar)reactivecircus.flowbinding.appcompat/androidx.appcompat.widget.-toolbar/item-clicks.md
+$dokka.location:reactivecircus.flowbinding.appcompat$navigationClicks(androidx.appcompat.widget.Toolbar)reactivecircus.flowbinding.appcompat/androidx.appcompat.widget.-toolbar/navigation-clicks.md
+$dokka.location:reactivecircus.flowbinding.appcompat$queryTextChanges(androidx.appcompat.widget.SearchView, kotlin.Boolean)reactivecircus.flowbinding.appcompat/androidx.appcompat.widget.-search-view/query-text-changes.md
+$dokka.location:reactivecircus.flowbinding.appcompat$queryTextEvents(androidx.appcompat.widget.SearchView, kotlin.Boolean)reactivecircus.flowbinding.appcompat/androidx.appcompat.widget.-search-view/query-text-events.md
+reactivecircus.flowbinding.appcompat

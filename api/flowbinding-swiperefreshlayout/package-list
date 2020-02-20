@@ -1,0 +1,4 @@
+$dokka.format:gfm
+$dokka.linkExtension:md
+$dokka.location:reactivecircus.flowbinding.swiperefreshlayout$refreshes(androidx.swiperefreshlayout.widget.SwipeRefreshLayout)reactivecircus.flowbinding.swiperefreshlayout/androidx.swiperefreshlayout.widget.-swipe-refresh-layout/refreshes.md
+reactivecircus.flowbinding.swiperefreshlayout
