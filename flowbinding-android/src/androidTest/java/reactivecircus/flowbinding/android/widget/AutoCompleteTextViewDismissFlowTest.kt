@@ -1,8 +1,10 @@
 package reactivecircus.flowbinding.android.widget
 
+import android.os.Build
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.test.filters.LargeTest
+import androidx.test.filters.SdkSuppress
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
@@ -14,6 +16,7 @@ import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest
 import reactivecircus.flowbinding.testing.recordWith
 
+@SdkSuppress(minSdkVersion = Build.VERSION_CODES.JELLY_BEAN_MR1)
 @LargeTest
 class AutoCompleteTextViewDismissFlowTest {
 

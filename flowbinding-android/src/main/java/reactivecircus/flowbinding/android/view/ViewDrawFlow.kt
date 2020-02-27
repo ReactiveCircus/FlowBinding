@@ -1,8 +1,10 @@
 package reactivecircus.flowbinding.android.view
 
+import android.os.Build
 import android.view.View
 import android.view.ViewTreeObserver
 import androidx.annotation.CheckResult
+import androidx.annotation.RequiresApi
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -27,6 +29,7 @@ import reactivecircus.flowbinding.common.safeOffer
  *     .launchIn(uiScope)
  * ```
  */
+@RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
 @CheckResult
 @UseExperimental(ExperimentalCoroutinesApi::class)
 fun View.draws(): Flow<Unit> = callbackFlow {
