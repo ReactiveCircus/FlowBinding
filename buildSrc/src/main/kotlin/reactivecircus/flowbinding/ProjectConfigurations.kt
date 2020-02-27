@@ -2,6 +2,7 @@ package reactivecircus.flowbinding
 
 import com.android.build.gradle.BaseExtension
 import com.android.build.gradle.LibraryExtension
+import org.gradle.StartParameter
 import org.gradle.api.Action
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
@@ -26,12 +27,23 @@ fun Project.configureRootProject() {
 /**
  * Apply common configurations for all Android projects (Application and Library).
  */
-fun BaseExtension.configureCommonAndroidOptions() {
+fun BaseExtension.configureCommonAndroidOptions(startParameter: StartParameter) {
     setCompileSdkVersion(androidSdk.compileSdk)
     buildToolsVersion(androidSdk.buildTools)
 
     defaultConfig.apply {
-        minSdkVersion(androidSdk.minSdk)
+        // set minSdkVersion to 21 for android tests to avoid multi-dexing.
+        val testTaskKeywords = listOf("androidTest", "connectedCheck")
+        val isTestBuild = startParameter.taskNames.any { taskName ->
+            testTaskKeywords.any { keyword ->
+                taskName.contains(keyword, ignoreCase = true)
+            }
+        }
+        if (!isTestBuild) {
+            minSdkVersion(androidSdk.minSdk)
+        } else {
+            minSdkVersion(androidSdk.testMinSdk)
+        }
         targetSdkVersion(androidSdk.targetSdk)
 
         // only support English for now
