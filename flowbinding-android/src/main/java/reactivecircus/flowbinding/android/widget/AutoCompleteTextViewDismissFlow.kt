@@ -1,7 +1,9 @@
 package reactivecircus.flowbinding.android.widget
 
+import android.os.Build
 import android.widget.AutoCompleteTextView
 import androidx.annotation.CheckResult
+import androidx.annotation.RequiresApi
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -26,6 +28,7 @@ import reactivecircus.flowbinding.common.safeOffer
  *     .launchIn(uiScope)
  * ```
  */
+@RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
 @CheckResult
 @UseExperimental(ExperimentalCoroutinesApi::class)
 fun AutoCompleteTextView.dismisses(): Flow<Unit> = callbackFlow {
