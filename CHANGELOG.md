@@ -1,5 +1,13 @@
 # Change Log
 
+## Version 0.10.0
+
+_2020-02-28_
+
+* New: We have a [new website](https://reactivecircus.github.io/FlowBinding/) with automatically generated & updated API docs.
+* New: `minSdkVersion` has been dropped to **API 14** to match AndroidX's default and RxBinding.
+* Enhancement: Updated AndroidX, Material Components, build tools, Gradle, AGP, detekt.
+
 ## Version 0.9.0
 
 _2020-01-24_
