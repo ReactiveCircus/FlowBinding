@@ -1,0 +1,11 @@
+public final class reactivecircus/flowbinding/navigation/DestinationChangeEvent {
+	public fun <init> (Landroidx/navigation/NavController;Landroidx/navigation/NavDestination;Landroid/os/Bundle;)V
+	public final fun getArguments ()Landroid/os/Bundle;
+	public final fun getDestination ()Landroidx/navigation/NavDestination;
+	public final fun getNavController ()Landroidx/navigation/NavController;
+}
+
+public final class reactivecircus/flowbinding/navigation/NavControllerDestinationChangeEventFlowKt {
+	public static final fun destinationChangeEvents (Landroidx/navigation/NavController;)Lkotlinx/coroutines/flow/Flow;
+}
+

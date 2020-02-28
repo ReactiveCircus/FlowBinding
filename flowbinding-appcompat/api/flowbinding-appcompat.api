@@ -1,0 +1,47 @@
+public final class reactivecircus/flowbinding/appcompat/ActionMenuViewItemClickFlowKt {
+	public static final fun itemClicks (Landroidx/appcompat/widget/ActionMenuView;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public final class reactivecircus/flowbinding/appcompat/PopupMenuDismissFlowKt {
+	public static final fun dismisses (Landroidx/appcompat/widget/PopupMenu;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public final class reactivecircus/flowbinding/appcompat/PopupMenuItemClickFlowKt {
+	public static final fun itemClicks (Landroidx/appcompat/widget/PopupMenu;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public abstract class reactivecircus/flowbinding/appcompat/QueryTextEvent {
+	public abstract fun getQueryText ()Ljava/lang/CharSequence;
+	public abstract fun getView ()Landroidx/appcompat/widget/SearchView;
+}
+
+public final class reactivecircus/flowbinding/appcompat/QueryTextEvent$QueryChanged : reactivecircus/flowbinding/appcompat/QueryTextEvent {
+	public fun <init> (Landroidx/appcompat/widget/SearchView;Ljava/lang/CharSequence;)V
+	public fun getQueryText ()Ljava/lang/CharSequence;
+	public fun getView ()Landroidx/appcompat/widget/SearchView;
+}
+
+public final class reactivecircus/flowbinding/appcompat/QueryTextEvent$QuerySubmitted : reactivecircus/flowbinding/appcompat/QueryTextEvent {
+	public fun <init> (Landroidx/appcompat/widget/SearchView;Ljava/lang/CharSequence;)V
+	public fun getQueryText ()Ljava/lang/CharSequence;
+	public fun getView ()Landroidx/appcompat/widget/SearchView;
+}
+
+public final class reactivecircus/flowbinding/appcompat/SearchViewQueryTextChangeFlowKt {
+	public static final fun queryTextChanges (Landroidx/appcompat/widget/SearchView;Z)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun queryTextChanges$default (Landroidx/appcompat/widget/SearchView;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public final class reactivecircus/flowbinding/appcompat/SearchViewQueryTextEventFlowKt {
+	public static final fun queryTextEvents (Landroidx/appcompat/widget/SearchView;Z)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun queryTextEvents$default (Landroidx/appcompat/widget/SearchView;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public final class reactivecircus/flowbinding/appcompat/ToolbarItemClickFlowKt {
+	public static final fun itemClicks (Landroidx/appcompat/widget/Toolbar;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public final class reactivecircus/flowbinding/appcompat/ToolbarNavigationClickFlowKt {
+	public static final fun navigationClicks (Landroidx/appcompat/widget/Toolbar;)Lkotlinx/coroutines/flow/Flow;
+}
+

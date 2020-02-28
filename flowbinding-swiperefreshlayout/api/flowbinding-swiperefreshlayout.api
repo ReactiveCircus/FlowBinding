@@ -1,0 +1,4 @@
+public final class reactivecircus/flowbinding/swiperefreshlayout/SwipeRefreshLayoutRefreshFlowKt {
+	public static final fun refreshes (Landroidx/swiperefreshlayout/widget/SwipeRefreshLayout;)Lkotlinx/coroutines/flow/Flow;
+}
+

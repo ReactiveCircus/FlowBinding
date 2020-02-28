@@ -1,0 +1,13 @@
+public final class reactivecircus/flowbinding/core/NestedScrollViewScrollChangeEventFlowKt {
+	public static final fun scrollChangeEvents (Landroidx/core/widget/NestedScrollView;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public final class reactivecircus/flowbinding/core/ScrollChangeEvent {
+	public fun <init> (Landroid/view/View;IIII)V
+	public final fun getOldScrollX ()I
+	public final fun getOldScrollY ()I
+	public final fun getScrollX ()I
+	public final fun getScrollY ()I
+	public final fun getView ()Landroid/view/View;
+}
+
