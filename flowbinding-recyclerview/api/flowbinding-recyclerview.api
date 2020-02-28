@@ -1,0 +1,53 @@
+public final class reactivecircus/flowbinding/recyclerview/FlingEvent {
+	public fun <init> (Landroidx/recyclerview/widget/RecyclerView;II)V
+	public final fun getVelocityX ()I
+	public final fun getVelocityY ()I
+	public final fun getView ()Landroidx/recyclerview/widget/RecyclerView;
+}
+
+public final class reactivecircus/flowbinding/recyclerview/RecyclerViewAdapterDataChangeFlowKt {
+	public static final fun dataChanges (Landroidx/recyclerview/widget/RecyclerView$Adapter;Z)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun dataChanges$default (Landroidx/recyclerview/widget/RecyclerView$Adapter;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public abstract class reactivecircus/flowbinding/recyclerview/RecyclerViewChildAttachStateChangeEvent {
+	public abstract fun getChild ()Landroid/view/View;
+	public abstract fun getView ()Landroidx/recyclerview/widget/RecyclerView;
+}
+
+public final class reactivecircus/flowbinding/recyclerview/RecyclerViewChildAttachStateChangeEvent$Attached : reactivecircus/flowbinding/recyclerview/RecyclerViewChildAttachStateChangeEvent {
+	public fun <init> (Landroidx/recyclerview/widget/RecyclerView;Landroid/view/View;)V
+	public fun getChild ()Landroid/view/View;
+	public fun getView ()Landroidx/recyclerview/widget/RecyclerView;
+}
+
+public final class reactivecircus/flowbinding/recyclerview/RecyclerViewChildAttachStateChangeEvent$Detached : reactivecircus/flowbinding/recyclerview/RecyclerViewChildAttachStateChangeEvent {
+	public fun <init> (Landroidx/recyclerview/widget/RecyclerView;Landroid/view/View;)V
+	public fun getChild ()Landroid/view/View;
+	public fun getView ()Landroidx/recyclerview/widget/RecyclerView;
+}
+
+public final class reactivecircus/flowbinding/recyclerview/RecyclerViewChildAttachStateChangeEventFlowKt {
+	public static final fun childAttachStateChangeEvents (Landroidx/recyclerview/widget/RecyclerView;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public final class reactivecircus/flowbinding/recyclerview/RecyclerViewFlingEventFlowKt {
+	public static final fun flingEvents (Landroidx/recyclerview/widget/RecyclerView;Lkotlin/jvm/functions/Function1;)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun flingEvents$default (Landroidx/recyclerview/widget/RecyclerView;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public final class reactivecircus/flowbinding/recyclerview/RecyclerViewScrollEvent {
+	public fun <init> (Landroidx/recyclerview/widget/RecyclerView;II)V
+	public final fun getDx ()I
+	public final fun getDy ()I
+	public final fun getView ()Landroidx/recyclerview/widget/RecyclerView;
+}
+
+public final class reactivecircus/flowbinding/recyclerview/RecyclerViewScrollEventFlowKt {
+	public static final fun scrollEvents (Landroidx/recyclerview/widget/RecyclerView;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public final class reactivecircus/flowbinding/recyclerview/RecyclerViewScrollStateChangedFlowKt {
+	public static final fun scrollStateChanges (Landroidx/recyclerview/widget/RecyclerView;)Lkotlinx/coroutines/flow/Flow;
+}
+

@@ -1,0 +1,5 @@
+public final class reactivecircus/flowbinding/drawerlayout/DrawerLayoutDrawerStateChangedFlowKt {
+	public static final fun drawerStateChanges (Landroidx/drawerlayout/widget/DrawerLayout;IZ)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun drawerStateChanges$default (Landroidx/drawerlayout/widget/DrawerLayout;IZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+}
+

@@ -1,0 +1,4 @@
+public final class reactivecircus/flowbinding/lifecycle/LifecycleEventFlowKt {
+	public static final fun events (Landroidx/lifecycle/Lifecycle;)Lkotlinx/coroutines/flow/Flow;
+}
+

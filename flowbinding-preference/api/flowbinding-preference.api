@@ -1,0 +1,17 @@
+public final class reactivecircus/flowbinding/preference/EditTextBindEvent {
+	public fun <init> (Landroid/widget/EditText;)V
+	public final fun getEditText ()Landroid/widget/EditText;
+}
+
+public final class reactivecircus/flowbinding/preference/EditTextPreferenceBindEventFlowKt {
+	public static final fun editTextBindEvents (Landroidx/preference/EditTextPreference;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public final class reactivecircus/flowbinding/preference/PreferenceChangedFlowKt {
+	public static final fun preferenceChanges (Landroidx/preference/Preference;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public final class reactivecircus/flowbinding/preference/PreferenceClickedFlowKt {
+	public static final fun preferenceClicks (Landroidx/preference/Preference;)Lkotlinx/coroutines/flow/Flow;
+}
+

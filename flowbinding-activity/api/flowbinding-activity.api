@@ -1,0 +1,4 @@
+public final class reactivecircus/flowbinding/activity/OnBackPressedDispatcherBackPressedFlowKt {
+	public static final fun backPresses (Landroidx/activity/OnBackPressedDispatcher;Landroidx/lifecycle/LifecycleOwner;)Lkotlinx/coroutines/flow/Flow;
+}
+

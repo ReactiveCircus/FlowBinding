@@ -5,11 +5,13 @@ buildscript {
         mavenCentral()
         google()
         gradlePluginPortal()
+        maven { url "https://kotlin.bintray.com/kotlinx" }
     }
 
     dependencies {
         classpath "com.android.tools.build:gradle:${versions.androidGradlePlugin}"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
+        classpath "org.jetbrains.kotlinx:binary-compatibility-validator:${versions.binaryCompatibilityValidator}"
         classpath "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${versions.detekt}"
         classpath "com.vanniktech:gradle-maven-publish-plugin:${versions.mavenPublishPlugin}"
         classpath "io.github.reactivecircus.firestorm:firestorm-gradle-plugin:${versions.firestormGradlePlugin}"
@@ -19,6 +21,12 @@ buildscript {
 
 plugins {
     id 'flowbinding-plugin'
+}
+
+apply plugin: 'binary-compatibility-validator'
+
+apiValidation {
+    ignoredProjects += ["fixtures", "testing-infra", "lint-rules"]
 }
 
 subprojects {
