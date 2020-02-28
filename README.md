@@ -23,7 +23,7 @@ Dependencies are hosted on [Maven Central][maven-central].
 Latest version:
 
 ```groovy
-def flowbinding_version = "0.10.0"
+def flowbinding_version = "0.10.1"
 ```
 
 ### Platform Bindings

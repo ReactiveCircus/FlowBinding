@@ -1,5 +1,11 @@
 # Change Log
 
+## Version 0.10.1
+
+_2020-02-28_
+
+* Fix: Removed incorrect `packagingOptions` exclusion.
+
 ## Version 0.10.0
 
 _2020-02-28_
