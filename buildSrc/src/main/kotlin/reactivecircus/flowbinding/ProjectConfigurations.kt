@@ -67,10 +67,6 @@ fun BaseExtension.configureCommonAndroidOptions(startParameter: StartParameter) 
 fun LibraryExtension.configureAndroidLibraryOptions() {
     // Disable generating BuildConfig.java
     buildFeatures.buildConfig = false
-
-    packagingOptions(Action {
-        it.exclude("META-INF/*.kotlin_module")
-    })
 }
 
 /**
