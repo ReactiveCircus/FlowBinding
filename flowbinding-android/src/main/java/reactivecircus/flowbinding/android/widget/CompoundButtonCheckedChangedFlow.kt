@@ -31,7 +31,7 @@ import reactivecircus.flowbinding.common.startWithCurrentValue
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun CompoundButton.checkedChanges(emitImmediately: Boolean = false): Flow<Boolean> = callbackFlow {
     checkMainThread()
     val listener = CompoundButton.OnCheckedChangeListener { _, isChecked ->

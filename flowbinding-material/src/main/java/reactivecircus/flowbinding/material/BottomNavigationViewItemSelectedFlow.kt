@@ -32,7 +32,7 @@ import reactivecircus.flowbinding.common.startWithCurrentValue
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun BottomNavigationView.itemSelections(emitImmediately: Boolean = false): Flow<MenuItem> =
     callbackFlow {
         checkMainThread()

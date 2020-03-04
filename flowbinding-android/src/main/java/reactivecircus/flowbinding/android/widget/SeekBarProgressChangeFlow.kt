@@ -31,7 +31,7 @@ import reactivecircus.flowbinding.common.startWithCurrentValue
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun SeekBar.progressChanges(emitImmediately: Boolean = false): Flow<Int> = callbackFlow<Int> {
     checkMainThread()
     val listener = object : SeekBar.OnSeekBarChangeListener {

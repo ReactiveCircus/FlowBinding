@@ -28,7 +28,7 @@ import reactivecircus.flowbinding.common.safeOffer
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun TextInputLayout.startIconClicks(): Flow<Unit> = callbackFlow {
     checkMainThread()
     val listener = View.OnClickListener {
@@ -55,7 +55,7 @@ fun TextInputLayout.startIconClicks(): Flow<Unit> = callbackFlow {
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun TextInputLayout.endIconClicks(): Flow<Unit> = callbackFlow {
     checkMainThread()
     val listener = View.OnClickListener {

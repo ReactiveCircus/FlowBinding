@@ -35,7 +35,7 @@ import reactivecircus.flowbinding.common.safeOffer
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun <T : Adapter> AdapterView<T>.itemLongClickEvents(
     handled: (AdapterViewItemLongClickEvent) -> Boolean = { true }
 ): Flow<AdapterViewItemLongClickEvent> = callbackFlow {

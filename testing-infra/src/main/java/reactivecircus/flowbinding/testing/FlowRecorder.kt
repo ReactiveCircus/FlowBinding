@@ -9,14 +9,14 @@ import java.util.concurrent.BlockingDeque
 import java.util.concurrent.LinkedBlockingDeque
 import java.util.concurrent.TimeUnit
 
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun <T> Flow<T>.recordWith(recorder: FlowRecorder<T>) {
     onEach { recorder.values.addLast(it) }.launchIn(recorder.coroutineScope)
 }
 
 class FlowRecorder<T>(internal val coroutineScope: CoroutineScope) {
 
-    internal val values: BlockingDeque<T> = LinkedBlockingDeque<T>()
+    internal val values: BlockingDeque<T> = LinkedBlockingDeque()
 
     fun takeValue(): T {
         return values.pollFirst(1, TimeUnit.SECONDS)

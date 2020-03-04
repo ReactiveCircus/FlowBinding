@@ -29,7 +29,7 @@ import reactivecircus.flowbinding.common.safeOffer
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun <T : Adapter> AdapterView<T>.itemClicks(): Flow<Int> = callbackFlow {
     checkMainThread()
     val listener = AdapterView.OnItemClickListener { _, _, position, _ ->

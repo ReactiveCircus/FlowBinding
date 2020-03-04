@@ -28,7 +28,7 @@ import reactivecircus.flowbinding.common.safeOffer
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun TextInputLayout.startIconLongClicks(): Flow<Unit> = callbackFlow {
     checkMainThread()
     val listener = View.OnLongClickListener {
@@ -55,7 +55,7 @@ fun TextInputLayout.startIconLongClicks(): Flow<Unit> = callbackFlow {
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun TextInputLayout.endIconLongClicks(): Flow<Unit> = callbackFlow {
     checkMainThread()
     val listener = View.OnLongClickListener {

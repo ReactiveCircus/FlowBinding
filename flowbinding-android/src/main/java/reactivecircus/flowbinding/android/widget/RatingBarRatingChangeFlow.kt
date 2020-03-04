@@ -31,7 +31,7 @@ import reactivecircus.flowbinding.common.startWithCurrentValue
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun RatingBar.ratingChanges(emitImmediately: Boolean = false): Flow<Float> = callbackFlow {
     checkMainThread()
     val listener = RatingBar.OnRatingBarChangeListener { _, rating, _ ->

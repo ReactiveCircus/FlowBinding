@@ -42,7 +42,7 @@ import reactivecircus.flowbinding.common.startWithCurrentValue
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun SeekBar.changeEvents(emitImmediately: Boolean = false): Flow<SeekBarChangeEvent> =
     callbackFlow<SeekBarChangeEvent> {
         checkMainThread()

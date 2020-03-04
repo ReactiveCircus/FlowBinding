@@ -30,7 +30,7 @@ import reactivecircus.flowbinding.common.safeOffer
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun EditTextPreference.editTextBindEvents(): Flow<EditTextBindEvent> = callbackFlow {
     checkMainThread()
     val listener = EditTextPreference.OnBindEditTextListener {

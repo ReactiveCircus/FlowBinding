@@ -38,7 +38,7 @@ import reactivecircus.flowbinding.common.safeOffer
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun View.hovers(handled: (MotionEvent) -> Boolean = { true }): Flow<MotionEvent> =
     callbackFlow<MotionEvent> {
         checkMainThread()

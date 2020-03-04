@@ -29,7 +29,7 @@ import reactivecircus.flowbinding.common.safeOffer
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun View.layoutChangeEvents(): Flow<LayoutChangeEvent> = callbackFlow {
     checkMainThread()
     val listener =

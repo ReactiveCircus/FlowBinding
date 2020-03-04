@@ -28,7 +28,7 @@ import reactivecircus.flowbinding.common.safeOffer
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun AppBarLayout.offsetChanges(): Flow<Int> = callbackFlow {
     checkMainThread()
     val listener = AppBarLayout.OnOffsetChangedListener { _, verticalOffset ->

@@ -29,7 +29,7 @@ import reactivecircus.flowbinding.common.safeOffer
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun Snackbar.dismissEvents(): Flow<Int> = callbackFlow<Int> {
     checkMainThread()
     val callback = object : Snackbar.Callback() {

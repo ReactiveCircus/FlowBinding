@@ -31,7 +31,7 @@ import reactivecircus.flowbinding.common.safeOffer
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun ViewPager2.pageScrollStateChanges(): Flow<Int> = callbackFlow<Int> {
     checkMainThread()
     val callback = object : ViewPager2.OnPageChangeCallback() {

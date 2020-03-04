@@ -31,7 +31,7 @@ import reactivecircus.flowbinding.common.startWithCurrentValue
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun Adapter.dataChanges(emitImmediately: Boolean = false): Flow<Adapter> =
     callbackFlow<Adapter> {
         checkMainThread()

@@ -6,7 +6,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.SendChannel
 
 @RestrictTo(LIBRARY_GROUP)
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun <E> SendChannel<E>.safeOffer(value: E): Boolean {
     return runCatching { offer(value) }.getOrDefault(false)
 }

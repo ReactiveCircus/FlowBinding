@@ -28,7 +28,7 @@ import reactivecircus.flowbinding.common.safeOffer
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun AutoCompleteTextView.itemClickEvents(): Flow<AdapterViewItemClickEvent> = callbackFlow {
     checkMainThread()
     val listener = AdapterView.OnItemClickListener { parent, view, position, id ->

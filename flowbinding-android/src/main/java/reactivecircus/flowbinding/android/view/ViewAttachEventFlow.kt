@@ -39,7 +39,7 @@ import reactivecircus.flowbinding.common.safeOffer
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun View.attachEvents(): Flow<ViewAttachEvent> = callbackFlow<ViewAttachEvent> {
     checkMainThread()
     val listener = object : View.OnAttachStateChangeListener {

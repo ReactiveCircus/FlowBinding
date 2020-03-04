@@ -34,7 +34,7 @@ import reactivecircus.flowbinding.common.startWithCurrentValue
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun TextView.textChangeEvents(emitImmediately: Boolean = false): Flow<TextChangeEvent> =
     callbackFlow<TextChangeEvent> {
         checkMainThread()

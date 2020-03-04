@@ -31,7 +31,7 @@ import reactivecircus.flowbinding.common.startWithCurrentValue
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun ViewPager2.pageSelections(emitImmediately: Boolean = false): Flow<Int> = callbackFlow<Int> {
     checkMainThread()
     val callback = object : ViewPager2.OnPageChangeCallback() {

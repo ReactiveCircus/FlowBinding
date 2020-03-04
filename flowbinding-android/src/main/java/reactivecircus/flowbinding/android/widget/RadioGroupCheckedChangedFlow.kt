@@ -34,7 +34,7 @@ import reactivecircus.flowbinding.common.startWithCurrentValue
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun RadioGroup.checkedChanges(emitImmediately: Boolean = false): Flow<Int> = callbackFlow<Int> {
     checkMainThread()
     val listener = object : RadioGroup.OnCheckedChangeListener {

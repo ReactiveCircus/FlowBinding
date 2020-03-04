@@ -29,7 +29,7 @@ import reactivecircus.flowbinding.common.safeOffer
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun BottomNavigationView.itemReselections(): Flow<MenuItem> = callbackFlow {
     checkMainThread()
     val listener = BottomNavigationView.OnNavigationItemReselectedListener { item ->

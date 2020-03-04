@@ -31,7 +31,7 @@ import reactivecircus.flowbinding.common.safeOffer
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun OnBackPressedDispatcher.backPresses(owner: LifecycleOwner): Flow<Unit> =
     callbackFlow<Unit> {
         checkMainThread()

@@ -40,7 +40,7 @@ import reactivecircus.flowbinding.common.safeOffer
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun ViewGroup.hierarchyChangeEvents(): Flow<HierarchyChangeEvent> = callbackFlow<HierarchyChangeEvent> {
     checkMainThread()
     val listener = object : ViewGroup.OnHierarchyChangeListener {

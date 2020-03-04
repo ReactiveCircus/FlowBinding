@@ -33,7 +33,7 @@ import reactivecircus.flowbinding.common.startWithCurrentValue
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun ChipGroup.chipCheckedChanges(emitImmediately: Boolean = false): Flow<Int> = callbackFlow {
     checkMainThread()
     val listener = ChipGroup.OnCheckedChangeListener { _, checkedId ->

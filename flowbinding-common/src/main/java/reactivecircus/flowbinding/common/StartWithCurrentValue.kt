@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.onStart
  * If [block] returns null, no value will be emitted immediately.
  */
 @RestrictTo(LIBRARY_GROUP)
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun <T> Flow<T>.startWithCurrentValue(emitImmediately: Boolean, block: () -> T?): Flow<T> {
     return if (emitImmediately) onStart {
         block()?.run { emit(this) }

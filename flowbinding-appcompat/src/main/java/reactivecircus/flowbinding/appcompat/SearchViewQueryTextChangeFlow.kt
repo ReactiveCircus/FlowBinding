@@ -31,7 +31,7 @@ import reactivecircus.flowbinding.common.startWithCurrentValue
  * ```
  */
 @CheckResult
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun SearchView.queryTextChanges(emitImmediately: Boolean = false): Flow<CharSequence> = callbackFlow<CharSequence> {
     checkMainThread()
     val listener = object : SearchView.OnQueryTextListener {
