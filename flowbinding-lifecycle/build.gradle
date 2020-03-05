@@ -31,4 +31,5 @@ dependencies {
 
     androidTestImplementation project(':testing-infra')
     androidTestImplementation project(':flowbinding-lifecycle:fixtures')
+    androidTestImplementation "androidx.lifecycle:lifecycle-runtime-testing:${versions.androidx.lifecycle}"
 }
