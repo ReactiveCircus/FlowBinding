@@ -9,7 +9,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
 import reactivecircus.flowbinding.common.safeOffer
 
@@ -32,7 +31,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun Lifecycle.events(): Flow<Lifecycle.Event> = callbackFlow<Lifecycle.Event> {
+fun Lifecycle.events(): Flow<Lifecycle.Event> = callbackFlow {
     checkMainThread()
     val observer = object : LifecycleObserver {
         @OnLifecycleEvent(Lifecycle.Event.ON_ANY)
@@ -42,4 +41,4 @@ fun Lifecycle.events(): Flow<Lifecycle.Event> = callbackFlow<Lifecycle.Event> {
     }
     addObserver(observer)
     awaitClose { removeObserver(observer) }
-}.conflate()
+}
