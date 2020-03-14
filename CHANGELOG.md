@@ -1,5 +1,22 @@
 # Change Log
 
+## Version 0.10.2
+
+_2020-03-14_
+
+* Enhancement: Started tracking API binary compatibility.
+* Enhancement: Updated to Kotlin 1.3.70, Coroutines 1.3.4.
+* Enhancement: Updated AndroidX:
+  * `core:1.3.0-alpha02`
+  * `appcompat:1.2.0-alpha03`
+  * `activity:1.2.0-alpha01`
+  * `fragment:1.3.0-alpha01`
+  * `drawerlayout:1.1.0-alpha04`
+  * `lifecycle:2.3.0-alpha01`
+  * `navigation:2.3.0-alpha03`
+  * `swiperefreshlayout:1.1.0-beta01`
+* Fix: Do not conflate `Flow<Lifecycle.Event>` from `LifecycleEventFlow` to respect the behavior of `LifecycleObserver`.
+
 ## Version 0.10.1
 
 _2020-02-28_
