@@ -52,6 +52,7 @@ fun View.layoutChangeEvents(): Flow<LayoutChangeEvent> = callbackFlow {
     awaitClose { removeOnLayoutChangeListener(listener) }
 }.conflate()
 
+@Suppress("LongParameterList")
 class LayoutChangeEvent(
     val view: View,
     val left: Int,
