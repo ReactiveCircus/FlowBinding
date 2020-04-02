@@ -9,6 +9,5 @@ android.buildFeatures.viewBinding = true
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:${versions.androidx.swipeRefreshLayout}"
-    implementation "androidx.recyclerview:recyclerview:${versions.androidx.recyclerView}"
     implementation "androidx.fragment:fragment:${versions.androidx.fragment}"
 }

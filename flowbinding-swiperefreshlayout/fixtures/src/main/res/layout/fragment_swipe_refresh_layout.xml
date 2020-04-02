@@ -4,9 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="3000dp"
+        android:background="@android:color/transparent" />
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
