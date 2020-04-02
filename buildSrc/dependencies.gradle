@@ -20,7 +20,7 @@ rootProject.ext.versions = [
                 recyclerView      : '1.2.0-alpha02',
                 viewPager2        : '1.1.0-alpha01',
                 swipeRefreshLayout: '1.1.0-beta01',
-                drawerLayout      : '1.1.0-alpha04',
+                drawerLayout      : '1.1.0-beta01',
                 constraintLayout  : '1.1.3',
                 arch              : '2.1.0',
                 lifecycle         : '2.3.0-alpha01',
