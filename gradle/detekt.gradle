@@ -5,7 +5,6 @@ dependencies {
 }
 
 detekt {
-    toolVersion = versions.detekt
     input = files("src/")
     failFast = true
     config = files("${project.rootDir}/detekt.yml")

@@ -6,7 +6,7 @@ rootProject.ext.versions = [
         dokka                       : '0.10.1',
         binaryCompatibilityValidator: '0.2.3',
         kotlin                      : '1.3.71',
-        detekt                      : '1.7.2',
+        detekt                      : '1.7.4',
         kotlinx                     : [
                 coroutines: '1.3.5',
         ],
