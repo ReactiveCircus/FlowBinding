@@ -48,7 +48,7 @@ class FlowBindingPlugin : Plugin<Project> {
                     }
                     is LibraryPlugin -> {
                         project.libraryExtension.configureCommonAndroidOptions(project.gradle.startParameter)
-                        project.libraryExtension.configureAndroidLibraryOptions()
+                        project.libraryExtension.configureAndroidLibraryOptions(project)
                     }
                     is AppPlugin -> {
                         project.appExtension.configureCommonAndroidOptions(project.gradle.startParameter)

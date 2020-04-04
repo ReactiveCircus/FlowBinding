@@ -10,8 +10,10 @@ import org.gradle.api.tasks.Delete
 import org.gradle.api.tasks.compile.JavaCompile
 import org.gradle.api.tasks.testing.Test
 import org.gradle.api.tasks.testing.logging.TestLogEvent
+import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinCompile
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile
+import org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
 
 /**
  * Configure root project.
@@ -64,7 +66,21 @@ fun BaseExtension.configureCommonAndroidOptions(startParameter: StartParameter) 
  * Apply configuration options for Android Library projects.
  */
 @Suppress("UnstableApiUsage")
-fun LibraryExtension.configureAndroidLibraryOptions() {
+fun LibraryExtension.configureAndroidLibraryOptions(project: Project) {
+    // disable unit test tasks if the unitTest source set is empty
+    if (!project.hasUnitTestSource) {
+        onVariants {
+            unitTest { enabled = false }
+        }
+    }
+
+    // disable android test tasks if the androidTest source set is empty
+    if (!project.hasAndroidTestSource) {
+        onVariants {
+            androidTest { enabled = false }
+        }
+    }
+
     // Disable generating BuildConfig.java
     buildFeatures.buildConfig = false
 }
@@ -101,3 +117,22 @@ fun Project.configureForAllProjects() {
         }
     }
 }
+
+private val Project.hasUnitTestSource: Boolean
+    get() {
+        extensions.findByType(KotlinAndroidProjectExtension::class.java)?.sourceSets?.findByName("test")?.let {
+            if (it.kotlin.files.isNotEmpty()) return true
+        }
+        extensions.findByType(KotlinProjectExtension::class.java)?.sourceSets?.findByName("test")?.let {
+            if (it.kotlin.files.isNotEmpty()) return true
+        }
+        return false
+    }
+
+private val Project.hasAndroidTestSource: Boolean
+    get() {
+        extensions.findByType(KotlinAndroidProjectExtension::class.java)?.sourceSets?.findByName("androidTest")?.let {
+            if (it.kotlin.files.isNotEmpty()) return true
+        }
+        return false
+    }
