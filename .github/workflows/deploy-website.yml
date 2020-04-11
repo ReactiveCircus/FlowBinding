@@ -21,7 +21,7 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
           restore-keys: ${{ runner.os }}-gradle-
       - run: |
-          pip3 install mkdocs mkdocs-material mkdocs-minify-plugin pymdown-extensions
+          pip3 install mkdocs-material mkdocs-minify-plugin
           .buildscript/deploy_website.sh
         env:
           CI: true
