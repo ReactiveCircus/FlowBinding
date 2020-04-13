@@ -1,5 +1,3 @@
-import org.gradle.kotlin.dsl.getByType
-
 buildscript {
     apply(from = "buildSrc/dependencies.gradle")
     val versions: Map<Any, Any> by extra
@@ -27,10 +25,9 @@ plugins {
 
 apply(plugin = "binary-compatibility-validator")
 
-
-extensions.getByType<kotlinx.validation.ApiValidationExtension>().apply {
+configure<kotlinx.validation.ApiValidationExtension> {
     ignoredProjects.addAll(
-        listOf("fixtures", "testing-infra", "lint-rules")
+        listOf("fixtures", "testing-infra")
     )
 }
 
