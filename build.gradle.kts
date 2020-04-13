@@ -27,7 +27,7 @@ apply(plugin = "binary-compatibility-validator")
 
 configure<kotlinx.validation.ApiValidationExtension> {
     ignoredProjects.addAll(
-        listOf("fixtures", "testing-infra")
+        listOf("fixtures", "testing-infra", "lint-rules")
     )
 }
 
