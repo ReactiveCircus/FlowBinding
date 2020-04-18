@@ -68,6 +68,18 @@ public final class reactivecircus/flowbinding/material/NavigationViewItemSelecte
 	public static synthetic fun itemSelections$default (Lcom/google/android/material/navigation/NavigationView;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
 }
 
+public final class reactivecircus/flowbinding/material/SliderChangeEvent {
+	public fun <init> (Lcom/google/android/material/slider/Slider;FZ)V
+	public final fun getFromUser ()Z
+	public final fun getSlider ()Lcom/google/android/material/slider/Slider;
+	public final fun getValue ()F
+}
+
+public final class reactivecircus/flowbinding/material/SliderChangeEventFlowKt {
+	public static final fun changeEvents (Lcom/google/android/material/slider/Slider;Z)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun changeEvents$default (Lcom/google/android/material/slider/Slider;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+}
+
 public final class reactivecircus/flowbinding/material/SliderValueChangeFlowKt {
 	public static final fun valueChanges (Lcom/google/android/material/slider/Slider;Z)Lkotlinx/coroutines/flow/Flow;
 	public static synthetic fun valueChanges$default (Lcom/google/android/material/slider/Slider;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
