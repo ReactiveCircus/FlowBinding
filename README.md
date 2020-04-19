@@ -44,6 +44,7 @@ implementation "io.github.reactivecircus.flowbinding:flowbinding-navigation:${fl
 implementation "io.github.reactivecircus.flowbinding:flowbinding-preference:${flowbinding_version}"
 implementation "io.github.reactivecircus.flowbinding:flowbinding-recyclerview:${flowbinding_version}"
 implementation "io.github.reactivecircus.flowbinding:flowbinding-swiperefreshlayout:${flowbinding_version}"
+implementation "io.github.reactivecircus.flowbinding:flowbinding-viewpager:${flowbinding_version}"
 implementation "io.github.reactivecircus.flowbinding:flowbinding-viewpager2:${flowbinding_version}"
 ```
 

@@ -31,6 +31,7 @@ mkdir -p docs/flowbinding-navigation && cp flowbinding-navigation/README.md docs
 mkdir -p docs/flowbinding-preference && cp flowbinding-preference/README.md docs/flowbinding-preference/index.md
 mkdir -p docs/flowbinding-recyclerview && cp flowbinding-recyclerview/README.md docs/flowbinding-recyclerview/index.md
 mkdir -p docs/flowbinding-swiperefreshlayout && cp flowbinding-swiperefreshlayout/README.md docs/flowbinding-swiperefreshlayout/index.md
+mkdir -p docs/flowbinding-viewpager && cp flowbinding-viewpager/README.md docs/flowbinding-viewpager/index.md
 mkdir -p docs/flowbinding-viewpager2 && cp flowbinding-viewpager2/README.md docs/flowbinding-viewpager2/index.md
 cp CHANGELOG.md docs/changelog.md
 
