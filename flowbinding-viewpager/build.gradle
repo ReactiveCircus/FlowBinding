@@ -1,0 +1,35 @@
+plugins {
+    id 'flowbinding-plugin'
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'com.vanniktech.maven.publish'
+    id 'io.github.reactivecircus.firestorm'
+    id 'org.jetbrains.dokka'
+}
+
+afterEvaluate { project ->
+    project.tasks.dokka {
+        outputDirectory = "$rootDir/docs/api"
+        outputFormat = 'gfm'
+    }
+}
+
+android {
+    defaultConfig {
+        testApplicationId 'reactivecircus.flowbinding.viewpager.test'
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+}
+
+dependencies {
+    implementation project(':flowbinding-common')
+
+    implementation "androidx.viewpager:viewpager:${versions.androidx.viewPager}"
+    implementation "androidx.fragment:fragment:${versions.androidx.fragment}"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinx.coroutines}"
+
+    lintChecks project(":lint-rules")
+
+    androidTestImplementation project(':testing-infra')
+    androidTestImplementation project(':flowbinding-viewpager:fixtures')
+}
