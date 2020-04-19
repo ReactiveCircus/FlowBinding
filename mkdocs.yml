@@ -20,6 +20,8 @@ theme:
   font:
     text: 'Fira Sans'
     code: 'Fira Code'
+  icon:
+    repo: fontawesome/brands/github
 
 extra:
   social:
