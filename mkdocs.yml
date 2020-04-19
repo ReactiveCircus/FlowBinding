@@ -38,6 +38,7 @@ nav:
   - 'AndroidX Preference Bindings': flowbinding-preference/index.md
   - 'AndroidX RecyclerView Bindings': flowbinding-recyclerview/index.md
   - 'AndroidX SwipeRefreshLayout Bindings': flowbinding-swiperefreshlayout/index.md
+  - 'AndroidX ViewPager Bindings': flowbinding-viewpager/index.md
   - 'AndroidX ViewPager2 Bindings': flowbinding-viewpager2/index.md
   - 'Material Components Bindings': flowbinding-material/index.md
   - 'Change Log': changelog.md
