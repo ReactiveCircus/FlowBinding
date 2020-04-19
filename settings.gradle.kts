@@ -35,6 +35,9 @@ includeProject(":flowbinding-recyclerview:fixtures", "flowbinding-recyclerview/f
 include(":flowbinding-swiperefreshlayout")
 includeProject(":flowbinding-swiperefreshlayout:fixtures", "flowbinding-swiperefreshlayout/fixtures")
 
+include(":flowbinding-viewpager")
+includeProject(":flowbinding-viewpager:fixtures", "flowbinding-viewpager/fixtures")
+
 include(":flowbinding-viewpager2")
 includeProject(":flowbinding-viewpager2:fixtures", "flowbinding-viewpager2/fixtures")
 

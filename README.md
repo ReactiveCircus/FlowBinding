@@ -157,6 +157,7 @@ List of all bindings available:
 * [AndroidX Preference bindings][flowbinding-preference]
 * [AndroidX RecyclerView bindings][flowbinding-recyclerview]
 * [AndroidX SwipeRefreshLayout bindings][flowbinding-swiperefreshlayout]
+* [AndroidX ViewPager bindings][flowbinding-viewpager]
 * [AndroidX ViewPager2 bindings][flowbinding-viewpager2]
 * [Material Components bindings][flowbinding-material]
 
@@ -204,4 +205,5 @@ limitations under the License.
 [flowbinding-preference]: flowbinding-preference/
 [flowbinding-recyclerview]: flowbinding-recyclerview/
 [flowbinding-swiperefreshlayout]: flowbinding-swiperefreshlayout/
+[flowbinding-viewpager]: flowbinding-viewpager/
 [flowbinding-viewpager2]: flowbinding-viewpager2/
