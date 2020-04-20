@@ -1,5 +1,25 @@
 # Change Log
 
+## Version 0.11.0
+
+_2020-04-20_
+
+* New: Added new binding `fun Slider.changeEvents(emitImmediately: Boolean = false): Flow<SliderChangeEvent>` ([PR](https://github.com/ReactiveCircus/FlowBinding/pull/88)). Thanks [@FlowMo7](https://github.com/FlowMo7) for contribution!
+* New: Added **flowbinding-viewpager** artifact with bindings for the legacy `androidx.viewpager.widget.ViewPager`.
+* Enhancement: Updated to Kotlin 1.3.72, Coroutines 1.3.5.
+* Enhancement: Updated AndroidX:
+  * `core:1.3.0-rc01`
+  * `appcompat:1.2.0-beta01`
+  * `activity:1.2.0-alpha03`
+  * `fragment:1.3.0-alpha03`
+  * `drawerlayout:1.1.0-beta01`
+  * `navigation:2.3.0-alpha05`
+  * `preference:1.1.1`
+  * `recyclerview:1.2.0-alpha02`
+  * `swiperefreshlayout:1.1.0-rc01`
+  * `viewpager2:1.1.0-alpha01`
+* Enhancement: Updated Material Components to 1.2.0-alpha06.
+
 ## Version 0.10.2
 
 _2020-03-14_
@@ -63,7 +83,7 @@ _2019-11-14_
 * Enhancement: Migrated from **bitrise.io** to a [custom GitHub Action](https://github.com/ReactiveCircus/android-emulator-runner) for running instrumented tests on macOS VMs. Tests now take **~21 mins** compared to **30+ mins** with bitrise.
 * Fix: Added `@SdkSuppress` to `ViewScrollChangeEventFlowTest` which requires API 23.
 * Enhancement: Updated Gradle, AGP and AndroidX.
-* Fix: Added a bunch of missing event listener removals ([PR](https://github.com/ReactiveCircus/FlowBinding/pull/52)). Thanks @hoc081098 for contribution!
+* Fix: Added a bunch of missing event listener removals ([PR](https://github.com/ReactiveCircus/FlowBinding/pull/52)). Thanks [@hoc081098](https://github.com/hoc081098) for contribution!
 * Enhancement: Added a custom lint check `MissingListenerRemoval` for detecting missing listener removals in `awaitClose` within a `callbackFlow` implementation.
 
 ## Version 0.5.0
