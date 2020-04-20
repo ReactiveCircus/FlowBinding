@@ -1,5 +1,11 @@
 # Change Log
 
+## Version 0.11.1
+
+_2020-04-20_
+
+* Fix: revert to AGP 4.1.0-alpha05 which broke publishing.
+
 ## Version 0.11.0
 
 _2020-04-20_
