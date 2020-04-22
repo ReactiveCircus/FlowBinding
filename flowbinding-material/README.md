@@ -66,8 +66,8 @@ fun View.swipeDismissDragStateChanges(): Flow<Int>
 fun TabLayout.tabSelectionEvents(emitImmediately: Boolean = false): Flow<TabLayoutSelectionEvent>
 
 // TextInputLayout
-fun TextInputLayout.textInputLayoutStartIconClicks(): Flow<Unit>
-fun TextInputLayout.textInputLayoutEndIconClicks(): Flow<Unit>
-fun TextInputLayout.textInputLayoutStartIconLongClicks(): Flow<Unit>
-fun TextInputLayout.textInputLayoutEndIconLongClicks(): Flow<Unit>
+fun TextInputLayout.startIconClicks(): Flow<Unit>
+fun TextInputLayout.endIconClicks(): Flow<Unit>
+fun TextInputLayout.startIconLongClicks(): Flow<Unit>
+fun TextInputLayout.endIconLongClicks(): Flow<Unit>
 ```
