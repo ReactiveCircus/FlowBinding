@@ -82,6 +82,11 @@ fun LibraryExtension.configureAndroidLibraryOptions(project: Project) {
 
     // Disable generating BuildConfig.java
     buildFeatures.buildConfig = false
+
+    packagingOptions {
+        exclude("META-INF/AL2.0")
+        exclude("META-INF/LGPL2.1")
+    }
 }
 
 /**
