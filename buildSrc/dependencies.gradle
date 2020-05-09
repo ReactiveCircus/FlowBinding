@@ -39,7 +39,7 @@ rootProject.ext.versions = [
                 espresso          : '3.3.0-beta01'
         ],
         material                    : '1.2.0-alpha06',
-        blueprint                   : '1.7.1',
+        blueprint                   : '1.8.0',
         junit                       : '4.13',
         kluent                      : '1.58'
 ]
