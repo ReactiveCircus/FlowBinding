@@ -13,7 +13,7 @@ rootProject.ext.versions = [
         androidx                    : [
                 core              : '1.3.0-rc01',
                 annotation        : '1.1.0',
-                appCompat         : '1.2.0-beta01',
+                appCompat         : '1.2.0-rc01',
                 activity          : '1.2.0-alpha04',
                 fragment          : '1.3.0-alpha04',
                 coordinatorLayout : '1.1.0',
