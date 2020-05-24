@@ -31,29 +31,27 @@ import org.gradle.kotlin.dsl.getByType
  */
 class FlowBindingPlugin : Plugin<Project> {
     override fun apply(project: Project) {
-        project.afterEvaluate {
-            configureForAllProjects()
+        project.configureForAllProjects()
 
-            if (isRoot) {
-                configureRootProject()
-            }
+        if (project.isRoot) {
+            project.configureRootProject()
+        }
 
-            plugins.all {
-                when (this) {
-                    is JavaPlugin,
-                    is JavaLibraryPlugin -> {
-                        project.convention.getPlugin(JavaPluginConvention::class.java).apply {
-                            sourceCompatibility = JavaVersion.VERSION_1_8
-                            targetCompatibility = JavaVersion.VERSION_1_8
-                        }
+        project.plugins.all {
+            when (this) {
+                is JavaPlugin,
+                is JavaLibraryPlugin -> {
+                    project.convention.getPlugin(JavaPluginConvention::class.java).apply {
+                        sourceCompatibility = JavaVersion.VERSION_1_8
+                        targetCompatibility = JavaVersion.VERSION_1_8
                     }
-                    is LibraryPlugin -> {
-                        extensions.getByType<TestedExtension>().configureCommonAndroidOptions(project.gradle.startParameter)
-                        extensions.getByType<LibraryExtension>().configureAndroidLibraryOptions(project)
-                    }
-                    is AppPlugin -> {
-                        extensions.getByType<TestedExtension>().configureCommonAndroidOptions(project.gradle.startParameter)
-                    }
+                }
+                is LibraryPlugin -> {
+                    project.extensions.getByType<TestedExtension>().configureCommonAndroidOptions(project.gradle.startParameter)
+                    project.extensions.getByType<LibraryExtension>().configureAndroidLibraryOptions(project)
+                }
+                is AppPlugin -> {
+                    project.extensions.getByType<TestedExtension>().configureCommonAndroidOptions(project.gradle.startParameter)
                 }
             }
         }
