@@ -28,15 +28,15 @@ rootProject.ext.versions = [
                 navigation        : '2.3.0-beta01',
                 preference        : '1.1.1',
                 test              : [
-                        core   : '1.3.0-beta02',
-                        monitor: '1.3.0-beta02',
-                        rules  : '1.3.0-beta02',
-                        runner : '1.3.0-beta02',
+                        core   : '1.3.0-beta01',
+                        monitor: '1.3.0-beta01',
+                        rules  : '1.3.0-beta01',
+                        runner : '1.3.0-beta01',
                         ext    : [
-                                junit: '1.1.2-beta02'
+                                junit: '1.1.2-beta01'
                         ]
                 ],
-                espresso          : '3.3.0-beta02'
+                espresso          : '3.3.0-beta01'
         ],
         material                    : '1.2.0-alpha06',
         blueprint                   : '1.8.1',
