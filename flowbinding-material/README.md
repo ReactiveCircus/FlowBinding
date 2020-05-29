@@ -74,6 +74,8 @@ fun TabLayout.tabSelectionEvents(emitImmediately: Boolean = false): Flow<TabLayo
 // TextInputLayout
 fun TextInputLayout.startIconClicks(): Flow<Unit>
 fun TextInputLayout.endIconClicks(): Flow<Unit>
+fun TextInputLayout.errorIconClicks(): Flow<Unit>
 fun TextInputLayout.startIconLongClicks(): Flow<Unit>
 fun TextInputLayout.endIconLongClicks(): Flow<Unit>
+fun TextInputLayout.errorIconLongClicks(): Flow<Unit>
 ```

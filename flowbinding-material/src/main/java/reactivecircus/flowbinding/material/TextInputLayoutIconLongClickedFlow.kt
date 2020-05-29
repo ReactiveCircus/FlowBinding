@@ -12,7 +12,7 @@ import reactivecircus.flowbinding.common.checkMainThread
 import reactivecircus.flowbinding.common.safeOffer
 
 /**
- * Create a [Flow] of icon long clicked events on the [TextInputLayout] instance's start icon.
+ * Create a [Flow] of long clicked events on the [TextInputLayout] instance's start icon.
  *
  * Note: Created flow keeps a strong reference to the [TextInputLayout] instance
  * until the coroutine that launched the flow collector is cancelled.
@@ -39,7 +39,7 @@ fun TextInputLayout.startIconLongClicks(): Flow<Unit> = callbackFlow {
 }.conflate()
 
 /**
- * Create a [Flow] of icon long clicked events on the [TextInputLayout] instance's end icon.
+ * Create a [Flow] of long clicked events on the [TextInputLayout] instance's end icon.
  *
  * Note: Created flow keeps a strong reference to the [TextInputLayout] instance
  * until the coroutine that launched the flow collector is cancelled.
@@ -63,4 +63,31 @@ fun TextInputLayout.endIconLongClicks(): Flow<Unit> = callbackFlow {
     }
     setEndIconOnLongClickListener(listener)
     awaitClose { setEndIconOnLongClickListener(null) }
+}.conflate()
+
+/**
+ * Create a [Flow] of long clicked events on the [TextInputLayout] instance's error icon.
+ *
+ * Note: Created flow keeps a strong reference to the [TextInputLayout] instance
+ * until the coroutine that launched the flow collector is cancelled.
+ *
+ * Example of usage:
+ *
+ * ```
+ * textInputLayout.errorIconLongClicks()
+ *     .onEach {
+ *          // handle error icon long clicked
+ *     }
+ *     .launchIn(uiScope)
+ * ```
+ */
+@CheckResult
+@OptIn(ExperimentalCoroutinesApi::class)
+fun TextInputLayout.errorIconLongClicks(): Flow<Unit> = callbackFlow {
+    checkMainThread()
+    val listener = View.OnLongClickListener {
+        safeOffer(Unit)
+    }
+    setErrorIconOnLongClickListener(listener)
+    awaitClose { setErrorIconOnLongClickListener(null) }
 }.conflate()
