@@ -5,12 +5,13 @@ import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiT
 import com.google.android.material.textfield.TextInputLayout
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
-import reactivecircus.blueprint.testing.action.longClickTextInputLayoutIcon
+import reactivecircus.blueprint.testing.action.longClickTextInputLayoutEndIcon
+import reactivecircus.blueprint.testing.action.longClickTextInputLayoutErrorIcon
+import reactivecircus.blueprint.testing.action.longClickTextInputLayoutStartIcon
 import reactivecircus.flowbinding.material.fixtures.MaterialFragment2
 import reactivecircus.flowbinding.material.test.R
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest
-import reactivecircus.flowbinding.testing.longClickTextInputLayoutErrorIcon
 import reactivecircus.flowbinding.testing.recordWith
 
 @LargeTest
@@ -25,13 +26,13 @@ class TextInputLayoutIconLongClickedFlowTest {
 
             recorder.assertNoMoreValues()
 
-            longClickTextInputLayoutIcon(R.id.textInputLayout, endIcon = false)
+            longClickTextInputLayoutStartIcon(R.id.textInputLayout)
             recorder.takeValue() shouldEqual Unit
             recorder.assertNoMoreValues()
 
             cancelTestScope()
 
-            longClickTextInputLayoutIcon(R.id.textInputLayout, endIcon = false)
+            longClickTextInputLayoutStartIcon(R.id.textInputLayout)
             recorder.assertNoMoreValues()
         }
     }
@@ -45,13 +46,13 @@ class TextInputLayoutIconLongClickedFlowTest {
 
             recorder.assertNoMoreValues()
 
-            longClickTextInputLayoutIcon(R.id.textInputLayout, endIcon = true)
+            longClickTextInputLayoutEndIcon(R.id.textInputLayout)
             recorder.takeValue() shouldEqual Unit
             recorder.assertNoMoreValues()
 
             cancelTestScope()
 
-            longClickTextInputLayoutIcon(R.id.textInputLayout, endIcon = true)
+            longClickTextInputLayoutEndIcon(R.id.textInputLayout)
             recorder.assertNoMoreValues()
         }
     }

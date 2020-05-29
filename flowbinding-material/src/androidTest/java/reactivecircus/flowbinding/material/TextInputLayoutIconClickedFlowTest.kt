@@ -5,11 +5,12 @@ import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiT
 import com.google.android.material.textfield.TextInputLayout
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
-import reactivecircus.blueprint.testing.action.clickTextInputLayoutIcon
+import reactivecircus.blueprint.testing.action.clickTextInputLayoutEndIcon
+import reactivecircus.blueprint.testing.action.clickTextInputLayoutErrorIcon
+import reactivecircus.blueprint.testing.action.clickTextInputLayoutStartIcon
 import reactivecircus.flowbinding.material.fixtures.MaterialFragment2
 import reactivecircus.flowbinding.material.test.R
 import reactivecircus.flowbinding.testing.FlowRecorder
-import reactivecircus.flowbinding.testing.clickTextInputLayoutErrorIcon
 import reactivecircus.flowbinding.testing.launchTest
 import reactivecircus.flowbinding.testing.recordWith
 
@@ -25,13 +26,13 @@ class TextInputLayoutIconClickedFlowTest {
 
             recorder.assertNoMoreValues()
 
-            clickTextInputLayoutIcon(R.id.textInputLayout, endIcon = false)
+            clickTextInputLayoutStartIcon(R.id.textInputLayout)
             recorder.takeValue() shouldEqual Unit
             recorder.assertNoMoreValues()
 
             cancelTestScope()
 
-            clickTextInputLayoutIcon(R.id.textInputLayout, endIcon = false)
+            clickTextInputLayoutStartIcon(R.id.textInputLayout)
             recorder.assertNoMoreValues()
         }
     }
@@ -45,13 +46,13 @@ class TextInputLayoutIconClickedFlowTest {
 
             recorder.assertNoMoreValues()
 
-            clickTextInputLayoutIcon(R.id.textInputLayout, endIcon = true)
+            clickTextInputLayoutEndIcon(R.id.textInputLayout)
             recorder.takeValue() shouldEqual Unit
             recorder.assertNoMoreValues()
 
             cancelTestScope()
 
-            clickTextInputLayoutIcon(R.id.textInputLayout, endIcon = true)
+            clickTextInputLayoutEndIcon(R.id.textInputLayout)
             recorder.assertNoMoreValues()
         }
     }

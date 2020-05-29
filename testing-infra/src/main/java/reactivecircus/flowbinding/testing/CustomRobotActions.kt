@@ -69,25 +69,3 @@ fun RobotActions.clickCancelButtonOnDatePicker() {
 fun RobotActions.clickView(text: CharSequence) {
     Espresso.onView(withText(text.toString())).perform(click())
 }
-
-// TODO upstream to blueprint
-fun RobotActions.clickTextInputLayoutErrorIcon(@IdRes viewId: Int) {
-    Espresso.onView(
-        allOf(
-            withId(MaterialR.id.text_input_end_icon),
-            withContentDescription(MaterialR.string.error_icon_content_description),
-            isDescendantOfA(withId(viewId))
-        )
-    ).perform(click())
-}
-
-// TODO upstream to blueprint
-fun RobotActions.longClickTextInputLayoutErrorIcon(@IdRes viewId: Int) {
-    Espresso.onView(
-        allOf(
-            withId(MaterialR.id.text_input_end_icon),
-            withContentDescription(MaterialR.string.error_icon_content_description),
-            isDescendantOfA(withId(viewId))
-        )
-    ).perform(longClick())
-}
