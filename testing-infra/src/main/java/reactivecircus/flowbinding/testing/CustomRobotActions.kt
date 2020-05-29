@@ -10,12 +10,9 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.longClick
 import androidx.test.espresso.matcher.RootMatchers.isDialog
 import androidx.test.espresso.matcher.RootMatchers.isPlatformPopup
-import androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA
-import androidx.test.espresso.matcher.ViewMatchers.withContentDescription
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
-import org.hamcrest.CoreMatchers.allOf
 import org.hamcrest.CoreMatchers.anything
 import reactivecircus.blueprint.testing.RobotActions
 import com.google.android.material.R as MaterialR
