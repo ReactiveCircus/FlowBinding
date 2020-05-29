@@ -10,9 +10,12 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.longClick
 import androidx.test.espresso.matcher.RootMatchers.isDialog
 import androidx.test.espresso.matcher.RootMatchers.isPlatformPopup
+import androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA
+import androidx.test.espresso.matcher.ViewMatchers.withContentDescription
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
+import org.hamcrest.CoreMatchers.allOf
 import org.hamcrest.CoreMatchers.anything
 import reactivecircus.blueprint.testing.RobotActions
 import com.google.android.material.R as MaterialR
@@ -65,4 +68,26 @@ fun RobotActions.clickCancelButtonOnDatePicker() {
 
 fun RobotActions.clickView(text: CharSequence) {
     Espresso.onView(withText(text.toString())).perform(click())
+}
+
+// TODO upstream to blueprint
+fun RobotActions.clickTextInputLayoutErrorIcon(@IdRes viewId: Int) {
+    Espresso.onView(
+        allOf(
+            withId(MaterialR.id.text_input_end_icon),
+            withContentDescription(MaterialR.string.error_icon_content_description),
+            isDescendantOfA(withId(viewId))
+        )
+    ).perform(click())
+}
+
+// TODO upstream to blueprint
+fun RobotActions.longClickTextInputLayoutErrorIcon(@IdRes viewId: Int) {
+    Espresso.onView(
+        allOf(
+            withId(MaterialR.id.text_input_end_icon),
+            withContentDescription(MaterialR.string.error_icon_content_description),
+            isDescendantOfA(withId(viewId))
+        )
+    ).perform(longClick())
 }

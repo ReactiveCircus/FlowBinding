@@ -184,11 +184,13 @@ public final class reactivecircus/flowbinding/material/TabLayoutTabSelectionEven
 
 public final class reactivecircus/flowbinding/material/TextInputLayoutIconClickedFlowKt {
 	public static final fun endIconClicks (Lcom/google/android/material/textfield/TextInputLayout;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun errorIconClicks (Lcom/google/android/material/textfield/TextInputLayout;)Lkotlinx/coroutines/flow/Flow;
 	public static final fun startIconClicks (Lcom/google/android/material/textfield/TextInputLayout;)Lkotlinx/coroutines/flow/Flow;
 }
 
 public final class reactivecircus/flowbinding/material/TextInputLayoutIconLongClickedFlowKt {
 	public static final fun endIconLongClicks (Lcom/google/android/material/textfield/TextInputLayout;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun errorIconLongClicks (Lcom/google/android/material/textfield/TextInputLayout;)Lkotlinx/coroutines/flow/Flow;
 	public static final fun startIconLongClicks (Lcom/google/android/material/textfield/TextInputLayout;)Lkotlinx/coroutines/flow/Flow;
 }
 
