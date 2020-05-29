@@ -1,5 +1,20 @@
 # Change Log
 
+## Version 0.12.0
+
+_2020-05-29_
+
+* New: Added new bindings for Material Components:
+  * `fun Slider.touchEvents(): Flow<SliderTouchEvent>`
+  * `fun RangeSlider.valuesChanges(emitImmediately: Boolean = false): Flow<List<Float>>`
+  * `fun RangeSlider.changeEvents(emitImmediately: Boolean = false): Flow<RangeSliderChangeEvent>`
+  * `fun RangeSlider.touchEvents(): Flow<RangeSliderTouchEvent>`
+  * `fun TextInputLayout.errorIconClicks(): Flow<Unit>`
+  * `fun TextInputLayout.errorIconLongClicks(): Flow<Unit>`
+* Enhancement: Updated to Material Components 1.2.0-beta01.
+* Enhancement: Updated to Coroutines 1.3.7.
+* Enhancement: Started downgrading alpha versions of AndroidX dependencies to latest stable for upcoming FlowBinding 1.0 release.
+
 ## Version 0.11.1
 
 _2020-04-20_
