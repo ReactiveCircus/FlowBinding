@@ -32,11 +32,11 @@ class MaterialButtonToggleGroupCheckedChangedFlowTest {
 
             clickView(R.id.button2)
             val event2 = recorder.takeValue()
-            event2.checked shouldEqual true
-            event2.checkedId shouldEqual R.id.button2
+            event2.checked shouldEqual false
+            event2.checkedId shouldEqual R.id.button1
             val event3 = recorder.takeValue()
-            event3.checked shouldEqual false
-            event3.checkedId shouldEqual R.id.button1
+            event3.checked shouldEqual true
+            event3.checkedId shouldEqual R.id.button2
             recorder.assertNoMoreValues()
 
             clickView(R.id.button2)

@@ -68,6 +68,41 @@ public final class reactivecircus/flowbinding/material/NavigationViewItemSelecte
 	public static synthetic fun itemSelections$default (Lcom/google/android/material/navigation/NavigationView;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
 }
 
+public final class reactivecircus/flowbinding/material/RangeSliderChangeEvent {
+	public fun <init> (Lcom/google/android/material/slider/RangeSlider;Ljava/util/List;Z)V
+	public final fun getFromUser ()Z
+	public final fun getRangeSlider ()Lcom/google/android/material/slider/RangeSlider;
+	public final fun getValues ()Ljava/util/List;
+}
+
+public final class reactivecircus/flowbinding/material/RangeSliderChangeEventFlowKt {
+	public static final fun changeEvents (Lcom/google/android/material/slider/RangeSlider;Z)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun changeEvents$default (Lcom/google/android/material/slider/RangeSlider;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public abstract class reactivecircus/flowbinding/material/RangeSliderTouchEvent {
+	public abstract fun getRangeSlider ()Lcom/google/android/material/slider/RangeSlider;
+}
+
+public final class reactivecircus/flowbinding/material/RangeSliderTouchEvent$StartTracking : reactivecircus/flowbinding/material/RangeSliderTouchEvent {
+	public fun <init> (Lcom/google/android/material/slider/RangeSlider;)V
+	public fun getRangeSlider ()Lcom/google/android/material/slider/RangeSlider;
+}
+
+public final class reactivecircus/flowbinding/material/RangeSliderTouchEvent$StopTracking : reactivecircus/flowbinding/material/RangeSliderTouchEvent {
+	public fun <init> (Lcom/google/android/material/slider/RangeSlider;)V
+	public fun getRangeSlider ()Lcom/google/android/material/slider/RangeSlider;
+}
+
+public final class reactivecircus/flowbinding/material/RangeSliderTouchEventFlowKt {
+	public static final fun touchEvents (Lcom/google/android/material/slider/RangeSlider;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public final class reactivecircus/flowbinding/material/RangeSliderValuesChangeFlowKt {
+	public static final fun valuesChanges (Lcom/google/android/material/slider/RangeSlider;Z)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun valuesChanges$default (Lcom/google/android/material/slider/RangeSlider;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+}
+
 public final class reactivecircus/flowbinding/material/SliderChangeEvent {
 	public fun <init> (Lcom/google/android/material/slider/Slider;FZ)V
 	public final fun getFromUser ()Z
@@ -78,6 +113,24 @@ public final class reactivecircus/flowbinding/material/SliderChangeEvent {
 public final class reactivecircus/flowbinding/material/SliderChangeEventFlowKt {
 	public static final fun changeEvents (Lcom/google/android/material/slider/Slider;Z)Lkotlinx/coroutines/flow/Flow;
 	public static synthetic fun changeEvents$default (Lcom/google/android/material/slider/Slider;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public abstract class reactivecircus/flowbinding/material/SliderTouchEvent {
+	public abstract fun getSlider ()Lcom/google/android/material/slider/Slider;
+}
+
+public final class reactivecircus/flowbinding/material/SliderTouchEvent$StartTracking : reactivecircus/flowbinding/material/SliderTouchEvent {
+	public fun <init> (Lcom/google/android/material/slider/Slider;)V
+	public fun getSlider ()Lcom/google/android/material/slider/Slider;
+}
+
+public final class reactivecircus/flowbinding/material/SliderTouchEvent$StopTracking : reactivecircus/flowbinding/material/SliderTouchEvent {
+	public fun <init> (Lcom/google/android/material/slider/Slider;)V
+	public fun getSlider ()Lcom/google/android/material/slider/Slider;
+}
+
+public final class reactivecircus/flowbinding/material/SliderTouchEventFlowKt {
+	public static final fun touchEvents (Lcom/google/android/material/slider/Slider;)Lkotlinx/coroutines/flow/Flow;
 }
 
 public final class reactivecircus/flowbinding/material/SliderValueChangeFlowKt {
