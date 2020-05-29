@@ -53,6 +53,12 @@ fun NavigationView.itemSelections(emitImmediately: Boolean = false): Flow<MenuIt
 // Slider
 fun Slider.valueChanges(emitImmediately: Boolean = false): Flow<Float>
 fun Slider.changeEvents(emitImmediately: Boolean = false): Flow<SliderChangeEvent>
+fun Slider.touchEvents(): Flow<SliderTouchEvent>
+
+// RangeSlider
+fun RangeSlider.valuesChanges(emitImmediately: Boolean = false): Flow<List<Float>>
+fun RangeSlider.changeEvents(emitImmediately: Boolean = false): Flow<RangeSliderChangeEvent>
+fun RangeSlider.touchEvents(): Flow<RangeSliderTouchEvent>
 
 // Snackbar
 fun Snackbar.dismissEvents(): Flow<Int>
