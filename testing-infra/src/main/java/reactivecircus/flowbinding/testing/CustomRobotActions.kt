@@ -67,6 +67,27 @@ fun RobotActions.clickCancelButtonOnDatePicker() {
     getInstrumentation().waitForIdleSync()
 }
 
+fun RobotActions.clickOkButtonOnTimePicker() {
+    Espresso.onView(withId(MaterialR.id.material_timepicker_ok_button))
+        .inRoot(isDialog())
+        .perform(click())
+    getInstrumentation().waitForIdleSync()
+}
+
+fun RobotActions.clickCancelButtonOnTimePicker() {
+    Espresso.onView(withId(MaterialR.id.material_timepicker_cancel_button))
+        .inRoot(isDialog())
+        .perform(click())
+    getInstrumentation().waitForIdleSync()
+}
+
+fun RobotActions.clickModeButtonOnTimePicker() {
+    Espresso.onView(withId(MaterialR.id.material_timepicker_mode_button))
+        .inRoot(isDialog())
+        .perform(click())
+    getInstrumentation().waitForIdleSync()
+}
+
 fun RobotActions.clickView(text: CharSequence) {
     Espresso.onView(withText(text.toString())).perform(click())
 }
