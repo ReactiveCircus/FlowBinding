@@ -23,7 +23,7 @@ import reactivecircus.flowbinding.common.safeOffer
  * ```
  * datePicker.negativeButtonClicks()
  *     .onEach {
- *          // handle negative button click
+ *          // handle date picker negative button clicked
  *     }
  *     .launchIn(uiScope)
  * ```

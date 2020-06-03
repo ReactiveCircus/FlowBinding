@@ -67,6 +67,22 @@ public final class reactivecircus/flowbinding/material/MaterialDatePickerPositiv
 	public static final fun positiveButtonClicks (Lcom/google/android/material/datepicker/MaterialDatePicker;)Lkotlinx/coroutines/flow/Flow;
 }
 
+public final class reactivecircus/flowbinding/material/MaterialTimePickerCancelFlowKt {
+	public static final fun cancels (Lcom/google/android/material/timepicker/MaterialTimePicker;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public final class reactivecircus/flowbinding/material/MaterialTimePickerDismissFlowKt {
+	public static final fun dismisses (Lcom/google/android/material/timepicker/MaterialTimePicker;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public final class reactivecircus/flowbinding/material/MaterialTimePickerNegativeButtonClickFlowKt {
+	public static final fun negativeButtonClicks (Lcom/google/android/material/timepicker/MaterialTimePicker;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public final class reactivecircus/flowbinding/material/MaterialTimePickerPositiveButtonClickFlowKt {
+	public static final fun positiveButtonClicks (Lcom/google/android/material/timepicker/MaterialTimePicker;)Lkotlinx/coroutines/flow/Flow;
+}
+
 public final class reactivecircus/flowbinding/material/NavigationViewItemSelectedFlowKt {
 	public static final fun itemSelections (Lcom/google/android/material/navigation/NavigationView;)Lkotlinx/coroutines/flow/Flow;
 }

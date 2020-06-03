@@ -47,6 +47,12 @@ fun <S> MaterialDatePicker<S>.dismisses(): Flow<Unit>
 fun <S> MaterialDatePicker<S>.negativeButtonClicks(): Flow<Unit>
 fun <S> MaterialDatePicker<S>.positiveButtonClicks(): Flow<S>
 
+// MaterialTimePicker
+fun MaterialTimePicker.cancels(): Flow<Unit>
+fun MaterialTimePicker.dismisses(): Flow<Unit>
+fun MaterialTimePicker.negativeButtonClicks(): Flow<Unit>
+fun MaterialTimePicker.positiveButtonClicks(): Flow<Unit>
+
 // NavigationView
 fun NavigationView.itemSelections(): InitialValueFlow<MenuItem>
 
