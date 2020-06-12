@@ -7,7 +7,6 @@ connected_check_task:
     matrix:
       - API_LEVEL: 23
       - API_LEVEL: 28
-      - API_LEVEL: 30
     JAVA_TOOL_OPTIONS: -Xmx6g
     GRADLE_OPTS: -Dorg.gradle.daemon=false -Dkotlin.incremental=false
   container:
