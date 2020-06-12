@@ -11,8 +11,8 @@ import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest
 import reactivecircus.flowbinding.testing.recordWith
 
-@LargeTest
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.M)
+@LargeTest
 class ViewScrollChangeEventFlowTest {
 
     @Test
