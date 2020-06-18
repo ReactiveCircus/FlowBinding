@@ -6,7 +6,7 @@
 # https://benlimmer.com/2013/12/26/automatically-publish-javadoc-to-gh-pages-with-travis-ci/
 
 SLUG="ReactiveCircus/FlowBinding"
-BRANCH="master"
+BRANCH="main"
 
 set -e
 

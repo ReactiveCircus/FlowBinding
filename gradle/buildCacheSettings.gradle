@@ -1,5 +1,5 @@
 ext.isCiServer = System.getenv().containsKey("CIRRUS_CI")
-ext.isMasterBranch = System.getenv()["CIRRUS_BRANCH"] == "master"
+ext.isMainBranch = System.getenv()["CIRRUS_BRANCH"] == "main"
 ext.buildCacheHost = System.getenv().getOrDefault("CIRRUS_HTTP_CACHE_HOST", "localhost:12321")
 
 /**
@@ -12,6 +12,6 @@ buildCache {
     remote(HttpBuildCache) {
         url = "http://${buildCacheHost}/"
         enabled = isCiServer
-        push = isMasterBranch
+        push = isMainBranch
     }
 }
