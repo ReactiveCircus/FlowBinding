@@ -93,8 +93,7 @@ public final class reactivecircus/flowbinding/android/view/ViewDrawFlowKt {
 }
 
 public final class reactivecircus/flowbinding/android/view/ViewFocusChangedFlowKt {
-	public static final fun focusChanges (Landroid/view/View;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun focusChanges$default (Landroid/view/View;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun focusChanges (Landroid/view/View;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
 public final class reactivecircus/flowbinding/android/view/ViewGlobalLayoutFlowKt {
@@ -149,8 +148,7 @@ public final class reactivecircus/flowbinding/android/widget/AbsListViewScrollEv
 }
 
 public final class reactivecircus/flowbinding/android/widget/AdapterDataChangeFlowKt {
-	public static final fun dataChanges (Landroid/widget/Adapter;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun dataChanges$default (Landroid/widget/Adapter;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun dataChanges (Landroid/widget/Adapter;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
 public final class reactivecircus/flowbinding/android/widget/AdapterViewItemClickEvent {
@@ -188,8 +186,7 @@ public final class reactivecircus/flowbinding/android/widget/AdapterViewItemLong
 }
 
 public final class reactivecircus/flowbinding/android/widget/AdapterViewItemSelectionFlowKt {
-	public static final fun itemSelections (Landroid/widget/AdapterView;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun itemSelections$default (Landroid/widget/AdapterView;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun itemSelections (Landroid/widget/AdapterView;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
 public abstract class reactivecircus/flowbinding/android/widget/AdapterViewSelectionEvent {
@@ -210,8 +207,7 @@ public final class reactivecircus/flowbinding/android/widget/AdapterViewSelectio
 }
 
 public final class reactivecircus/flowbinding/android/widget/AdapterViewSelectionEventFlowKt {
-	public static final fun selectionEvents (Landroid/widget/AdapterView;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun selectionEvents$default (Landroid/widget/AdapterView;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun selectionEvents (Landroid/widget/AdapterView;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
 public final class reactivecircus/flowbinding/android/widget/AfterTextChangeEvent {
@@ -238,8 +234,7 @@ public final class reactivecircus/flowbinding/android/widget/BeforeTextChangeEve
 }
 
 public final class reactivecircus/flowbinding/android/widget/CompoundButtonCheckedChangedFlowKt {
-	public static final fun checkedChanges (Landroid/widget/CompoundButton;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun checkedChanges$default (Landroid/widget/CompoundButton;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun checkedChanges (Landroid/widget/CompoundButton;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
 public final class reactivecircus/flowbinding/android/widget/EditorActionEvent {
@@ -275,18 +270,15 @@ public final class reactivecircus/flowbinding/android/widget/QueryTextEvent$Quer
 }
 
 public final class reactivecircus/flowbinding/android/widget/RadioGroupCheckedChangedFlowKt {
-	public static final fun checkedChanges (Landroid/widget/RadioGroup;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun checkedChanges$default (Landroid/widget/RadioGroup;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun checkedChanges (Landroid/widget/RadioGroup;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
 public final class reactivecircus/flowbinding/android/widget/RatingBarRatingChangeEventFlowKt {
-	public static final fun ratingChangeEvents (Landroid/widget/RatingBar;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun ratingChangeEvents$default (Landroid/widget/RatingBar;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun ratingChangeEvents (Landroid/widget/RatingBar;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
 public final class reactivecircus/flowbinding/android/widget/RatingBarRatingChangeFlowKt {
-	public static final fun ratingChanges (Landroid/widget/RatingBar;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun ratingChanges$default (Landroid/widget/RatingBar;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun ratingChanges (Landroid/widget/RatingBar;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
 public final class reactivecircus/flowbinding/android/widget/RatingChangeEvent {
@@ -306,13 +298,11 @@ public final class reactivecircus/flowbinding/android/widget/ScrollEvent {
 }
 
 public final class reactivecircus/flowbinding/android/widget/SearchViewQueryTextChangeFlowKt {
-	public static final fun queryTextChanges (Landroid/widget/SearchView;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun queryTextChanges$default (Landroid/widget/SearchView;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun queryTextChanges (Landroid/widget/SearchView;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
 public final class reactivecircus/flowbinding/android/widget/SearchViewQueryTextEventFlowKt {
-	public static final fun queryTextEvents (Landroid/widget/SearchView;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun queryTextEvents$default (Landroid/widget/SearchView;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun queryTextEvents (Landroid/widget/SearchView;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
 public abstract class reactivecircus/flowbinding/android/widget/SeekBarChangeEvent {
@@ -337,13 +327,11 @@ public final class reactivecircus/flowbinding/android/widget/SeekBarChangeEvent$
 }
 
 public final class reactivecircus/flowbinding/android/widget/SeekBarChangeEventFlowKt {
-	public static final fun changeEvents (Landroid/widget/SeekBar;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun changeEvents$default (Landroid/widget/SeekBar;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun changeEvents (Landroid/widget/SeekBar;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
 public final class reactivecircus/flowbinding/android/widget/SeekBarProgressChangeFlowKt {
-	public static final fun progressChanges (Landroid/widget/SeekBar;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun progressChanges$default (Landroid/widget/SeekBar;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun progressChanges (Landroid/widget/SeekBar;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
 public final class reactivecircus/flowbinding/android/widget/TextChangeEvent {
@@ -356,13 +344,11 @@ public final class reactivecircus/flowbinding/android/widget/TextChangeEvent {
 }
 
 public final class reactivecircus/flowbinding/android/widget/TextViewAfterTextChangeEventFlowKt {
-	public static final fun afterTextChanges (Landroid/widget/TextView;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun afterTextChanges$default (Landroid/widget/TextView;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun afterTextChanges (Landroid/widget/TextView;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
 public final class reactivecircus/flowbinding/android/widget/TextViewBeforeTextChangeEventFlowKt {
-	public static final fun beforeTextChanges (Landroid/widget/TextView;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun beforeTextChanges$default (Landroid/widget/TextView;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun beforeTextChanges (Landroid/widget/TextView;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
 public final class reactivecircus/flowbinding/android/widget/TextViewEditorActionEventFlowKt {
@@ -371,12 +357,10 @@ public final class reactivecircus/flowbinding/android/widget/TextViewEditorActio
 }
 
 public final class reactivecircus/flowbinding/android/widget/TextViewTextChangeEventFlowKt {
-	public static final fun textChangeEvents (Landroid/widget/TextView;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun textChangeEvents$default (Landroid/widget/TextView;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun textChangeEvents (Landroid/widget/TextView;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
 public final class reactivecircus/flowbinding/android/widget/TextViewTextChangeFlowKt {
-	public static final fun textChanges (Landroid/widget/TextView;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun textChanges$default (Landroid/widget/TextView;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun textChanges (Landroid/widget/TextView;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 

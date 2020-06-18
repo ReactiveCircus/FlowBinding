@@ -22,6 +22,7 @@ class CompoundButtonCheckedChangedFlowTest {
             getViewById<CompoundButton>(R.id.toggleButton)
                 .checkedChanges().recordWith(recorder)
 
+            recorder.takeValue() shouldEqual false
             recorder.assertNoMoreValues()
 
             clickView(R.id.toggleButton)
@@ -46,6 +47,7 @@ class CompoundButtonCheckedChangedFlowTest {
             val button = getViewById<CompoundButton>(R.id.toggleButton)
             button.checkedChanges().recordWith(recorder)
 
+            recorder.takeValue() shouldEqual false
             recorder.assertNoMoreValues()
 
             runOnUiThread { button.isChecked = true }
@@ -64,15 +66,16 @@ class CompoundButtonCheckedChangedFlowTest {
     }
 
     @Test
-    fun compoundButtonCheckedChanges_emitImmediately() {
+    fun compoundButtonCheckedChanges_skipInitialValue() {
         launchTest<AndroidWidgetFragment> {
             val recorder = FlowRecorder<Boolean>(testScope)
             val button = getViewById<CompoundButton>(R.id.toggleButton).apply {
                 runOnUiThread { isChecked = false }
             }
-            button.checkedChanges(emitImmediately = true).recordWith(recorder)
+            button.checkedChanges()
+                .skipInitialValue()
+                .recordWith(recorder)
 
-            recorder.takeValue() shouldEqual false
             recorder.assertNoMoreValues()
 
             runOnUiThread { button.isChecked = true }

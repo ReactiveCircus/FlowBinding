@@ -21,6 +21,12 @@ class TextViewBeforeTextChangeEventFlowTest {
             }
             textView.beforeTextChanges().recordWith(recorder)
 
+            val initialEvent = recorder.takeValue()
+            initialEvent.view shouldEqual textView
+            initialEvent.text.toString() shouldEqual "ABC"
+            initialEvent.start shouldEqual 0
+            initialEvent.count shouldEqual 0
+            initialEvent.after shouldEqual 0
             recorder.assertNoMoreValues()
 
             textView.text = "A"
@@ -49,20 +55,16 @@ class TextViewBeforeTextChangeEventFlowTest {
     }
 
     @Test
-    fun textViewBeforeTextChangeEvents_emitImmediately() {
+    fun textViewBeforeTextChangeEvents_skipInitialValue() {
         launchTest<AndroidWidgetFragment> {
             val recorder = FlowRecorder<BeforeTextChangeEvent>(testScope)
             val textView = TextView(rootView.context).apply {
                 text = "ABC"
             }
-            textView.beforeTextChanges(emitImmediately = true).recordWith(recorder)
+            textView.beforeTextChanges()
+                .skipInitialValue()
+                .recordWith(recorder)
 
-            val initialEvent = recorder.takeValue()
-            initialEvent.view shouldEqual textView
-            initialEvent.text.toString() shouldEqual "ABC"
-            initialEvent.start shouldEqual 0
-            initialEvent.count shouldEqual 0
-            initialEvent.after shouldEqual 0
             recorder.assertNoMoreValues()
 
             textView.text = "A"

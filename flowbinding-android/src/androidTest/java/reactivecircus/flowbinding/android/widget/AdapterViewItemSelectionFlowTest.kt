@@ -23,6 +23,7 @@ class AdapterViewItemSelectionFlowTest {
             }
             listView.itemSelections().recordWith(recorder)
 
+            recorder.takeValue() shouldEqual 0
             recorder.assertNoMoreValues()
 
             runOnUiThread {
@@ -47,15 +48,16 @@ class AdapterViewItemSelectionFlowTest {
     }
 
     @Test
-    fun adapterViewItemSelections_emitImmediately() {
+    fun adapterViewItemSelections_skipInitialValue() {
         launchTest<ListFragment> {
             val recorder = FlowRecorder<Int>(testScope)
             val listView = getViewById<ListView>(R.id.listView).apply {
                 runOnUiThread { requestFocusFromTouch() }
             }
-            listView.itemSelections(emitImmediately = true).recordWith(recorder)
+            listView.itemSelections()
+                .skipInitialValue()
+                .recordWith(recorder)
 
-            recorder.takeValue() shouldEqual 0
             recorder.assertNoMoreValues()
 
             runOnUiThread {

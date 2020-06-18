@@ -19,8 +19,12 @@ class RadioGroupCheckedChangedFlowTest {
     fun radioGroupCheckedChanges_click() {
         launchTest<AndroidWidgetFragment> {
             val recorder = FlowRecorder<Int>(testScope)
-            getViewById<RadioGroup>(R.id.radioGroup).checkedChanges().recordWith(recorder)
+            val radioGroup = getViewById<RadioGroup>(R.id.radioGroup).apply {
+                runOnUiThread { check(R.id.radioButton1) }
+            }
+            radioGroup.checkedChanges().recordWith(recorder)
 
+            recorder.takeValue() shouldEqual R.id.radioButton1
             recorder.assertNoMoreValues()
 
             clickView(R.id.radioButton2)
@@ -42,9 +46,12 @@ class RadioGroupCheckedChangedFlowTest {
     fun radioGroupCheckedChanges_programmatic() {
         launchTest<AndroidWidgetFragment> {
             val recorder = FlowRecorder<Int>(testScope)
-            val radioGroup = getViewById<RadioGroup>(R.id.radioGroup)
+            val radioGroup = getViewById<RadioGroup>(R.id.radioGroup).apply {
+                runOnUiThread { check(R.id.radioButton1) }
+            }
             radioGroup.checkedChanges().recordWith(recorder)
 
+            recorder.takeValue() shouldEqual R.id.radioButton1
             recorder.assertNoMoreValues()
 
             runOnUiThread { radioGroup.check(R.id.radioButton2) }
@@ -62,15 +69,16 @@ class RadioGroupCheckedChangedFlowTest {
     }
 
     @Test
-    fun radioGroupCheckedChanges_emitImmediately() {
+    fun radioGroupCheckedChanges_skipInitialValue() {
         launchTest<AndroidWidgetFragment> {
             val recorder = FlowRecorder<Int>(testScope)
             val radioGroup = getViewById<RadioGroup>(R.id.radioGroup).apply {
                 runOnUiThread { check(R.id.radioButton1) }
             }
-            radioGroup.checkedChanges(emitImmediately = true).recordWith(recorder)
+            radioGroup.checkedChanges()
+                .skipInitialValue()
+                .recordWith(recorder)
 
-            recorder.takeValue() shouldEqual R.id.radioButton1
             recorder.assertNoMoreValues()
 
             runOnUiThread { radioGroup.check(R.id.radioButton2) }

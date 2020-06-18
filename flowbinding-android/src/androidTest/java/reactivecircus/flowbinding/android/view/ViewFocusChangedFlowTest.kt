@@ -22,6 +22,7 @@ class ViewFocusChangedFlowTest {
             val editText = getViewById<EditText>(R.id.editText1)
             editText.focusChanges().recordWith(recorder)
 
+            recorder.takeValue() shouldEqual false
             recorder.assertNoMoreValues()
 
             clickView(R.id.editText1)
@@ -47,6 +48,7 @@ class ViewFocusChangedFlowTest {
             val editText2 = getViewById<EditText>(R.id.editText2)
             editText1.focusChanges().recordWith(recorder)
 
+            recorder.takeValue() shouldEqual false
             recorder.assertNoMoreValues()
 
             runOnUiThread { editText1.requestFocus() }
@@ -65,15 +67,16 @@ class ViewFocusChangedFlowTest {
     }
 
     @Test
-    fun viewFocusChanges_emitImmediately() {
+    fun viewFocusChanges_skipInitialValue() {
         launchTest<AndroidViewFragment> {
             val recorder = FlowRecorder<Boolean>(testScope)
             val editText = getViewById<EditText>(R.id.editText1).apply {
                 runOnUiThread { requestFocus() }
             }
-            editText.focusChanges(emitImmediately = true).recordWith(recorder)
+            editText.focusChanges()
+                .skipInitialValue()
+                .recordWith(recorder)
 
-            recorder.takeValue() shouldEqual true
             recorder.assertNoMoreValues()
 
             clickView(R.id.editText2)

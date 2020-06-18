@@ -21,36 +21,6 @@ class RatingBarRatingChangeEventFlowTest {
             val ratingBar = getViewById<RatingBar>(R.id.ratingBar)
             ratingBar.ratingChangeEvents().recordWith(recorder)
 
-            recorder.assertNoMoreValues()
-
-            runOnUiThread { ratingBar.rating = 3f }
-            val event1 = recorder.takeValue()
-            event1.view shouldEqual ratingBar
-            event1.rating shouldEqual 3f
-            event1.fromUser shouldEqual false
-            recorder.assertNoMoreValues()
-
-            runOnUiThread { ratingBar.rating = 5f }
-            val event2 = recorder.takeValue()
-            event2.view shouldEqual ratingBar
-            event2.rating shouldEqual 5f
-            event2.fromUser shouldEqual false
-            recorder.assertNoMoreValues()
-
-            cancelTestScope()
-
-            runOnUiThread { ratingBar.rating = 0f }
-            recorder.assertNoMoreValues()
-        }
-    }
-
-    @Test
-    fun ratingBarRatingChangeEvents_emitImmediately() {
-        launchTest<AndroidWidgetFragment> {
-            val recorder = FlowRecorder<RatingChangeEvent>(testScope)
-            val ratingBar = getViewById<RatingBar>(R.id.ratingBar)
-            ratingBar.ratingChangeEvents(emitImmediately = true).recordWith(recorder)
-
             val event1 = recorder.takeValue()
             event1.view shouldEqual ratingBar
             event1.rating shouldEqual 0f
@@ -62,6 +32,38 @@ class RatingBarRatingChangeEventFlowTest {
             event2.view shouldEqual ratingBar
             event2.rating shouldEqual 3f
             event2.fromUser shouldEqual false
+            recorder.assertNoMoreValues()
+
+            runOnUiThread { ratingBar.rating = 5f }
+            val event3 = recorder.takeValue()
+            event3.view shouldEqual ratingBar
+            event3.rating shouldEqual 5f
+            event3.fromUser shouldEqual false
+            recorder.assertNoMoreValues()
+
+            cancelTestScope()
+
+            runOnUiThread { ratingBar.rating = 0f }
+            recorder.assertNoMoreValues()
+        }
+    }
+
+    @Test
+    fun ratingBarRatingChangeEvents_skipInitialValue() {
+        launchTest<AndroidWidgetFragment> {
+            val recorder = FlowRecorder<RatingChangeEvent>(testScope)
+            val ratingBar = getViewById<RatingBar>(R.id.ratingBar)
+            ratingBar.ratingChangeEvents()
+                .skipInitialValue()
+                .recordWith(recorder)
+
+            recorder.assertNoMoreValues()
+
+            runOnUiThread { ratingBar.rating = 3f }
+            val event = recorder.takeValue()
+            event.view shouldEqual ratingBar
+            event.rating shouldEqual 3f
+            event.fromUser shouldEqual false
             recorder.assertNoMoreValues()
 
             cancelTestScope()

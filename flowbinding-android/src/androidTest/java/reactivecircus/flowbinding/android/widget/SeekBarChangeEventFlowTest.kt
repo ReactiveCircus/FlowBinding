@@ -23,6 +23,10 @@ class SeekBarChangeEventFlowTest {
             val seekBar = getViewById<SeekBar>(R.id.seekBar)
             seekBar.changeEvents().recordWith(recorder)
 
+            val initialEvent = recorder.takeValue() as SeekBarChangeEvent.ProgressChanged
+            initialEvent.view shouldEqual seekBar
+            initialEvent.progress shouldEqual 0
+            initialEvent.fromUser shouldEqual false
             recorder.assertNoMoreValues()
 
             getInstrumentation().sendPointerSync(motionEventAtPosition(seekBar, MotionEvent.ACTION_DOWN, 0, 50))
@@ -56,6 +60,10 @@ class SeekBarChangeEventFlowTest {
             val seekBar = getViewById<SeekBar>(R.id.seekBar)
             seekBar.changeEvents().recordWith(recorder)
 
+            val initialEvent = recorder.takeValue() as SeekBarChangeEvent.ProgressChanged
+            initialEvent.view shouldEqual seekBar
+            initialEvent.progress shouldEqual 0
+            initialEvent.fromUser shouldEqual false
             recorder.assertNoMoreValues()
 
             seekBar.progress = 50
@@ -80,23 +88,21 @@ class SeekBarChangeEventFlowTest {
     }
 
     @Test
-    fun seekBarChangeEvents_emitImmediately() {
+    fun seekBarChangeEvents_skipInitialValue() {
         launchTest<AndroidWidgetFragment> {
             val recorder = FlowRecorder<SeekBarChangeEvent>(testScope)
             val seekBar = getViewById<SeekBar>(R.id.seekBar)
-            seekBar.changeEvents(emitImmediately = true).recordWith(recorder)
+            seekBar.changeEvents()
+                .skipInitialValue()
+                .recordWith(recorder)
 
-            val initialEvent = recorder.takeValue() as SeekBarChangeEvent.ProgressChanged
-            initialEvent.view shouldEqual seekBar
-            initialEvent.progress shouldEqual 0
-            initialEvent.fromUser shouldEqual false
             recorder.assertNoMoreValues()
 
             seekBar.progress = 50
-            val event1 = recorder.takeValue() as SeekBarChangeEvent.ProgressChanged
-            event1.view shouldEqual seekBar
-            event1.progress shouldEqual 50
-            event1.fromUser shouldEqual false
+            val event = recorder.takeValue() as SeekBarChangeEvent.ProgressChanged
+            event.view shouldEqual seekBar
+            event.progress shouldEqual 50
+            event.fromUser shouldEqual false
             recorder.assertNoMoreValues()
 
             cancelTestScope()

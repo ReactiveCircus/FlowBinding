@@ -23,6 +23,7 @@ class SeekBarProgressChangeFlowTest {
             val seekBar = getViewById<SeekBar>(R.id.seekBar)
             seekBar.progressChanges().recordWith(recorder)
 
+            recorder.takeValue() shouldEqual 0
             recorder.assertNoMoreValues()
 
             getInstrumentation().sendPointerSync(motionEventAtPosition(seekBar, MotionEvent.ACTION_DOWN, 0, 50))
@@ -48,6 +49,7 @@ class SeekBarProgressChangeFlowTest {
             val seekBar = getViewById<SeekBar>(R.id.seekBar)
             seekBar.progressChanges().recordWith(recorder)
 
+            recorder.takeValue() shouldEqual 0
             recorder.assertNoMoreValues()
 
             seekBar.progress = 50
@@ -65,13 +67,14 @@ class SeekBarProgressChangeFlowTest {
     }
 
     @Test
-    fun seekBarProgressChanges_emitImmediately() {
+    fun seekBarProgressChanges_skipInitialValue() {
         launchTest<AndroidWidgetFragment> {
             val recorder = FlowRecorder<Int>(testScope)
             val seekBar = getViewById<SeekBar>(R.id.seekBar)
-            seekBar.progressChanges(emitImmediately = true).recordWith(recorder)
+            seekBar.progressChanges()
+                .skipInitialValue()
+                .recordWith(recorder)
 
-            recorder.takeValue() shouldEqual 0
             recorder.assertNoMoreValues()
 
             seekBar.progress = 50

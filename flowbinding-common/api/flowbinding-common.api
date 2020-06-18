@@ -2,6 +2,16 @@ public final class reactivecircus/flowbinding/common/CheckMainThreadKt {
 	public static final fun checkMainThread ()V
 }
 
+public final class reactivecircus/flowbinding/common/InitialValueFlow : kotlinx/coroutines/flow/Flow {
+	public fun <init> (Lkotlinx/coroutines/flow/Flow;)V
+	public fun collect (Lkotlinx/coroutines/flow/FlowCollector;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun skipInitialValue ()Lkotlinx/coroutines/flow/Flow;
+}
+
+public final class reactivecircus/flowbinding/common/InitialValueFlowKt {
+	public static final fun asInitialValueFlow (Lkotlinx/coroutines/flow/Flow;Lkotlin/jvm/functions/Function0;)Lreactivecircus/flowbinding/common/InitialValueFlow;
+}
+
 public final class reactivecircus/flowbinding/common/SafeOfferKt {
 	public static final fun safeOffer (Lkotlinx/coroutines/channels/SendChannel;Ljava/lang/Object;)Z
 }
