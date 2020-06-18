@@ -6,17 +6,15 @@ import android.widget.RatingBar
 import androidx.annotation.CheckResult
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
+import reactivecircus.flowbinding.common.InitialValueFlow
+import reactivecircus.flowbinding.common.asInitialValueFlow
 import reactivecircus.flowbinding.common.checkMainThread
 import reactivecircus.flowbinding.common.safeOffer
-import reactivecircus.flowbinding.common.startWithCurrentValue
 
 /**
- * Create a [Flow] of rating change events on the [RatingBar] instance.
- *
- * @param emitImmediately whether to emit the current value (if any) immediately on flow collection.
+ * Create a [InitialValueFlow] of rating change events on the [RatingBar] instance.
  *
  * Note: Created flow keeps a strong reference to the [RatingBar] instance
  * until the coroutine that launched the flow collector is cancelled.
@@ -33,7 +31,7 @@ import reactivecircus.flowbinding.common.startWithCurrentValue
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun RatingBar.ratingChangeEvents(emitImmediately: Boolean = false): Flow<RatingChangeEvent> = callbackFlow {
+fun RatingBar.ratingChangeEvents(): InitialValueFlow<RatingChangeEvent> = callbackFlow {
     checkMainThread()
     val listener = RatingBar.OnRatingBarChangeListener { ratingBar, rating, fromUser ->
         safeOffer(
@@ -47,14 +45,14 @@ fun RatingBar.ratingChangeEvents(emitImmediately: Boolean = false): Flow<RatingC
     onRatingBarChangeListener = listener
     awaitClose { onRatingBarChangeListener = null }
 }
-    .startWithCurrentValue(emitImmediately) {
+    .conflate()
+    .asInitialValueFlow {
         RatingChangeEvent(
             view = this,
             rating = rating,
             fromUser = false
         )
     }
-    .conflate()
 
 class RatingChangeEvent(
     val view: RatingBar,

@@ -21,6 +21,7 @@ class RatingBarRatingChangeFlowTest {
             val ratingBar = getViewById<RatingBar>(R.id.ratingBar)
             ratingBar.ratingChanges().recordWith(recorder)
 
+            recorder.takeValue() shouldEqual 0f
             recorder.assertNoMoreValues()
 
             runOnUiThread { ratingBar.rating = 3f }
@@ -39,13 +40,14 @@ class RatingBarRatingChangeFlowTest {
     }
 
     @Test
-    fun ratingBarRatingChanges_emitImmediately() {
+    fun ratingBarRatingChanges_skipInitialValue() {
         launchTest<AndroidWidgetFragment> {
             val recorder = FlowRecorder<Float>(testScope)
             val ratingBar = getViewById<RatingBar>(R.id.ratingBar)
-            ratingBar.ratingChanges(emitImmediately = true).recordWith(recorder)
+            ratingBar.ratingChanges()
+                .skipInitialValue()
+                .recordWith(recorder)
 
-            recorder.takeValue() shouldEqual 0f
             recorder.assertNoMoreValues()
 
             runOnUiThread { ratingBar.rating = 3f }

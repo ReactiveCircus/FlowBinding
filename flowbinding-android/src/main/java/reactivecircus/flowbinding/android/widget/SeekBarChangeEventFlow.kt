@@ -6,17 +6,15 @@ import android.widget.SeekBar
 import androidx.annotation.CheckResult
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
+import reactivecircus.flowbinding.common.InitialValueFlow
+import reactivecircus.flowbinding.common.asInitialValueFlow
 import reactivecircus.flowbinding.common.checkMainThread
 import reactivecircus.flowbinding.common.safeOffer
-import reactivecircus.flowbinding.common.startWithCurrentValue
 
 /**
- * Create a [Flow] of change events on the [SeekBar] instance.
- *
- * @param emitImmediately whether to emit the current value (if any) immediately on flow collection.
+ * Create a [InitialValueFlow] of change events on the [SeekBar] instance.
  *
  * Note: Created flow keeps a strong reference to the [SeekBar] instance
  * until the coroutine that launched the flow collector is cancelled.
@@ -43,7 +41,7 @@ import reactivecircus.flowbinding.common.startWithCurrentValue
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun SeekBar.changeEvents(emitImmediately: Boolean = false): Flow<SeekBarChangeEvent> =
+fun SeekBar.changeEvents(): InitialValueFlow<SeekBarChangeEvent> =
     callbackFlow<SeekBarChangeEvent> {
         checkMainThread()
         val listener = object : SeekBar.OnSeekBarChangeListener {
@@ -73,14 +71,14 @@ fun SeekBar.changeEvents(emitImmediately: Boolean = false): Flow<SeekBarChangeEv
         setOnSeekBarChangeListener(listener)
         awaitClose { setOnSeekBarChangeListener(null) }
     }
-        .startWithCurrentValue(emitImmediately) {
+        .conflate()
+        .asInitialValueFlow {
             SeekBarChangeEvent.ProgressChanged(
                 view = this,
                 progress = progress,
                 fromUser = false
             )
         }
-        .conflate()
 
 sealed class SeekBarChangeEvent {
     abstract val view: SeekBar

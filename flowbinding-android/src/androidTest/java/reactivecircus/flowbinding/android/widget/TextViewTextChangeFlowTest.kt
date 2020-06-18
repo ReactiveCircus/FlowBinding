@@ -21,6 +21,7 @@ class TextViewTextChangeFlowTest {
             }
             textView.textChanges().recordWith(recorder)
 
+            recorder.takeValue().toString() shouldEqual "ABC"
             recorder.assertNoMoreValues()
 
             textView.text = "A"
@@ -39,15 +40,16 @@ class TextViewTextChangeFlowTest {
     }
 
     @Test
-    fun textViewTextChanges_emitImmediately() {
+    fun textViewTextChanges_skipInitialValue() {
         launchTest<AndroidWidgetFragment> {
             val recorder = FlowRecorder<CharSequence>(testScope)
             val textView = TextView(rootView.context).apply {
                 text = "ABC"
             }
-            textView.textChanges(emitImmediately = true).recordWith(recorder)
+            textView.textChanges()
+                .skipInitialValue()
+                .recordWith(recorder)
 
-            recorder.takeValue().toString() shouldEqual "ABC"
             recorder.assertNoMoreValues()
 
             textView.text = "A"

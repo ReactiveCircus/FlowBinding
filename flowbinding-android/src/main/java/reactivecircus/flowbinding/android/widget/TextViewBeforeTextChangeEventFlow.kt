@@ -8,17 +8,15 @@ import android.widget.TextView
 import androidx.annotation.CheckResult
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
+import reactivecircus.flowbinding.common.InitialValueFlow
+import reactivecircus.flowbinding.common.asInitialValueFlow
 import reactivecircus.flowbinding.common.checkMainThread
 import reactivecircus.flowbinding.common.safeOffer
-import reactivecircus.flowbinding.common.startWithCurrentValue
 
 /**
- * Create a [Flow] of before text change events on the [TextView] instance.
- *
- * @param emitImmediately whether to emit the current value (if any) immediately on flow collection.
+ * Create a [InitialValueFlow] of before text change events on the [TextView] instance.
  *
  * Note: Created flow keeps a strong reference to the [TextView] instance
  * until the coroutine that launched the flow collector is cancelled.
@@ -35,7 +33,7 @@ import reactivecircus.flowbinding.common.startWithCurrentValue
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun TextView.beforeTextChanges(emitImmediately: Boolean = false): Flow<BeforeTextChangeEvent> =
+fun TextView.beforeTextChanges(): InitialValueFlow<BeforeTextChangeEvent> =
     callbackFlow<BeforeTextChangeEvent> {
         checkMainThread()
         val listener = object : TextWatcher {
@@ -59,7 +57,8 @@ fun TextView.beforeTextChanges(emitImmediately: Boolean = false): Flow<BeforeTex
         addTextChangedListener(listener)
         awaitClose { removeTextChangedListener(listener) }
     }
-        .startWithCurrentValue(emitImmediately) {
+        .conflate()
+        .asInitialValueFlow {
             BeforeTextChangeEvent(
                 view = this@beforeTextChanges,
                 text = text,
@@ -68,7 +67,6 @@ fun TextView.beforeTextChanges(emitImmediately: Boolean = false): Flow<BeforeTex
                 after = 0
             )
         }
-        .conflate()
 
 class BeforeTextChangeEvent(
     val view: TextView,

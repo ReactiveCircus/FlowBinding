@@ -23,6 +23,7 @@ class AdapterDataChangeFlowTest {
 
             adapter.dataChanges().recordWith(recorder)
 
+            recorder.takeValue() shouldEqual adapter
             recorder.assertNoMoreValues()
 
             adapter.notifyDataSetChanged()
@@ -41,14 +42,15 @@ class AdapterDataChangeFlowTest {
     }
 
     @Test
-    fun adapterDataChanges_emitImmediately() {
+    fun adapterDataChanges_skipInitialValue() {
         launchTest<ListFragment> {
             val recorder = FlowRecorder<Adapter>(testScope)
             val adapter = TestAdapter()
 
-            adapter.dataChanges(emitImmediately = true).recordWith(recorder)
+            adapter.dataChanges()
+                .skipInitialValue()
+                .recordWith(recorder)
 
-            recorder.takeValue() shouldEqual adapter
             recorder.assertNoMoreValues()
 
             adapter.notifyDataSetChanged()

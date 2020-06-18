@@ -8,20 +8,18 @@ import android.widget.AdapterView
 import androidx.annotation.CheckResult
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
+import reactivecircus.flowbinding.common.InitialValueFlow
+import reactivecircus.flowbinding.common.asInitialValueFlow
 import reactivecircus.flowbinding.common.checkMainThread
 import reactivecircus.flowbinding.common.safeOffer
-import reactivecircus.flowbinding.common.startWithCurrentValue
 
 /**
- * Create a [Flow] of item selection events on the [AdapterView] instance
+ * Create a [InitialValueFlow] of item selection events on the [AdapterView] instance
  * where the value emitted is one of the 2 event types:
  * [AdapterViewSelectionEvent.ItemSelected],
  * [AdapterViewSelectionEvent.NothingSelected]
- *
- * @param emitImmediately whether to emit the current value (if any) immediately on flow collection.
  *
  * Note: Created flow keeps a strong reference to the [AdapterView] instance
  * until the coroutine that launched the flow collector is cancelled.
@@ -38,7 +36,7 @@ import reactivecircus.flowbinding.common.startWithCurrentValue
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun <T : Adapter> AdapterView<T>.selectionEvents(emitImmediately: Boolean = false): Flow<AdapterViewSelectionEvent> =
+fun <T : Adapter> AdapterView<T>.selectionEvents(): InitialValueFlow<AdapterViewSelectionEvent> =
     callbackFlow<AdapterViewSelectionEvent> {
         checkMainThread()
         val listener = object : AdapterView.OnItemSelectedListener {
@@ -62,7 +60,8 @@ fun <T : Adapter> AdapterView<T>.selectionEvents(emitImmediately: Boolean = fals
         onItemSelectedListener = listener
         awaitClose { onItemSelectedListener = null }
     }
-        .startWithCurrentValue(emitImmediately) {
+        .conflate()
+        .asInitialValueFlow {
             val selectedPosition = selectedItemPosition
             if (selectedPosition == AdapterView.INVALID_POSITION) {
                 AdapterViewSelectionEvent.NothingSelected(view = this)
@@ -75,7 +74,6 @@ fun <T : Adapter> AdapterView<T>.selectionEvents(emitImmediately: Boolean = fals
                 )
             }
         }
-        .conflate()
 
 sealed class AdapterViewSelectionEvent {
     abstract val view: AdapterView<*>

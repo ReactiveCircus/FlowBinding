@@ -43,6 +43,7 @@ fun View.touches(handled: (MotionEvent) -> Boolean = { true }): Flow<MotionEvent
     callbackFlow<MotionEvent> {
         checkMainThread()
         val listener = View.OnTouchListener { _, event ->
+            performClick()
             if (handled(event)) {
                 safeOffer(event)
                 true
