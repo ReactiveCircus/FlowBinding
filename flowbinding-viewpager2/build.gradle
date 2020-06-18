@@ -25,7 +25,7 @@ dependencies {
     implementation project(':flowbinding-common')
 
     implementation "androidx.viewpager2:viewpager2:${versions.androidx.viewPager2}"
-    implementation "androidx.fragment:fragment:${versions.androidx.fragment}"
+    implementation "androidx.fragment:fragment-ktx:${versions.androidx.fragment}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinx.coroutines}"
 
     lintChecks project(":lint-rules")

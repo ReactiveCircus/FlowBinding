@@ -8,5 +8,5 @@ android.buildFeatures.viewBinding = true
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"
-    implementation "androidx.preference:preference:${versions.androidx.preference}"
+    implementation "androidx.preference:preference-ktx:${versions.androidx.preference}"
 }

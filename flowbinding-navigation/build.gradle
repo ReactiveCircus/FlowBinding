@@ -24,7 +24,7 @@ android {
 dependencies {
     implementation project(':flowbinding-common')
 
-    implementation "androidx.navigation:navigation-runtime:${versions.androidx.navigation}"
+    implementation "androidx.navigation:navigation-runtime-ktx:${versions.androidx.navigation}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinx.coroutines}"
 
     lintChecks project(":lint-rules")

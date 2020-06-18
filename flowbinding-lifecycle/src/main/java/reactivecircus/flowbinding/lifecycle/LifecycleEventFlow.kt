@@ -34,6 +34,7 @@ import reactivecircus.flowbinding.common.safeOffer
 fun Lifecycle.events(): Flow<Lifecycle.Event> = callbackFlow {
     checkMainThread()
     val observer = object : LifecycleObserver {
+        @Suppress("UNUSED_PARAMETER")
         @OnLifecycleEvent(Lifecycle.Event.ON_ANY)
         fun onEvent(owner: LifecycleOwner, event: Lifecycle.Event) {
             safeOffer(event)

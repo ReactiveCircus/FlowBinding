@@ -24,7 +24,7 @@ android {
 dependencies {
     implementation project(':flowbinding-common')
 
-    implementation "androidx.preference:preference:${versions.androidx.preference}"
+    implementation "androidx.preference:preference-ktx:${versions.androidx.preference}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinx.coroutines}"
 
     lintChecks project(":lint-rules")
