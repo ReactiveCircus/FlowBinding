@@ -21,7 +21,7 @@ restore_gradle_cache: &restore_gradle_cache
 executors:
   android:
     docker:
-      - image: reactivecircus/android-sdk:latest
+      - image: reactivecircus/android-sdk-30:latest
     working_directory: ~/FlowBinding
     environment:
       JAVA_TOOL_OPTIONS: "-Xmx2g"
