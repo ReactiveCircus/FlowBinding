@@ -39,7 +39,7 @@ jobs:
           ./gradlew assemble
 
   checks:
-    name: Checks (unit tests and static analysis)
+    name: Checks (unit tests, static analysis and binary compatibility API check)
     runs-on: ubuntu-latest
     env:
       JAVA_TOOL_OPTIONS: -Xmx4g
@@ -60,7 +60,7 @@ jobs:
           path: ~/.gradle/caches
           key: ${{ runner.os }}-${{ github.job }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.kt') }}
       - run: |
-          ./gradlew check -PslimTests
+          ./gradlew test apiCheck detekt lintDebug -PslimTests
 
   deploy-snapshot:
     name: Deploy snapshot
