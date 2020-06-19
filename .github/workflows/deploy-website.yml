@@ -16,14 +16,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: gradle/wrapper-validation-action@v1
-      # TODO remove the following once android-30 platform is pre-installed in GitHub Actions VMs
-      - name: Install android-30 platform
-        run: |
-          $ANDROID_HOME/tools/bin/sdkmanager --install "platforms;android-30" > /dev/null
       - uses: actions/setup-java@v1
         with:
           java-version: 14
-      - run: mv ~/.gradle/caches ~/.gradle/.invalid_caches
       - uses: actions/cache@v1
         with:
           path: ~/.gradle/caches
