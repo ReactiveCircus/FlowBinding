@@ -7,24 +7,32 @@ on:
     paths:
       - '**.md'
       - 'mkdocs.yml'
+      - '.github/workflows/**'
 
 jobs:
   deploy-website:
     name: Generate API docs and deploy website
-    runs-on: macOS-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - uses: gradle/wrapper-validation-action@v1
+      # TODO remove the following once android-30 platform is pre-installed in GitHub Actions VMs
+      - name: Install android-30 platform
+        run: |
+          $ANDROID_HOME/tools/bin/sdkmanager --install "platforms;android-30" > /dev/null
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 14
+      - run: mv ~/.gradle/caches ~/.gradle/.invalid_caches
       - uses: actions/cache@v1
         with:
           path: ~/.gradle/caches
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
-          restore-keys: ${{ runner.os }}-gradle-
+          key: ${{ runner.os }}-${{ github.job }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.kt') }}
       - run: |
           pip3 install mkdocs-material mkdocs-minify-plugin
           .buildscript/deploy_website.sh
         env:
           CI: true
-          JAVA_TOOL_OPTIONS: -Xmx3g
-          GRADLE_OPTS: -Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2 -Dkotlin.incremental=false -Dkotlin.compiler.execution.strategy=in-process
+          JAVA_TOOL_OPTIONS: -Xmx4g
+          GRADLE_OPTS: -Dorg.gradle.daemon=false -Dkotlin.incremental=false
           DEPLOY_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}

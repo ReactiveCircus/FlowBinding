@@ -49,9 +49,11 @@ class FlowBindingPlugin : Plugin<Project> {
                 is LibraryPlugin -> {
                     project.extensions.getByType<TestedExtension>().configureCommonAndroidOptions(project.gradle.startParameter)
                     project.extensions.getByType<LibraryExtension>().configureAndroidLibraryOptions(project)
+                    project.configureSlimTests()
                 }
                 is AppPlugin -> {
                     project.extensions.getByType<TestedExtension>().configureCommonAndroidOptions(project.gradle.startParameter)
+                    project.configureSlimTests()
                 }
             }
         }
