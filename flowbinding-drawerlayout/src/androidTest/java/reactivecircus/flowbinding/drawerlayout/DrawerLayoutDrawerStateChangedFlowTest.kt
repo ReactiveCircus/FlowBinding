@@ -26,6 +26,7 @@ class DrawerLayoutDrawerStateChangedFlowTest {
 
             drawerLayout.drawerStateChanges(Gravity.START).recordWith(recorder)
 
+            recorder.takeValue() shouldEqual false
             recorder.assertNoMoreValues()
 
             openDrawer(R.id.drawerLayout)
@@ -51,6 +52,7 @@ class DrawerLayoutDrawerStateChangedFlowTest {
 
             drawerLayout.drawerStateChanges(Gravity.START).recordWith(recorder)
 
+            recorder.takeValue() shouldEqual false
             recorder.assertNoMoreValues()
 
             runOnUiThread { drawerLayout.openDrawer(Gravity.START) }
@@ -72,14 +74,15 @@ class DrawerLayoutDrawerStateChangedFlowTest {
     }
 
     @Test
-    fun drawerLayoutDrawerStateChanges_emitImmediately() {
+    fun drawerLayoutDrawerStateChanges_skipInitialValue() {
         launchTest<DrawerLayoutFragment> {
             val recorder = FlowRecorder<Boolean>(testScope)
             val drawerLayout = getViewById<DrawerLayout>(R.id.drawerLayout)
 
-            drawerLayout.drawerStateChanges(Gravity.START, emitImmediately = true).recordWith(recorder)
+            drawerLayout.drawerStateChanges(Gravity.START)
+                .skipInitialValue()
+                .recordWith(recorder)
 
-            recorder.takeValue() shouldEqual false
             recorder.assertNoMoreValues()
 
             runOnUiThread { drawerLayout.openDrawer(Gravity.START) }
