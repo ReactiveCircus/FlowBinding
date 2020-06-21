@@ -16,18 +16,13 @@ env:
 jobs:
   assemble:
     name: Assemble
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     env:
       JAVA_TOOL_OPTIONS: -Xmx4g
 
     steps:
       - uses: actions/checkout@v2
       - uses: gradle/wrapper-validation-action@v1
-      # TODO remove the following once android-30 platform is pre-installed in GitHub Actions VMs
-      - name: Install android-30 platform
-        run: |
-          sudo chown $USER:$USER $ANDROID_HOME -R
-          $ANDROID_HOME/tools/bin/sdkmanager --install "platforms;android-30" > /dev/null
       - uses: actions/setup-java@v1
         with:
           java-version: 14
@@ -40,18 +35,13 @@ jobs:
 
   checks:
     name: Checks (unit tests, static analysis and binary compatibility API check)
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     env:
       JAVA_TOOL_OPTIONS: -Xmx4g
 
     steps:
       - uses: actions/checkout@v2
       - uses: gradle/wrapper-validation-action@v1
-      # TODO remove the following once android-30 platform is pre-installed in GitHub Actions VMs
-      - name: Install android-30 platform
-        run: |
-          sudo chown $USER:$USER $ANDROID_HOME -R
-          $ANDROID_HOME/tools/bin/sdkmanager --install "platforms;android-30" > /dev/null
       - uses: actions/setup-java@v1
         with:
           java-version: 14
@@ -66,7 +56,7 @@ jobs:
     name: Deploy snapshot
     needs: [assemble, checks]
     if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     env:
       JAVA_TOOL_OPTIONS: -Xmx4g
       ORG_GRADLE_PROJECT_SONATYPE_NEXUS_USERNAME: ${{ secrets.SONATYPE_NEXUS_USERNAME }}
@@ -75,11 +65,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: gradle/wrapper-validation-action@v1
-      # TODO remove the following once android-30 platform is pre-installed in GitHub Actions VMs
-      - name: Install android-30 platform
-        run: |
-          sudo chown $USER:$USER $ANDROID_HOME -R
-          $ANDROID_HOME/tools/bin/sdkmanager --install "platforms;android-30" > /dev/null
       - uses: actions/setup-java@v1
         with:
           java-version: 14
