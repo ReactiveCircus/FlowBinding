@@ -15,5 +15,5 @@ implementation "io.github.reactivecircus.flowbinding:flowbinding-drawerlayout:${
 ## Available Bindings
 
 ```kotlin
-fun DrawerLayout.drawerStateChanges(gravity: Int, emitImmediately: Boolean = false): Flow<Boolean>
+fun DrawerLayout.drawerStateChanges(gravity: Int): InitialValueFlow<Boolean>
 ```
