@@ -6,8 +6,7 @@ public final class reactivecircus/flowbinding/recyclerview/FlingEvent {
 }
 
 public final class reactivecircus/flowbinding/recyclerview/RecyclerViewAdapterDataChangeFlowKt {
-	public static final fun dataChanges (Landroidx/recyclerview/widget/RecyclerView$Adapter;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun dataChanges$default (Landroidx/recyclerview/widget/RecyclerView$Adapter;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun dataChanges (Landroidx/recyclerview/widget/RecyclerView$Adapter;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
 public abstract class reactivecircus/flowbinding/recyclerview/RecyclerViewChildAttachStateChangeEvent {

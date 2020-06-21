@@ -15,7 +15,7 @@ implementation "io.github.reactivecircus.flowbinding:flowbinding-recyclerview:${
 ## Available Bindings
 
 ```kotlin
-fun <T : RecyclerView.Adapter<out RecyclerView.ViewHolder>> T.dataChanges(emitImmediately: Boolean = false): Flow<T>
+fun <T : RecyclerView.Adapter<out RecyclerView.ViewHolder>> T.dataChanges(): InitialValueFlow<T>
 fun RecyclerView.childAttachStateChangeEvents(): Flow<RecyclerViewChildAttachStateChangeEvent>
 fun RecyclerView.flingEvents(handled: (FlingEvent) -> Boolean = { true }): Flow<FlingEvent>
 fun RecyclerView.scrollEvents(): Flow<RecyclerViewScrollEvent>

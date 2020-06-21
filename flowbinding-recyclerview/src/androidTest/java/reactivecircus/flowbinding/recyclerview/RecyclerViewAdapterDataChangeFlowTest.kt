@@ -22,6 +22,7 @@ class RecyclerViewAdapterDataChangeFlowTest {
 
             adapter.dataChanges().recordWith(recorder)
 
+            recorder.takeValue() shouldEqual adapter
             recorder.assertNoMoreValues()
 
             adapter.notifyDataSetChanged()
@@ -40,14 +41,15 @@ class RecyclerViewAdapterDataChangeFlowTest {
     }
 
     @Test
-    fun recyclerViewAdapterDataChanges_emitImmediately() {
+    fun recyclerViewAdapterDataChanges_skipInitialValue() {
         launchTest<RecyclerViewFragment> {
             val recorder = FlowRecorder<RecyclerView.Adapter<RecyclerView.ViewHolder>>(testScope)
             val adapter = TestRecyclerViewAdapter()
 
-            adapter.dataChanges(emitImmediately = true).recordWith(recorder)
+            adapter.dataChanges()
+                .skipInitialValue()
+                .recordWith(recorder)
 
-            recorder.takeValue() shouldEqual adapter
             recorder.assertNoMoreValues()
 
             adapter.notifyDataSetChanged()
