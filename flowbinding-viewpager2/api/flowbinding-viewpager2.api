@@ -15,7 +15,6 @@ public final class reactivecircus/flowbinding/viewpager2/ViewPager2PageScrolledF
 }
 
 public final class reactivecircus/flowbinding/viewpager2/ViewPager2PageSelectedFlowKt {
-	public static final fun pageSelections (Landroidx/viewpager2/widget/ViewPager2;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun pageSelections$default (Landroidx/viewpager2/widget/ViewPager2;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun pageSelections (Landroidx/viewpager2/widget/ViewPager2;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 

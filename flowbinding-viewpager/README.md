@@ -17,5 +17,5 @@ implementation "io.github.reactivecircus.flowbinding:flowbinding-viewpager:${flo
 ```kotlin
 fun ViewPager.pageScrollEvents(): Flow<ViewPagerPageScrollEvent>
 fun ViewPager.pageScrollStateChanges(): Flow<Int>
-fun ViewPager.pageSelections(emitImmediately: Boolean = false): Flow<Int>
+fun ViewPager.pageSelections(): InitialValueFlow<Int>
 ```
