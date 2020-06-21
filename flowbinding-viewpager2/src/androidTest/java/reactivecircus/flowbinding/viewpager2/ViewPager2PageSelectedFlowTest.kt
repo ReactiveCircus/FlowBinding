@@ -21,6 +21,7 @@ class ViewPager2PageSelectedFlowTest {
             val recorder = FlowRecorder<Int>(testScope)
             getViewById<ViewPager2>(R.id.viewPager).pageSelections().recordWith(recorder)
 
+            recorder.takeValue() shouldEqual 0
             recorder.assertNoMoreValues()
 
             swipeLeftOnView(R.id.viewPager)
@@ -41,6 +42,7 @@ class ViewPager2PageSelectedFlowTest {
             val viewPager = getViewById<ViewPager2>(R.id.viewPager)
             viewPager.pageSelections().recordWith(recorder)
 
+            recorder.takeValue() shouldEqual 0
             recorder.assertNoMoreValues()
 
             viewPager.currentItem = 1
@@ -55,13 +57,14 @@ class ViewPager2PageSelectedFlowTest {
     }
 
     @Test
-    fun pageSelections_emitImmediately() {
+    fun pageSelections_skipInitialValue() {
         launchTest<ViewPager2Fragment> {
             val recorder = FlowRecorder<Int>(testScope)
             val viewPager = getViewById<ViewPager2>(R.id.viewPager)
-            viewPager.pageSelections(emitImmediately = true).recordWith(recorder)
+            viewPager.pageSelections()
+                .skipInitialValue()
+                .recordWith(recorder)
 
-            recorder.takeValue() shouldEqual 0
             recorder.assertNoMoreValues()
 
             viewPager.currentItem = 1
