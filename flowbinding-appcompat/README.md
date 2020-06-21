@@ -23,8 +23,8 @@ fun PopupMenu.dismisses(): Flow<Unit>
 fun PopupMenu.itemClicks(): Flow<MenuItem>
 
 // SearchView
-fun SearchView.queryTextChanges(emitImmediately: Boolean = false): Flow<CharSequence>
-fun SearchView.queryTextEvents(emitImmediately: Boolean = false): Flow<QueryTextEvent>
+fun SearchView.queryTextChanges(): InitialValueFlow<CharSequence>
+fun SearchView.queryTextEvents(): InitialValueFlow<QueryTextEvent>
 
 // Toolbar
 fun Toolbar.itemClicks(): Flow<MenuItem>

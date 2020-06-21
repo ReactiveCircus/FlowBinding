@@ -28,13 +28,11 @@ public final class reactivecircus/flowbinding/appcompat/QueryTextEvent$QuerySubm
 }
 
 public final class reactivecircus/flowbinding/appcompat/SearchViewQueryTextChangeFlowKt {
-	public static final fun queryTextChanges (Landroidx/appcompat/widget/SearchView;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun queryTextChanges$default (Landroidx/appcompat/widget/SearchView;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun queryTextChanges (Landroidx/appcompat/widget/SearchView;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
 public final class reactivecircus/flowbinding/appcompat/SearchViewQueryTextEventFlowKt {
-	public static final fun queryTextEvents (Landroidx/appcompat/widget/SearchView;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun queryTextEvents$default (Landroidx/appcompat/widget/SearchView;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun queryTextEvents (Landroidx/appcompat/widget/SearchView;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
 public final class reactivecircus/flowbinding/appcompat/ToolbarItemClickFlowKt {

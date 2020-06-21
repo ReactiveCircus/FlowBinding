@@ -20,6 +20,7 @@ class SearchViewQueryTextChangeFlowTest {
             val searchView = getViewById<SearchView>(R.id.searchView)
             searchView.queryTextChanges().recordWith(recorder)
 
+            recorder.takeValue().toString() shouldEqual ""
             recorder.assertNoMoreValues()
 
             searchView.setQuery("A", false)
@@ -38,15 +39,16 @@ class SearchViewQueryTextChangeFlowTest {
     }
 
     @Test
-    fun searchViewQueryTextChanges_emitImmediately() {
+    fun searchViewQueryTextChanges_skipInitialValue() {
         launchTest<AppCompatFragment> {
             val recorder = FlowRecorder<CharSequence>(testScope)
             val searchView = getViewById<SearchView>(R.id.searchView).apply {
                 setQuery("ABC", false)
             }
-            searchView.queryTextChanges(emitImmediately = true).recordWith(recorder)
+            searchView.queryTextChanges()
+                .skipInitialValue()
+                .recordWith(recorder)
 
-            recorder.takeValue().toString() shouldEqual "ABC"
             recorder.assertNoMoreValues()
 
             searchView.setQuery("AB", false)
