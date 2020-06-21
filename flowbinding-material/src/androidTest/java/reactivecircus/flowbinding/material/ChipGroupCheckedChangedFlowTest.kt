@@ -19,9 +19,13 @@ class ChipGroupCheckedChangedFlowTest {
     fun chipGroupChipCheckedChanges_click() {
         launchTest<MaterialFragment2> {
             val recorder = FlowRecorder<Int>(testScope)
-            getViewById<ChipGroup>(R.id.chipGroup).chipCheckedChanges()
+            val chipGroup = getViewById<ChipGroup>(R.id.chipGroup).apply {
+                runOnUiThread { check(R.id.chip1) }
+            }
+            chipGroup.chipCheckedChanges()
                 .recordWith(recorder)
 
+            recorder.takeValue() shouldEqual R.id.chip1
             recorder.assertNoMoreValues()
 
             clickView(R.id.chip2)
@@ -43,9 +47,13 @@ class ChipGroupCheckedChangedFlowTest {
     fun chipGroupChipCheckedChanges_programmatic() {
         launchTest<MaterialFragment2> {
             val recorder = FlowRecorder<Int>(testScope)
-            val chipGroup = getViewById<ChipGroup>(R.id.chipGroup)
-            chipGroup.chipCheckedChanges().recordWith(recorder)
+            val chipGroup = getViewById<ChipGroup>(R.id.chipGroup).apply {
+                runOnUiThread { check(R.id.chip1) }
+            }
+            chipGroup.chipCheckedChanges()
+                .recordWith(recorder)
 
+            recorder.takeValue() shouldEqual R.id.chip1
             recorder.assertNoMoreValues()
 
             runOnUiThread { chipGroup.check(R.id.chip2) }
@@ -63,15 +71,16 @@ class ChipGroupCheckedChangedFlowTest {
     }
 
     @Test
-    fun chipGroupChipCheckedChanges_emitImmediately() {
+    fun chipGroupChipCheckedChanges_skipInitialValue() {
         launchTest<MaterialFragment2> {
             val recorder = FlowRecorder<Int>(testScope)
             val chipGroup = getViewById<ChipGroup>(R.id.chipGroup).apply {
                 runOnUiThread { check(R.id.chip1) }
             }
-            chipGroup.chipCheckedChanges(emitImmediately = true).recordWith(recorder)
+            chipGroup.chipCheckedChanges()
+                .skipInitialValue()
+                .recordWith(recorder)
 
-            recorder.takeValue() shouldEqual R.id.chip1
             recorder.assertNoMoreValues()
 
             runOnUiThread { chipGroup.check(R.id.chip2) }

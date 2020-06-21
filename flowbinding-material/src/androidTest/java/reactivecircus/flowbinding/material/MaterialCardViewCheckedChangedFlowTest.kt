@@ -23,6 +23,7 @@ class MaterialCardViewCheckedChangedFlowTest {
             }
             cardView.checkedChanges().recordWith(recorder)
 
+            recorder.takeValue() shouldEqual false
             recorder.assertNoMoreValues()
 
             runOnUiThread { cardView.isChecked = true }
@@ -41,7 +42,7 @@ class MaterialCardViewCheckedChangedFlowTest {
     }
 
     @Test
-    fun materialCardViewCheckedChanges_emitImmediately() {
+    fun materialCardViewCheckedChanges_skipInitialValue() {
         launchTest<MaterialFragment1> {
             val recorder = FlowRecorder<Boolean>(testScope)
             val cardView = getViewById<MaterialCardView>(R.id.materialCardViewTop).apply {
@@ -50,9 +51,10 @@ class MaterialCardViewCheckedChangedFlowTest {
                     isChecked = true
                 }
             }
-            cardView.checkedChanges(emitImmediately = true).recordWith(recorder)
+            cardView.checkedChanges()
+                .skipInitialValue()
+                .recordWith(recorder)
 
-            recorder.takeValue() shouldEqual true
             recorder.assertNoMoreValues()
 
             runOnUiThread { cardView.isChecked = false }

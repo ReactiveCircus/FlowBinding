@@ -21,9 +21,12 @@ class NavigationViewItemSelectedFlowTest {
     fun navigationViewItemSelections() {
         launchTest<MaterialFragment2> {
             val recorder = FlowRecorder<MenuItem>(testScope)
-            val navigationView = getViewById<NavigationView>(R.id.navigationView)
+            val navigationView = getViewById<NavigationView>(R.id.navigationView).apply {
+                runOnUiThread { setCheckedItem(R.id.item1) }
+            }
             navigationView.itemSelections().recordWith(recorder)
 
+            recorder.takeValue().itemId shouldEqual R.id.item1
             recorder.assertNoMoreValues()
 
             openDrawer(R.id.drawerLayout)
@@ -39,15 +42,16 @@ class NavigationViewItemSelectedFlowTest {
     }
 
     @Test
-    fun navigationViewItemSelections_emitImmediately() {
+    fun navigationViewItemSelections_skipInitialValue() {
         launchTest<MaterialFragment2> {
             val recorder = FlowRecorder<MenuItem>(testScope)
             val navigationView = getViewById<NavigationView>(R.id.navigationView).apply {
                 runOnUiThread { setCheckedItem(R.id.item1) }
             }
-            navigationView.itemSelections(emitImmediately = true).recordWith(recorder)
+            navigationView.itemSelections()
+                .skipInitialValue()
+                .recordWith(recorder)
 
-            recorder.takeValue().itemId shouldEqual R.id.item1
             recorder.assertNoMoreValues()
 
             openDrawer(R.id.drawerLayout)

@@ -24,6 +24,7 @@ class TabLayoutTabSelectionEventFlowTest {
                 .filterIsInstance<TabLayoutSelectionEvent.TabSelected>()
                 .recordWith(recorder)
 
+            recorder.takeValue().tab.text shouldEqual tabLayout.getTabAt(0)?.text
             recorder.assertNoMoreValues()
 
             runOnUiThread { tabLayout.getTabAt(1)?.select() }
@@ -93,15 +94,16 @@ class TabLayoutTabSelectionEventFlowTest {
     }
 
     @Test
-    fun tabSelectionEvents_tabSelected_emitImmediately() {
+    fun tabSelectionEvents_tabSelected_skipInitialValue() {
         launchTest<MaterialFragment2> {
             val recorder = FlowRecorder<TabLayoutSelectionEvent.TabSelected>(testScope)
             val tabLayout = getViewById<TabLayout>(R.id.tabLayout)
-            tabLayout.tabSelectionEvents(emitImmediately = true)
+            tabLayout.tabSelectionEvents()
+                .skipInitialValue()
                 .filterIsInstance<TabLayoutSelectionEvent.TabSelected>()
                 .recordWith(recorder)
 
-            recorder.takeValue().tab.text shouldEqual tabLayout.getTabAt(0)?.text
+            recorder.assertNoMoreValues()
 
             runOnUiThread { tabLayout.getTabAt(1)?.select() }
             recorder.takeValue().tab.text shouldEqual tabLayout.getTabAt(1)?.text

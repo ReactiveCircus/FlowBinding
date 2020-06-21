@@ -24,21 +24,25 @@ class RangeSliderChangeEventFlowTest {
             val rangeSlider = getViewById<RangeSlider>(R.id.rangeSlider)
             rangeSlider.changeEvents().recordWith(recorder)
 
+            val rangeSliderChangeEvent1 = recorder.takeValue()
+            rangeSliderChangeEvent1.rangeSlider shouldEqual rangeSlider
+            rangeSliderChangeEvent1.values shouldEqual listOf(0.0f)
+            rangeSliderChangeEvent1.fromUser shouldEqual false
             recorder.assertNoMoreValues()
 
             getInstrumentation().sendPointerSync(motionEventAtPosition(rangeSlider, MotionEvent.ACTION_DOWN, 20, 50))
             getInstrumentation().sendPointerSync(motionEventAtPosition(rangeSlider, MotionEvent.ACTION_MOVE, 100, 50))
-            val rangeSliderChangeEvent1 = recorder.takeValue()
-            rangeSliderChangeEvent1.rangeSlider shouldEqual rangeSlider
-            rangeSliderChangeEvent1.values shouldEqual listOf(100.0f)
-            rangeSliderChangeEvent1.fromUser shouldEqual true
+            val rangeSliderChangeEvent2 = recorder.takeValue()
+            rangeSliderChangeEvent2.rangeSlider shouldEqual rangeSlider
+            rangeSliderChangeEvent2.values shouldEqual listOf(100.0f)
+            rangeSliderChangeEvent2.fromUser shouldEqual true
             recorder.assertNoMoreValues()
 
             getInstrumentation().sendPointerSync(motionEventAtPosition(rangeSlider, MotionEvent.ACTION_MOVE, 0, 50))
-            val rangeSliderChangeEvent2 = recorder.takeValue()
-            rangeSliderChangeEvent2.rangeSlider shouldEqual rangeSlider
-            rangeSliderChangeEvent2.values shouldEqual listOf(0.0f)
-            rangeSliderChangeEvent2.fromUser shouldEqual true
+            val rangeSliderChangeEvent3 = recorder.takeValue()
+            rangeSliderChangeEvent3.rangeSlider shouldEqual rangeSlider
+            rangeSliderChangeEvent3.values shouldEqual listOf(0.0f)
+            rangeSliderChangeEvent3.fromUser shouldEqual true
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -55,24 +59,28 @@ class RangeSliderChangeEventFlowTest {
             val rangeSlider = getViewById<RangeSlider>(R.id.rangeSlider)
             rangeSlider.changeEvents().recordWith(recorder)
 
+            val rangeSliderChangeEvent1 = recorder.takeValue()
+            rangeSliderChangeEvent1.rangeSlider shouldEqual rangeSlider
+            rangeSliderChangeEvent1.values shouldEqual listOf(0.0f)
+            rangeSliderChangeEvent1.fromUser shouldEqual false
             recorder.assertNoMoreValues()
 
             runOnUiThread {
                 rangeSlider.values = listOf(50.0f)
             }
-            val rangeSliderChangeEvent1 = recorder.takeValue()
-            rangeSliderChangeEvent1.rangeSlider shouldEqual rangeSlider
-            rangeSliderChangeEvent1.values shouldEqual listOf(50.0f)
-            rangeSliderChangeEvent1.fromUser shouldEqual false
+            val rangeSliderChangeEvent2 = recorder.takeValue()
+            rangeSliderChangeEvent2.rangeSlider shouldEqual rangeSlider
+            rangeSliderChangeEvent2.values shouldEqual listOf(50.0f)
+            rangeSliderChangeEvent2.fromUser shouldEqual false
             recorder.assertNoMoreValues()
 
             runOnUiThread {
                 rangeSlider.values = listOf(75.0f)
             }
-            val rangeSliderChangeEvent2 = recorder.takeValue()
-            rangeSliderChangeEvent2.rangeSlider shouldEqual rangeSlider
-            rangeSliderChangeEvent2.values shouldEqual listOf(75.0f)
-            rangeSliderChangeEvent2.fromUser shouldEqual false
+            val rangeSliderChangeEvent3 = recorder.takeValue()
+            rangeSliderChangeEvent3.rangeSlider shouldEqual rangeSlider
+            rangeSliderChangeEvent3.values shouldEqual listOf(75.0f)
+            rangeSliderChangeEvent3.fromUser shouldEqual false
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -85,16 +93,14 @@ class RangeSliderChangeEventFlowTest {
     }
 
     @Test
-    fun rangeSliderChangeEvents_emitImmediately() {
+    fun rangeSliderChangeEvents_skipInitialValue() {
         launchTest<MaterialFragment2> {
             val recorder = FlowRecorder<RangeSliderChangeEvent>(testScope)
             val rangeSlider = getViewById<RangeSlider>(R.id.rangeSlider)
-            rangeSlider.changeEvents(emitImmediately = true).recordWith(recorder)
+            rangeSlider.changeEvents()
+                .skipInitialValue()
+                .recordWith(recorder)
 
-            val rangeSliderChangeEvent1 = recorder.takeValue()
-            rangeSliderChangeEvent1.rangeSlider shouldEqual rangeSlider
-            rangeSliderChangeEvent1.values shouldEqual listOf(0.0f)
-            rangeSliderChangeEvent1.fromUser shouldEqual false
             recorder.assertNoMoreValues()
 
             runOnUiThread {

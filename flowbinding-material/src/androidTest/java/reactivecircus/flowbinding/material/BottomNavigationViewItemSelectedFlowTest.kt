@@ -23,6 +23,7 @@ class BottomNavigationViewItemSelectedFlowTest {
             val bottomNavigationView = getViewById<BottomNavigationView>(R.id.bottomNavigationView)
             bottomNavigationView.itemSelections().recordWith(recorder)
 
+            recorder.takeValue().itemId shouldEqual R.id.dest1
             recorder.assertNoMoreValues()
 
             selectBottomNavigationItem(
@@ -49,6 +50,7 @@ class BottomNavigationViewItemSelectedFlowTest {
             val bottomNavigationView = getViewById<BottomNavigationView>(R.id.bottomNavigationView)
             bottomNavigationView.itemSelections().recordWith(recorder)
 
+            recorder.takeValue().itemId shouldEqual R.id.dest1
             recorder.assertNoMoreValues()
 
             runOnUiThread { bottomNavigationView.selectedItemId = R.id.dest2 }
@@ -63,13 +65,14 @@ class BottomNavigationViewItemSelectedFlowTest {
     }
 
     @Test
-    fun bottomNavigationViewItemSelections_emitImmediately() {
+    fun bottomNavigationViewItemSelections_skipInitialValue() {
         launchTest<MaterialFragment2> {
             val recorder = FlowRecorder<MenuItem>(testScope)
             val bottomNavigationView = getViewById<BottomNavigationView>(R.id.bottomNavigationView)
-            bottomNavigationView.itemSelections(emitImmediately = true).recordWith(recorder)
+            bottomNavigationView.itemSelections()
+                .skipInitialValue()
+                .recordWith(recorder)
 
-            recorder.takeValue().itemId shouldEqual R.id.dest1
             recorder.assertNoMoreValues()
 
             runOnUiThread { bottomNavigationView.selectedItemId = R.id.dest2 }

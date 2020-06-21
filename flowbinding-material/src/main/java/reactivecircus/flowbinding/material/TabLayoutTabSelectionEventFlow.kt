@@ -6,22 +6,21 @@ import androidx.annotation.CheckResult
 import com.google.android.material.tabs.TabLayout
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
+import reactivecircus.flowbinding.common.InitialValueFlow
+import reactivecircus.flowbinding.common.asInitialValueFlow
 import reactivecircus.flowbinding.common.checkMainThread
 import reactivecircus.flowbinding.common.safeOffer
-import reactivecircus.flowbinding.common.startWithCurrentValue
 
 /**
- * Create a [Flow] of tab selection events on the [TabLayout] instance
+ * Create a [InitialValueFlow] of tab selection events on the [TabLayout] instance
  * where the value emitted is one of the 3 event types:
  * [TabLayoutSelectionEvent.TabSelected],
  * [TabLayoutSelectionEvent.TabReselected],
  * [TabLayoutSelectionEvent.TabUnselected]
  *
- * @param emitImmediately whether to emit TabLayoutSelectionEvent.TabSelected immediately
- *  if a tab is already selected
+ * Note: [TabLayoutSelectionEvent.TabSelected] will only be emitted upon collection if a a tab is already selected.
  *
  * Note: Created flow keeps a strong reference to the [TabLayout] instance
  * until the coroutine that launched the flow collector is cancelled.
@@ -58,7 +57,7 @@ import reactivecircus.flowbinding.common.startWithCurrentValue
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun TabLayout.tabSelectionEvents(emitImmediately: Boolean = false): Flow<TabLayoutSelectionEvent> =
+fun TabLayout.tabSelectionEvents(): InitialValueFlow<TabLayoutSelectionEvent> =
     callbackFlow<TabLayoutSelectionEvent> {
         checkMainThread()
         val listener = object : TabLayout.OnTabSelectedListener {
@@ -77,13 +76,13 @@ fun TabLayout.tabSelectionEvents(emitImmediately: Boolean = false): Flow<TabLayo
         addOnTabSelectedListener(listener)
         awaitClose { removeOnTabSelectedListener(listener) }
     }
-        .startWithCurrentValue(emitImmediately) {
+        .conflate()
+        .asInitialValueFlow {
             // emit TabLayoutSelectionEvent.TabSelected if a tab is already selected
             getTabAt(selectedTabPosition)?.let {
                 TabLayoutSelectionEvent.TabSelected(this@tabSelectionEvents, it)
             }
         }
-        .conflate()
 
 sealed class TabLayoutSelectionEvent {
     abstract val tabLayout: TabLayout
