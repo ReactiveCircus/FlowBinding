@@ -120,20 +120,21 @@ tabLayout.tabSelectionEvents()
     .launchIn(uiScope)
 ``` 
 
-### Emitting Current Value Immediately
+### Skipping Initial Value
 
-In some cases you might want the `Flow` to emit the **current** value immediately when the `Flow` is collected.
+Bindings which emit a stream of state changes return the `InitialValueFlow`.
 
-For example a **Slider** might have a default `value` which was set in XML, and we want to bind the current value of the Slider to some other UI element as soon as the screen is launched without the value of the slider being changed by user.
+An `InitialValueFlow` emits the **current** value (state) of the widget immediately upon collection of the `Flow`.
 
-The binding APIs for this kind of widgets have an optional `emitImmediately: Boolean` parameter which controls whether to emit the current value immediately on flow collection:
+In some cases you might want to **skip** the initial emission of the current value. This can be done by calling the `skipInitialValue()` on the `InitialValueFlow`:
 
 ```kotlin
-slider.valueChanges(emitImmediately = true)
+slider.valueChanges()
+    .skipInitialValue()
     .onEach { value ->
         // handle value
     }
-    .launchIn(uiScope)
+    .launchIn(uiScope) // current value won't be emitted immediately
 ```
 
 ### Additional Samples
