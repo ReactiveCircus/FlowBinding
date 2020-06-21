@@ -12,8 +12,10 @@ import kotlinx.coroutines.flow.onStart
  */
 @RestrictTo(LIBRARY_GROUP)
 @OptIn(ExperimentalCoroutinesApi::class)
-fun <T : Any> Flow<T>.asInitialValueFlow(initialValue: () -> T): InitialValueFlow<T> = InitialValueFlow(
-    onStart { emit(initialValue()) }
+fun <T : Any> Flow<T>.asInitialValueFlow(initialValue: () -> T?): InitialValueFlow<T> = InitialValueFlow(
+    onStart {
+        initialValue()?.run { emit(this) }
+    }
 )
 
 /**

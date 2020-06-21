@@ -20,7 +20,7 @@ fun AppBarLayout.offsetChanges(): Flow<Int>
 
 // BottomNavigationView
 fun BottomNavigationView.itemReselections(): Flow<MenuItem>
-fun BottomNavigationView.itemSelections(emitImmediately: Boolean = false): Flow<MenuItem>
+fun BottomNavigationView.itemSelections(): InitialValueFlow<MenuItem>
 
 // BottomSheetBehavior
 fun View.bottomSheetSlides(): Flow<Float>
@@ -30,7 +30,7 @@ fun View.bottomSheetStateChanges(): Flow<Int>
 fun Chip.closeIconClicks(): Flow<Unit>
 
 // ChipGroup
-fun ChipGroup.chipCheckedChanges(emitImmediately: Boolean = false): Flow<Int>
+fun ChipGroup.chipCheckedChanges(): InitialValueFlow<Int>
 
 // MaterialButton
 fun MaterialButton.checkedChanges(): Flow<Boolean>
@@ -39,7 +39,7 @@ fun MaterialButton.checkedChanges(): Flow<Boolean>
 fun MaterialButtonToggleGroup.buttonCheckedChanges(): Flow<MaterialButtonCheckedChangedEvent>
 
 // MaterialCardView
-fun MaterialCardView.checkedChanges(emitImmediately: Boolean = false): Flow<Boolean>
+fun MaterialCardView.checkedChanges(): InitialValueFlow<Boolean>
 
 // MaterialDatePicker
 fun <S> MaterialDatePicker<S>.cancels(): Flow<Unit>
@@ -48,16 +48,16 @@ fun <S> MaterialDatePicker<S>.negativeButtonClicks(): Flow<Unit>
 fun <S> MaterialDatePicker<S>.positiveButtonClicks(): Flow<S>
 
 // NavigationView
-fun NavigationView.itemSelections(emitImmediately: Boolean = false): Flow<MenuItem>
+fun NavigationView.itemSelections(): InitialValueFlow<MenuItem>
 
 // Slider
-fun Slider.valueChanges(emitImmediately: Boolean = false): Flow<Float>
-fun Slider.changeEvents(emitImmediately: Boolean = false): Flow<SliderChangeEvent>
+fun Slider.valueChanges(): InitialValueFlow<Float>
+fun Slider.changeEvents(): InitialValueFlow<SliderChangeEvent>
 fun Slider.touchEvents(): Flow<SliderTouchEvent>
 
 // RangeSlider
-fun RangeSlider.valuesChanges(emitImmediately: Boolean = false): Flow<List<Float>>
-fun RangeSlider.changeEvents(emitImmediately: Boolean = false): Flow<RangeSliderChangeEvent>
+fun RangeSlider.valuesChanges(): InitialValueFlow<List<Float>>
+fun RangeSlider.changeEvents(): InitialValueFlow<RangeSliderChangeEvent>
 fun RangeSlider.touchEvents(): Flow<RangeSliderTouchEvent>
 
 // Snackbar
@@ -69,7 +69,7 @@ fun View.dismisses(): Flow<View>
 fun View.swipeDismissDragStateChanges(): Flow<Int>
 
 // TabLayout
-fun TabLayout.tabSelectionEvents(emitImmediately: Boolean = false): Flow<TabLayoutSelectionEvent>
+fun TabLayout.tabSelectionEvents(): InitialValueFlow<TabLayoutSelectionEvent>
 
 // TextInputLayout
 fun TextInputLayout.startIconClicks(): Flow<Unit>

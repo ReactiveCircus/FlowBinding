@@ -7,8 +7,7 @@ public final class reactivecircus/flowbinding/material/BottomNavigationViewItemR
 }
 
 public final class reactivecircus/flowbinding/material/BottomNavigationViewItemSelectedFlowKt {
-	public static final fun itemSelections (Lcom/google/android/material/bottomnavigation/BottomNavigationView;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun itemSelections$default (Lcom/google/android/material/bottomnavigation/BottomNavigationView;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun itemSelections (Lcom/google/android/material/bottomnavigation/BottomNavigationView;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
 public final class reactivecircus/flowbinding/material/BottomSheetBehaviorSlidedFlowKt {
@@ -24,8 +23,7 @@ public final class reactivecircus/flowbinding/material/ChipCloseIconClickedFlowK
 }
 
 public final class reactivecircus/flowbinding/material/ChipGroupCheckedChangedFlowKt {
-	public static final fun chipCheckedChanges (Lcom/google/android/material/chip/ChipGroup;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun chipCheckedChanges$default (Lcom/google/android/material/chip/ChipGroup;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun chipCheckedChanges (Lcom/google/android/material/chip/ChipGroup;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
 public final class reactivecircus/flowbinding/material/MaterialButtonCheckedChangedEvent {
@@ -43,8 +41,7 @@ public final class reactivecircus/flowbinding/material/MaterialButtonToggleGroup
 }
 
 public final class reactivecircus/flowbinding/material/MaterialCardViewCheckedChangedFlowKt {
-	public static final fun checkedChanges (Lcom/google/android/material/card/MaterialCardView;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun checkedChanges$default (Lcom/google/android/material/card/MaterialCardView;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun checkedChanges (Lcom/google/android/material/card/MaterialCardView;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
 public final class reactivecircus/flowbinding/material/MaterialDatePickerCancelFlowKt {
@@ -64,8 +61,7 @@ public final class reactivecircus/flowbinding/material/MaterialDatePickerPositiv
 }
 
 public final class reactivecircus/flowbinding/material/NavigationViewItemSelectedFlowKt {
-	public static final fun itemSelections (Lcom/google/android/material/navigation/NavigationView;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun itemSelections$default (Lcom/google/android/material/navigation/NavigationView;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun itemSelections (Lcom/google/android/material/navigation/NavigationView;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
 public final class reactivecircus/flowbinding/material/RangeSliderChangeEvent {
@@ -76,8 +72,7 @@ public final class reactivecircus/flowbinding/material/RangeSliderChangeEvent {
 }
 
 public final class reactivecircus/flowbinding/material/RangeSliderChangeEventFlowKt {
-	public static final fun changeEvents (Lcom/google/android/material/slider/RangeSlider;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun changeEvents$default (Lcom/google/android/material/slider/RangeSlider;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun changeEvents (Lcom/google/android/material/slider/RangeSlider;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
 public abstract class reactivecircus/flowbinding/material/RangeSliderTouchEvent {
@@ -99,8 +94,7 @@ public final class reactivecircus/flowbinding/material/RangeSliderTouchEventFlow
 }
 
 public final class reactivecircus/flowbinding/material/RangeSliderValuesChangeFlowKt {
-	public static final fun valuesChanges (Lcom/google/android/material/slider/RangeSlider;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun valuesChanges$default (Lcom/google/android/material/slider/RangeSlider;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun valuesChanges (Lcom/google/android/material/slider/RangeSlider;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
 public final class reactivecircus/flowbinding/material/SliderChangeEvent {
@@ -111,8 +105,7 @@ public final class reactivecircus/flowbinding/material/SliderChangeEvent {
 }
 
 public final class reactivecircus/flowbinding/material/SliderChangeEventFlowKt {
-	public static final fun changeEvents (Lcom/google/android/material/slider/Slider;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun changeEvents$default (Lcom/google/android/material/slider/Slider;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun changeEvents (Lcom/google/android/material/slider/Slider;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
 public abstract class reactivecircus/flowbinding/material/SliderTouchEvent {
@@ -134,8 +127,7 @@ public final class reactivecircus/flowbinding/material/SliderTouchEventFlowKt {
 }
 
 public final class reactivecircus/flowbinding/material/SliderValueChangeFlowKt {
-	public static final fun valueChanges (Lcom/google/android/material/slider/Slider;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun valueChanges$default (Lcom/google/android/material/slider/Slider;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun valueChanges (Lcom/google/android/material/slider/Slider;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
 public final class reactivecircus/flowbinding/material/SnackbarDismissedFlowKt {
@@ -178,8 +170,7 @@ public final class reactivecircus/flowbinding/material/TabLayoutSelectionEvent$T
 }
 
 public final class reactivecircus/flowbinding/material/TabLayoutTabSelectionEventFlowKt {
-	public static final fun tabSelectionEvents (Lcom/google/android/material/tabs/TabLayout;Z)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun tabSelectionEvents$default (Lcom/google/android/material/tabs/TabLayout;ZILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun tabSelectionEvents (Lcom/google/android/material/tabs/TabLayout;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
 public final class reactivecircus/flowbinding/material/TextInputLayoutIconClickedFlowKt {

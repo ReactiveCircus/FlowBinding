@@ -18,6 +18,13 @@ class InitialValueFlowTest {
     }
 
     @Test
+    fun `initial value is not emitted by an InitialValueFlow when initialValue lambda returns null`() =
+        runBlockingTest {
+            val result = emptyFlow<Int>().asInitialValueFlow { null }.singleOrNull()
+            result shouldEqual null
+        }
+
+    @Test
     fun `initial value is not emitted by a flow returned by skipInitialValue()`() = runBlockingTest {
         val result = emptyFlow<Int>().asInitialValueFlow { 1 }.skipInitialValue().singleOrNull()
         result shouldEqual null

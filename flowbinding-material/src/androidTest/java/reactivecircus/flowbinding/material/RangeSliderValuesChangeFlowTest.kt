@@ -24,6 +24,7 @@ class RangeSliderValuesChangeFlowTest {
             val rangeSlider = getViewById<RangeSlider>(R.id.rangeSlider)
             rangeSlider.valuesChanges().recordWith(recorder)
 
+            recorder.takeValue() shouldEqual listOf(0.0f)
             recorder.assertNoMoreValues()
 
             getInstrumentation().sendPointerSync(motionEventAtPosition(rangeSlider, MotionEvent.ACTION_DOWN, 20, 50))
@@ -49,6 +50,7 @@ class RangeSliderValuesChangeFlowTest {
             val rangeSlider = getViewById<RangeSlider>(R.id.rangeSlider)
             rangeSlider.valuesChanges().recordWith(recorder)
 
+            recorder.takeValue() shouldEqual listOf(0.0f)
             recorder.assertNoMoreValues()
 
             runOnUiThread {
@@ -73,13 +75,14 @@ class RangeSliderValuesChangeFlowTest {
     }
 
     @Test
-    fun rangeSliderValuesChanges_emitImmediately() {
+    fun rangeSliderValuesChanges_skipInitialValue() {
         launchTest<MaterialFragment2> {
             val recorder = FlowRecorder<List<Float>>(testScope)
             val rangeSlider = getViewById<RangeSlider>(R.id.rangeSlider)
-            rangeSlider.valuesChanges(emitImmediately = true).recordWith(recorder)
+            rangeSlider.valuesChanges()
+                .skipInitialValue()
+                .recordWith(recorder)
 
-            recorder.takeValue() shouldEqual listOf(0.0f)
             recorder.assertNoMoreValues()
 
             runOnUiThread {

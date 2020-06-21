@@ -24,6 +24,7 @@ class SliderValueChangeFlowTest {
             val slider = getViewById<Slider>(R.id.slider)
             slider.valueChanges().recordWith(recorder)
 
+            recorder.takeValue() shouldEqual 0f
             recorder.assertNoMoreValues()
 
             getInstrumentation().sendPointerSync(motionEventAtPosition(slider, MotionEvent.ACTION_DOWN, 20, 50))
@@ -49,6 +50,7 @@ class SliderValueChangeFlowTest {
             val slider = getViewById<Slider>(R.id.slider)
             slider.valueChanges().recordWith(recorder)
 
+            recorder.takeValue() shouldEqual 0f
             recorder.assertNoMoreValues()
 
             runOnUiThread {
@@ -73,13 +75,14 @@ class SliderValueChangeFlowTest {
     }
 
     @Test
-    fun sliderValueChanges_emitImmediately() {
+    fun sliderValueChanges_skipInitialValue() {
         launchTest<MaterialFragment2> {
             val recorder = FlowRecorder<Float>(testScope)
             val slider = getViewById<Slider>(R.id.slider)
-            slider.valueChanges(emitImmediately = true).recordWith(recorder)
+            slider.valueChanges()
+                .skipInitialValue()
+                .recordWith(recorder)
 
-            recorder.takeValue() shouldEqual 0f
             recorder.assertNoMoreValues()
 
             runOnUiThread {
