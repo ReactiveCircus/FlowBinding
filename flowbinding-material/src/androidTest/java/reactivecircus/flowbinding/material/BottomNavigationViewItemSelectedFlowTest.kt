@@ -65,6 +65,21 @@ class BottomNavigationViewItemSelectedFlowTest {
     }
 
     @Test
+    fun bottomNavigationViewItemSelections_noMenu() {
+        launchTest<MaterialFragment2> {
+            val recorder = FlowRecorder<MenuItem>(testScope)
+            val bottomNavigationView = getViewById<BottomNavigationView>(R.id.bottomNavigationView).apply {
+                runOnUiThread { menu.clear() }
+            }
+            bottomNavigationView.itemSelections().recordWith(recorder)
+
+            recorder.assertNoMoreValues()
+
+            cancelTestScope()
+        }
+    }
+
+    @Test
     fun bottomNavigationViewItemSelections_skipInitialValue() {
         launchTest<MaterialFragment2> {
             val recorder = FlowRecorder<MenuItem>(testScope)

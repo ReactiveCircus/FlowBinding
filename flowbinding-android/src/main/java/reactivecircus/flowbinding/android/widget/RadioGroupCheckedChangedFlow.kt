@@ -16,7 +16,7 @@ import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [InitialValueFlow] of checked state change events on the [RadioButton] instance
- * where the value emitted is the currently checked radio button id.
+ * where the value emitted is the currently checked radio button id, or -1 when the selection is cleared.
  *
  * Note: Created flow keeps a strong reference to the [RadioButton] instance
  * until the coroutine that launched the flow collector is cancelled.

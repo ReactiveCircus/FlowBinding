@@ -69,6 +69,34 @@ class RadioGroupCheckedChangedFlowTest {
     }
 
     @Test
+    fun radioGroupCheckedChanges_unchecked() {
+        launchTest<AndroidWidgetFragment> {
+            val recorder = FlowRecorder<Int>(testScope)
+            val radioGroup = getViewById<RadioGroup>(R.id.radioGroup)
+            radioGroup.checkedChanges().recordWith(recorder)
+
+            recorder.takeValue() shouldEqual -1
+            recorder.assertNoMoreValues()
+
+            clickView(R.id.radioButton1)
+            recorder.takeValue() shouldEqual R.id.radioButton1
+            recorder.assertNoMoreValues()
+
+            runOnUiThread {
+                radioGroup.clearCheck()
+            }
+
+            recorder.takeValue() shouldEqual -1
+            recorder.assertNoMoreValues()
+
+            cancelTestScope()
+
+            clickView(R.id.radioButton1)
+            recorder.assertNoMoreValues()
+        }
+    }
+
+    @Test
     fun radioGroupCheckedChanges_skipInitialValue() {
         launchTest<AndroidWidgetFragment> {
             val recorder = FlowRecorder<Int>(testScope)
