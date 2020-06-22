@@ -42,6 +42,19 @@ class NavigationViewItemSelectedFlowTest {
     }
 
     @Test
+    fun navigationViewItemSelections_unselected() {
+        launchTest<MaterialFragment2> {
+            val recorder = FlowRecorder<MenuItem>(testScope)
+            val navigationView = getViewById<NavigationView>(R.id.navigationView)
+            navigationView.itemSelections().recordWith(recorder)
+
+            recorder.assertNoMoreValues()
+
+            cancelTestScope()
+        }
+    }
+
+    @Test
     fun navigationViewItemSelections_skipInitialValue() {
         launchTest<MaterialFragment2> {
             val recorder = FlowRecorder<MenuItem>(testScope)

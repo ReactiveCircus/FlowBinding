@@ -1,5 +1,6 @@
 package reactivecircus.flowbinding.material
 
+import android.view.View
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import com.google.android.material.chip.ChipGroup
@@ -66,6 +67,35 @@ class ChipGroupCheckedChangedFlowTest {
             cancelTestScope()
 
             runOnUiThread { chipGroup.check(R.id.chip3) }
+            recorder.assertNoMoreValues()
+        }
+    }
+
+    @Test
+    fun chipGroupChipCheckedChanges_unchecked() {
+        launchTest<MaterialFragment2> {
+            val recorder = FlowRecorder<Int>(testScope)
+            val chipGroup = getViewById<ChipGroup>(R.id.chipGroup)
+            chipGroup.chipCheckedChanges()
+                .recordWith(recorder)
+
+            recorder.takeValue() shouldEqual View.NO_ID
+            recorder.assertNoMoreValues()
+
+            clickView(R.id.chip1)
+            recorder.takeValue() shouldEqual R.id.chip1
+            recorder.assertNoMoreValues()
+
+            runOnUiThread {
+                chipGroup.clearCheck()
+            }
+
+            recorder.takeValue() shouldEqual View.NO_ID
+            recorder.assertNoMoreValues()
+
+            cancelTestScope()
+
+            clickView(R.id.chip1)
             recorder.assertNoMoreValues()
         }
     }

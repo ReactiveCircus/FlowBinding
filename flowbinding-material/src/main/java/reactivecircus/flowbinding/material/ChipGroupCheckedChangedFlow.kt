@@ -15,7 +15,7 @@ import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [InitialValueFlow] of chip checked state change events on the [ChipGroup] instance
- * where the value emitted is the currently checked chip id.
+ * where the value emitted is the currently checked chip id, or [View#NO_ID] when selection is cleared.
  *
  * Note: Created flow keeps a strong reference to the [ChipGroup] instance
  * until the coroutine that launched the flow collector is cancelled.
