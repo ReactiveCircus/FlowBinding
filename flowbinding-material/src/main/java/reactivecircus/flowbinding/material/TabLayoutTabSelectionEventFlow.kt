@@ -6,21 +6,22 @@ import androidx.annotation.CheckResult
 import com.google.android.material.tabs.TabLayout
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
-import reactivecircus.flowbinding.common.InitialValueFlow
-import reactivecircus.flowbinding.common.asInitialValueFlow
+import kotlinx.coroutines.flow.onStart
 import reactivecircus.flowbinding.common.checkMainThread
 import reactivecircus.flowbinding.common.safeOffer
 
 /**
- * Create a [InitialValueFlow] of tab selection events on the [TabLayout] instance
+ * Create a [Flow] of tab selection events on the [TabLayout] instance
  * where the value emitted is one of the 3 event types:
  * [TabLayoutSelectionEvent.TabSelected],
  * [TabLayoutSelectionEvent.TabReselected],
  * [TabLayoutSelectionEvent.TabUnselected]
  *
- * Note: [TabLayoutSelectionEvent.TabSelected] will only be emitted upon collection if a a tab is already selected.
+ * Note: if a a tab is already selected,
+ * [TabLayoutSelectionEvent.TabSelected] will be emitted immediately upon collection.
  *
  * Note: Created flow keeps a strong reference to the [TabLayout] instance
  * until the coroutine that launched the flow collector is cancelled.
@@ -57,32 +58,31 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun TabLayout.tabSelectionEvents(): InitialValueFlow<TabLayoutSelectionEvent> =
-    callbackFlow<TabLayoutSelectionEvent> {
-        checkMainThread()
-        val listener = object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab) {
-                safeOffer(TabLayoutSelectionEvent.TabSelected(this@tabSelectionEvents, tab))
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab) {
-                safeOffer(TabLayoutSelectionEvent.TabReselected(this@tabSelectionEvents, tab))
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab) {
-                safeOffer(TabLayoutSelectionEvent.TabUnselected(this@tabSelectionEvents, tab))
-            }
+fun TabLayout.tabSelectionEvents(): Flow<TabLayoutSelectionEvent> = callbackFlow<TabLayoutSelectionEvent> {
+    checkMainThread()
+    val listener = object : TabLayout.OnTabSelectedListener {
+        override fun onTabSelected(tab: TabLayout.Tab) {
+            safeOffer(TabLayoutSelectionEvent.TabSelected(this@tabSelectionEvents, tab))
         }
-        addOnTabSelectedListener(listener)
-        awaitClose { removeOnTabSelectedListener(listener) }
+
+        override fun onTabReselected(tab: TabLayout.Tab) {
+            safeOffer(TabLayoutSelectionEvent.TabReselected(this@tabSelectionEvents, tab))
+        }
+
+        override fun onTabUnselected(tab: TabLayout.Tab) {
+            safeOffer(TabLayoutSelectionEvent.TabUnselected(this@tabSelectionEvents, tab))
+        }
     }
-        .conflate()
-        .asInitialValueFlow {
-            // emit TabLayoutSelectionEvent.TabSelected if a tab is already selected
-            getTabAt(selectedTabPosition)?.let {
-                TabLayoutSelectionEvent.TabSelected(this@tabSelectionEvents, it)
-            }
+    addOnTabSelectedListener(listener)
+    awaitClose { removeOnTabSelectedListener(listener) }
+}
+    .onStart {
+        // emit TabLayoutSelectionEvent.TabSelected if a tab is already selected
+        getTabAt(selectedTabPosition)?.run {
+            emit(TabLayoutSelectionEvent.TabSelected(this@tabSelectionEvents, this))
         }
+    }
+    .conflate()
 
 sealed class TabLayoutSelectionEvent {
     abstract val tabLayout: TabLayout
