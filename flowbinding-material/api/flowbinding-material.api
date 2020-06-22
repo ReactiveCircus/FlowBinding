@@ -7,7 +7,7 @@ public final class reactivecircus/flowbinding/material/BottomNavigationViewItemR
 }
 
 public final class reactivecircus/flowbinding/material/BottomNavigationViewItemSelectedFlowKt {
-	public static final fun itemSelections (Lcom/google/android/material/bottomnavigation/BottomNavigationView;)Lreactivecircus/flowbinding/common/InitialValueFlow;
+	public static final fun itemSelections (Lcom/google/android/material/bottomnavigation/BottomNavigationView;)Lkotlinx/coroutines/flow/Flow;
 }
 
 public final class reactivecircus/flowbinding/material/BottomSheetBehaviorSlidedFlowKt {
@@ -61,7 +61,7 @@ public final class reactivecircus/flowbinding/material/MaterialDatePickerPositiv
 }
 
 public final class reactivecircus/flowbinding/material/NavigationViewItemSelectedFlowKt {
-	public static final fun itemSelections (Lcom/google/android/material/navigation/NavigationView;)Lreactivecircus/flowbinding/common/InitialValueFlow;
+	public static final fun itemSelections (Lcom/google/android/material/navigation/NavigationView;)Lkotlinx/coroutines/flow/Flow;
 }
 
 public final class reactivecircus/flowbinding/material/RangeSliderChangeEvent {
@@ -170,7 +170,7 @@ public final class reactivecircus/flowbinding/material/TabLayoutSelectionEvent$T
 }
 
 public final class reactivecircus/flowbinding/material/TabLayoutTabSelectionEventFlowKt {
-	public static final fun tabSelectionEvents (Lcom/google/android/material/tabs/TabLayout;)Lreactivecircus/flowbinding/common/InitialValueFlow;
+	public static final fun tabSelectionEvents (Lcom/google/android/material/tabs/TabLayout;)Lkotlinx/coroutines/flow/Flow;
 }
 
 public final class reactivecircus/flowbinding/material/TextInputLayoutIconClickedFlowKt {

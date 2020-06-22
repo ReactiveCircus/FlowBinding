@@ -5,18 +5,18 @@ import androidx.annotation.CheckResult
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
-import reactivecircus.flowbinding.common.InitialValueFlow
-import reactivecircus.flowbinding.common.asInitialValueFlow
+import kotlinx.coroutines.flow.onStart
 import reactivecircus.flowbinding.common.checkMainThread
 import reactivecircus.flowbinding.common.safeOffer
 
 /**
- * Create a [InitialValueFlow] of item selected events on the [BottomNavigationView] instance
+ * Create a [Flow] of item selected events on the [BottomNavigationView] instance
  * where the value emitted is the currently selected menu item.
  *
- * Note: initial value will only be emitted upon collection if a [MenuItem] is selected.
+ * Note: if a [MenuItem] is already selected, it will be emitted immediately upon collection.
  *
  * Note: Created flow keeps a strong reference to the [BottomNavigationView] instance
  * until the coroutine that launched the flow collector is cancelled.
@@ -33,7 +33,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun BottomNavigationView.itemSelections(): InitialValueFlow<MenuItem> = callbackFlow {
+fun BottomNavigationView.itemSelections(): Flow<MenuItem> = callbackFlow {
     checkMainThread()
     val listener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         safeOffer(item)
@@ -41,8 +41,7 @@ fun BottomNavigationView.itemSelections(): InitialValueFlow<MenuItem> = callback
     setOnNavigationItemSelectedListener(listener)
     awaitClose { setOnNavigationItemSelectedListener(null) }
 }
-    .conflate()
-    .asInitialValueFlow {
+    .onStart {
         var selectedItem: MenuItem? = null
         for (index in 0 until menu.size()) {
             val item = menu.getItem(index)
@@ -51,5 +50,6 @@ fun BottomNavigationView.itemSelections(): InitialValueFlow<MenuItem> = callback
                 break
             }
         }
-        selectedItem
+        selectedItem?.run { emit(this) }
     }
+    .conflate()

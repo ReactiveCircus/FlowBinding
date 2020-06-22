@@ -5,16 +5,18 @@ import androidx.annotation.CheckResult
 import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
-import reactivecircus.flowbinding.common.InitialValueFlow
-import reactivecircus.flowbinding.common.asInitialValueFlow
+import kotlinx.coroutines.flow.onStart
 import reactivecircus.flowbinding.common.checkMainThread
 import reactivecircus.flowbinding.common.safeOffer
 
 /**
- * Create a [InitialValueFlow] of item selected events on the [NavigationView] instance
+ * Create a [Flow] of item selected events on the [NavigationView] instance
  * where the value emitted is the currently selected menu item.
+ *
+ * Note: if a [MenuItem] is already selected, it will be emitted immediately upon collection.
  *
  * Note: Created flow keeps a strong reference to the [NavigationView] instance
  * until the coroutine that launched the flow collector is cancelled.
@@ -31,24 +33,23 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun NavigationView.itemSelections(): InitialValueFlow<MenuItem> =
-    callbackFlow {
-        checkMainThread()
-        val listener = NavigationView.OnNavigationItemSelectedListener { item ->
-            safeOffer(item)
-        }
-        setNavigationItemSelectedListener(listener)
-        awaitClose { setNavigationItemSelectedListener(null) }
+fun NavigationView.itemSelections(): Flow<MenuItem> = callbackFlow {
+    checkMainThread()
+    val listener = NavigationView.OnNavigationItemSelectedListener { item ->
+        safeOffer(item)
     }
-        .conflate()
-        .asInitialValueFlow {
-            var selectedItem: MenuItem? = null
-            for (index in 0 until menu.size()) {
-                val item = menu.getItem(index)
-                if (item.isChecked) {
-                    selectedItem = item
-                    break
-                }
+    setNavigationItemSelectedListener(listener)
+    awaitClose { setNavigationItemSelectedListener(null) }
+}
+    .onStart {
+        var selectedItem: MenuItem? = null
+        for (index in 0 until menu.size()) {
+            val item = menu.getItem(index)
+            if (item.isChecked) {
+                selectedItem = item
+                break
             }
-            selectedItem
         }
+        selectedItem?.run { emit(this) }
+    }
+    .conflate()

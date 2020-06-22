@@ -53,29 +53,4 @@ class NavigationViewItemSelectedFlowTest {
             cancelTestScope()
         }
     }
-
-    @Test
-    fun navigationViewItemSelections_skipInitialValue() {
-        launchTest<MaterialFragment2> {
-            val recorder = FlowRecorder<MenuItem>(testScope)
-            val navigationView = getViewById<NavigationView>(R.id.navigationView).apply {
-                runOnUiThread { setCheckedItem(R.id.item1) }
-            }
-            navigationView.itemSelections()
-                .skipInitialValue()
-                .recordWith(recorder)
-
-            recorder.assertNoMoreValues()
-
-            openDrawer(R.id.drawerLayout)
-            selectNavigationItem(R.id.navigationView, R.id.item2)
-            recorder.takeValue().itemId shouldEqual R.id.item2
-            recorder.assertNoMoreValues()
-
-            cancelTestScope()
-
-            selectNavigationItem(R.id.navigationView, R.id.item1)
-            recorder.assertNoMoreValues()
-        }
-    }
 }
