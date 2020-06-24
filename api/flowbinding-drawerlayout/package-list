@@ -1,4 +1,4 @@
 $dokka.format:gfm
 $dokka.linkExtension:md
-$dokka.location:reactivecircus.flowbinding.drawerlayout$drawerStateChanges(androidx.drawerlayout.widget.DrawerLayout, kotlin.Int, kotlin.Boolean)reactivecircus.flowbinding.drawerlayout/androidx.drawerlayout.widget.-drawer-layout/drawer-state-changes.md
+$dokka.location:reactivecircus.flowbinding.drawerlayout$drawerStateChanges(androidx.drawerlayout.widget.DrawerLayout, kotlin.Int)reactivecircus.flowbinding.drawerlayout/androidx.drawerlayout.widget.-drawer-layout/drawer-state-changes.md
 reactivecircus.flowbinding.drawerlayout

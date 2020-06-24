@@ -6,7 +6,7 @@ $dokka.location:reactivecircus.flowbinding.android.view$clicks(android.view.Menu
 $dokka.location:reactivecircus.flowbinding.android.view$clicks(android.view.View)reactivecircus.flowbinding.android.view/android.view.-view/clicks.md
 $dokka.location:reactivecircus.flowbinding.android.view$drags(android.view.View, kotlin.Function1((android.view.DragEvent, kotlin.Boolean)))reactivecircus.flowbinding.android.view/android.view.-view/drags.md
 $dokka.location:reactivecircus.flowbinding.android.view$draws(android.view.View)reactivecircus.flowbinding.android.view/android.view.-view/draws.md
-$dokka.location:reactivecircus.flowbinding.android.view$focusChanges(android.view.View, kotlin.Boolean)reactivecircus.flowbinding.android.view/android.view.-view/focus-changes.md
+$dokka.location:reactivecircus.flowbinding.android.view$focusChanges(android.view.View)reactivecircus.flowbinding.android.view/android.view.-view/focus-changes.md
 $dokka.location:reactivecircus.flowbinding.android.view$globalLayouts(android.view.View)reactivecircus.flowbinding.android.view/android.view.-view/global-layouts.md
 $dokka.location:reactivecircus.flowbinding.android.view$hierarchyChangeEvents(android.view.ViewGroup)reactivecircus.flowbinding.android.view/android.view.-view-group/hierarchy-change-events.md
 $dokka.location:reactivecircus.flowbinding.android.view$hovers(android.view.View, kotlin.Function1((android.view.MotionEvent, kotlin.Boolean)))reactivecircus.flowbinding.android.view/android.view.-view/hovers.md
@@ -18,12 +18,12 @@ $dokka.location:reactivecircus.flowbinding.android.view$preDraws(android.view.Vi
 $dokka.location:reactivecircus.flowbinding.android.view$scrollChangeEvents(android.view.View)reactivecircus.flowbinding.android.view/android.view.-view/scroll-change-events.md
 $dokka.location:reactivecircus.flowbinding.android.view$systemUiVisibilityChanges(android.view.View)reactivecircus.flowbinding.android.view/android.view.-view/system-ui-visibility-changes.md
 $dokka.location:reactivecircus.flowbinding.android.view$touches(android.view.View, kotlin.Function1((android.view.MotionEvent, kotlin.Boolean)))reactivecircus.flowbinding.android.view/android.view.-view/touches.md
-$dokka.location:reactivecircus.flowbinding.android.widget$afterTextChanges(android.widget.TextView, kotlin.Boolean)reactivecircus.flowbinding.android.widget/android.widget.-text-view/after-text-changes.md
-$dokka.location:reactivecircus.flowbinding.android.widget$beforeTextChanges(android.widget.TextView, kotlin.Boolean)reactivecircus.flowbinding.android.widget/android.widget.-text-view/before-text-changes.md
-$dokka.location:reactivecircus.flowbinding.android.widget$changeEvents(android.widget.SeekBar, kotlin.Boolean)reactivecircus.flowbinding.android.widget/android.widget.-seek-bar/change-events.md
-$dokka.location:reactivecircus.flowbinding.android.widget$checkedChanges(android.widget.CompoundButton, kotlin.Boolean)reactivecircus.flowbinding.android.widget/android.widget.-compound-button/checked-changes.md
-$dokka.location:reactivecircus.flowbinding.android.widget$checkedChanges(android.widget.RadioGroup, kotlin.Boolean)reactivecircus.flowbinding.android.widget/android.widget.-radio-group/checked-changes.md
-$dokka.location:reactivecircus.flowbinding.android.widget$dataChanges(android.widget.Adapter, kotlin.Boolean)reactivecircus.flowbinding.android.widget/android.widget.-adapter/data-changes.md
+$dokka.location:reactivecircus.flowbinding.android.widget$afterTextChanges(android.widget.TextView)reactivecircus.flowbinding.android.widget/android.widget.-text-view/after-text-changes.md
+$dokka.location:reactivecircus.flowbinding.android.widget$beforeTextChanges(android.widget.TextView)reactivecircus.flowbinding.android.widget/android.widget.-text-view/before-text-changes.md
+$dokka.location:reactivecircus.flowbinding.android.widget$changeEvents(android.widget.SeekBar)reactivecircus.flowbinding.android.widget/android.widget.-seek-bar/change-events.md
+$dokka.location:reactivecircus.flowbinding.android.widget$checkedChanges(android.widget.CompoundButton)reactivecircus.flowbinding.android.widget/android.widget.-compound-button/checked-changes.md
+$dokka.location:reactivecircus.flowbinding.android.widget$checkedChanges(android.widget.RadioGroup)reactivecircus.flowbinding.android.widget/android.widget.-radio-group/checked-changes.md
+$dokka.location:reactivecircus.flowbinding.android.widget$dataChanges(android.widget.Adapter)reactivecircus.flowbinding.android.widget/android.widget.-adapter/data-changes.md
 $dokka.location:reactivecircus.flowbinding.android.widget$dismisses(android.widget.AutoCompleteTextView)reactivecircus.flowbinding.android.widget/android.widget.-auto-complete-text-view/dismisses.md
 $dokka.location:reactivecircus.flowbinding.android.widget$dismisses(android.widget.PopupMenu)reactivecircus.flowbinding.android.widget/android.widget.-popup-menu/dismisses.md
 $dokka.location:reactivecircus.flowbinding.android.widget$editorActionEvents(android.widget.TextView, kotlin.Function1((reactivecircus.flowbinding.android.widget.EditorActionEvent, kotlin.Boolean)))reactivecircus.flowbinding.android.widget/android.widget.-text-view/editor-action-events.md
@@ -33,15 +33,15 @@ $dokka.location:reactivecircus.flowbinding.android.widget$itemClicks(android.wid
 $dokka.location:reactivecircus.flowbinding.android.widget$itemClicks(android.widget.PopupMenu)reactivecircus.flowbinding.android.widget/android.widget.-popup-menu/item-clicks.md
 $dokka.location:reactivecircus.flowbinding.android.widget$itemLongClickEvents(android.widget.AdapterView((reactivecircus.flowbinding.android.widget.itemLongClickEvents.T)), kotlin.Function1((reactivecircus.flowbinding.android.widget.AdapterViewItemLongClickEvent, kotlin.Boolean)))reactivecircus.flowbinding.android.widget/android.widget.-adapter-view/item-long-click-events.md
 $dokka.location:reactivecircus.flowbinding.android.widget$itemLongClicks(android.widget.AdapterView((reactivecircus.flowbinding.android.widget.itemLongClicks.T)), kotlin.Function0((kotlin.Boolean)))reactivecircus.flowbinding.android.widget/android.widget.-adapter-view/item-long-clicks.md
-$dokka.location:reactivecircus.flowbinding.android.widget$itemSelections(android.widget.AdapterView((reactivecircus.flowbinding.android.widget.itemSelections.T)), kotlin.Boolean)reactivecircus.flowbinding.android.widget/android.widget.-adapter-view/item-selections.md
-$dokka.location:reactivecircus.flowbinding.android.widget$progressChanges(android.widget.SeekBar, kotlin.Boolean)reactivecircus.flowbinding.android.widget/android.widget.-seek-bar/progress-changes.md
-$dokka.location:reactivecircus.flowbinding.android.widget$queryTextChanges(android.widget.SearchView, kotlin.Boolean)reactivecircus.flowbinding.android.widget/android.widget.-search-view/query-text-changes.md
-$dokka.location:reactivecircus.flowbinding.android.widget$queryTextEvents(android.widget.SearchView, kotlin.Boolean)reactivecircus.flowbinding.android.widget/android.widget.-search-view/query-text-events.md
-$dokka.location:reactivecircus.flowbinding.android.widget$ratingChangeEvents(android.widget.RatingBar, kotlin.Boolean)reactivecircus.flowbinding.android.widget/android.widget.-rating-bar/rating-change-events.md
-$dokka.location:reactivecircus.flowbinding.android.widget$ratingChanges(android.widget.RatingBar, kotlin.Boolean)reactivecircus.flowbinding.android.widget/android.widget.-rating-bar/rating-changes.md
+$dokka.location:reactivecircus.flowbinding.android.widget$itemSelections(android.widget.AdapterView((reactivecircus.flowbinding.android.widget.itemSelections.T)))reactivecircus.flowbinding.android.widget/android.widget.-adapter-view/item-selections.md
+$dokka.location:reactivecircus.flowbinding.android.widget$progressChanges(android.widget.SeekBar)reactivecircus.flowbinding.android.widget/android.widget.-seek-bar/progress-changes.md
+$dokka.location:reactivecircus.flowbinding.android.widget$queryTextChanges(android.widget.SearchView)reactivecircus.flowbinding.android.widget/android.widget.-search-view/query-text-changes.md
+$dokka.location:reactivecircus.flowbinding.android.widget$queryTextEvents(android.widget.SearchView)reactivecircus.flowbinding.android.widget/android.widget.-search-view/query-text-events.md
+$dokka.location:reactivecircus.flowbinding.android.widget$ratingChangeEvents(android.widget.RatingBar)reactivecircus.flowbinding.android.widget/android.widget.-rating-bar/rating-change-events.md
+$dokka.location:reactivecircus.flowbinding.android.widget$ratingChanges(android.widget.RatingBar)reactivecircus.flowbinding.android.widget/android.widget.-rating-bar/rating-changes.md
 $dokka.location:reactivecircus.flowbinding.android.widget$scrollEvents(android.widget.AbsListView)reactivecircus.flowbinding.android.widget/android.widget.-abs-list-view/scroll-events.md
-$dokka.location:reactivecircus.flowbinding.android.widget$selectionEvents(android.widget.AdapterView((reactivecircus.flowbinding.android.widget.selectionEvents.T)), kotlin.Boolean)reactivecircus.flowbinding.android.widget/android.widget.-adapter-view/selection-events.md
-$dokka.location:reactivecircus.flowbinding.android.widget$textChangeEvents(android.widget.TextView, kotlin.Boolean)reactivecircus.flowbinding.android.widget/android.widget.-text-view/text-change-events.md
-$dokka.location:reactivecircus.flowbinding.android.widget$textChanges(android.widget.TextView, kotlin.Boolean)reactivecircus.flowbinding.android.widget/android.widget.-text-view/text-changes.md
+$dokka.location:reactivecircus.flowbinding.android.widget$selectionEvents(android.widget.AdapterView((reactivecircus.flowbinding.android.widget.selectionEvents.T)))reactivecircus.flowbinding.android.widget/android.widget.-adapter-view/selection-events.md
+$dokka.location:reactivecircus.flowbinding.android.widget$textChangeEvents(android.widget.TextView)reactivecircus.flowbinding.android.widget/android.widget.-text-view/text-change-events.md
+$dokka.location:reactivecircus.flowbinding.android.widget$textChanges(android.widget.TextView)reactivecircus.flowbinding.android.widget/android.widget.-text-view/text-changes.md
 reactivecircus.flowbinding.android.view
 reactivecircus.flowbinding.android.widget
