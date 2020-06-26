@@ -1,5 +1,16 @@
 # Change Log
 
+## Version 1.0.0-alpha01
+
+_2020-06-26_
+
+* Breaking change: Introduced a new `InitialValueFlow` type for the bindings which emit state. All bindings with the `emitImmediately: Boolean = false` param have been migrated to to return `InitialValueFlow`. This is also a behavior change as the current value of a widget will now be emitted immediately upon collection. The new `InitialValueFlow` provides a `skipInitialValue()` function for skipping the initial emission.
+* Dependency updates:
+  * `drawerlayout:1.1.0`
+  * `fragment:1.2.5`
+  * `navigation:2.3.0`
+  * `swiperefreshlayout:1.1.0`
+
 ## Version 0.12.0
 
 _2020-05-29_
