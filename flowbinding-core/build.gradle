@@ -22,7 +22,7 @@ android {
 }
 
 dependencies {
-    implementation project(':flowbinding-common')
+    api project(':flowbinding-common')
 
     implementation "androidx.core:core-ktx:${versions.androidx.core}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinx.coroutines}"

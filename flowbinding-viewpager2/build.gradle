@@ -22,7 +22,7 @@ android {
 }
 
 dependencies {
-    implementation project(':flowbinding-common')
+    api project(':flowbinding-common')
 
     implementation "androidx.viewpager2:viewpager2:${versions.androidx.viewPager2}"
     implementation "androidx.fragment:fragment-ktx:${versions.androidx.fragment}"
