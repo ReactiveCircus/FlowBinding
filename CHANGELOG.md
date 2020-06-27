@@ -1,5 +1,11 @@
 # Change Log
 
+## Version 1.0.0-alpha02
+
+_2020-06-27_
+
+* Fix: Explicitly adding the `flowbinding-common` dependency is no longer required.
+
 ## Version 1.0.0-alpha01
 
 _2020-06-26_
