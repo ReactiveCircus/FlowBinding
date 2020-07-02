@@ -7,7 +7,7 @@ plugins {
 android.buildFeatures.viewBinding = true
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
     implementation "androidx.recyclerview:recyclerview:${versions.androidx.recyclerView}"
     implementation "androidx.fragment:fragment-ktx:${versions.androidx.fragment}"
 }
