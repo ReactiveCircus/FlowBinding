@@ -83,8 +83,9 @@ fun LibraryExtension.configureAndroidLibraryOptions(project: Project) {
     }
 
     packagingOptions {
-        exclude("META-INF/AL2.0")
-        exclude("META-INF/LGPL2.1")
+        pickFirst("META-INF/AL2.0")
+        pickFirst("META-INF/LGPL2.1")
+        pickFirst("META-INF/*.kotlin_module")
     }
 }
 
