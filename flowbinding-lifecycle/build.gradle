@@ -24,7 +24,7 @@ android {
 dependencies {
     api project(':flowbinding-common')
 
-    implementation "androidx.lifecycle:lifecycle-common-java8:${versions.androidx.lifecycle}"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:${versions.androidx.lifecycle}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinx.coroutines}"
 
     lintChecks project(":lint-rules")
