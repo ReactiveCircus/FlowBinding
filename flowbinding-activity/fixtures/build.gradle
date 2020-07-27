@@ -7,7 +7,6 @@ plugins {
 android.buildFeatures.viewBinding = true
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
     implementation "androidx.activity:activity-ktx:${versions.androidx.activity}"
     implementation "androidx.fragment:fragment-ktx:${versions.androidx.fragment}"
 }
