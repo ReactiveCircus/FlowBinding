@@ -1,45 +1,10 @@
-processors:
-  active: true
-
-console-reports:
-  active: true
-
-comments:
-  active: true
-
-complexity:
-  active: true
-
-empty-blocks:
-  active: true
-
-exceptions:
-  active: true
-
 formatting:
-  active: true
-  android: false
-  autoCorrect: true
+  android: true
   MaximumLineLength:
-    active: true
     maxLineLength: 120
     excludes: ["**/test/**","**/androidTest/**"]
 
-naming:
-  active: true
-
-performance:
-  active: true
-
-potential-bugs:
-  active: true
-
 style:
-  active: true
   MaxLineLength:
-    active: true
     maxLineLength: 120
-    excludePackageStatements: true
-    excludeImportStatements: true
-    excludeCommentStatements: false
     excludes: ["**/test/**","**/androidTest/**"]
