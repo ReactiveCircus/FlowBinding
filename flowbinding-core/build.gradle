@@ -23,7 +23,7 @@ android {
     kotlin.explicitApi = 'strict'
     kotlinOptions {
         freeCompilerArgs += [
-                '-Xexplicit-api=strict',
+                '-Xexplicit-api=warning',
         ]
     }
 }
