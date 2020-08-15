@@ -30,7 +30,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun Slider.valueChanges(): InitialValueFlow<Float> = callbackFlow {
+public fun Slider.valueChanges(): InitialValueFlow<Float> = callbackFlow {
     checkMainThread()
     val listener = Slider.OnChangeListener { _, value, _ ->
         safeOffer(value)

@@ -30,7 +30,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun SearchView.queryTextChanges(): InitialValueFlow<CharSequence> = callbackFlow<CharSequence> {
+public fun SearchView.queryTextChanges(): InitialValueFlow<CharSequence> = callbackFlow<CharSequence> {
     checkMainThread()
     val listener = object : SearchView.OnQueryTextListener {
         override fun onQueryTextChange(newText: String): Boolean {

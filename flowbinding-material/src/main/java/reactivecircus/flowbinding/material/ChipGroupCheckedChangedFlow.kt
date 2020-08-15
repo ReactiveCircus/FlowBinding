@@ -32,7 +32,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun ChipGroup.chipCheckedChanges(): InitialValueFlow<Int> = callbackFlow {
+public fun ChipGroup.chipCheckedChanges(): InitialValueFlow<Int> = callbackFlow {
     checkMainThread()
     val listener = ChipGroup.OnCheckedChangeListener { _, checkedId ->
         safeOffer(checkedId)

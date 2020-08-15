@@ -31,7 +31,7 @@ import reactivecircus.flowbinding.common.safeOffer
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun AutoCompleteTextView.dismisses(): Flow<Unit> = callbackFlow {
+public fun AutoCompleteTextView.dismisses(): Flow<Unit> = callbackFlow {
     checkMainThread()
     val listener = AutoCompleteTextView.OnDismissListener {
         safeOffer(Unit)

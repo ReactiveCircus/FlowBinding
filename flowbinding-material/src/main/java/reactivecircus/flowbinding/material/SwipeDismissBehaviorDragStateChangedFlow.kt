@@ -34,7 +34,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun View.swipeDismissDragStateChanges(): Flow<Int> = callbackFlow<Int> {
+public fun View.swipeDismissDragStateChanges(): Flow<Int> = callbackFlow<Int> {
     checkMainThread()
     val params = layoutParams
     check(params is CoordinatorLayout.LayoutParams) {

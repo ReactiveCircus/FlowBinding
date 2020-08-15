@@ -38,7 +38,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun TextView.textChanges(): InitialValueFlow<CharSequence> = callbackFlow<CharSequence> {
+public fun TextView.textChanges(): InitialValueFlow<CharSequence> = callbackFlow<CharSequence> {
     checkMainThread()
     val listener = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) = Unit

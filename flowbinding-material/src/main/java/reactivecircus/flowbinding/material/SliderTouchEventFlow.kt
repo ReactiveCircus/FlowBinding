@@ -28,7 +28,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun Slider.touchEvents(): Flow<SliderTouchEvent> = callbackFlow<SliderTouchEvent> {
+public fun Slider.touchEvents(): Flow<SliderTouchEvent> = callbackFlow<SliderTouchEvent> {
     checkMainThread()
     val listener = object : Slider.OnSliderTouchListener {
         override fun onStartTrackingTouch(slider: Slider) {
@@ -43,10 +43,10 @@ fun Slider.touchEvents(): Flow<SliderTouchEvent> = callbackFlow<SliderTouchEvent
     awaitClose { removeOnSliderTouchListener(listener) }
 }.conflate()
 
-sealed class SliderTouchEvent {
-    abstract val slider: Slider
+public sealed class SliderTouchEvent {
+    public abstract val slider: Slider
 
-    class StartTracking(override val slider: Slider) : SliderTouchEvent()
+    public class StartTracking(override val slider: Slider) : SliderTouchEvent()
 
-    class StopTracking(override val slider: Slider) : SliderTouchEvent()
+    public class StopTracking(override val slider: Slider) : SliderTouchEvent()
 }

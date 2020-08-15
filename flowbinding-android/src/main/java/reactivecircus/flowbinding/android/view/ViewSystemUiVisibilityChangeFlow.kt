@@ -42,7 +42,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun View.systemUiVisibilityChanges(): Flow<Int> = callbackFlow {
+public fun View.systemUiVisibilityChanges(): Flow<Int> = callbackFlow {
     checkMainThread()
     val listener = View.OnSystemUiVisibilityChangeListener { flag ->
         safeOffer(flag)

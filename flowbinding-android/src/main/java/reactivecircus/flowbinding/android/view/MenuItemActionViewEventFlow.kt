@@ -44,7 +44,9 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun MenuItem.actionViewEvents(handled: (MenuItemActionViewEvent) -> Boolean = { true }): Flow<MenuItemActionViewEvent> =
+public fun MenuItem.actionViewEvents(
+    handled: (MenuItemActionViewEvent) -> Boolean = { true }
+): Flow<MenuItemActionViewEvent> =
     callbackFlow<MenuItemActionViewEvent> {
         checkMainThread()
         val listener = object : MenuItem.OnActionExpandListener {
@@ -72,14 +74,14 @@ fun MenuItem.actionViewEvents(handled: (MenuItemActionViewEvent) -> Boolean = { 
         awaitClose { setOnActionExpandListener(null) }
     }.conflate()
 
-sealed class MenuItemActionViewEvent {
-    abstract val menuItem: MenuItem
+public sealed class MenuItemActionViewEvent {
+    public abstract val menuItem: MenuItem
 
-    class Collapse(
+    public class Collapse(
         override val menuItem: MenuItem
     ) : MenuItemActionViewEvent()
 
-    class Expand(
+    public class Expand(
         override val menuItem: MenuItem
     ) : MenuItemActionViewEvent()
 }

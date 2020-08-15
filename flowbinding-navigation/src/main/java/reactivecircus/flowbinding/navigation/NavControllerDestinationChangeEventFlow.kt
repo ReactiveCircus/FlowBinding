@@ -32,7 +32,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun NavController.destinationChangeEvents(): Flow<DestinationChangeEvent> = callbackFlow {
+public fun NavController.destinationChangeEvents(): Flow<DestinationChangeEvent> = callbackFlow {
     checkMainThread()
     val listener = NavController.OnDestinationChangedListener { controller, destination, arguments ->
         safeOffer(
@@ -47,8 +47,8 @@ fun NavController.destinationChangeEvents(): Flow<DestinationChangeEvent> = call
     awaitClose { removeOnDestinationChangedListener(listener) }
 }.conflate()
 
-class DestinationChangeEvent(
-    val navController: NavController,
-    val destination: NavDestination,
-    val arguments: Bundle?
+public class DestinationChangeEvent(
+    public val navController: NavController,
+    public val destination: NavDestination,
+    public val arguments: Bundle?
 )

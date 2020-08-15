@@ -33,7 +33,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun View.dismisses(): Flow<View> = callbackFlow<View> {
+public fun View.dismisses(): Flow<View> = callbackFlow<View> {
     checkMainThread()
     val params = layoutParams
     check(params is CoordinatorLayout.LayoutParams) {

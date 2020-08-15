@@ -30,7 +30,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun View.layoutChangeEvents(): Flow<LayoutChangeEvent> = callbackFlow {
+public fun View.layoutChangeEvents(): Flow<LayoutChangeEvent> = callbackFlow {
     checkMainThread()
     val listener =
         View.OnLayoutChangeListener { v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
@@ -53,14 +53,14 @@ fun View.layoutChangeEvents(): Flow<LayoutChangeEvent> = callbackFlow {
 }.conflate()
 
 @Suppress("LongParameterList")
-class LayoutChangeEvent(
-    val view: View,
-    val left: Int,
-    val top: Int,
-    val right: Int,
-    val bottom: Int,
-    val oldLeft: Int,
-    val oldTop: Int,
-    val oldRight: Int,
-    val oldBottom: Int
+public class LayoutChangeEvent(
+    public val view: View,
+    public val left: Int,
+    public val top: Int,
+    public val right: Int,
+    public val bottom: Int,
+    public val oldLeft: Int,
+    public val oldTop: Int,
+    public val oldRight: Int,
+    public val oldBottom: Int
 )

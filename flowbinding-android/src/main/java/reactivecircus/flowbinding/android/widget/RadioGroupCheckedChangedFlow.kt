@@ -33,7 +33,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun RadioGroup.checkedChanges(): InitialValueFlow<Int> = callbackFlow<Int> {
+public fun RadioGroup.checkedChanges(): InitialValueFlow<Int> = callbackFlow<Int> {
     checkMainThread()
     val listener = object : RadioGroup.OnCheckedChangeListener {
         private var lastChecked = checkedRadioButtonId

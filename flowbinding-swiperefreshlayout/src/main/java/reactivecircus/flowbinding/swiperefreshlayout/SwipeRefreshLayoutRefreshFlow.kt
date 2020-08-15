@@ -28,7 +28,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun SwipeRefreshLayout.refreshes(): Flow<Unit> = callbackFlow {
+public fun SwipeRefreshLayout.refreshes(): Flow<Unit> = callbackFlow {
     checkMainThread()
     val listener = SwipeRefreshLayout.OnRefreshListener {
         safeOffer(Unit)

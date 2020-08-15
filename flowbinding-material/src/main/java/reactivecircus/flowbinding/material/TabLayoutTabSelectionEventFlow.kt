@@ -58,7 +58,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun TabLayout.tabSelectionEvents(): Flow<TabLayoutSelectionEvent> = callbackFlow<TabLayoutSelectionEvent> {
+public fun TabLayout.tabSelectionEvents(): Flow<TabLayoutSelectionEvent> = callbackFlow<TabLayoutSelectionEvent> {
     checkMainThread()
     val listener = object : TabLayout.OnTabSelectedListener {
         override fun onTabSelected(tab: TabLayout.Tab) {
@@ -84,21 +84,21 @@ fun TabLayout.tabSelectionEvents(): Flow<TabLayoutSelectionEvent> = callbackFlow
     }
     .conflate()
 
-sealed class TabLayoutSelectionEvent {
-    abstract val tabLayout: TabLayout
-    abstract val tab: TabLayout.Tab
+public sealed class TabLayoutSelectionEvent {
+    public abstract val tabLayout: TabLayout
+    public abstract val tab: TabLayout.Tab
 
-    class TabSelected(
+    public class TabSelected(
         override val tabLayout: TabLayout,
         override val tab: TabLayout.Tab
     ) : TabLayoutSelectionEvent()
 
-    class TabReselected(
+    public class TabReselected(
         override val tabLayout: TabLayout,
         override val tab: TabLayout.Tab
     ) : TabLayoutSelectionEvent()
 
-    class TabUnselected(
+    public class TabUnselected(
         override val tabLayout: TabLayout,
         override val tab: TabLayout.Tab
     ) : TabLayoutSelectionEvent()

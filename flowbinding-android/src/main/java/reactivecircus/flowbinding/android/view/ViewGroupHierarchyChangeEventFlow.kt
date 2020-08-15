@@ -41,7 +41,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun ViewGroup.hierarchyChangeEvents(): Flow<HierarchyChangeEvent> = callbackFlow<HierarchyChangeEvent> {
+public fun ViewGroup.hierarchyChangeEvents(): Flow<HierarchyChangeEvent> = callbackFlow<HierarchyChangeEvent> {
     checkMainThread()
     val listener = object : ViewGroup.OnHierarchyChangeListener {
         override fun onChildViewAdded(parent: View, child: View) {
@@ -56,11 +56,11 @@ fun ViewGroup.hierarchyChangeEvents(): Flow<HierarchyChangeEvent> = callbackFlow
     awaitClose { setOnHierarchyChangeListener(null) }
 }.conflate()
 
-sealed class HierarchyChangeEvent {
-    abstract val parent: ViewGroup
-    abstract val child: View
+public sealed class HierarchyChangeEvent {
+    public abstract val parent: ViewGroup
+    public abstract val child: View
 
-    class ChildAdded(override val parent: ViewGroup, override val child: View) : HierarchyChangeEvent()
+    public class ChildAdded(override val parent: ViewGroup, override val child: View) : HierarchyChangeEvent()
 
-    class ChildRemoved(override val parent: ViewGroup, override val child: View) : HierarchyChangeEvent()
+    public class ChildRemoved(override val parent: ViewGroup, override val child: View) : HierarchyChangeEvent()
 }

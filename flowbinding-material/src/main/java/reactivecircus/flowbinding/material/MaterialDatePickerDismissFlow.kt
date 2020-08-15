@@ -31,7 +31,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun <S> MaterialDatePicker<S>.dismisses(): Flow<Unit> = callbackFlow {
+public fun <S> MaterialDatePicker<S>.dismisses(): Flow<Unit> = callbackFlow {
     checkMainThread()
     val listener = DialogInterface.OnDismissListener {
         safeOffer(Unit)

@@ -31,7 +31,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun MaterialButtonToggleGroup.buttonCheckedChanges(): Flow<MaterialButtonCheckedChangedEvent> = callbackFlow {
+public fun MaterialButtonToggleGroup.buttonCheckedChanges(): Flow<MaterialButtonCheckedChangedEvent> = callbackFlow {
     checkMainThread()
     val listener = MaterialButtonToggleGroup.OnButtonCheckedListener { _, checkedId, isChecked ->
         safeOffer(
@@ -42,8 +42,8 @@ fun MaterialButtonToggleGroup.buttonCheckedChanges(): Flow<MaterialButtonChecked
     awaitClose { removeOnButtonCheckedListener(listener) }
 }.conflate()
 
-class MaterialButtonCheckedChangedEvent(
+public class MaterialButtonCheckedChangedEvent(
     @IdRes
-    val checkedId: Int,
-    val checked: Boolean
+    public val checkedId: Int,
+    public val checked: Boolean
 )

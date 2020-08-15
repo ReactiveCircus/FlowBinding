@@ -32,7 +32,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun View.preDraws(proceedDrawingPass: () -> Boolean): Flow<Unit> = callbackFlow {
+public fun View.preDraws(proceedDrawingPass: () -> Boolean): Flow<Unit> = callbackFlow {
     checkMainThread()
     val listener = ViewTreeObserver.OnPreDrawListener {
         safeOffer(Unit)

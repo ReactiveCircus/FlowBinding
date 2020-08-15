@@ -28,7 +28,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun RangeSlider.touchEvents(): Flow<RangeSliderTouchEvent> = callbackFlow<RangeSliderTouchEvent> {
+public fun RangeSlider.touchEvents(): Flow<RangeSliderTouchEvent> = callbackFlow<RangeSliderTouchEvent> {
     checkMainThread()
     val listener = object : RangeSlider.OnSliderTouchListener {
         override fun onStartTrackingTouch(rangeSlider: RangeSlider) {
@@ -43,10 +43,10 @@ fun RangeSlider.touchEvents(): Flow<RangeSliderTouchEvent> = callbackFlow<RangeS
     awaitClose { removeOnSliderTouchListener(listener) }
 }.conflate()
 
-sealed class RangeSliderTouchEvent {
-    abstract val rangeSlider: RangeSlider
+public sealed class RangeSliderTouchEvent {
+    public abstract val rangeSlider: RangeSlider
 
-    class StartTracking(override val rangeSlider: RangeSlider) : RangeSliderTouchEvent()
+    public class StartTracking(override val rangeSlider: RangeSlider) : RangeSliderTouchEvent()
 
-    class StopTracking(override val rangeSlider: RangeSlider) : RangeSliderTouchEvent()
+    public class StopTracking(override val rangeSlider: RangeSlider) : RangeSliderTouchEvent()
 }

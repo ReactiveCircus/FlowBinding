@@ -30,7 +30,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun AbsListView.scrollEvents(): Flow<ScrollEvent> = callbackFlow<ScrollEvent> {
+public fun AbsListView.scrollEvents(): Flow<ScrollEvent> = callbackFlow<ScrollEvent> {
     checkMainThread()
     val listener = object : AbsListView.OnScrollListener {
 
@@ -70,10 +70,10 @@ fun AbsListView.scrollEvents(): Flow<ScrollEvent> = callbackFlow<ScrollEvent> {
     awaitClose { setOnScrollListener(null) }
 }.conflate()
 
-class ScrollEvent(
-    val view: AbsListView,
-    val scrollState: Int,
-    val firstVisibleItem: Int,
-    val visibleItemCount: Int,
-    val totalItemCount: Int
+public class ScrollEvent(
+    public val view: AbsListView,
+    public val scrollState: Int,
+    public val firstVisibleItem: Int,
+    public val visibleItemCount: Int,
+    public val totalItemCount: Int
 )

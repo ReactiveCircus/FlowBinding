@@ -30,7 +30,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun SeekBar.progressChanges(): InitialValueFlow<Int> = callbackFlow<Int> {
+public fun SeekBar.progressChanges(): InitialValueFlow<Int> = callbackFlow<Int> {
     checkMainThread()
     val listener = object : SeekBar.OnSeekBarChangeListener {
         override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {

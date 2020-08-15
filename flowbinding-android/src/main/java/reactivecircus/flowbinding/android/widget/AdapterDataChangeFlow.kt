@@ -30,7 +30,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun Adapter.dataChanges(): InitialValueFlow<Adapter> = callbackFlow<Adapter> {
+public fun Adapter.dataChanges(): InitialValueFlow<Adapter> = callbackFlow<Adapter> {
     checkMainThread()
     val observer = object : DataSetObserver() {
         override fun onChanged() {

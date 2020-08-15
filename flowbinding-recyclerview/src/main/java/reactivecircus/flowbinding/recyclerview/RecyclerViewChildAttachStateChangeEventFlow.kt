@@ -41,7 +41,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun RecyclerView.childAttachStateChangeEvents(): Flow<RecyclerViewChildAttachStateChangeEvent> =
+public fun RecyclerView.childAttachStateChangeEvents(): Flow<RecyclerViewChildAttachStateChangeEvent> =
     callbackFlow<RecyclerViewChildAttachStateChangeEvent> {
         checkMainThread()
         val listener = object : RecyclerView.OnChildAttachStateChangeListener {
@@ -67,16 +67,16 @@ fun RecyclerView.childAttachStateChangeEvents(): Flow<RecyclerViewChildAttachSta
         awaitClose { removeOnChildAttachStateChangeListener(listener) }
     }.conflate()
 
-sealed class RecyclerViewChildAttachStateChangeEvent {
-    abstract val view: RecyclerView
-    abstract val child: View
+public sealed class RecyclerViewChildAttachStateChangeEvent {
+    public abstract val view: RecyclerView
+    public abstract val child: View
 
-    class Attached(
+    public class Attached(
         override val view: RecyclerView,
         override val child: View
     ) : RecyclerViewChildAttachStateChangeEvent()
 
-    class Detached(
+    public class Detached(
         override val view: RecyclerView,
         override val child: View
     ) : RecyclerViewChildAttachStateChangeEvent()
