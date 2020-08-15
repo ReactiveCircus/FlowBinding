@@ -30,7 +30,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun Preference.preferenceClicks(): Flow<Unit> = callbackFlow {
+public fun Preference.preferenceClicks(): Flow<Unit> = callbackFlow {
     checkMainThread()
     val listener = Preference.OnPreferenceClickListener {
         safeOffer(Unit)

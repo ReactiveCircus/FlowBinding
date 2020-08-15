@@ -30,7 +30,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun ViewPager2.pageScrollEvents(): Flow<ViewPager2PageScrollEvent> = callbackFlow<ViewPager2PageScrollEvent> {
+public fun ViewPager2.pageScrollEvents(): Flow<ViewPager2PageScrollEvent> = callbackFlow<ViewPager2PageScrollEvent> {
     checkMainThread()
     val callback = object : ViewPager2.OnPageChangeCallback() {
         override fun onPageScrolled(
@@ -52,9 +52,9 @@ fun ViewPager2.pageScrollEvents(): Flow<ViewPager2PageScrollEvent> = callbackFlo
     awaitClose { unregisterOnPageChangeCallback(callback) }
 }.conflate()
 
-class ViewPager2PageScrollEvent(
-    val view: ViewPager2,
-    val position: Int,
-    val positionOffset: Float,
-    val positionOffsetPixel: Int
+public class ViewPager2PageScrollEvent(
+    public val view: ViewPager2,
+    public val position: Int,
+    public val positionOffset: Float,
+    public val positionOffsetPixel: Int
 )

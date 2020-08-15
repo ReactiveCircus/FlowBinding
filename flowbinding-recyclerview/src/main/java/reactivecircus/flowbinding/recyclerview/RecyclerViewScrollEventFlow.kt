@@ -30,7 +30,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun RecyclerView.scrollEvents(): Flow<RecyclerViewScrollEvent> = callbackFlow<RecyclerViewScrollEvent> {
+public fun RecyclerView.scrollEvents(): Flow<RecyclerViewScrollEvent> = callbackFlow<RecyclerViewScrollEvent> {
     checkMainThread()
     val listener = object : RecyclerView.OnScrollListener() {
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -47,8 +47,8 @@ fun RecyclerView.scrollEvents(): Flow<RecyclerViewScrollEvent> = callbackFlow<Re
     awaitClose { removeOnScrollListener(listener) }
 }.conflate()
 
-class RecyclerViewScrollEvent(
-    val view: RecyclerView,
-    val dx: Int,
-    val dy: Int
+public class RecyclerViewScrollEvent(
+    public val view: RecyclerView,
+    public val dx: Int,
+    public val dy: Int
 )

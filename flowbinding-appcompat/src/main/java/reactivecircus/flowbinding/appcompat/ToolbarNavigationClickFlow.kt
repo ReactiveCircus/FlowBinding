@@ -29,7 +29,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun Toolbar.navigationClicks(): Flow<Unit> = callbackFlow {
+public fun Toolbar.navigationClicks(): Flow<Unit> = callbackFlow {
     checkMainThread()
     val listener = View.OnClickListener {
         safeOffer(Unit)

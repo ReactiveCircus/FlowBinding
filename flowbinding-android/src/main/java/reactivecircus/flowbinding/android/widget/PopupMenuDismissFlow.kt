@@ -28,7 +28,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun PopupMenu.dismisses(): Flow<Unit> = callbackFlow {
+public fun PopupMenu.dismisses(): Flow<Unit> = callbackFlow {
     checkMainThread()
     val listener = PopupMenu.OnDismissListener {
         safeOffer(Unit)

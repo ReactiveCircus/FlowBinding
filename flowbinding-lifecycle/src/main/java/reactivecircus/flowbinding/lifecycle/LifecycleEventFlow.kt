@@ -31,7 +31,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun Lifecycle.events(): Flow<Lifecycle.Event> = callbackFlow {
+public fun Lifecycle.events(): Flow<Lifecycle.Event> = callbackFlow {
     checkMainThread()
     val observer = object : LifecycleObserver {
         @Suppress("UNUSED_PARAMETER")

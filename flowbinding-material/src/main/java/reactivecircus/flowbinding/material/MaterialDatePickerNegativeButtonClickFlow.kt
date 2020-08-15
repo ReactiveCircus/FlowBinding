@@ -30,7 +30,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun <S> MaterialDatePicker<S>.negativeButtonClicks(): Flow<Unit> = callbackFlow {
+public fun <S> MaterialDatePicker<S>.negativeButtonClicks(): Flow<Unit> = callbackFlow {
     checkMainThread()
     val listener = View.OnClickListener {
         safeOffer(Unit)

@@ -28,7 +28,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun Snackbar.shownEvents(): Flow<Unit> = callbackFlow<Unit> {
+public fun Snackbar.shownEvents(): Flow<Unit> = callbackFlow<Unit> {
     checkMainThread()
     val callback = object : Snackbar.Callback() {
         override fun onShown(sb: Snackbar?) {

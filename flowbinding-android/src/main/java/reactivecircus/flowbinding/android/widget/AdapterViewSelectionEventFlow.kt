@@ -36,7 +36,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun <T : Adapter> AdapterView<T>.selectionEvents(): InitialValueFlow<AdapterViewSelectionEvent> =
+public fun <T : Adapter> AdapterView<T>.selectionEvents(): InitialValueFlow<AdapterViewSelectionEvent> =
     callbackFlow<AdapterViewSelectionEvent> {
         checkMainThread()
         val listener = object : AdapterView.OnItemSelectedListener {
@@ -75,15 +75,15 @@ fun <T : Adapter> AdapterView<T>.selectionEvents(): InitialValueFlow<AdapterView
             }
         }
 
-sealed class AdapterViewSelectionEvent {
-    abstract val view: AdapterView<*>
+public sealed class AdapterViewSelectionEvent {
+    public abstract val view: AdapterView<*>
 
-    class ItemSelected(
+    public class ItemSelected(
         override val view: AdapterView<*>,
-        val selectedView: View?,
-        val position: Int,
-        val id: Long
+        public val selectedView: View?,
+        public val position: Int,
+        public val id: Long
     ) : AdapterViewSelectionEvent()
 
-    class NothingSelected(override val view: AdapterView<*>) : AdapterViewSelectionEvent()
+    public class NothingSelected(override val view: AdapterView<*>) : AdapterViewSelectionEvent()
 }

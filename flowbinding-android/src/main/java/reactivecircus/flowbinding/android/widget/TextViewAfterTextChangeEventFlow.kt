@@ -33,7 +33,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun TextView.afterTextChanges(): InitialValueFlow<AfterTextChangeEvent> =
+public fun TextView.afterTextChanges(): InitialValueFlow<AfterTextChangeEvent> =
     callbackFlow<AfterTextChangeEvent> {
         checkMainThread()
         val listener = object : TextWatcher {
@@ -54,7 +54,7 @@ fun TextView.afterTextChanges(): InitialValueFlow<AfterTextChangeEvent> =
             AfterTextChangeEvent(view = this@afterTextChanges, editable = editableText)
         }
 
-class AfterTextChangeEvent(
-    val view: TextView,
-    val editable: Editable?
+public class AfterTextChangeEvent(
+    public val view: TextView,
+    public val editable: Editable?
 )

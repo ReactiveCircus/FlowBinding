@@ -31,7 +31,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun <S> MaterialDatePicker<S>.positiveButtonClicks(): Flow<S> = callbackFlow<S> {
+public fun <S> MaterialDatePicker<S>.positiveButtonClicks(): Flow<S> = callbackFlow<S> {
     checkMainThread()
     val listener = MaterialPickerOnPositiveButtonClickListener<S> {
         safeOffer(it)

@@ -34,7 +34,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun RecyclerView.flingEvents(handled: (FlingEvent) -> Boolean = { true }): Flow<FlingEvent> =
+public fun RecyclerView.flingEvents(handled: (FlingEvent) -> Boolean = { true }): Flow<FlingEvent> =
     callbackFlow<FlingEvent> {
         checkMainThread()
         val listener = object : RecyclerView.OnFlingListener() {
@@ -56,8 +56,8 @@ fun RecyclerView.flingEvents(handled: (FlingEvent) -> Boolean = { true }): Flow<
         awaitClose { onFlingListener = null }
     }.conflate()
 
-class FlingEvent(
-    val view: RecyclerView,
-    val velocityX: Int,
-    val velocityY: Int
+public class FlingEvent(
+    public val view: RecyclerView,
+    public val velocityX: Int,
+    public val velocityY: Int
 )

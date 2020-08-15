@@ -32,7 +32,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun <S> MaterialDatePicker<S>.cancels(): Flow<Unit> = callbackFlow {
+public fun <S> MaterialDatePicker<S>.cancels(): Flow<Unit> = callbackFlow {
     checkMainThread()
     val listener = DialogInterface.OnCancelListener {
         safeOffer(Unit)

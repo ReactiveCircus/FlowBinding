@@ -41,7 +41,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun SeekBar.changeEvents(): InitialValueFlow<SeekBarChangeEvent> =
+public fun SeekBar.changeEvents(): InitialValueFlow<SeekBarChangeEvent> =
     callbackFlow<SeekBarChangeEvent> {
         checkMainThread()
         val listener = object : SeekBar.OnSeekBarChangeListener {
@@ -80,16 +80,16 @@ fun SeekBar.changeEvents(): InitialValueFlow<SeekBarChangeEvent> =
             )
         }
 
-sealed class SeekBarChangeEvent {
-    abstract val view: SeekBar
+public sealed class SeekBarChangeEvent {
+    public abstract val view: SeekBar
 
-    class ProgressChanged(
+    public class ProgressChanged(
         override val view: SeekBar,
-        val progress: Int,
-        val fromUser: Boolean
+        public val progress: Int,
+        public val fromUser: Boolean
     ) : SeekBarChangeEvent()
 
-    class StartTracking(override val view: SeekBar) : SeekBarChangeEvent()
+    public class StartTracking(override val view: SeekBar) : SeekBarChangeEvent()
 
-    class StopTracking(override val view: SeekBar) : SeekBarChangeEvent()
+    public class StopTracking(override val view: SeekBar) : SeekBarChangeEvent()
 }

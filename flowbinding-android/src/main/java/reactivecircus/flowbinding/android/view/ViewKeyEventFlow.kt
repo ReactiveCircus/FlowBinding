@@ -33,7 +33,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun View.keys(handled: (KeyEvent) -> Boolean = { true }): Flow<KeyEvent> = callbackFlow<KeyEvent> {
+public fun View.keys(handled: (KeyEvent) -> Boolean = { true }): Flow<KeyEvent> = callbackFlow<KeyEvent> {
     checkMainThread()
     val listener = View.OnKeyListener { _, _, event ->
         if (handled(event)) {

@@ -30,7 +30,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun PopupMenu.itemClicks(): Flow<MenuItem> = callbackFlow {
+public fun PopupMenu.itemClicks(): Flow<MenuItem> = callbackFlow {
     checkMainThread()
     val listener = PopupMenu.OnMenuItemClickListener {
         safeOffer(it)

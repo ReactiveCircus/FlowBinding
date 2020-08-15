@@ -32,7 +32,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun <T : Adapter> AdapterView<T>.itemClickEvents(): Flow<AdapterViewItemClickEvent> = callbackFlow {
+public fun <T : Adapter> AdapterView<T>.itemClickEvents(): Flow<AdapterViewItemClickEvent> = callbackFlow {
     checkMainThread()
     val listener = AdapterView.OnItemClickListener { parent, view, position, id ->
         safeOffer(
@@ -48,9 +48,9 @@ fun <T : Adapter> AdapterView<T>.itemClickEvents(): Flow<AdapterViewItemClickEve
     awaitClose { onItemClickListener = null }
 }.conflate()
 
-class AdapterViewItemClickEvent(
-    val view: AdapterView<*>,
-    val clickedView: View?,
-    val position: Int,
-    val id: Long
+public class AdapterViewItemClickEvent(
+    public val view: AdapterView<*>,
+    public val clickedView: View?,
+    public val position: Int,
+    public val id: Long
 )

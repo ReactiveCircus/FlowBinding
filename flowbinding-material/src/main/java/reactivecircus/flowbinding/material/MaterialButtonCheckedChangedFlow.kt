@@ -29,7 +29,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun MaterialButton.checkedChanges(): Flow<Boolean> = callbackFlow {
+public fun MaterialButton.checkedChanges(): Flow<Boolean> = callbackFlow {
     checkMainThread()
     val listener = MaterialButton.OnCheckedChangeListener { _, isChecked ->
         safeOffer(isChecked)

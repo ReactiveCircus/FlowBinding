@@ -33,7 +33,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun DrawerLayout.drawerStateChanges(gravity: Int): InitialValueFlow<Boolean> =
+public fun DrawerLayout.drawerStateChanges(gravity: Int): InitialValueFlow<Boolean> =
     callbackFlow<Boolean> {
         checkMainThread()
         val listener = object : DrawerLayout.DrawerListener {

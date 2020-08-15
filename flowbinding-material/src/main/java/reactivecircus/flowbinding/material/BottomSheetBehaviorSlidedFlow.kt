@@ -30,7 +30,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun View.bottomSheetSlides(): Flow<Float> = callbackFlow<Float> {
+public fun View.bottomSheetSlides(): Flow<Float> = callbackFlow<Float> {
     checkMainThread()
     val behavior = BottomSheetBehavior.from(this@bottomSheetSlides)
     val callback = object : BottomSheetBehavior.BottomSheetCallback() {

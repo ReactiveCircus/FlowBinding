@@ -19,6 +19,13 @@ android {
         testApplicationId 'reactivecircus.flowbinding.appcompat.test'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    kotlin.explicitApi = 'strict'
+    kotlinOptions {
+        freeCompilerArgs += [
+                '-Xexplicit-api=strict',
+        ]
+    }
 }
 
 dependencies {

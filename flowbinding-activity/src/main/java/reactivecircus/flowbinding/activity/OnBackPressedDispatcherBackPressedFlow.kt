@@ -32,7 +32,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun OnBackPressedDispatcher.backPresses(owner: LifecycleOwner): Flow<Unit> =
+public fun OnBackPressedDispatcher.backPresses(owner: LifecycleOwner): Flow<Unit> =
     callbackFlow<Unit> {
         checkMainThread()
         val callback = object : OnBackPressedCallback(true) {

@@ -29,15 +29,16 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun <T : RecyclerView.Adapter<out RecyclerView.ViewHolder>> T.dataChanges(): InitialValueFlow<T> = callbackFlow<T> {
-    checkMainThread()
-    val observer = object : RecyclerView.AdapterDataObserver() {
-        override fun onChanged() {
-            safeOffer(this@dataChanges)
+public fun <T : RecyclerView.Adapter<out RecyclerView.ViewHolder>> T.dataChanges(): InitialValueFlow<T> =
+    callbackFlow<T> {
+        checkMainThread()
+        val observer = object : RecyclerView.AdapterDataObserver() {
+            override fun onChanged() {
+                safeOffer(this@dataChanges)
+            }
         }
+        registerAdapterDataObserver(observer)
+        awaitClose { unregisterAdapterDataObserver(observer) }
     }
-    registerAdapterDataObserver(observer)
-    awaitClose { unregisterAdapterDataObserver(observer) }
-}
-    .conflate()
-    .asInitialValueFlow { this }
+        .conflate()
+        .asInitialValueFlow { this }

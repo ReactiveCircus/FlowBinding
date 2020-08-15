@@ -32,7 +32,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun MenuItem.clicks(handled: (MenuItem) -> Boolean = { true }): Flow<Unit> = callbackFlow {
+public fun MenuItem.clicks(handled: (MenuItem) -> Boolean = { true }): Flow<Unit> = callbackFlow {
     checkMainThread()
     val listener = MenuItem.OnMenuItemClickListener {
         if (handled(it)) {

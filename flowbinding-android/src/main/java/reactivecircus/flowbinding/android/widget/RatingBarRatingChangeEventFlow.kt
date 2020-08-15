@@ -31,7 +31,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun RatingBar.ratingChangeEvents(): InitialValueFlow<RatingChangeEvent> = callbackFlow {
+public fun RatingBar.ratingChangeEvents(): InitialValueFlow<RatingChangeEvent> = callbackFlow {
     checkMainThread()
     val listener = RatingBar.OnRatingBarChangeListener { ratingBar, rating, fromUser ->
         safeOffer(
@@ -54,8 +54,8 @@ fun RatingBar.ratingChangeEvents(): InitialValueFlow<RatingChangeEvent> = callba
         )
     }
 
-class RatingChangeEvent(
-    val view: RatingBar,
-    val rating: Float,
-    val fromUser: Boolean
+public class RatingChangeEvent(
+    public val view: RatingBar,
+    public val rating: Float,
+    public val fromUser: Boolean
 )

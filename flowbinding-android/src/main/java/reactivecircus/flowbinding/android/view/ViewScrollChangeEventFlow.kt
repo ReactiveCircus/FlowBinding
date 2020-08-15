@@ -33,7 +33,7 @@ import reactivecircus.flowbinding.common.safeOffer
 @RequiresApi(Build.VERSION_CODES.M)
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun View.scrollChangeEvents(): Flow<ScrollChangeEvent> = callbackFlow {
+public fun View.scrollChangeEvents(): Flow<ScrollChangeEvent> = callbackFlow {
     checkMainThread()
     val listener = View.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
         safeOffer(
@@ -50,10 +50,10 @@ fun View.scrollChangeEvents(): Flow<ScrollChangeEvent> = callbackFlow {
     awaitClose { setOnScrollChangeListener(null) }
 }.conflate()
 
-class ScrollChangeEvent(
-    val view: View,
-    val scrollX: Int,
-    val scrollY: Int,
-    val oldScrollX: Int,
-    val oldScrollY: Int
+public class ScrollChangeEvent(
+    public val view: View,
+    public val scrollX: Int,
+    public val scrollY: Int,
+    public val oldScrollX: Int,
+    public val oldScrollY: Int
 )

@@ -30,7 +30,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun View.focusChanges(): InitialValueFlow<Boolean> = callbackFlow {
+public fun View.focusChanges(): InitialValueFlow<Boolean> = callbackFlow {
     checkMainThread()
     val listener = View.OnFocusChangeListener { _, hasFocus ->
         safeOffer(hasFocus)

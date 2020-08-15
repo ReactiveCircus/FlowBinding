@@ -33,7 +33,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun View.drags(handled: (DragEvent) -> Boolean = { true }): Flow<DragEvent> = callbackFlow {
+public fun View.drags(handled: (DragEvent) -> Boolean = { true }): Flow<DragEvent> = callbackFlow {
     checkMainThread()
     val listener = View.OnDragListener { _, event ->
         if (handled(event)) {

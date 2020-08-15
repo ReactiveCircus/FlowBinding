@@ -35,7 +35,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun TextView.editorActionEvents(handled: (EditorActionEvent) -> Boolean = { true }): Flow<EditorActionEvent> =
+public fun TextView.editorActionEvents(handled: (EditorActionEvent) -> Boolean = { true }): Flow<EditorActionEvent> =
     callbackFlow {
         checkMainThread()
         val listener = TextView.OnEditorActionListener { v, actionId, keyEvent ->
@@ -55,8 +55,8 @@ fun TextView.editorActionEvents(handled: (EditorActionEvent) -> Boolean = { true
         awaitClose { setOnEditorActionListener(null) }
     }.conflate()
 
-class EditorActionEvent(
-    val view: TextView,
-    val actionId: Int,
-    val keyEvent: KeyEvent?
+public class EditorActionEvent(
+    public val view: TextView,
+    public val actionId: Int,
+    public val keyEvent: KeyEvent?
 )

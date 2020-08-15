@@ -29,7 +29,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun Slider.changeEvents(): InitialValueFlow<SliderChangeEvent> = callbackFlow {
+public fun Slider.changeEvents(): InitialValueFlow<SliderChangeEvent> = callbackFlow {
     checkMainThread()
     val listener = Slider.OnChangeListener { slider, value, fromUser ->
         safeOffer(
@@ -52,8 +52,8 @@ fun Slider.changeEvents(): InitialValueFlow<SliderChangeEvent> = callbackFlow {
         )
     }
 
-class SliderChangeEvent(
-    val slider: Slider,
-    val value: Float,
-    val fromUser: Boolean
+public class SliderChangeEvent(
+    public val slider: Slider,
+    public val value: Float,
+    public val fromUser: Boolean
 )

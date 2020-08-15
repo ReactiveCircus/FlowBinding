@@ -39,7 +39,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-fun View.touches(handled: (MotionEvent) -> Boolean = { true }): Flow<MotionEvent> =
+public fun View.touches(handled: (MotionEvent) -> Boolean = { true }): Flow<MotionEvent> =
     callbackFlow<MotionEvent> {
         checkMainThread()
         val listener = View.OnTouchListener { _, event ->
