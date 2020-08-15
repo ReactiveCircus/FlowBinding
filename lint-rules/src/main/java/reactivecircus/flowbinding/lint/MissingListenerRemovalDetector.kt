@@ -15,6 +15,7 @@ import org.jetbrains.uast.UBinaryExpression
 import org.jetbrains.uast.UBinaryExpressionWithType
 import org.jetbrains.uast.UCallExpression
 import org.jetbrains.uast.UExpression
+import org.jetbrains.uast.UQualifiedReferenceExpression
 import org.jetbrains.uast.USimpleNameReferenceExpression
 import org.jetbrains.uast.UastBinaryExpressionWithTypeKind
 import org.jetbrains.uast.UastBinaryOperator
@@ -112,15 +113,9 @@ class MissingListenerRemovalDetector : Detector(), SourceCodeScanner {
                 }
 
                 override fun visitBinaryExpression(node: UBinaryExpression): Boolean {
-                    // try to find the pattern `*Listener = listener`
-                    if (node.operator is UastBinaryOperator.AssignOperator &&
-                        (node.leftOperand as USimpleNameReferenceExpression)
-                            .identifier.endsWith(SUFFIX_LISTENER, ignoreCase = true) &&
-                        !node.rightOperand.isNullLiteralOrCastedNullLiteral()
-                    ) {
+                    if (isValidAssignNonNullListenerExpression(node)) {
                         added.set(true)
                     }
-
                     return super.visitBinaryExpression(node)
                 }
             })
@@ -141,15 +136,9 @@ class MissingListenerRemovalDetector : Detector(), SourceCodeScanner {
                             }
 
                             override fun visitBinaryExpression(node: UBinaryExpression): Boolean {
-                                // try to find the pattern `*Listener = null`
-                                if (node.operator is UastBinaryOperator.AssignOperator &&
-                                    (node.leftOperand as USimpleNameReferenceExpression)
-                                        .identifier.endsWith(SUFFIX_LISTENER, ignoreCase = true) &&
-                                    node.rightOperand.isNullLiteralOrCastedNullLiteral()
-                                ) {
+                                if (isValidAssignNullListenerExpression(node)) {
                                     removed.set(true)
                                 }
-
                                 return super.visitBinaryExpression(node)
                             }
                         })
@@ -175,6 +164,35 @@ class MissingListenerRemovalDetector : Detector(), SourceCodeScanner {
             return false
         }
 
+        fun isValidAssignNonNullListenerExpression(node: UBinaryExpression): Boolean {
+            if (node.operator is UastBinaryOperator.AssignOperator) {
+                when (val leftOperand = node.leftOperand) {
+                    // try to find the pattern `*Listener = listener`
+                    is USimpleNameReferenceExpression -> {
+                        if (leftOperand.identifier.endsWith(
+                                SUFFIX_LISTENER,
+                                ignoreCase = true
+                            ) && !node.rightOperand.isNullLiteralOrCastedNullLiteral()
+                        ) {
+                            return true
+                        }
+                    }
+                    is UQualifiedReferenceExpression -> {
+                        // try to find the pattern `field.*Listener = listener`
+                        if ((leftOperand.selector as USimpleNameReferenceExpression).identifier.endsWith(
+                                SUFFIX_LISTENER,
+                                ignoreCase = true
+                            ) &&
+                            !node.rightOperand.isNullLiteralOrCastedNullLiteral()
+                        ) {
+                            return true
+                        }
+                    }
+                }
+            }
+            return false
+        }
+
         fun isValidRemoveListenerExpression(node: UCallExpression): Boolean {
             node.methodIdentifier?.run {
                 // must have a non-null argument for a remove* or unregister* method
@@ -187,6 +205,32 @@ class MissingListenerRemovalDetector : Detector(), SourceCodeScanner {
                             )
                 ) {
                     return true
+                }
+            }
+            return false
+        }
+
+        fun isValidAssignNullListenerExpression(node: UBinaryExpression): Boolean {
+            if (node.operator is UastBinaryOperator.AssignOperator) {
+                when (val leftOperand = node.leftOperand) {
+                    // try to find the pattern `*Listener = null`
+                    is USimpleNameReferenceExpression -> {
+                        if (leftOperand.identifier.endsWith(SUFFIX_LISTENER, ignoreCase = true) &&
+                            node.rightOperand.isNullLiteralOrCastedNullLiteral()) {
+                            return true
+                        }
+                    }
+                    is UQualifiedReferenceExpression -> {
+                        // try to find the pattern `field.*Listener = null`
+                        if ((leftOperand.selector as USimpleNameReferenceExpression).identifier.endsWith(
+                                SUFFIX_LISTENER,
+                                ignoreCase = true
+                            ) &&
+                            node.rightOperand.isNullLiteralOrCastedNullLiteral()
+                        ) {
+                            return true
+                        }
+                    }
                 }
             }
             return false

@@ -50,6 +50,6 @@ public fun View.dismisses(): Flow<View> = callbackFlow<View> {
 
         override fun onDragStateChanged(state: Int) = Unit
     }
-    behavior.setListener(listener)
-    awaitClose { behavior.setListener(null) }
+    behavior.listener = listener
+    awaitClose { behavior.listener = null }
 }.conflate()

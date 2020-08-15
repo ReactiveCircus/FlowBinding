@@ -85,6 +85,33 @@ class MissingListenerRemovalDetectorTest {
     }
 
     @Test
+    fun `listener set to null via field setter on another field`() {
+        lint()
+            .files(
+                kotlin(
+                    """
+                fun View.dismisses(): Flow<View> = callbackFlow<View> {
+                    checkMainThread()
+                    val behavior = params.behavior
+                    val listener = object : SwipeDismissBehavior.OnDismissListener {
+                        override fun onDismiss(view: View) {
+                            safeOffer(view)
+                        }
+                        override fun onDragStateChanged(state: Int) = Unit
+                    }
+                    behavior.listener = listener
+                    awaitClose { behavior.listener = null }
+                }.conflate()
+                """.trimIndent()
+                )
+            )
+            .allowMissingSdk()
+            .issues(MissingListenerRemovalDetector.ISSUE)
+            .run()
+            .expectClean()
+    }
+
+    @Test
     fun `listener removed`() {
         lint()
             .files(
@@ -268,6 +295,40 @@ class MissingListenerRemovalDetectorTest {
                     src/test.kt:1: Error: A listener or callback has been added within the callbackFlow, but it hasn't been removed / unregistered in the awaitClose block. [MissingListenerRemoval]
                     fun View.focusChanges(): Flow<Boolean> = callbackFlow {
                                                              ^
+                    1 errors, 0 warnings
+                """.trimMargin()
+            )
+    }
+
+    @Test
+    fun `listener set on a filed via field setter but not set to null in awaitClose`() {
+        lint()
+            .files(
+                kotlin(
+                    """
+                fun View.dismisses(): Flow<View> = callbackFlow<View> {
+                    checkMainThread()
+                    val behavior = params.behavior
+                    val listener = object : SwipeDismissBehavior.OnDismissListener {
+                        override fun onDismiss(view: View) {
+                            safeOffer(view)
+                        }
+                        override fun onDragStateChanged(state: Int) = Unit
+                    }
+                    behavior.listener = listener
+                    awaitClose { }
+                }.conflate()
+                """.trimIndent()
+                )
+            )
+            .allowMissingSdk()
+            .issues(MissingListenerRemovalDetector.ISSUE)
+            .run()
+            .expect(
+                """
+                    src/test.kt:1: Error: A listener or callback has been added within the callbackFlow, but it hasn't been removed / unregistered in the awaitClose block. [MissingListenerRemoval]
+                    fun View.dismisses(): Flow<View> = callbackFlow<View> {
+                                                       ^
                     1 errors, 0 warnings
                 """.trimMargin()
             )

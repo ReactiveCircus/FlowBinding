@@ -51,6 +51,6 @@ public fun View.swipeDismissDragStateChanges(): Flow<Int> = callbackFlow<Int> {
             safeOffer(state)
         }
     }
-    behavior.setListener(listener)
-    awaitClose { behavior.setListener(null) }
+    behavior.listener = listener
+    awaitClose { behavior.listener = null }
 }.conflate()
