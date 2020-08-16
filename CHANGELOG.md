@@ -1,5 +1,13 @@
 # Change Log
 
+## Version 1.0.0-alpha03
+
+_2020-08-16_
+
+* Update to Kotlin 1.4.0 and Coroutines 1.3.9.
+* Enable explicit API mode.
+* Update AndroidX and Material Components.
+
 ## Version 1.0.0-alpha02
 
 _2020-06-27_
