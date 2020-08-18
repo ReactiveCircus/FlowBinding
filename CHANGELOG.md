@@ -1,5 +1,11 @@
 # Change Log
 
+## Version 1.0.0-alpha04
+
+_2020-08-18_
+
+* Fixed incorrect `packagingOptions` exclusion.
+
 ## Version 1.0.0-alpha03
 
 _2020-08-16_
