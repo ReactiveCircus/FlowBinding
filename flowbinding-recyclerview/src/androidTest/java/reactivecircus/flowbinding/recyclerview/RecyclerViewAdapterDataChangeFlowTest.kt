@@ -69,7 +69,9 @@ private class TestRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHo
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
-            android.R.layout.simple_list_item_1, parent, false
+            android.R.layout.simple_list_item_1,
+            parent,
+            false
         )
         return object : RecyclerView.ViewHolder(view) {}
     }

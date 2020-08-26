@@ -13,7 +13,9 @@ internal class TestAdapter(private val size: Int) : RecyclerView.Adapter<TestVie
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TestViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
-            android.R.layout.simple_list_item_1, parent, false
+            android.R.layout.simple_list_item_1,
+            parent,
+            false
         ) as TextView
         return TestViewHolder(view)
     }

@@ -104,48 +104,54 @@ class MissingListenerRemovalDetector : Detector(), SourceCodeScanner {
 
         fun listenerAdded(node: UCallExpression): Boolean {
             val added = Ref(false)
-            node.accept(object : AbstractUastVisitor() {
-                override fun visitCallExpression(node: UCallExpression): Boolean {
-                    if (isValidAddListenerExpression(node)) {
-                        added.set(true)
+            node.accept(
+                object : AbstractUastVisitor() {
+                    override fun visitCallExpression(node: UCallExpression): Boolean {
+                        if (isValidAddListenerExpression(node)) {
+                            added.set(true)
+                        }
+                        return super.visitCallExpression(node)
                     }
-                    return super.visitCallExpression(node)
-                }
 
-                override fun visitBinaryExpression(node: UBinaryExpression): Boolean {
-                    if (isValidAssignNonNullListenerExpression(node)) {
-                        added.set(true)
+                    override fun visitBinaryExpression(node: UBinaryExpression): Boolean {
+                        if (isValidAssignNonNullListenerExpression(node)) {
+                            added.set(true)
+                        }
+                        return super.visitBinaryExpression(node)
                     }
-                    return super.visitBinaryExpression(node)
                 }
-            })
+            )
             return added.get()
         }
 
         fun listenerRemoved(node: UCallExpression): Boolean {
             val removed = Ref(false)
-            node.accept(object : AbstractUastVisitor() {
-                override fun visitCallExpression(node: UCallExpression): Boolean {
-                    if (node.methodIdentifier?.name == AWAIT_CLOSE) {
-                        node.accept(object : AbstractUastVisitor() {
-                            override fun visitCallExpression(node: UCallExpression): Boolean {
-                                if (isValidRemoveListenerExpression(node)) {
-                                    removed.set(true)
-                                }
-                                return super.visitCallExpression(node)
-                            }
+            node.accept(
+                object : AbstractUastVisitor() {
+                    override fun visitCallExpression(node: UCallExpression): Boolean {
+                        if (node.methodIdentifier?.name == AWAIT_CLOSE) {
+                            node.accept(
+                                object : AbstractUastVisitor() {
+                                    override fun visitCallExpression(node: UCallExpression): Boolean {
+                                        if (isValidRemoveListenerExpression(node)) {
+                                            removed.set(true)
+                                        }
+                                        return super.visitCallExpression(node)
+                                    }
 
-                            override fun visitBinaryExpression(node: UBinaryExpression): Boolean {
-                                if (isValidAssignNullListenerExpression(node)) {
-                                    removed.set(true)
+                                    override fun visitBinaryExpression(node: UBinaryExpression): Boolean {
+                                        if (isValidAssignNullListenerExpression(node)) {
+                                            removed.set(true)
+                                        }
+                                        return super.visitBinaryExpression(node)
+                                    }
                                 }
-                                return super.visitBinaryExpression(node)
-                            }
-                        })
+                            )
+                        }
+                        return super.visitCallExpression(node)
                     }
-                    return super.visitCallExpression(node)
                 }
-            })
+            )
             return removed.get()
         }
 
@@ -170,9 +176,9 @@ class MissingListenerRemovalDetector : Detector(), SourceCodeScanner {
                     // try to find the pattern `*Listener = listener`
                     is USimpleNameReferenceExpression -> {
                         if (leftOperand.identifier.endsWith(
-                                SUFFIX_LISTENER,
-                                ignoreCase = true
-                            ) && !node.rightOperand.isNullLiteralOrCastedNullLiteral()
+                            SUFFIX_LISTENER,
+                            ignoreCase = true
+                        ) && !node.rightOperand.isNullLiteralOrCastedNullLiteral()
                         ) {
                             return true
                         }
@@ -180,9 +186,9 @@ class MissingListenerRemovalDetector : Detector(), SourceCodeScanner {
                     is UQualifiedReferenceExpression -> {
                         // try to find the pattern `field.*Listener = listener`
                         if ((leftOperand.selector as USimpleNameReferenceExpression).identifier.endsWith(
-                                SUFFIX_LISTENER,
-                                ignoreCase = true
-                            ) &&
+                            SUFFIX_LISTENER,
+                            ignoreCase = true
+                        ) &&
                             !node.rightOperand.isNullLiteralOrCastedNullLiteral()
                         ) {
                             return true
@@ -216,16 +222,17 @@ class MissingListenerRemovalDetector : Detector(), SourceCodeScanner {
                     // try to find the pattern `*Listener = null`
                     is USimpleNameReferenceExpression -> {
                         if (leftOperand.identifier.endsWith(SUFFIX_LISTENER, ignoreCase = true) &&
-                            node.rightOperand.isNullLiteralOrCastedNullLiteral()) {
+                            node.rightOperand.isNullLiteralOrCastedNullLiteral()
+                        ) {
                             return true
                         }
                     }
                     is UQualifiedReferenceExpression -> {
                         // try to find the pattern `field.*Listener = null`
                         if ((leftOperand.selector as USimpleNameReferenceExpression).identifier.endsWith(
-                                SUFFIX_LISTENER,
-                                ignoreCase = true
-                            ) &&
+                            SUFFIX_LISTENER,
+                            ignoreCase = true
+                        ) &&
                             node.rightOperand.isNullLiteralOrCastedNullLiteral()
                         ) {
                             return true

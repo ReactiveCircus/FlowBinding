@@ -20,8 +20,10 @@ import com.google.android.material.R as MaterialR
 fun RobotActions.hardSwipeLeft(@IdRes viewId: Int) {
     Espresso.onView(withId(viewId)).perform(
         GeneralSwipeAction(
-            Swipe.FAST, GeneralLocation.CENTER_RIGHT,
-            GeneralLocation.CENTER_LEFT, Press.FINGER
+            Swipe.FAST,
+            GeneralLocation.CENTER_RIGHT,
+            GeneralLocation.CENTER_LEFT,
+            Press.FINGER
         )
     )
 }
@@ -29,8 +31,10 @@ fun RobotActions.hardSwipeLeft(@IdRes viewId: Int) {
 fun RobotActions.hardSwipeRight(@IdRes viewId: Int) {
     Espresso.onView(withId(viewId)).perform(
         GeneralSwipeAction(
-            Swipe.FAST, GeneralLocation.CENTER_LEFT,
-            GeneralLocation.CENTER_RIGHT, Press.FINGER
+            Swipe.FAST,
+            GeneralLocation.CENTER_LEFT,
+            GeneralLocation.CENTER_RIGHT,
+            Press.FINGER
         )
     )
 }
