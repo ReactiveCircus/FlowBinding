@@ -19,10 +19,14 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: 14
-      - uses: actions/cache@v1
+      - uses: actions/cache@v2
         with:
-          path: ~/.gradle/caches
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
           key: ${{ runner.os }}-${{ github.job }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.kt') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ github.job }}-
       - run: |
           pip3 install mkdocs-material mkdocs-minify-plugin
           .buildscript/deploy_website.sh
