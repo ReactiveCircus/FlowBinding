@@ -7,5 +7,5 @@ object androidSdk {
     const val testMinSdk = 21
     const val targetSdk = 30
     const val compileSdk = 30
-    const val buildTools = "30.0.1"
+    const val buildTools = "30.0.2"
 }
