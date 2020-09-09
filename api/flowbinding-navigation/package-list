@@ -1,4 +1,0 @@
-$dokka.format:gfm
-$dokka.linkExtension:md
-$dokka.location:reactivecircus.flowbinding.navigation$destinationChangeEvents(androidx.navigation.NavController)reactivecircus.flowbinding.navigation/androidx.navigation.-nav-controller/destination-change-events.md
-reactivecircus.flowbinding.navigation

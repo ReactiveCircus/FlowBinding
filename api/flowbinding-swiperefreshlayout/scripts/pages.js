@@ -1,0 +1,1 @@
+var pages = [{'name': 'fun SwipeRefreshLayout.refreshes(): Flow<Unit>', 'description':'reactivecircus.flowbinding.swiperefreshlayout.refreshes', 'location':'flowbinding-swiperefreshlayout/reactivecircus.flowbinding.swiperefreshlayout/refreshes.html', 'searchKey':'refreshes'}]

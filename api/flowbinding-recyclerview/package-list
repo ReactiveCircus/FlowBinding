@@ -1,7 +1,0 @@
-$dokka.format:gfm
-$dokka.linkExtension:md
-$dokka.location:reactivecircus.flowbinding.recyclerview$childAttachStateChangeEvents(androidx.recyclerview.widget.RecyclerView)reactivecircus.flowbinding.recyclerview/androidx.recyclerview.widget.-recycler-view/child-attach-state-change-events.md
-$dokka.location:reactivecircus.flowbinding.recyclerview$flingEvents(androidx.recyclerview.widget.RecyclerView, kotlin.Function1((reactivecircus.flowbinding.recyclerview.FlingEvent, kotlin.Boolean)))reactivecircus.flowbinding.recyclerview/androidx.recyclerview.widget.-recycler-view/fling-events.md
-$dokka.location:reactivecircus.flowbinding.recyclerview$scrollEvents(androidx.recyclerview.widget.RecyclerView)reactivecircus.flowbinding.recyclerview/androidx.recyclerview.widget.-recycler-view/scroll-events.md
-$dokka.location:reactivecircus.flowbinding.recyclerview$scrollStateChanges(androidx.recyclerview.widget.RecyclerView)reactivecircus.flowbinding.recyclerview/androidx.recyclerview.widget.-recycler-view/scroll-state-changes.md
-reactivecircus.flowbinding.recyclerview

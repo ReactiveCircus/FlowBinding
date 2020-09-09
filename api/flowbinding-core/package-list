@@ -1,4 +1,0 @@
-$dokka.format:gfm
-$dokka.linkExtension:md
-$dokka.location:reactivecircus.flowbinding.core$scrollChangeEvents(androidx.core.widget.NestedScrollView)reactivecircus.flowbinding.core/androidx.core.widget.-nested-scroll-view/scroll-change-events.md
-reactivecircus.flowbinding.core

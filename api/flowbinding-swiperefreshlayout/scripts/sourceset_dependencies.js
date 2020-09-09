@@ -1,0 +1,1 @@
+sourceset_dependencies = '{":flowbinding-swiperefreshlayout/androidTestRelease": [], ":flowbinding-swiperefreshlayout/debug": [], ":flowbinding-swiperefreshlayout/main": [], ":flowbinding-swiperefreshlayout/release": [], ":flowbinding-swiperefreshlayout/test": [], ":flowbinding-swiperefreshlayout/testDebug": [], ":flowbinding-swiperefreshlayout/testRelease": []}'

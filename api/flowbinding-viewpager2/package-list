@@ -1,6 +1,0 @@
-$dokka.format:gfm
-$dokka.linkExtension:md
-$dokka.location:reactivecircus.flowbinding.viewpager2$pageScrollEvents(androidx.viewpager2.widget.ViewPager2)reactivecircus.flowbinding.viewpager2/androidx.viewpager2.widget.-view-pager2/page-scroll-events.md
-$dokka.location:reactivecircus.flowbinding.viewpager2$pageScrollStateChanges(androidx.viewpager2.widget.ViewPager2)reactivecircus.flowbinding.viewpager2/androidx.viewpager2.widget.-view-pager2/page-scroll-state-changes.md
-$dokka.location:reactivecircus.flowbinding.viewpager2$pageSelections(androidx.viewpager2.widget.ViewPager2)reactivecircus.flowbinding.viewpager2/androidx.viewpager2.widget.-view-pager2/page-selections.md
-reactivecircus.flowbinding.viewpager2

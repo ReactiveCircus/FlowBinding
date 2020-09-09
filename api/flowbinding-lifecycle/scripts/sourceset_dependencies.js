@@ -1,0 +1,1 @@
+sourceset_dependencies = '{":flowbinding-lifecycle/androidTestRelease": [], ":flowbinding-lifecycle/debug": [], ":flowbinding-lifecycle/main": [], ":flowbinding-lifecycle/release": [], ":flowbinding-lifecycle/test": [], ":flowbinding-lifecycle/testDebug": [], ":flowbinding-lifecycle/testRelease": []}'

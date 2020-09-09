@@ -1,0 +1,1 @@
+sourceset_dependencies = '{":flowbinding-viewpager/androidTestRelease": [], ":flowbinding-viewpager/debug": [], ":flowbinding-viewpager/main": [], ":flowbinding-viewpager/release": [], ":flowbinding-viewpager/test": [], ":flowbinding-viewpager/testDebug": [], ":flowbinding-viewpager/testRelease": []}'

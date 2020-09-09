@@ -1,0 +1,1 @@
+var pages = [{'name': 'fun DrawerLayout.drawerStateChanges(gravity: Int): InitialValueFlow<Boolean>', 'description':'reactivecircus.flowbinding.drawerlayout.drawerStateChanges', 'location':'flowbinding-drawerlayout/reactivecircus.flowbinding.drawerlayout/drawer-state-changes.html', 'searchKey':'drawerStateChanges'}]
