@@ -16,7 +16,7 @@ git clone "$REPO" $DIR
 cd $DIR
 
 # Generate API docs
-./gradlew dokka
+./gradlew dokkaHtmlMultiModule
 
 # Copy *.md files into docs directory
 cp README.md docs/index.md

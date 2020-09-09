@@ -18,6 +18,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.getValue("kotlin")}")
     implementation("com.android.tools.build:gradle:${versions.getValue("androidGradlePlugin")}")
     implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${versions.getValue("detekt")}")
+    implementation("org.jetbrains.kotlinx:binary-compatibility-validator:${versions.getValue("binaryCompatibilityValidator")}")
 }
 
 gradlePlugin {

@@ -23,6 +23,8 @@ fun Project.configureRootProject() {
     tasks.register("clean", Delete::class.java) {
         delete(rootProject.buildDir)
     }
+    // configure binary compatibility validation (API checks)
+    configureBinaryCompatibilityValidation()
 }
 
 /**

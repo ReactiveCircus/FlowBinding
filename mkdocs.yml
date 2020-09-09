@@ -44,20 +44,7 @@ nav:
   - 'AndroidX ViewPager2 Bindings': flowbinding-viewpager2/index.md
   - 'Material Components Bindings': flowbinding-material/index.md
   - 'Change Log': changelog.md
-  - 'API':
-      - 'flowbinding-activity': api/flowbinding-activity/index.md
-      - 'flowbinding-android': api/flowbinding-android/index.md
-      - 'flowbinding-appcompat': api/flowbinding-appcompat/index.md
-      - 'flowbinding-common': api/flowbinding-common/index.md
-      - 'flowbinding-core': api/flowbinding-core/index.md
-      - 'flowbinding-drawerlayout': api/flowbinding-drawerlayout/index.md
-      - 'flowbinding-lifecycle': api/flowbinding-lifecycle/index.md
-      - 'flowbinding-material': api/flowbinding-material/index.md
-      - 'flowbinding-navigation': api/flowbinding-navigation/index.md
-      - 'flowbinding-preference': api/flowbinding-preference/index.md
-      - 'flowbinding-recyclerview': api/flowbinding-recyclerview/index.md
-      - 'flowbinding-swiperefreshlayout': api/flowbinding-swiperefreshlayout/index.md
-      - 'flowbinding-viewpager2': api/flowbinding-viewpager2/index.md
+  - 'API Docs': api/-modules.html" target="_blank
 
 markdown_extensions:
   - admonition
