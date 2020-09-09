@@ -7,13 +7,6 @@ plugins {
     id 'org.jetbrains.dokka'
 }
 
-afterEvaluate { project ->
-    project.tasks.dokka {
-        outputDirectory = "$rootDir/docs/api"
-        outputFormat = 'gfm'
-    }
-}
-
 android {
     defaultConfig {
         testApplicationId 'reactivecircus.flowbinding.lifecycle.test'
@@ -37,6 +30,6 @@ dependencies {
     lintChecks project(":lint-rules")
 
     androidTestImplementation project(':testing-infra')
-    androidTestImplementation project(':flowbinding-lifecycle:fixtures')
+    androidTestImplementation project(':flowbinding-lifecycle-fixtures')
     androidTestImplementation "androidx.lifecycle:lifecycle-runtime-testing:${versions.androidx.lifecycle}"
 }

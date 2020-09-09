@@ -3,43 +3,43 @@ rootProject.name = "FlowBinding"
 include(":flowbinding-common")
 
 include(":flowbinding-android")
-includeProject(":flowbinding-android:fixtures", "flowbinding-android/fixtures")
+includeProject(":flowbinding-android-fixtures", "flowbinding-android/fixtures")
 
 include(":flowbinding-activity")
-includeProject(":flowbinding-activity:fixtures", "flowbinding-activity/fixtures")
+includeProject(":flowbinding-activity-fixtures", "flowbinding-activity/fixtures")
 
 include(":flowbinding-appcompat")
-includeProject(":flowbinding-appcompat:fixtures", "flowbinding-appcompat/fixtures")
+includeProject(":flowbinding-appcompat-fixtures", "flowbinding-appcompat/fixtures")
 
 include(":flowbinding-core")
-includeProject(":flowbinding-core:fixtures", "flowbinding-core/fixtures")
+includeProject(":flowbinding-core-fixtures", "flowbinding-core/fixtures")
 
 include(":flowbinding-drawerlayout")
-includeProject(":flowbinding-drawerlayout:fixtures", "flowbinding-drawerlayout/fixtures")
+includeProject(":flowbinding-drawerlayout-fixtures", "flowbinding-drawerlayout/fixtures")
 
 include(":flowbinding-lifecycle")
-includeProject(":flowbinding-lifecycle:fixtures", "flowbinding-lifecycle/fixtures")
+includeProject(":flowbinding-lifecycle-fixtures", "flowbinding-lifecycle/fixtures")
 
 include(":flowbinding-material")
-includeProject(":flowbinding-material:fixtures", "flowbinding-material/fixtures")
+includeProject(":flowbinding-material-fixtures", "flowbinding-material/fixtures")
 
 include(":flowbinding-navigation")
-includeProject(":flowbinding-navigation:fixtures", "flowbinding-navigation/fixtures")
+includeProject(":flowbinding-navigation-fixtures", "flowbinding-navigation/fixtures")
 
 include(":flowbinding-preference")
-includeProject(":flowbinding-preference:fixtures", "flowbinding-preference/fixtures")
+includeProject(":flowbinding-preference-fixtures", "flowbinding-preference/fixtures")
 
 include(":flowbinding-recyclerview")
-includeProject(":flowbinding-recyclerview:fixtures", "flowbinding-recyclerview/fixtures")
+includeProject(":flowbinding-recyclerview-fixtures", "flowbinding-recyclerview/fixtures")
 
 include(":flowbinding-swiperefreshlayout")
-includeProject(":flowbinding-swiperefreshlayout:fixtures", "flowbinding-swiperefreshlayout/fixtures")
+includeProject(":flowbinding-swiperefreshlayout-fixtures", "flowbinding-swiperefreshlayout/fixtures")
 
 include(":flowbinding-viewpager")
-includeProject(":flowbinding-viewpager:fixtures", "flowbinding-viewpager/fixtures")
+includeProject(":flowbinding-viewpager-fixtures", "flowbinding-viewpager/fixtures")
 
 include(":flowbinding-viewpager2")
-includeProject(":flowbinding-viewpager2:fixtures", "flowbinding-viewpager2/fixtures")
+includeProject(":flowbinding-viewpager2-fixtures", "flowbinding-viewpager2/fixtures")
 
 include(":testing-infra")
 
