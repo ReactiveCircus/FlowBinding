@@ -4,7 +4,7 @@ rootProject.ext.versions = [
         mavenPublishPlugin          : '0.13.0',
         firestormGradlePlugin       : '0.1.1',
         binaryCompatibilityValidator: '0.2.3',
-        kotlin                      : '1.4.0',
+        kotlin                      : '1.4.10',
         detekt                      : '1.12.0',
         kotlinx                     : [
                 coroutines: '1.3.9',
