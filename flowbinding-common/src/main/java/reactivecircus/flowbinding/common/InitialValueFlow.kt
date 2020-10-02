@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.onStart
  */
 @RestrictTo(LIBRARY_GROUP)
 @OptIn(ExperimentalCoroutinesApi::class)
-fun <T : Any> Flow<T>.asInitialValueFlow(initialValue: () -> T): InitialValueFlow<T> = InitialValueFlow(
+public fun <T : Any> Flow<T>.asInitialValueFlow(initialValue: () -> T): InitialValueFlow<T> = InitialValueFlow(
     onStart {
         emit(initialValue())
     }
@@ -21,10 +21,10 @@ fun <T : Any> Flow<T>.asInitialValueFlow(initialValue: () -> T): InitialValueFlo
 /**
  * A [Flow] implementation that emits the current value of a widget immediately upon collection.
  */
-class InitialValueFlow<T : Any>(private val flow: Flow<T>) : Flow<T> by flow {
+public class InitialValueFlow<T : Any>(private val flow: Flow<T>) : Flow<T> by flow {
 
     /**
      * Returns a [Flow] that skips the initial emission of the current value.
      */
-    fun skipInitialValue(): Flow<T> = flow.drop(1)
+    public fun skipInitialValue(): Flow<T> = flow.drop(1)
 }

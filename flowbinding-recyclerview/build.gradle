@@ -7,17 +7,14 @@ plugins {
     id 'org.jetbrains.dokka'
 }
 
+flowBinding {
+    enableExplicitApi.set(true)
+}
+
 android {
     defaultConfig {
         testApplicationId 'reactivecircus.flowbinding.recyclerview.test'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    kotlin.explicitApi = 'strict'
-    kotlinOptions {
-        freeCompilerArgs += [
-                '-Xexplicit-api=warning',
-        ]
     }
 }
 

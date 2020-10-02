@@ -29,9 +29,12 @@ import org.gradle.kotlin.dsl.getByType
  * }
  * ```
  */
+@ExperimentalStdlibApi
 class FlowBindingPlugin : Plugin<Project> {
     override fun apply(project: Project) {
-        project.configureForAllProjects()
+        val flowBindingExtension = project.extensions.create("flowBinding", FlowBindingExtension::class.java)
+
+        project.configureForAllProjects(flowBindingExtension.enableExplicitApi)
 
         if (project.isRoot) {
             project.configureRootProject()
