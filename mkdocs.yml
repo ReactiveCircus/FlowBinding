@@ -12,8 +12,8 @@ copyright: 'Copyright &copy; 2019 Yang Chen'
 theme:
   name: 'material'
   language: 'en'
-  favicon: 'images/reactive_cirrus_logo.png'
-  logo: 'images/reactive_cirrus_logo.png'
+  favicon: 'images/reactive_circus_logo.png'
+  logo: 'images/reactive_circus_logo.png'
   palette:
     primary: 'white'
     accent: 'white'

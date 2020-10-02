@@ -1,7 +1,6 @@
 # FlowBinding
 
 ![CI](https://github.com/ReactiveCircus/FlowBinding/workflows/Build/badge.svg)
-[![Build Status](https://api.cirrus-ci.com/github/ReactiveCircus/FlowBinding.svg)](https://cirrus-ci.com/github/ReactiveCircus/FlowBinding)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.reactivecircus.flowbinding/flowbinding-android/badge.svg)](https://search.maven.org/search?q=g:io.github.reactivecircus.flowbinding)
 [![Android API](https://img.shields.io/badge/API-14%2B-blue.svg?label=API&maxAge=300)](https://www.android.com/history/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
