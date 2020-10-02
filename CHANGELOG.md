@@ -1,5 +1,14 @@
 # Change Log
 
+## 1.0.0-beta01
+
+### Added
+- New [API docs](https://reactivecircus.github.io/FlowBinding/api/-modules.html) powered by Dokka 1.4.
+
+### Changed
+- Update AndroidX dependencies.
+- Update to Kotlin 1.4.10.
+
 ## Version 1.0.0-alpha04
 
 _2020-08-18_
