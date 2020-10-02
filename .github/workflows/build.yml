@@ -64,6 +64,58 @@ jobs:
       - run: |
           ./gradlew test apiCheck detekt lintDebug -PslimTests
 
+  instrumented-tests:
+    name: Instrumented tests
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        module:
+          - flowbinding-common
+          - flowbinding-android
+          - flowbinding-activity
+          - flowbinding-appcompat
+          - flowbinding-core
+          - flowbinding-drawerlayout
+          - flowbinding-lifecycle
+          - flowbinding-material
+          - flowbinding-navigation
+          - flowbinding-preference
+          - flowbinding-recyclerview
+          - flowbinding-swiperefreshlayout
+          - flowbinding-viewpager
+          - flowbinding-viewpager2
+
+    timeout-minutes: 30
+    env:
+      JAVA_TOOL_OPTIONS: -Xmx4g
+      ENABLE_APP_VERSIONING: false
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: gradle/wrapper-validation-action@v1
+
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 15
+
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-${{ github.job }}-${{ matrix.module }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.kt') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ github.job }}-
+
+      - name: Run Android instrumented tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 28
+          arch: x86
+          profile: pixel
+          script: ./gradlew ${{ matrix.module }}:connectedCheck
+
   deploy-snapshot:
     name: Deploy snapshot
     needs: [assemble, checks]
