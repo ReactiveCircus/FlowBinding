@@ -21,7 +21,7 @@ rootProject.ext.versions = [
                 viewPager2        : '1.0.0',
                 swipeRefreshLayout: '1.1.0',
                 drawerLayout      : '1.1.1',
-                constraintLayout  : '2.0.1',
+                constraintLayout  : '2.0.2',
                 arch              : '2.1.0',
                 lifecycle         : '2.3.0-beta01',
                 navigation        : '2.3.0',
