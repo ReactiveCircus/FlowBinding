@@ -95,8 +95,24 @@ class ExampleActivity : AppCompatActivity() {
             .onEach { pagePosition ->
                 // handle pagePosition
             }
-            .launchIn(lifecycleScope) // provided by lifecycle-runtime-ktx 
-            
+            .launchIn(lifecycleScope) // provided by lifecycle-runtime-ktx
+    }
+}
+```
+
+In a `Fragment`:
+
+```kotlin
+class ExampleFragment : Fragment(R.layout.example_fragment_layout) {
+    
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val binding = ExampleFragmentLayoutBinding.bind(view)
+        binding.viewPager
+            .pageSelections() // binding API available in flowbinding-viewpager2
+            .onEach { pagePosition ->
+                // handle pagePosition
+            }
+            .launchIn(viewLifecycleOwner.lifecycleScope) // provided by lifecycle-runtime-ktx
     }
 }
 ```
