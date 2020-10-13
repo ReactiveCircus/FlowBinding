@@ -1,6 +1,6 @@
 rootProject.ext.versions = [
-        androidGradlePlugin         : '4.1.0-rc03',
-        androidLint                 : '27.1.0-rc03',
+        androidGradlePlugin         : '4.1.0',
+        androidLint                 : '27.1.0',
         mavenPublishPlugin          : '0.13.0',
         firestormGradlePlugin       : '0.1.1',
         binaryCompatibilityValidator: '0.2.3',
