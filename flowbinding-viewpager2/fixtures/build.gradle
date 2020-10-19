@@ -4,7 +4,10 @@ plugins {
     id 'kotlin-android'
 }
 
-android.buildFeatures.viewBinding = true
+android.buildFeatures {
+    viewBinding = true
+    androidResources = true
+}
 
 dependencies {
     implementation "androidx.viewpager2:viewpager2:${versions.androidx.viewPager2}"

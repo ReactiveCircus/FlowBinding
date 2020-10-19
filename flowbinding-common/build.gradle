@@ -12,6 +12,10 @@ flowBinding {
 }
 
 android {
+    // TODO remove once https://issuetracker.google.com/issues/161586464 is fixed
+    buildFeatures {
+        androidResources = true
+    }
     defaultConfig {
         testApplicationId 'reactivecircus.flowbinding.common.test'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
