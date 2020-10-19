@@ -19,7 +19,7 @@ buildscript {
 
 plugins {
     `flowbinding-plugin`
-    id("org.jetbrains.dokka") version "1.4.0"
+    id("org.jetbrains.dokka") version "1.4.10"
 }
 
 tasks.dokkaHtmlMultiModule.configure {
