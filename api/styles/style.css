@@ -9,6 +9,7 @@
     --footer-height: 64px;
     --footer-padding-top: 48px;
     --horizontal-spacing-for-content: 42px;
+    --mobile-horizontal-spacing-for-content: 8px;
 }
 
 #content {
@@ -18,6 +19,8 @@
 .breadcrumbs {
     padding: 24px 0;
     color: var(--breadcrumb-font-color);
+    max-width: calc(100% - 32px);
+    overflow-wrap: break-word;
 }
 
 .breadcrumbs a {
@@ -142,6 +145,10 @@
     border-bottom: 2px solid white;
 }
 
+.title {
+    overflow-x: auto;
+}
+
 .title > .divergent-group:first-of-type {
     padding-top: 0;
 }
@@ -166,18 +173,8 @@
     flex: 0 0 auto;
 }
 
-@media screen and (max-width: 600px) {
-    #container {
-        flex-direction: column;
-    }
-
-    #leftColumn {
-        border-right: none;
-    }
-}
-
 #sideMenu {
-    max-height: calc(100% - 90px);
+    max-height: calc(100% - 140px);
     padding-top: 16px;
     position: relative;
 }
@@ -240,7 +237,7 @@ code.paragraph {
     background-color: #F4F4F4;
     align-items: center;
     display: block;
-    padding: 8px 8px 8px 16px;
+    padding: 8px 32px 8px 8px;
     box-sizing: border-box;
     white-space: pre-wrap;
     font-weight: bold;
@@ -453,7 +450,6 @@ h1.cover {
     margin-left: calc(-1 * var(--horizontal-spacing-for-content));
     margin-right: calc(-1 * var(--horizontal-spacing-for-content));
     padding-left: var(--horizontal-spacing-for-content);
-    padding-right: var(--horizontal-spacing-for-content);
     border-bottom: 1px solid #DADFE6;
 
     margin-bottom: 0;
@@ -541,6 +537,10 @@ dt {
 
 th {
     color: #444;
+}
+
+p.paragraph img {
+    display: block;
 }
 
 img {
@@ -659,8 +659,8 @@ footer {
 }
 
 .platform-tags {
-    flex: 0 0 auto;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .platform-tags > .platform-tag {
@@ -696,6 +696,7 @@ footer {
     top: 20px;
     right: 88px;
     z-index: 0;
+    flex-wrap: wrap;
 }
 
 .platform-selector:hover {
@@ -724,6 +725,7 @@ td.content {
     flex-direction: row;
     padding: 0;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .main-subrow > span {
@@ -992,10 +994,6 @@ td.content {
 }
 
 @media print, screen and (max-width: 480px) {
-    body {
-        padding-right: 15px;
-    }
-
     header ul {
         display: none;
     }
@@ -1070,4 +1068,78 @@ div.runnablesample {
     box-shadow: 0 0 0 0.2em #c8e1ff;
     margin-top: 0.2em;
     margin-bottom: 0.2em;
+}
+
+@media screen and (max-width: 1119px) {
+    /* TODO this feels wrong as only is an aproximation of correct solution*/
+    .filter-section {
+        position: unset;
+    }
+    h1.cover {
+        font-size: 48px;
+        line-height: 48px;
+        padding-bottom: 8px;
+    }
+}
+
+@media screen and (max-width: 759px) {
+    #main {
+        max-width: 100%;
+    }
+    #leftColumn {
+        position: fixed;
+        margin-left: -280px;
+        transition: margin .2s ease-out;
+        z-index: 4;
+        background: white;
+        height: 100%;
+    }
+    #leftColumn.open {
+        margin-left: 0;
+    }
+    #leftColumn.open ~ #main #searchBar {
+        display: none;
+    }
+    #leftToggler {
+        display: unset;
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 5;
+        font-size: 20px;
+        transition: margin .2s ease-out;
+
+        color: var(--average-color);
+        border: 1px solid var(--average-color);
+        border-left: 0;
+        border-top-right-radius: 1em;
+        border-bottom-right-radius: 1em;
+        padding: 8px 4px 8px 8px;
+        background-color: white;
+    }
+    #leftToggler .icon-toggler:hover {
+        cursor: pointer;
+    }
+    #leftColumn.open ~ #main #leftToggler {
+        margin-left: 280px;
+    }
+    .icon-toggler::before {
+        content: "\232A";
+    }
+    #leftColumn.open ~ #main .icon-toggler::before {
+        content: "\2329";
+        padding-right: 0.5em;
+        margin-left: -0.5em;
+    }
+    #content {
+        padding: 0 var(--mobile-horizontal-spacing-for-content);
+    }
+    #sideMenu {
+        padding-bottom: 16px;
+        overflow: auto;
+    }
+    h1.cover {
+        font-size: 32px;
+        line-height: 32px;
+    }
 }
