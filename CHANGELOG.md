@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.0.0-beta02
+
+### Changed
+- Convert all custom event types to data class.
+- Update to AndroidX Navigation 2.3.1.
+- Update to Coroutines 1.4.0.
+
 ## 1.0.0-beta01
 
 ### Added
