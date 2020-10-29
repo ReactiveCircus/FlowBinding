@@ -1,9 +1,18 @@
 public final class reactivecircus/flowbinding/viewpager2/ViewPager2PageScrollEvent {
 	public fun <init> (Landroidx/viewpager2/widget/ViewPager2;IFI)V
+	public final fun component1 ()Landroidx/viewpager2/widget/ViewPager2;
+	public final fun component2 ()I
+	public final fun component3 ()F
+	public final fun component4 ()I
+	public final fun copy (Landroidx/viewpager2/widget/ViewPager2;IFI)Lreactivecircus/flowbinding/viewpager2/ViewPager2PageScrollEvent;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/viewpager2/ViewPager2PageScrollEvent;Landroidx/viewpager2/widget/ViewPager2;IFIILjava/lang/Object;)Lreactivecircus/flowbinding/viewpager2/ViewPager2PageScrollEvent;
+	public fun equals (Ljava/lang/Object;)Z
 	public final fun getPosition ()I
 	public final fun getPositionOffset ()F
 	public final fun getPositionOffsetPixel ()I
 	public final fun getView ()Landroidx/viewpager2/widget/ViewPager2;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/viewpager2/ViewPager2PageScrollStateChangedFlowKt {

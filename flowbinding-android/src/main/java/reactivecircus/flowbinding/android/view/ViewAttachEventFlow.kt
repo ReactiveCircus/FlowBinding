@@ -58,7 +58,7 @@ public fun View.attachEvents(): Flow<ViewAttachEvent> = callbackFlow<ViewAttachE
 public sealed class ViewAttachEvent {
     public abstract val view: View
 
-    public class Attached(override val view: View) : ViewAttachEvent()
+    public data class Attached(override val view: View) : ViewAttachEvent()
 
-    public class Detached(override val view: View) : ViewAttachEvent()
+    public data class Detached(override val view: View) : ViewAttachEvent()
 }

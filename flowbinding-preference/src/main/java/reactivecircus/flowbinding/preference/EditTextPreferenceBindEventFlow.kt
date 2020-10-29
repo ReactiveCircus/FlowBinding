@@ -40,4 +40,4 @@ public fun EditTextPreference.editTextBindEvents(): Flow<EditTextBindEvent> = ca
     awaitClose { setOnBindEditTextListener(null) }
 }.conflate()
 
-public class EditTextBindEvent(public val editText: EditText)
+public data class EditTextBindEvent(public val editText: EditText)

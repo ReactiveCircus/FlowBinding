@@ -52,7 +52,7 @@ public fun Slider.changeEvents(): InitialValueFlow<SliderChangeEvent> = callback
         )
     }
 
-public class SliderChangeEvent(
+public data class SliderChangeEvent(
     public val slider: Slider,
     public val value: Float,
     public val fromUser: Boolean

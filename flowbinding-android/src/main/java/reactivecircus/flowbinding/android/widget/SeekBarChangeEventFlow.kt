@@ -83,13 +83,13 @@ public fun SeekBar.changeEvents(): InitialValueFlow<SeekBarChangeEvent> =
 public sealed class SeekBarChangeEvent {
     public abstract val view: SeekBar
 
-    public class ProgressChanged(
+    public data class ProgressChanged(
         override val view: SeekBar,
         public val progress: Int,
         public val fromUser: Boolean
     ) : SeekBarChangeEvent()
 
-    public class StartTracking(override val view: SeekBar) : SeekBarChangeEvent()
+    public data class StartTracking(override val view: SeekBar) : SeekBarChangeEvent()
 
-    public class StopTracking(override val view: SeekBar) : SeekBarChangeEvent()
+    public data class StopTracking(override val view: SeekBar) : SeekBarChangeEvent()
 }

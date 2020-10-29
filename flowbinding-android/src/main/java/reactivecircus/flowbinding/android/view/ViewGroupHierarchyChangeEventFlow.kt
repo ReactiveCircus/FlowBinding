@@ -60,7 +60,7 @@ public sealed class HierarchyChangeEvent {
     public abstract val parent: ViewGroup
     public abstract val child: View
 
-    public class ChildAdded(override val parent: ViewGroup, override val child: View) : HierarchyChangeEvent()
+    public data class ChildAdded(override val parent: ViewGroup, override val child: View) : HierarchyChangeEvent()
 
-    public class ChildRemoved(override val parent: ViewGroup, override val child: View) : HierarchyChangeEvent()
+    public data class ChildRemoved(override val parent: ViewGroup, override val child: View) : HierarchyChangeEvent()
 }

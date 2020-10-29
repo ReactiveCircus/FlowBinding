@@ -46,7 +46,7 @@ public fun Slider.touchEvents(): Flow<SliderTouchEvent> = callbackFlow<SliderTou
 public sealed class SliderTouchEvent {
     public abstract val slider: Slider
 
-    public class StartTracking(override val slider: Slider) : SliderTouchEvent()
+    public data class StartTracking(override val slider: Slider) : SliderTouchEvent()
 
-    public class StopTracking(override val slider: Slider) : SliderTouchEvent()
+    public data class StopTracking(override val slider: Slider) : SliderTouchEvent()
 }

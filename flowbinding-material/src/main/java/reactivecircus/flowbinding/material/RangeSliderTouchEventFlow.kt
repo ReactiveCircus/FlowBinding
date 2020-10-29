@@ -46,7 +46,7 @@ public fun RangeSlider.touchEvents(): Flow<RangeSliderTouchEvent> = callbackFlow
 public sealed class RangeSliderTouchEvent {
     public abstract val rangeSlider: RangeSlider
 
-    public class StartTracking(override val rangeSlider: RangeSlider) : RangeSliderTouchEvent()
+    public data class StartTracking(override val rangeSlider: RangeSlider) : RangeSliderTouchEvent()
 
-    public class StopTracking(override val rangeSlider: RangeSlider) : RangeSliderTouchEvent()
+    public data class StopTracking(override val rangeSlider: RangeSlider) : RangeSliderTouchEvent()
 }

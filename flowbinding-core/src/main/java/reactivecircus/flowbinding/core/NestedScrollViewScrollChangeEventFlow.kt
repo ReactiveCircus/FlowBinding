@@ -48,7 +48,7 @@ public fun NestedScrollView.scrollChangeEvents(): Flow<ScrollChangeEvent> = call
     awaitClose { setOnScrollChangeListener(null as NestedScrollView.OnScrollChangeListener?) }
 }.conflate()
 
-public class ScrollChangeEvent(
+public data class ScrollChangeEvent(
     public val view: View,
     public val scrollX: Int,
     public val scrollY: Int,

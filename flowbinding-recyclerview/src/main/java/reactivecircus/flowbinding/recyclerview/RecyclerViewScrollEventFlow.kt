@@ -47,7 +47,7 @@ public fun RecyclerView.scrollEvents(): Flow<RecyclerViewScrollEvent> = callback
     awaitClose { removeOnScrollListener(listener) }
 }.conflate()
 
-public class RecyclerViewScrollEvent(
+public data class RecyclerViewScrollEvent(
     public val view: RecyclerView,
     public val dx: Int,
     public val dy: Int

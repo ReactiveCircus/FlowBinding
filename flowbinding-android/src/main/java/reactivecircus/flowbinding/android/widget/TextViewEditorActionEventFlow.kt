@@ -55,7 +55,7 @@ public fun TextView.editorActionEvents(handled: (EditorActionEvent) -> Boolean =
         awaitClose { setOnEditorActionListener(null) }
     }.conflate()
 
-public class EditorActionEvent(
+public data class EditorActionEvent(
     public val view: TextView,
     public val actionId: Int,
     public val keyEvent: KeyEvent?

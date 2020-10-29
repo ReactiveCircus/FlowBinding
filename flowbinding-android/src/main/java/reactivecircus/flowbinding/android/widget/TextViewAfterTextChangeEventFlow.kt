@@ -54,7 +54,7 @@ public fun TextView.afterTextChanges(): InitialValueFlow<AfterTextChangeEvent> =
             AfterTextChangeEvent(view = this@afterTextChanges, editable = editableText)
         }
 
-public class AfterTextChangeEvent(
+public data class AfterTextChangeEvent(
     public val view: TextView,
     public val editable: Editable?
 )

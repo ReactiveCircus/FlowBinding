@@ -56,7 +56,7 @@ public fun RecyclerView.flingEvents(handled: (FlingEvent) -> Boolean = { true })
         awaitClose { onFlingListener = null }
     }.conflate()
 
-public class FlingEvent(
+public data class FlingEvent(
     public val view: RecyclerView,
     public val velocityX: Int,
     public val velocityY: Int

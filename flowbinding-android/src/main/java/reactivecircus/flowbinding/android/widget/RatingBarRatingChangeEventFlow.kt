@@ -54,7 +54,7 @@ public fun RatingBar.ratingChangeEvents(): InitialValueFlow<RatingChangeEvent> =
         )
     }
 
-public class RatingChangeEvent(
+public data class RatingChangeEvent(
     public val view: RatingBar,
     public val rating: Float,
     public val fromUser: Boolean

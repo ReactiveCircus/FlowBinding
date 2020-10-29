@@ -70,7 +70,7 @@ public fun AbsListView.scrollEvents(): Flow<ScrollEvent> = callbackFlow<ScrollEv
     awaitClose { setOnScrollListener(null) }
 }.conflate()
 
-public class ScrollEvent(
+public data class ScrollEvent(
     public val view: AbsListView,
     public val scrollState: Int,
     public val firstVisibleItem: Int,

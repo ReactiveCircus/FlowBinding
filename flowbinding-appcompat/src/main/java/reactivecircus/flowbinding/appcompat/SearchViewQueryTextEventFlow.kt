@@ -72,12 +72,12 @@ public sealed class QueryTextEvent {
     public abstract val view: SearchView
     public abstract val queryText: CharSequence
 
-    public class QueryChanged(
+    public data class QueryChanged(
         override val view: SearchView,
         override val queryText: CharSequence
     ) : QueryTextEvent()
 
-    public class QuerySubmitted(
+    public data class QuerySubmitted(
         override val view: SearchView,
         override val queryText: CharSequence
     ) : QueryTextEvent()

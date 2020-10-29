@@ -88,17 +88,17 @@ public sealed class TabLayoutSelectionEvent {
     public abstract val tabLayout: TabLayout
     public abstract val tab: TabLayout.Tab
 
-    public class TabSelected(
+    public data class TabSelected(
         override val tabLayout: TabLayout,
         override val tab: TabLayout.Tab
     ) : TabLayoutSelectionEvent()
 
-    public class TabReselected(
+    public data class TabReselected(
         override val tabLayout: TabLayout,
         override val tab: TabLayout.Tab
     ) : TabLayoutSelectionEvent()
 
-    public class TabUnselected(
+    public data class TabUnselected(
         override val tabLayout: TabLayout,
         override val tab: TabLayout.Tab
     ) : TabLayoutSelectionEvent()

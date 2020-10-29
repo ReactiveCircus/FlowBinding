@@ -47,7 +47,7 @@ public fun NavController.destinationChangeEvents(): Flow<DestinationChangeEvent>
     awaitClose { removeOnDestinationChangedListener(listener) }
 }.conflate()
 
-public class DestinationChangeEvent(
+public data class DestinationChangeEvent(
     public val navController: NavController,
     public val destination: NavDestination,
     public val arguments: Bundle?

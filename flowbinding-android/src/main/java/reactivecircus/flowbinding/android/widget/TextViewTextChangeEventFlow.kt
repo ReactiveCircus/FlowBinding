@@ -68,7 +68,7 @@ public fun TextView.textChangeEvents(): InitialValueFlow<TextChangeEvent> =
             )
         }
 
-public class TextChangeEvent(
+public data class TextChangeEvent(
     public val view: TextView,
     public val text: CharSequence,
     public val start: Int,
