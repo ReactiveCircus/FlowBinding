@@ -78,12 +78,12 @@ public fun <T : Adapter> AdapterView<T>.selectionEvents(): InitialValueFlow<Adap
 public sealed class AdapterViewSelectionEvent {
     public abstract val view: AdapterView<*>
 
-    public class ItemSelected(
+    public data class ItemSelected(
         override val view: AdapterView<*>,
         public val selectedView: View?,
         public val position: Int,
         public val id: Long
     ) : AdapterViewSelectionEvent()
 
-    public class NothingSelected(override val view: AdapterView<*>) : AdapterViewSelectionEvent()
+    public data class NothingSelected(override val view: AdapterView<*>) : AdapterViewSelectionEvent()
 }

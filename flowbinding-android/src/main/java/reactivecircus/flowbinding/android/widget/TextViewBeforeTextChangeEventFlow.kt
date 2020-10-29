@@ -68,7 +68,7 @@ public fun TextView.beforeTextChanges(): InitialValueFlow<BeforeTextChangeEvent>
             )
         }
 
-public class BeforeTextChangeEvent(
+public data class BeforeTextChangeEvent(
     public val view: TextView,
     public val text: CharSequence,
     public val start: Int,

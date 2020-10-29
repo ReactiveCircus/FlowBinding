@@ -77,11 +77,11 @@ public fun MenuItem.actionViewEvents(
 public sealed class MenuItemActionViewEvent {
     public abstract val menuItem: MenuItem
 
-    public class Collapse(
+    public data class Collapse(
         override val menuItem: MenuItem
     ) : MenuItemActionViewEvent()
 
-    public class Expand(
+    public data class Expand(
         override val menuItem: MenuItem
     ) : MenuItemActionViewEvent()
 }

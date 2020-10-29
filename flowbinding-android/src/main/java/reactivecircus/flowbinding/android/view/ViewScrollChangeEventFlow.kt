@@ -50,7 +50,7 @@ public fun View.scrollChangeEvents(): Flow<ScrollChangeEvent> = callbackFlow {
     awaitClose { setOnScrollChangeListener(null) }
 }.conflate()
 
-public class ScrollChangeEvent(
+public data class ScrollChangeEvent(
     public val view: View,
     public val scrollX: Int,
     public val scrollY: Int,

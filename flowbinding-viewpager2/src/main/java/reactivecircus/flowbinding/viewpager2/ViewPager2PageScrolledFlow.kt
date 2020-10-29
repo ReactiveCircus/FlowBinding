@@ -52,7 +52,7 @@ public fun ViewPager2.pageScrollEvents(): Flow<ViewPager2PageScrollEvent> = call
     awaitClose { unregisterOnPageChangeCallback(callback) }
 }.conflate()
 
-public class ViewPager2PageScrollEvent(
+public data class ViewPager2PageScrollEvent(
     public val view: ViewPager2,
     public val position: Int,
     public val positionOffset: Float,

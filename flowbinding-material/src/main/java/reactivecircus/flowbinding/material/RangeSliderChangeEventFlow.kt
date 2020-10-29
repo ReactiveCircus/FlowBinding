@@ -53,7 +53,7 @@ public fun RangeSlider.changeEvents(): InitialValueFlow<RangeSliderChangeEvent> 
             )
         }
 
-public class RangeSliderChangeEvent(
+public data class RangeSliderChangeEvent(
     public val rangeSlider: RangeSlider,
     public val values: List<Float>,
     public val fromUser: Boolean

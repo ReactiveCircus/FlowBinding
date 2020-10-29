@@ -71,12 +71,12 @@ public sealed class RecyclerViewChildAttachStateChangeEvent {
     public abstract val view: RecyclerView
     public abstract val child: View
 
-    public class Attached(
+    public data class Attached(
         override val view: RecyclerView,
         override val child: View
     ) : RecyclerViewChildAttachStateChangeEvent()
 
-    public class Detached(
+    public data class Detached(
         override val view: RecyclerView,
         override val child: View
     ) : RecyclerViewChildAttachStateChangeEvent()

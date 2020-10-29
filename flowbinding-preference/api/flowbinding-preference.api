@@ -1,6 +1,12 @@
 public final class reactivecircus/flowbinding/preference/EditTextBindEvent {
 	public fun <init> (Landroid/widget/EditText;)V
+	public final fun component1 ()Landroid/widget/EditText;
+	public final fun copy (Landroid/widget/EditText;)Lreactivecircus/flowbinding/preference/EditTextBindEvent;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/preference/EditTextBindEvent;Landroid/widget/EditText;ILjava/lang/Object;)Lreactivecircus/flowbinding/preference/EditTextBindEvent;
+	public fun equals (Ljava/lang/Object;)Z
 	public final fun getEditText ()Landroid/widget/EditText;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/preference/EditTextPreferenceBindEventFlowKt {

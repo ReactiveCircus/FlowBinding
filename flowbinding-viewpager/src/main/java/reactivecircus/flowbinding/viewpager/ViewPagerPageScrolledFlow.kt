@@ -56,7 +56,7 @@ public fun ViewPager.pageScrollEvents(): Flow<ViewPagerPageScrollEvent> = callba
     awaitClose { removeOnPageChangeListener(listener) }
 }.conflate()
 
-public class ViewPagerPageScrollEvent(
+public data class ViewPagerPageScrollEvent(
     public val view: ViewPager,
     public val position: Int,
     public val positionOffset: Float,

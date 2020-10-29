@@ -17,14 +17,28 @@ public abstract class reactivecircus/flowbinding/appcompat/QueryTextEvent {
 
 public final class reactivecircus/flowbinding/appcompat/QueryTextEvent$QueryChanged : reactivecircus/flowbinding/appcompat/QueryTextEvent {
 	public fun <init> (Landroidx/appcompat/widget/SearchView;Ljava/lang/CharSequence;)V
+	public final fun component1 ()Landroidx/appcompat/widget/SearchView;
+	public final fun component2 ()Ljava/lang/CharSequence;
+	public final fun copy (Landroidx/appcompat/widget/SearchView;Ljava/lang/CharSequence;)Lreactivecircus/flowbinding/appcompat/QueryTextEvent$QueryChanged;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/appcompat/QueryTextEvent$QueryChanged;Landroidx/appcompat/widget/SearchView;Ljava/lang/CharSequence;ILjava/lang/Object;)Lreactivecircus/flowbinding/appcompat/QueryTextEvent$QueryChanged;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getQueryText ()Ljava/lang/CharSequence;
 	public fun getView ()Landroidx/appcompat/widget/SearchView;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/appcompat/QueryTextEvent$QuerySubmitted : reactivecircus/flowbinding/appcompat/QueryTextEvent {
 	public fun <init> (Landroidx/appcompat/widget/SearchView;Ljava/lang/CharSequence;)V
+	public final fun component1 ()Landroidx/appcompat/widget/SearchView;
+	public final fun component2 ()Ljava/lang/CharSequence;
+	public final fun copy (Landroidx/appcompat/widget/SearchView;Ljava/lang/CharSequence;)Lreactivecircus/flowbinding/appcompat/QueryTextEvent$QuerySubmitted;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/appcompat/QueryTextEvent$QuerySubmitted;Landroidx/appcompat/widget/SearchView;Ljava/lang/CharSequence;ILjava/lang/Object;)Lreactivecircus/flowbinding/appcompat/QueryTextEvent$QuerySubmitted;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getQueryText ()Ljava/lang/CharSequence;
 	public fun getView ()Landroidx/appcompat/widget/SearchView;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/appcompat/SearchViewQueryTextChangeFlowKt {

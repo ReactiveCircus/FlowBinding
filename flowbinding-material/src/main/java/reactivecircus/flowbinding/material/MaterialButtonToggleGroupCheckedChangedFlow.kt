@@ -42,7 +42,7 @@ public fun MaterialButtonToggleGroup.buttonCheckedChanges(): Flow<MaterialButton
     awaitClose { removeOnButtonCheckedListener(listener) }
 }.conflate()
 
-public class MaterialButtonCheckedChangedEvent(
+public data class MaterialButtonCheckedChangedEvent(
     @IdRes
     public val checkedId: Int,
     public val checked: Boolean

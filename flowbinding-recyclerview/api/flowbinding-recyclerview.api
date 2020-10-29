@@ -1,8 +1,16 @@
 public final class reactivecircus/flowbinding/recyclerview/FlingEvent {
 	public fun <init> (Landroidx/recyclerview/widget/RecyclerView;II)V
+	public final fun component1 ()Landroidx/recyclerview/widget/RecyclerView;
+	public final fun component2 ()I
+	public final fun component3 ()I
+	public final fun copy (Landroidx/recyclerview/widget/RecyclerView;II)Lreactivecircus/flowbinding/recyclerview/FlingEvent;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/recyclerview/FlingEvent;Landroidx/recyclerview/widget/RecyclerView;IIILjava/lang/Object;)Lreactivecircus/flowbinding/recyclerview/FlingEvent;
+	public fun equals (Ljava/lang/Object;)Z
 	public final fun getVelocityX ()I
 	public final fun getVelocityY ()I
 	public final fun getView ()Landroidx/recyclerview/widget/RecyclerView;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/recyclerview/RecyclerViewAdapterDataChangeFlowKt {
@@ -16,14 +24,28 @@ public abstract class reactivecircus/flowbinding/recyclerview/RecyclerViewChildA
 
 public final class reactivecircus/flowbinding/recyclerview/RecyclerViewChildAttachStateChangeEvent$Attached : reactivecircus/flowbinding/recyclerview/RecyclerViewChildAttachStateChangeEvent {
 	public fun <init> (Landroidx/recyclerview/widget/RecyclerView;Landroid/view/View;)V
+	public final fun component1 ()Landroidx/recyclerview/widget/RecyclerView;
+	public final fun component2 ()Landroid/view/View;
+	public final fun copy (Landroidx/recyclerview/widget/RecyclerView;Landroid/view/View;)Lreactivecircus/flowbinding/recyclerview/RecyclerViewChildAttachStateChangeEvent$Attached;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/recyclerview/RecyclerViewChildAttachStateChangeEvent$Attached;Landroidx/recyclerview/widget/RecyclerView;Landroid/view/View;ILjava/lang/Object;)Lreactivecircus/flowbinding/recyclerview/RecyclerViewChildAttachStateChangeEvent$Attached;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getChild ()Landroid/view/View;
 	public fun getView ()Landroidx/recyclerview/widget/RecyclerView;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/recyclerview/RecyclerViewChildAttachStateChangeEvent$Detached : reactivecircus/flowbinding/recyclerview/RecyclerViewChildAttachStateChangeEvent {
 	public fun <init> (Landroidx/recyclerview/widget/RecyclerView;Landroid/view/View;)V
+	public final fun component1 ()Landroidx/recyclerview/widget/RecyclerView;
+	public final fun component2 ()Landroid/view/View;
+	public final fun copy (Landroidx/recyclerview/widget/RecyclerView;Landroid/view/View;)Lreactivecircus/flowbinding/recyclerview/RecyclerViewChildAttachStateChangeEvent$Detached;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/recyclerview/RecyclerViewChildAttachStateChangeEvent$Detached;Landroidx/recyclerview/widget/RecyclerView;Landroid/view/View;ILjava/lang/Object;)Lreactivecircus/flowbinding/recyclerview/RecyclerViewChildAttachStateChangeEvent$Detached;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getChild ()Landroid/view/View;
 	public fun getView ()Landroidx/recyclerview/widget/RecyclerView;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/recyclerview/RecyclerViewChildAttachStateChangeEventFlowKt {
@@ -37,9 +59,17 @@ public final class reactivecircus/flowbinding/recyclerview/RecyclerViewFlingEven
 
 public final class reactivecircus/flowbinding/recyclerview/RecyclerViewScrollEvent {
 	public fun <init> (Landroidx/recyclerview/widget/RecyclerView;II)V
+	public final fun component1 ()Landroidx/recyclerview/widget/RecyclerView;
+	public final fun component2 ()I
+	public final fun component3 ()I
+	public final fun copy (Landroidx/recyclerview/widget/RecyclerView;II)Lreactivecircus/flowbinding/recyclerview/RecyclerViewScrollEvent;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/recyclerview/RecyclerViewScrollEvent;Landroidx/recyclerview/widget/RecyclerView;IIILjava/lang/Object;)Lreactivecircus/flowbinding/recyclerview/RecyclerViewScrollEvent;
+	public fun equals (Ljava/lang/Object;)Z
 	public final fun getDx ()I
 	public final fun getDy ()I
 	public final fun getView ()Landroidx/recyclerview/widget/RecyclerView;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/recyclerview/RecyclerViewScrollEventFlowKt {

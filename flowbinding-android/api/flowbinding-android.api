@@ -5,18 +5,44 @@ public abstract class reactivecircus/flowbinding/android/view/HierarchyChangeEve
 
 public final class reactivecircus/flowbinding/android/view/HierarchyChangeEvent$ChildAdded : reactivecircus/flowbinding/android/view/HierarchyChangeEvent {
 	public fun <init> (Landroid/view/ViewGroup;Landroid/view/View;)V
+	public final fun component1 ()Landroid/view/ViewGroup;
+	public final fun component2 ()Landroid/view/View;
+	public final fun copy (Landroid/view/ViewGroup;Landroid/view/View;)Lreactivecircus/flowbinding/android/view/HierarchyChangeEvent$ChildAdded;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/android/view/HierarchyChangeEvent$ChildAdded;Landroid/view/ViewGroup;Landroid/view/View;ILjava/lang/Object;)Lreactivecircus/flowbinding/android/view/HierarchyChangeEvent$ChildAdded;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getChild ()Landroid/view/View;
 	public fun getParent ()Landroid/view/ViewGroup;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/android/view/HierarchyChangeEvent$ChildRemoved : reactivecircus/flowbinding/android/view/HierarchyChangeEvent {
 	public fun <init> (Landroid/view/ViewGroup;Landroid/view/View;)V
+	public final fun component1 ()Landroid/view/ViewGroup;
+	public final fun component2 ()Landroid/view/View;
+	public final fun copy (Landroid/view/ViewGroup;Landroid/view/View;)Lreactivecircus/flowbinding/android/view/HierarchyChangeEvent$ChildRemoved;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/android/view/HierarchyChangeEvent$ChildRemoved;Landroid/view/ViewGroup;Landroid/view/View;ILjava/lang/Object;)Lreactivecircus/flowbinding/android/view/HierarchyChangeEvent$ChildRemoved;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getChild ()Landroid/view/View;
 	public fun getParent ()Landroid/view/ViewGroup;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/android/view/LayoutChangeEvent {
 	public fun <init> (Landroid/view/View;IIIIIIII)V
+	public final fun component1 ()Landroid/view/View;
+	public final fun component2 ()I
+	public final fun component3 ()I
+	public final fun component4 ()I
+	public final fun component5 ()I
+	public final fun component6 ()I
+	public final fun component7 ()I
+	public final fun component8 ()I
+	public final fun component9 ()I
+	public final fun copy (Landroid/view/View;IIIIIIII)Lreactivecircus/flowbinding/android/view/LayoutChangeEvent;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/android/view/LayoutChangeEvent;Landroid/view/View;IIIIIIIIILjava/lang/Object;)Lreactivecircus/flowbinding/android/view/LayoutChangeEvent;
+	public fun equals (Ljava/lang/Object;)Z
 	public final fun getBottom ()I
 	public final fun getLeft ()I
 	public final fun getOldBottom ()I
@@ -26,6 +52,8 @@ public final class reactivecircus/flowbinding/android/view/LayoutChangeEvent {
 	public final fun getRight ()I
 	public final fun getTop ()I
 	public final fun getView ()Landroid/view/View;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public abstract class reactivecircus/flowbinding/android/view/MenuItemActionViewEvent {
@@ -34,12 +62,24 @@ public abstract class reactivecircus/flowbinding/android/view/MenuItemActionView
 
 public final class reactivecircus/flowbinding/android/view/MenuItemActionViewEvent$Collapse : reactivecircus/flowbinding/android/view/MenuItemActionViewEvent {
 	public fun <init> (Landroid/view/MenuItem;)V
+	public final fun component1 ()Landroid/view/MenuItem;
+	public final fun copy (Landroid/view/MenuItem;)Lreactivecircus/flowbinding/android/view/MenuItemActionViewEvent$Collapse;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/android/view/MenuItemActionViewEvent$Collapse;Landroid/view/MenuItem;ILjava/lang/Object;)Lreactivecircus/flowbinding/android/view/MenuItemActionViewEvent$Collapse;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getMenuItem ()Landroid/view/MenuItem;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/android/view/MenuItemActionViewEvent$Expand : reactivecircus/flowbinding/android/view/MenuItemActionViewEvent {
 	public fun <init> (Landroid/view/MenuItem;)V
+	public final fun component1 ()Landroid/view/MenuItem;
+	public final fun copy (Landroid/view/MenuItem;)Lreactivecircus/flowbinding/android/view/MenuItemActionViewEvent$Expand;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/android/view/MenuItemActionViewEvent$Expand;Landroid/view/MenuItem;ILjava/lang/Object;)Lreactivecircus/flowbinding/android/view/MenuItemActionViewEvent$Expand;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getMenuItem ()Landroid/view/MenuItem;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/android/view/MenuItemActionViewEventFlowKt {
@@ -54,11 +94,21 @@ public final class reactivecircus/flowbinding/android/view/MenuItemClickedFlowKt
 
 public final class reactivecircus/flowbinding/android/view/ScrollChangeEvent {
 	public fun <init> (Landroid/view/View;IIII)V
+	public final fun component1 ()Landroid/view/View;
+	public final fun component2 ()I
+	public final fun component3 ()I
+	public final fun component4 ()I
+	public final fun component5 ()I
+	public final fun copy (Landroid/view/View;IIII)Lreactivecircus/flowbinding/android/view/ScrollChangeEvent;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/android/view/ScrollChangeEvent;Landroid/view/View;IIIIILjava/lang/Object;)Lreactivecircus/flowbinding/android/view/ScrollChangeEvent;
+	public fun equals (Ljava/lang/Object;)Z
 	public final fun getOldScrollX ()I
 	public final fun getOldScrollY ()I
 	public final fun getScrollX ()I
 	public final fun getScrollY ()I
 	public final fun getView ()Landroid/view/View;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public abstract class reactivecircus/flowbinding/android/view/ViewAttachEvent {
@@ -67,12 +117,24 @@ public abstract class reactivecircus/flowbinding/android/view/ViewAttachEvent {
 
 public final class reactivecircus/flowbinding/android/view/ViewAttachEvent$Attached : reactivecircus/flowbinding/android/view/ViewAttachEvent {
 	public fun <init> (Landroid/view/View;)V
+	public final fun component1 ()Landroid/view/View;
+	public final fun copy (Landroid/view/View;)Lreactivecircus/flowbinding/android/view/ViewAttachEvent$Attached;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/android/view/ViewAttachEvent$Attached;Landroid/view/View;ILjava/lang/Object;)Lreactivecircus/flowbinding/android/view/ViewAttachEvent$Attached;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getView ()Landroid/view/View;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/android/view/ViewAttachEvent$Detached : reactivecircus/flowbinding/android/view/ViewAttachEvent {
 	public fun <init> (Landroid/view/View;)V
+	public final fun component1 ()Landroid/view/View;
+	public final fun copy (Landroid/view/View;)Lreactivecircus/flowbinding/android/view/ViewAttachEvent$Detached;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/android/view/ViewAttachEvent$Detached;Landroid/view/View;ILjava/lang/Object;)Lreactivecircus/flowbinding/android/view/ViewAttachEvent$Detached;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getView ()Landroid/view/View;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/android/view/ViewAttachEventFlowKt {
@@ -153,10 +215,19 @@ public final class reactivecircus/flowbinding/android/widget/AdapterDataChangeFl
 
 public final class reactivecircus/flowbinding/android/widget/AdapterViewItemClickEvent {
 	public fun <init> (Landroid/widget/AdapterView;Landroid/view/View;IJ)V
+	public final fun component1 ()Landroid/widget/AdapterView;
+	public final fun component2 ()Landroid/view/View;
+	public final fun component3 ()I
+	public final fun component4 ()J
+	public final fun copy (Landroid/widget/AdapterView;Landroid/view/View;IJ)Lreactivecircus/flowbinding/android/widget/AdapterViewItemClickEvent;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/android/widget/AdapterViewItemClickEvent;Landroid/widget/AdapterView;Landroid/view/View;IJILjava/lang/Object;)Lreactivecircus/flowbinding/android/widget/AdapterViewItemClickEvent;
+	public fun equals (Ljava/lang/Object;)Z
 	public final fun getClickedView ()Landroid/view/View;
 	public final fun getId ()J
 	public final fun getPosition ()I
 	public final fun getView ()Landroid/widget/AdapterView;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/android/widget/AdapterViewItemClickEventFlowKt {
@@ -169,10 +240,19 @@ public final class reactivecircus/flowbinding/android/widget/AdapterViewItemClic
 
 public final class reactivecircus/flowbinding/android/widget/AdapterViewItemLongClickEvent {
 	public fun <init> (Landroid/widget/AdapterView;Landroid/view/View;IJ)V
+	public final fun component1 ()Landroid/widget/AdapterView;
+	public final fun component2 ()Landroid/view/View;
+	public final fun component3 ()I
+	public final fun component4 ()J
+	public final fun copy (Landroid/widget/AdapterView;Landroid/view/View;IJ)Lreactivecircus/flowbinding/android/widget/AdapterViewItemLongClickEvent;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/android/widget/AdapterViewItemLongClickEvent;Landroid/widget/AdapterView;Landroid/view/View;IJILjava/lang/Object;)Lreactivecircus/flowbinding/android/widget/AdapterViewItemLongClickEvent;
+	public fun equals (Ljava/lang/Object;)Z
 	public final fun getId ()J
 	public final fun getLongClickedView ()Landroid/view/View;
 	public final fun getPosition ()I
 	public final fun getView ()Landroid/widget/AdapterView;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/android/widget/AdapterViewItemLongClickEventFlowKt {
@@ -195,15 +275,30 @@ public abstract class reactivecircus/flowbinding/android/widget/AdapterViewSelec
 
 public final class reactivecircus/flowbinding/android/widget/AdapterViewSelectionEvent$ItemSelected : reactivecircus/flowbinding/android/widget/AdapterViewSelectionEvent {
 	public fun <init> (Landroid/widget/AdapterView;Landroid/view/View;IJ)V
+	public final fun component1 ()Landroid/widget/AdapterView;
+	public final fun component2 ()Landroid/view/View;
+	public final fun component3 ()I
+	public final fun component4 ()J
+	public final fun copy (Landroid/widget/AdapterView;Landroid/view/View;IJ)Lreactivecircus/flowbinding/android/widget/AdapterViewSelectionEvent$ItemSelected;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/android/widget/AdapterViewSelectionEvent$ItemSelected;Landroid/widget/AdapterView;Landroid/view/View;IJILjava/lang/Object;)Lreactivecircus/flowbinding/android/widget/AdapterViewSelectionEvent$ItemSelected;
+	public fun equals (Ljava/lang/Object;)Z
 	public final fun getId ()J
 	public final fun getPosition ()I
 	public final fun getSelectedView ()Landroid/view/View;
 	public fun getView ()Landroid/widget/AdapterView;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/android/widget/AdapterViewSelectionEvent$NothingSelected : reactivecircus/flowbinding/android/widget/AdapterViewSelectionEvent {
 	public fun <init> (Landroid/widget/AdapterView;)V
+	public final fun component1 ()Landroid/widget/AdapterView;
+	public final fun copy (Landroid/widget/AdapterView;)Lreactivecircus/flowbinding/android/widget/AdapterViewSelectionEvent$NothingSelected;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/android/widget/AdapterViewSelectionEvent$NothingSelected;Landroid/widget/AdapterView;ILjava/lang/Object;)Lreactivecircus/flowbinding/android/widget/AdapterViewSelectionEvent$NothingSelected;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getView ()Landroid/widget/AdapterView;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/android/widget/AdapterViewSelectionEventFlowKt {
@@ -212,8 +307,15 @@ public final class reactivecircus/flowbinding/android/widget/AdapterViewSelectio
 
 public final class reactivecircus/flowbinding/android/widget/AfterTextChangeEvent {
 	public fun <init> (Landroid/widget/TextView;Landroid/text/Editable;)V
+	public final fun component1 ()Landroid/widget/TextView;
+	public final fun component2 ()Landroid/text/Editable;
+	public final fun copy (Landroid/widget/TextView;Landroid/text/Editable;)Lreactivecircus/flowbinding/android/widget/AfterTextChangeEvent;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/android/widget/AfterTextChangeEvent;Landroid/widget/TextView;Landroid/text/Editable;ILjava/lang/Object;)Lreactivecircus/flowbinding/android/widget/AfterTextChangeEvent;
+	public fun equals (Ljava/lang/Object;)Z
 	public final fun getEditable ()Landroid/text/Editable;
 	public final fun getView ()Landroid/widget/TextView;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/android/widget/AutoCompleteTextViewDismissFlowKt {
@@ -226,11 +328,21 @@ public final class reactivecircus/flowbinding/android/widget/AutoCompleteTextVie
 
 public final class reactivecircus/flowbinding/android/widget/BeforeTextChangeEvent {
 	public fun <init> (Landroid/widget/TextView;Ljava/lang/CharSequence;III)V
+	public final fun component1 ()Landroid/widget/TextView;
+	public final fun component2 ()Ljava/lang/CharSequence;
+	public final fun component3 ()I
+	public final fun component4 ()I
+	public final fun component5 ()I
+	public final fun copy (Landroid/widget/TextView;Ljava/lang/CharSequence;III)Lreactivecircus/flowbinding/android/widget/BeforeTextChangeEvent;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/android/widget/BeforeTextChangeEvent;Landroid/widget/TextView;Ljava/lang/CharSequence;IIIILjava/lang/Object;)Lreactivecircus/flowbinding/android/widget/BeforeTextChangeEvent;
+	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAfter ()I
 	public final fun getCount ()I
 	public final fun getStart ()I
 	public final fun getText ()Ljava/lang/CharSequence;
 	public final fun getView ()Landroid/widget/TextView;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/android/widget/CompoundButtonCheckedChangedFlowKt {
@@ -239,9 +351,17 @@ public final class reactivecircus/flowbinding/android/widget/CompoundButtonCheck
 
 public final class reactivecircus/flowbinding/android/widget/EditorActionEvent {
 	public fun <init> (Landroid/widget/TextView;ILandroid/view/KeyEvent;)V
+	public final fun component1 ()Landroid/widget/TextView;
+	public final fun component2 ()I
+	public final fun component3 ()Landroid/view/KeyEvent;
+	public final fun copy (Landroid/widget/TextView;ILandroid/view/KeyEvent;)Lreactivecircus/flowbinding/android/widget/EditorActionEvent;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/android/widget/EditorActionEvent;Landroid/widget/TextView;ILandroid/view/KeyEvent;ILjava/lang/Object;)Lreactivecircus/flowbinding/android/widget/EditorActionEvent;
+	public fun equals (Ljava/lang/Object;)Z
 	public final fun getActionId ()I
 	public final fun getKeyEvent ()Landroid/view/KeyEvent;
 	public final fun getView ()Landroid/widget/TextView;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/android/widget/PopupMenuDismissFlowKt {
@@ -259,14 +379,28 @@ public abstract class reactivecircus/flowbinding/android/widget/QueryTextEvent {
 
 public final class reactivecircus/flowbinding/android/widget/QueryTextEvent$QueryChanged : reactivecircus/flowbinding/android/widget/QueryTextEvent {
 	public fun <init> (Landroid/widget/SearchView;Ljava/lang/CharSequence;)V
+	public final fun component1 ()Landroid/widget/SearchView;
+	public final fun component2 ()Ljava/lang/CharSequence;
+	public final fun copy (Landroid/widget/SearchView;Ljava/lang/CharSequence;)Lreactivecircus/flowbinding/android/widget/QueryTextEvent$QueryChanged;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/android/widget/QueryTextEvent$QueryChanged;Landroid/widget/SearchView;Ljava/lang/CharSequence;ILjava/lang/Object;)Lreactivecircus/flowbinding/android/widget/QueryTextEvent$QueryChanged;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getQueryText ()Ljava/lang/CharSequence;
 	public fun getView ()Landroid/widget/SearchView;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/android/widget/QueryTextEvent$QuerySubmitted : reactivecircus/flowbinding/android/widget/QueryTextEvent {
 	public fun <init> (Landroid/widget/SearchView;Ljava/lang/CharSequence;)V
+	public final fun component1 ()Landroid/widget/SearchView;
+	public final fun component2 ()Ljava/lang/CharSequence;
+	public final fun copy (Landroid/widget/SearchView;Ljava/lang/CharSequence;)Lreactivecircus/flowbinding/android/widget/QueryTextEvent$QuerySubmitted;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/android/widget/QueryTextEvent$QuerySubmitted;Landroid/widget/SearchView;Ljava/lang/CharSequence;ILjava/lang/Object;)Lreactivecircus/flowbinding/android/widget/QueryTextEvent$QuerySubmitted;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getQueryText ()Ljava/lang/CharSequence;
 	public fun getView ()Landroid/widget/SearchView;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/android/widget/RadioGroupCheckedChangedFlowKt {
@@ -283,18 +417,36 @@ public final class reactivecircus/flowbinding/android/widget/RatingBarRatingChan
 
 public final class reactivecircus/flowbinding/android/widget/RatingChangeEvent {
 	public fun <init> (Landroid/widget/RatingBar;FZ)V
+	public final fun component1 ()Landroid/widget/RatingBar;
+	public final fun component2 ()F
+	public final fun component3 ()Z
+	public final fun copy (Landroid/widget/RatingBar;FZ)Lreactivecircus/flowbinding/android/widget/RatingChangeEvent;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/android/widget/RatingChangeEvent;Landroid/widget/RatingBar;FZILjava/lang/Object;)Lreactivecircus/flowbinding/android/widget/RatingChangeEvent;
+	public fun equals (Ljava/lang/Object;)Z
 	public final fun getFromUser ()Z
 	public final fun getRating ()F
 	public final fun getView ()Landroid/widget/RatingBar;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/android/widget/ScrollEvent {
 	public fun <init> (Landroid/widget/AbsListView;IIII)V
+	public final fun component1 ()Landroid/widget/AbsListView;
+	public final fun component2 ()I
+	public final fun component3 ()I
+	public final fun component4 ()I
+	public final fun component5 ()I
+	public final fun copy (Landroid/widget/AbsListView;IIII)Lreactivecircus/flowbinding/android/widget/ScrollEvent;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/android/widget/ScrollEvent;Landroid/widget/AbsListView;IIIIILjava/lang/Object;)Lreactivecircus/flowbinding/android/widget/ScrollEvent;
+	public fun equals (Ljava/lang/Object;)Z
 	public final fun getFirstVisibleItem ()I
 	public final fun getScrollState ()I
 	public final fun getTotalItemCount ()I
 	public final fun getView ()Landroid/widget/AbsListView;
 	public final fun getVisibleItemCount ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/android/widget/SearchViewQueryTextChangeFlowKt {
@@ -311,19 +463,39 @@ public abstract class reactivecircus/flowbinding/android/widget/SeekBarChangeEve
 
 public final class reactivecircus/flowbinding/android/widget/SeekBarChangeEvent$ProgressChanged : reactivecircus/flowbinding/android/widget/SeekBarChangeEvent {
 	public fun <init> (Landroid/widget/SeekBar;IZ)V
+	public final fun component1 ()Landroid/widget/SeekBar;
+	public final fun component2 ()I
+	public final fun component3 ()Z
+	public final fun copy (Landroid/widget/SeekBar;IZ)Lreactivecircus/flowbinding/android/widget/SeekBarChangeEvent$ProgressChanged;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/android/widget/SeekBarChangeEvent$ProgressChanged;Landroid/widget/SeekBar;IZILjava/lang/Object;)Lreactivecircus/flowbinding/android/widget/SeekBarChangeEvent$ProgressChanged;
+	public fun equals (Ljava/lang/Object;)Z
 	public final fun getFromUser ()Z
 	public final fun getProgress ()I
 	public fun getView ()Landroid/widget/SeekBar;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/android/widget/SeekBarChangeEvent$StartTracking : reactivecircus/flowbinding/android/widget/SeekBarChangeEvent {
 	public fun <init> (Landroid/widget/SeekBar;)V
+	public final fun component1 ()Landroid/widget/SeekBar;
+	public final fun copy (Landroid/widget/SeekBar;)Lreactivecircus/flowbinding/android/widget/SeekBarChangeEvent$StartTracking;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/android/widget/SeekBarChangeEvent$StartTracking;Landroid/widget/SeekBar;ILjava/lang/Object;)Lreactivecircus/flowbinding/android/widget/SeekBarChangeEvent$StartTracking;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getView ()Landroid/widget/SeekBar;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/android/widget/SeekBarChangeEvent$StopTracking : reactivecircus/flowbinding/android/widget/SeekBarChangeEvent {
 	public fun <init> (Landroid/widget/SeekBar;)V
+	public final fun component1 ()Landroid/widget/SeekBar;
+	public final fun copy (Landroid/widget/SeekBar;)Lreactivecircus/flowbinding/android/widget/SeekBarChangeEvent$StopTracking;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/android/widget/SeekBarChangeEvent$StopTracking;Landroid/widget/SeekBar;ILjava/lang/Object;)Lreactivecircus/flowbinding/android/widget/SeekBarChangeEvent$StopTracking;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getView ()Landroid/widget/SeekBar;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/android/widget/SeekBarChangeEventFlowKt {
@@ -336,11 +508,21 @@ public final class reactivecircus/flowbinding/android/widget/SeekBarProgressChan
 
 public final class reactivecircus/flowbinding/android/widget/TextChangeEvent {
 	public fun <init> (Landroid/widget/TextView;Ljava/lang/CharSequence;III)V
+	public final fun component1 ()Landroid/widget/TextView;
+	public final fun component2 ()Ljava/lang/CharSequence;
+	public final fun component3 ()I
+	public final fun component4 ()I
+	public final fun component5 ()I
+	public final fun copy (Landroid/widget/TextView;Ljava/lang/CharSequence;III)Lreactivecircus/flowbinding/android/widget/TextChangeEvent;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/android/widget/TextChangeEvent;Landroid/widget/TextView;Ljava/lang/CharSequence;IIIILjava/lang/Object;)Lreactivecircus/flowbinding/android/widget/TextChangeEvent;
+	public fun equals (Ljava/lang/Object;)Z
 	public final fun getBefore ()I
 	public final fun getCount ()I
 	public final fun getStart ()I
 	public final fun getText ()Ljava/lang/CharSequence;
 	public final fun getView ()Landroid/widget/TextView;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/android/widget/TextViewAfterTextChangeEventFlowKt {

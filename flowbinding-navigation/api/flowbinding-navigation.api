@@ -1,8 +1,16 @@
 public final class reactivecircus/flowbinding/navigation/DestinationChangeEvent {
 	public fun <init> (Landroidx/navigation/NavController;Landroidx/navigation/NavDestination;Landroid/os/Bundle;)V
+	public final fun component1 ()Landroidx/navigation/NavController;
+	public final fun component2 ()Landroidx/navigation/NavDestination;
+	public final fun component3 ()Landroid/os/Bundle;
+	public final fun copy (Landroidx/navigation/NavController;Landroidx/navigation/NavDestination;Landroid/os/Bundle;)Lreactivecircus/flowbinding/navigation/DestinationChangeEvent;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/navigation/DestinationChangeEvent;Landroidx/navigation/NavController;Landroidx/navigation/NavDestination;Landroid/os/Bundle;ILjava/lang/Object;)Lreactivecircus/flowbinding/navigation/DestinationChangeEvent;
+	public fun equals (Ljava/lang/Object;)Z
 	public final fun getArguments ()Landroid/os/Bundle;
 	public final fun getDestination ()Landroidx/navigation/NavDestination;
 	public final fun getNavController ()Landroidx/navigation/NavController;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/navigation/NavControllerDestinationChangeEventFlowKt {

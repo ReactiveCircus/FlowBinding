@@ -58,7 +58,7 @@ public fun <T : Adapter> AdapterView<T>.itemLongClickEvents(
     awaitClose { onItemLongClickListener = null }
 }.conflate()
 
-public class AdapterViewItemLongClickEvent(
+public data class AdapterViewItemLongClickEvent(
     public val view: AdapterView<*>,
     public val longClickedView: View?,
     public val position: Int,

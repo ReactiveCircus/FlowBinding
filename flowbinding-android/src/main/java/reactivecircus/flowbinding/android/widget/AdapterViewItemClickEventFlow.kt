@@ -48,7 +48,7 @@ public fun <T : Adapter> AdapterView<T>.itemClickEvents(): Flow<AdapterViewItemC
     awaitClose { onItemClickListener = null }
 }.conflate()
 
-public class AdapterViewItemClickEvent(
+public data class AdapterViewItemClickEvent(
     public val view: AdapterView<*>,
     public val clickedView: View?,
     public val position: Int,

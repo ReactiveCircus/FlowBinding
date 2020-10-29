@@ -28,8 +28,15 @@ public final class reactivecircus/flowbinding/material/ChipGroupCheckedChangedFl
 
 public final class reactivecircus/flowbinding/material/MaterialButtonCheckedChangedEvent {
 	public fun <init> (IZ)V
+	public final fun component1 ()I
+	public final fun component2 ()Z
+	public final fun copy (IZ)Lreactivecircus/flowbinding/material/MaterialButtonCheckedChangedEvent;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/material/MaterialButtonCheckedChangedEvent;IZILjava/lang/Object;)Lreactivecircus/flowbinding/material/MaterialButtonCheckedChangedEvent;
+	public fun equals (Ljava/lang/Object;)Z
 	public final fun getChecked ()Z
 	public final fun getCheckedId ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/material/MaterialButtonCheckedChangedFlowKt {
@@ -66,9 +73,17 @@ public final class reactivecircus/flowbinding/material/NavigationViewItemSelecte
 
 public final class reactivecircus/flowbinding/material/RangeSliderChangeEvent {
 	public fun <init> (Lcom/google/android/material/slider/RangeSlider;Ljava/util/List;Z)V
+	public final fun component1 ()Lcom/google/android/material/slider/RangeSlider;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Z
+	public final fun copy (Lcom/google/android/material/slider/RangeSlider;Ljava/util/List;Z)Lreactivecircus/flowbinding/material/RangeSliderChangeEvent;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/material/RangeSliderChangeEvent;Lcom/google/android/material/slider/RangeSlider;Ljava/util/List;ZILjava/lang/Object;)Lreactivecircus/flowbinding/material/RangeSliderChangeEvent;
+	public fun equals (Ljava/lang/Object;)Z
 	public final fun getFromUser ()Z
 	public final fun getRangeSlider ()Lcom/google/android/material/slider/RangeSlider;
 	public final fun getValues ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/material/RangeSliderChangeEventFlowKt {
@@ -81,12 +96,24 @@ public abstract class reactivecircus/flowbinding/material/RangeSliderTouchEvent 
 
 public final class reactivecircus/flowbinding/material/RangeSliderTouchEvent$StartTracking : reactivecircus/flowbinding/material/RangeSliderTouchEvent {
 	public fun <init> (Lcom/google/android/material/slider/RangeSlider;)V
+	public final fun component1 ()Lcom/google/android/material/slider/RangeSlider;
+	public final fun copy (Lcom/google/android/material/slider/RangeSlider;)Lreactivecircus/flowbinding/material/RangeSliderTouchEvent$StartTracking;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/material/RangeSliderTouchEvent$StartTracking;Lcom/google/android/material/slider/RangeSlider;ILjava/lang/Object;)Lreactivecircus/flowbinding/material/RangeSliderTouchEvent$StartTracking;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getRangeSlider ()Lcom/google/android/material/slider/RangeSlider;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/material/RangeSliderTouchEvent$StopTracking : reactivecircus/flowbinding/material/RangeSliderTouchEvent {
 	public fun <init> (Lcom/google/android/material/slider/RangeSlider;)V
+	public final fun component1 ()Lcom/google/android/material/slider/RangeSlider;
+	public final fun copy (Lcom/google/android/material/slider/RangeSlider;)Lreactivecircus/flowbinding/material/RangeSliderTouchEvent$StopTracking;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/material/RangeSliderTouchEvent$StopTracking;Lcom/google/android/material/slider/RangeSlider;ILjava/lang/Object;)Lreactivecircus/flowbinding/material/RangeSliderTouchEvent$StopTracking;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getRangeSlider ()Lcom/google/android/material/slider/RangeSlider;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/material/RangeSliderTouchEventFlowKt {
@@ -99,9 +126,17 @@ public final class reactivecircus/flowbinding/material/RangeSliderValuesChangeFl
 
 public final class reactivecircus/flowbinding/material/SliderChangeEvent {
 	public fun <init> (Lcom/google/android/material/slider/Slider;FZ)V
+	public final fun component1 ()Lcom/google/android/material/slider/Slider;
+	public final fun component2 ()F
+	public final fun component3 ()Z
+	public final fun copy (Lcom/google/android/material/slider/Slider;FZ)Lreactivecircus/flowbinding/material/SliderChangeEvent;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/material/SliderChangeEvent;Lcom/google/android/material/slider/Slider;FZILjava/lang/Object;)Lreactivecircus/flowbinding/material/SliderChangeEvent;
+	public fun equals (Ljava/lang/Object;)Z
 	public final fun getFromUser ()Z
 	public final fun getSlider ()Lcom/google/android/material/slider/Slider;
 	public final fun getValue ()F
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/material/SliderChangeEventFlowKt {
@@ -114,12 +149,24 @@ public abstract class reactivecircus/flowbinding/material/SliderTouchEvent {
 
 public final class reactivecircus/flowbinding/material/SliderTouchEvent$StartTracking : reactivecircus/flowbinding/material/SliderTouchEvent {
 	public fun <init> (Lcom/google/android/material/slider/Slider;)V
+	public final fun component1 ()Lcom/google/android/material/slider/Slider;
+	public final fun copy (Lcom/google/android/material/slider/Slider;)Lreactivecircus/flowbinding/material/SliderTouchEvent$StartTracking;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/material/SliderTouchEvent$StartTracking;Lcom/google/android/material/slider/Slider;ILjava/lang/Object;)Lreactivecircus/flowbinding/material/SliderTouchEvent$StartTracking;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getSlider ()Lcom/google/android/material/slider/Slider;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/material/SliderTouchEvent$StopTracking : reactivecircus/flowbinding/material/SliderTouchEvent {
 	public fun <init> (Lcom/google/android/material/slider/Slider;)V
+	public final fun component1 ()Lcom/google/android/material/slider/Slider;
+	public final fun copy (Lcom/google/android/material/slider/Slider;)Lreactivecircus/flowbinding/material/SliderTouchEvent$StopTracking;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/material/SliderTouchEvent$StopTracking;Lcom/google/android/material/slider/Slider;ILjava/lang/Object;)Lreactivecircus/flowbinding/material/SliderTouchEvent$StopTracking;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getSlider ()Lcom/google/android/material/slider/Slider;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/material/SliderTouchEventFlowKt {
@@ -153,20 +200,41 @@ public abstract class reactivecircus/flowbinding/material/TabLayoutSelectionEven
 
 public final class reactivecircus/flowbinding/material/TabLayoutSelectionEvent$TabReselected : reactivecircus/flowbinding/material/TabLayoutSelectionEvent {
 	public fun <init> (Lcom/google/android/material/tabs/TabLayout;Lcom/google/android/material/tabs/TabLayout$Tab;)V
+	public final fun component1 ()Lcom/google/android/material/tabs/TabLayout;
+	public final fun component2 ()Lcom/google/android/material/tabs/TabLayout$Tab;
+	public final fun copy (Lcom/google/android/material/tabs/TabLayout;Lcom/google/android/material/tabs/TabLayout$Tab;)Lreactivecircus/flowbinding/material/TabLayoutSelectionEvent$TabReselected;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/material/TabLayoutSelectionEvent$TabReselected;Lcom/google/android/material/tabs/TabLayout;Lcom/google/android/material/tabs/TabLayout$Tab;ILjava/lang/Object;)Lreactivecircus/flowbinding/material/TabLayoutSelectionEvent$TabReselected;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getTab ()Lcom/google/android/material/tabs/TabLayout$Tab;
 	public fun getTabLayout ()Lcom/google/android/material/tabs/TabLayout;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/material/TabLayoutSelectionEvent$TabSelected : reactivecircus/flowbinding/material/TabLayoutSelectionEvent {
 	public fun <init> (Lcom/google/android/material/tabs/TabLayout;Lcom/google/android/material/tabs/TabLayout$Tab;)V
+	public final fun component1 ()Lcom/google/android/material/tabs/TabLayout;
+	public final fun component2 ()Lcom/google/android/material/tabs/TabLayout$Tab;
+	public final fun copy (Lcom/google/android/material/tabs/TabLayout;Lcom/google/android/material/tabs/TabLayout$Tab;)Lreactivecircus/flowbinding/material/TabLayoutSelectionEvent$TabSelected;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/material/TabLayoutSelectionEvent$TabSelected;Lcom/google/android/material/tabs/TabLayout;Lcom/google/android/material/tabs/TabLayout$Tab;ILjava/lang/Object;)Lreactivecircus/flowbinding/material/TabLayoutSelectionEvent$TabSelected;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getTab ()Lcom/google/android/material/tabs/TabLayout$Tab;
 	public fun getTabLayout ()Lcom/google/android/material/tabs/TabLayout;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/material/TabLayoutSelectionEvent$TabUnselected : reactivecircus/flowbinding/material/TabLayoutSelectionEvent {
 	public fun <init> (Lcom/google/android/material/tabs/TabLayout;Lcom/google/android/material/tabs/TabLayout$Tab;)V
+	public final fun component1 ()Lcom/google/android/material/tabs/TabLayout;
+	public final fun component2 ()Lcom/google/android/material/tabs/TabLayout$Tab;
+	public final fun copy (Lcom/google/android/material/tabs/TabLayout;Lcom/google/android/material/tabs/TabLayout$Tab;)Lreactivecircus/flowbinding/material/TabLayoutSelectionEvent$TabUnselected;
+	public static synthetic fun copy$default (Lreactivecircus/flowbinding/material/TabLayoutSelectionEvent$TabUnselected;Lcom/google/android/material/tabs/TabLayout;Lcom/google/android/material/tabs/TabLayout$Tab;ILjava/lang/Object;)Lreactivecircus/flowbinding/material/TabLayoutSelectionEvent$TabUnselected;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getTab ()Lcom/google/android/material/tabs/TabLayout$Tab;
 	public fun getTabLayout ()Lcom/google/android/material/tabs/TabLayout;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class reactivecircus/flowbinding/material/TabLayoutTabSelectionEventFlowKt {
