@@ -23,7 +23,7 @@ rootProject.ext.versions = [
                 drawerLayout      : '1.1.1',
                 constraintLayout  : '2.0.4',
                 arch              : '2.1.0',
-                lifecycle         : '2.3.0-beta01',
+                lifecycle         : '2.3.0-rc01',
                 navigation        : '2.3.2',
                 preference        : '1.1.1',
                 test              : [
