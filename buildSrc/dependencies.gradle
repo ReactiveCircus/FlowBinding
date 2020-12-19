@@ -5,7 +5,7 @@ rootProject.ext.versions = [
         firestormGradlePlugin       : '0.1.1',
         binaryCompatibilityValidator: '0.2.4',
         kotlin                      : '1.4.21',
-        detekt                      : '1.14.2',
+        detekt                      : '1.15.0',
         kotlinx                     : [
                 coroutines: '1.4.2',
         ],
