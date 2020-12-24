@@ -3,7 +3,7 @@ rootProject.ext.versions = [
         androidLint                 : '27.1.0',
         mavenPublishPlugin          : '0.13.0',
         firestormGradlePlugin       : '0.1.1',
-        binaryCompatibilityValidator: '0.2.4',
+        binaryCompatibilityValidator: '0.3.0',
         kotlin                      : '1.4.21',
         detekt                      : '1.15.0',
         kotlinx                     : [
