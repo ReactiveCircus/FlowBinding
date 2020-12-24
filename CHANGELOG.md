@@ -1,10 +1,20 @@
 # Change Log
 
+## 1.0.0
+
+This is our first stable release! Thanks everyone for using FlowBinding, reporting bugs, providing feedback and sending PRs.
+
+### Changed
+- Update to Kotlin 1.4.10.
+- Update to Coroutines 1.4.2.
+- Update to AndroidX Navigation 2.3.2.
+- Update to AndroidX Lifecycle 2.3.0-rc01.
+
 ## 1.0.0-beta02
 
 ### Changed
 - Convert all custom event types to data class.
-- Update to AndroidX Navigation 2.3.1.
+- Update to AndroidX Navigation 2.3.2.
 - Update to Coroutines 1.4.0.
 
 ## 1.0.0-beta01
