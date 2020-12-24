@@ -13,7 +13,8 @@ Kotlin Flow binding APIs for Android's platform and unbundled UI widgets, inspir
 
 ## Article
 
-Blog post published in [Kotlin Weekly #170][kotlin-weekly] - [Binding Android UI with Kotlin Flow][article]
+- [Binding Android UI with Kotlin Flow][article] - featured in [Kotlin Weekly #170][kotlin-weekly]
+- [FlowBinding 1.0](https://dev.to/ychescale9/flowbinding-1-0-44h)
 
 ## Download
 
