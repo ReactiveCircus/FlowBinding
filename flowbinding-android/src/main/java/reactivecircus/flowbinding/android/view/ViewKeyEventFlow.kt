@@ -37,7 +37,6 @@ public fun View.keys(handled: (KeyEvent) -> Boolean = { true }): Flow<KeyEvent> 
     checkMainThread()
     val listener = View.OnKeyListener { _, _, event ->
         if (handled(event)) {
-            event.keyCode == KeyEvent.KEYCODE_ENTER
             safeOffer(event)
             true
         } else {
