@@ -44,7 +44,7 @@ nav:
   - 'AndroidX ViewPager2 Bindings': flowbinding-viewpager2/index.md
   - 'Material Components Bindings': flowbinding-material/index.md
   - 'Change Log': changelog.md
-  - 'API Docs': api/-modules.html" target="_blank
+  - 'API Docs': api/index.html" target="_blank
 
 markdown_extensions:
   - admonition

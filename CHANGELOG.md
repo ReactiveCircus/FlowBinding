@@ -20,7 +20,7 @@ This is our first stable release! Thanks everyone for using FlowBinding, reporti
 ## 1.0.0-beta01
 
 ### Added
-- New [API docs](https://reactivecircus.github.io/FlowBinding/api/-modules.html) powered by Dokka 1.4.
+- New [API docs](https://reactivecircus.github.io/FlowBinding/api/index.html) powered by Dokka 1.4.
 
 ### Changed
 - Update AndroidX dependencies.

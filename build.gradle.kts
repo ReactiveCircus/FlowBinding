@@ -13,7 +13,6 @@ buildscript {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.getValue("kotlin")}")
         classpath("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${versions.getValue("detekt")}")
         classpath("com.vanniktech:gradle-maven-publish-plugin:${versions.getValue("mavenPublishPlugin")}")
-        classpath("io.github.reactivecircus.firestorm:firestorm-gradle-plugin:${versions.getValue("firestormGradlePlugin")}")
     }
 }
 
@@ -23,7 +22,11 @@ plugins {
 }
 
 tasks.dokkaHtmlMultiModule.configure {
-    outputDirectory.set(rootDir.resolve("docs/api"))
+    val apiDir = rootDir.resolve("docs/api")
+    outputDirectory.set(apiDir)
+    doLast {
+        apiDir.resolve("-modules.html").renameTo(apiDir.resolve("index.html"))
+    }
 }
 
 subprojects {
