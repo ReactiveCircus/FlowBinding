@@ -103,6 +103,7 @@ fun Project.configureForAllProjects(enableExplicitApi: Property<Boolean>) {
 
     tasks.withType<KotlinCompile>().configureEach {
         kotlinOptions {
+            useIR = true
             jvmTarget = JavaVersion.VERSION_1_8.toString()
             freeCompilerArgs = freeCompilerArgs + buildList {
                 addAll(additionalCompilerArgs)
