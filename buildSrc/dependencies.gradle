@@ -36,7 +36,7 @@ rootProject.ext.versions = [
                 ],
                 espresso          : '3.3.0'
         ],
-        material                    : '1.2.1',
+        material                    : '1.3.0',
         blueprint                   : '1.14.1',
         junit                       : '4.13.1',
         kluent                      : '1.58'
