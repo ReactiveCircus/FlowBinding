@@ -4,7 +4,7 @@ rootProject.ext.versions = [
         mavenPublishPlugin          : '0.13.0',
         binaryCompatibilityValidator: '0.4.0',
         kotlin                      : '1.4.31',
-        detekt                      : '1.15.0',
+        detekt                      : '1.16.0',
         kotlinx                     : [
                 coroutines: '1.4.3',
         ],

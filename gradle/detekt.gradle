@@ -6,9 +6,9 @@ dependencies {
 
 detekt {
     input = files("src/")
-    failFast = true
     config = files("${project.rootDir}/detekt.yml")
     buildUponDefaultConfig = true
+    allRules = true
     reports {
         html.destination = file("${project.buildDir}/reports/detekt/${project.name}.html")
     }
