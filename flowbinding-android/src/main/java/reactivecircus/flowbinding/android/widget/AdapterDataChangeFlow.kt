@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.InitialValueFlow
 import reactivecircus.flowbinding.common.asInitialValueFlow
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [InitialValueFlow] of data change events on the [Adapter] instance.
@@ -30,11 +29,11 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun Adapter.dataChanges(): InitialValueFlow<Adapter> = callbackFlow<Adapter> {
+public fun Adapter.dataChanges(): InitialValueFlow<Adapter> = callbackFlow {
     checkMainThread()
     val observer = object : DataSetObserver() {
         override fun onChanged() {
-            safeOffer(this@dataChanges)
+            trySend(this@dataChanges)
         }
     }
     registerDataSetObserver(observer)

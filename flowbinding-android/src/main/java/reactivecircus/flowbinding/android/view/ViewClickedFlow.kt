@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of click events on the [View] instance.
@@ -31,7 +30,7 @@ import reactivecircus.flowbinding.common.safeOffer
 public fun View.clicks(): Flow<Unit> = callbackFlow {
     checkMainThread()
     val listener = View.OnClickListener {
-        safeOffer(Unit)
+        trySend(Unit)
     }
     setOnClickListener(listener)
     awaitClose { setOnClickListener(null) }

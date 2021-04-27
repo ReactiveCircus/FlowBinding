@@ -12,7 +12,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of destination change events on the [NavController] instance.
@@ -35,7 +34,7 @@ import reactivecircus.flowbinding.common.safeOffer
 public fun NavController.destinationChangeEvents(): Flow<DestinationChangeEvent> = callbackFlow {
     checkMainThread()
     val listener = NavController.OnDestinationChangedListener { controller, destination, arguments ->
-        safeOffer(
+        trySend(
             DestinationChangeEvent(
                 navController = controller,
                 destination = destination,

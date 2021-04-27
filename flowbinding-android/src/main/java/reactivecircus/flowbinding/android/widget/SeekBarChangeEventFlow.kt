@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.InitialValueFlow
 import reactivecircus.flowbinding.common.asInitialValueFlow
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [InitialValueFlow] of change events on the [SeekBar] instance.
@@ -41,44 +40,43 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun SeekBar.changeEvents(): InitialValueFlow<SeekBarChangeEvent> =
-    callbackFlow<SeekBarChangeEvent> {
-        checkMainThread()
-        val listener = object : SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-                safeOffer(
-                    SeekBarChangeEvent.ProgressChanged(
-                        view = seekBar,
-                        progress = progress,
-                        fromUser = fromUser
-                    )
+public fun SeekBar.changeEvents(): InitialValueFlow<SeekBarChangeEvent> = callbackFlow {
+    checkMainThread()
+    val listener = object : SeekBar.OnSeekBarChangeListener {
+        override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+            trySend(
+                SeekBarChangeEvent.ProgressChanged(
+                    view = seekBar,
+                    progress = progress,
+                    fromUser = fromUser
                 )
-            }
-
-            override fun onStartTrackingTouch(seekBar: SeekBar) {
-                safeOffer(
-                    SeekBarChangeEvent.StartTracking(view = seekBar)
-                )
-            }
-
-            override fun onStopTrackingTouch(seekBar: SeekBar) {
-                safeOffer(
-                    SeekBarChangeEvent.StopTracking(view = seekBar)
-                )
-            }
-        }
-
-        setOnSeekBarChangeListener(listener)
-        awaitClose { setOnSeekBarChangeListener(null) }
-    }
-        .conflate()
-        .asInitialValueFlow {
-            SeekBarChangeEvent.ProgressChanged(
-                view = this,
-                progress = progress,
-                fromUser = false
             )
         }
+
+        override fun onStartTrackingTouch(seekBar: SeekBar) {
+            trySend(
+                SeekBarChangeEvent.StartTracking(view = seekBar)
+            )
+        }
+
+        override fun onStopTrackingTouch(seekBar: SeekBar) {
+            trySend(
+                SeekBarChangeEvent.StopTracking(view = seekBar)
+            )
+        }
+    }
+
+    setOnSeekBarChangeListener(listener)
+    awaitClose { setOnSeekBarChangeListener(null) }
+}
+    .conflate()
+    .asInitialValueFlow {
+        SeekBarChangeEvent.ProgressChanged(
+            view = this,
+            progress = progress,
+            fromUser = false
+        )
+    }
 
 public sealed class SeekBarChangeEvent {
     public abstract val view: SeekBar

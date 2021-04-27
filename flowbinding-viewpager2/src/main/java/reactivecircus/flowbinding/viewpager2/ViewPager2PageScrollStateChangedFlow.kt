@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of page scroll state change events on the [ViewPager2] instance
@@ -32,11 +31,11 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun ViewPager2.pageScrollStateChanges(): Flow<Int> = callbackFlow<Int> {
+public fun ViewPager2.pageScrollStateChanges(): Flow<Int> = callbackFlow {
     checkMainThread()
     val callback = object : ViewPager2.OnPageChangeCallback() {
         override fun onPageScrollStateChanged(state: Int) {
-            safeOffer(state)
+            trySend(state)
         }
     }
     registerOnPageChangeCallback(callback)

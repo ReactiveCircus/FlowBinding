@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of item long clicks on the [AdapterView] instance
@@ -40,7 +39,7 @@ public fun <T : Adapter> AdapterView<T>.itemLongClicks(
     checkMainThread()
     val listener = AdapterView.OnItemLongClickListener { _, _, position, _ ->
         if (handled()) {
-            safeOffer(position)
+            trySend(position)
             true
         } else {
             false

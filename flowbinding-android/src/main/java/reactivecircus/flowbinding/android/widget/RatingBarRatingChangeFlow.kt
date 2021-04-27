@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.InitialValueFlow
 import reactivecircus.flowbinding.common.asInitialValueFlow
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [InitialValueFlow] of rating changes on the [RatingBar] instance
@@ -33,7 +32,7 @@ import reactivecircus.flowbinding.common.safeOffer
 public fun RatingBar.ratingChanges(): InitialValueFlow<Float> = callbackFlow {
     checkMainThread()
     val listener = RatingBar.OnRatingBarChangeListener { _, rating, _ ->
-        safeOffer(rating)
+        trySend(rating)
     }
     onRatingBarChangeListener = listener
     awaitClose { onRatingBarChangeListener = null }

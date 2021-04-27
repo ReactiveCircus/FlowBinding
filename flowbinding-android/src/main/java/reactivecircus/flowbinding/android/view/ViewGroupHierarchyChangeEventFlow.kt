@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of view group hierarchy change events on the [ViewGroup] instance
@@ -41,15 +40,15 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun ViewGroup.hierarchyChangeEvents(): Flow<HierarchyChangeEvent> = callbackFlow<HierarchyChangeEvent> {
+public fun ViewGroup.hierarchyChangeEvents(): Flow<HierarchyChangeEvent> = callbackFlow {
     checkMainThread()
     val listener = object : ViewGroup.OnHierarchyChangeListener {
         override fun onChildViewAdded(parent: View, child: View) {
-            safeOffer(HierarchyChangeEvent.ChildAdded(this@hierarchyChangeEvents, child))
+            trySend(HierarchyChangeEvent.ChildAdded(this@hierarchyChangeEvents, child))
         }
 
         override fun onChildViewRemoved(parent: View, child: View) {
-            safeOffer(HierarchyChangeEvent.ChildRemoved(this@hierarchyChangeEvents, child))
+            trySend(HierarchyChangeEvent.ChildRemoved(this@hierarchyChangeEvents, child))
         }
     }
     setOnHierarchyChangeListener(listener)

@@ -15,7 +15,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of bottom sheet state change events on the [View] instance with a [BottomSheetBehavior]
@@ -37,12 +36,12 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun View.bottomSheetStateChanges(): Flow<Int> = callbackFlow<Int> {
+public fun View.bottomSheetStateChanges(): Flow<Int> = callbackFlow {
     checkMainThread()
     val behavior = BottomSheetBehavior.from(this@bottomSheetStateChanges)
     val callback = object : BottomSheetBehavior.BottomSheetCallback() {
         override fun onStateChanged(bottomSheet: View, newState: Int) {
-            safeOffer(newState)
+            trySend(newState)
         }
 
         override fun onSlide(bottomSheet: View, slideOffset: Float) = Unit

@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.InitialValueFlow
 import reactivecircus.flowbinding.common.asInitialValueFlow
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [InitialValueFlow] of drawer state change events on the [DrawerLayout] instance
@@ -33,30 +32,29 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun DrawerLayout.drawerStateChanges(gravity: Int): InitialValueFlow<Boolean> =
-    callbackFlow<Boolean> {
-        checkMainThread()
-        val listener = object : DrawerLayout.DrawerListener {
-            override fun onDrawerOpened(drawerView: View) {
-                val drawerGravity = (drawerView.layoutParams as DrawerLayout.LayoutParams).gravity
-                if (drawerGravity == gravity) {
-                    safeOffer(true)
-                }
+public fun DrawerLayout.drawerStateChanges(gravity: Int): InitialValueFlow<Boolean> = callbackFlow {
+    checkMainThread()
+    val listener = object : DrawerLayout.DrawerListener {
+        override fun onDrawerOpened(drawerView: View) {
+            val drawerGravity = (drawerView.layoutParams as DrawerLayout.LayoutParams).gravity
+            if (drawerGravity == gravity) {
+                trySend(true)
             }
-
-            override fun onDrawerClosed(drawerView: View) {
-                val drawerGravity = (drawerView.layoutParams as DrawerLayout.LayoutParams).gravity
-                if (drawerGravity == gravity) {
-                    safeOffer(false)
-                }
-            }
-
-            override fun onDrawerSlide(drawerView: View, slideOffset: Float) = Unit
-
-            override fun onDrawerStateChanged(newState: Int) = Unit
         }
-        addDrawerListener(listener)
-        awaitClose { removeDrawerListener(listener) }
+
+        override fun onDrawerClosed(drawerView: View) {
+            val drawerGravity = (drawerView.layoutParams as DrawerLayout.LayoutParams).gravity
+            if (drawerGravity == gravity) {
+                trySend(false)
+            }
+        }
+
+        override fun onDrawerSlide(drawerView: View, slideOffset: Float) = Unit
+
+        override fun onDrawerStateChanged(newState: Int) = Unit
     }
-        .conflate()
-        .asInitialValueFlow { isDrawerOpen(gravity) }
+    addDrawerListener(listener)
+    awaitClose { removeDrawerListener(listener) }
+}
+    .conflate()
+    .asInitialValueFlow { isDrawerOpen(gravity) }

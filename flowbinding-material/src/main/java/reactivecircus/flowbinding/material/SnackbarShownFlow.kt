@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of shown events on the [Snackbar] instance.
@@ -28,11 +27,11 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun Snackbar.shownEvents(): Flow<Unit> = callbackFlow<Unit> {
+public fun Snackbar.shownEvents(): Flow<Unit> = callbackFlow {
     checkMainThread()
     val callback = object : Snackbar.Callback() {
         override fun onShown(sb: Snackbar?) {
-            safeOffer(Unit)
+            trySend(Unit)
         }
     }
     this@shownEvents.addCallback(callback)

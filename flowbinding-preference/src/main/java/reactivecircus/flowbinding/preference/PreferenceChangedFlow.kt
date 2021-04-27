@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of change events on the [Preference] instance
@@ -34,7 +33,8 @@ import reactivecircus.flowbinding.common.safeOffer
 public fun Preference.preferenceChanges(): Flow<Any> = callbackFlow {
     checkMainThread()
     val listener = Preference.OnPreferenceChangeListener { _, newValue ->
-        safeOffer(newValue)
+        trySend(newValue)
+        true
     }
     onPreferenceChangeListener = listener
     awaitClose { onPreferenceChangeListener = null }

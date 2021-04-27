@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.InitialValueFlow
 import reactivecircus.flowbinding.common.asInitialValueFlow
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [InitialValueFlow] of text changes on the [TextView] instance
@@ -38,13 +37,13 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun TextView.textChanges(): InitialValueFlow<CharSequence> = callbackFlow<CharSequence> {
+public fun TextView.textChanges(): InitialValueFlow<CharSequence> = callbackFlow {
     checkMainThread()
     val listener = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) = Unit
 
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-            safeOffer(s)
+            trySend(s)
         }
 
         override fun afterTextChanged(s: Editable) = Unit

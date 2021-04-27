@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of dismissed events on the [View] instance with a [SwipeDismissBehavior]
@@ -33,7 +32,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun View.dismisses(): Flow<View> = callbackFlow<View> {
+public fun View.dismisses(): Flow<View> = callbackFlow {
     checkMainThread()
     val params = layoutParams
     check(params is CoordinatorLayout.LayoutParams) {
@@ -45,7 +44,7 @@ public fun View.dismisses(): Flow<View> = callbackFlow<View> {
     }
     val listener = object : SwipeDismissBehavior.OnDismissListener {
         override fun onDismiss(view: View) {
-            safeOffer(view)
+            trySend(view)
         }
 
         override fun onDragStateChanged(state: Int) = Unit

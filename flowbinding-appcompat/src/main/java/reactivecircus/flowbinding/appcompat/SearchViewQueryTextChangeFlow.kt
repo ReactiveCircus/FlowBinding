@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.InitialValueFlow
 import reactivecircus.flowbinding.common.asInitialValueFlow
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [InitialValueFlow] of query text changes on the [SearchView] instance
@@ -30,11 +29,11 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun SearchView.queryTextChanges(): InitialValueFlow<CharSequence> = callbackFlow<CharSequence> {
+public fun SearchView.queryTextChanges(): InitialValueFlow<CharSequence> = callbackFlow {
     checkMainThread()
     val listener = object : SearchView.OnQueryTextListener {
         override fun onQueryTextChange(newText: String): Boolean {
-            safeOffer(newText)
+            trySend(newText)
             return true
         }
 

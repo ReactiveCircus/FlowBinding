@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of item clicked events on the [Toolbar] instance
@@ -33,7 +32,8 @@ import reactivecircus.flowbinding.common.safeOffer
 public fun Toolbar.itemClicks(): Flow<MenuItem> = callbackFlow {
     checkMainThread()
     val listener = Toolbar.OnMenuItemClickListener {
-        safeOffer(it)
+        trySend(it)
+        true
     }
     setOnMenuItemClickListener(listener)
     awaitClose { setOnMenuItemClickListener(null) }

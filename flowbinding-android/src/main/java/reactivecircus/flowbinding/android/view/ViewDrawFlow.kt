@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of draw events on the [View] instance.
@@ -35,7 +34,7 @@ import reactivecircus.flowbinding.common.safeOffer
 public fun View.draws(): Flow<Unit> = callbackFlow {
     checkMainThread()
     val listener = ViewTreeObserver.OnDrawListener {
-        safeOffer(Unit)
+        trySend(Unit)
     }
     viewTreeObserver.addOnDrawListener(listener)
     awaitClose { viewTreeObserver.removeOnDrawListener(listener) }

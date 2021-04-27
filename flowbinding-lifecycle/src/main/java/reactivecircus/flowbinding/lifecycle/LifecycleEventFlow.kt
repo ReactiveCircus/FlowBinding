@@ -10,7 +10,6 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of [Lifecycle.Event]s on the [Lifecycle] instance.
@@ -37,7 +36,7 @@ public fun Lifecycle.events(): Flow<Lifecycle.Event> = callbackFlow {
         @Suppress("UNUSED_PARAMETER")
         @OnLifecycleEvent(Lifecycle.Event.ON_ANY)
         fun onEvent(owner: LifecycleOwner, event: Lifecycle.Event) {
-            safeOffer(event)
+            trySend(event)
         }
     }
     addObserver(observer)

@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of positive button click events on the [MaterialDatePicker] instance
@@ -31,10 +30,10 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun <S> MaterialDatePicker<S>.positiveButtonClicks(): Flow<S> = callbackFlow<S> {
+public fun <S> MaterialDatePicker<S>.positiveButtonClicks(): Flow<S> = callbackFlow {
     checkMainThread()
     val listener = MaterialPickerOnPositiveButtonClickListener<S> {
-        safeOffer(it)
+        trySend(it)
     }
     addOnPositiveButtonClickListener(listener)
     awaitClose { removeOnPositiveButtonClickListener(listener) }

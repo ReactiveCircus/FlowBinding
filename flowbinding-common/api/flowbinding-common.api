@@ -12,7 +12,3 @@ public final class reactivecircus/flowbinding/common/InitialValueFlowKt {
 	public static final fun asInitialValueFlow (Lkotlinx/coroutines/flow/Flow;Lkotlin/jvm/functions/Function0;)Lreactivecircus/flowbinding/common/InitialValueFlow;
 }
 
-public final class reactivecircus/flowbinding/common/SafeOfferKt {
-	public static final fun safeOffer (Lkotlinx/coroutines/channels/SendChannel;Ljava/lang/Object;)Z
-}
-

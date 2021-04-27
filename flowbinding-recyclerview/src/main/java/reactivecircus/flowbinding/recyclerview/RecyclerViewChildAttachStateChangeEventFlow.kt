@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of child attach state change events on the [RecyclerView] instance
@@ -41,31 +40,30 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun RecyclerView.childAttachStateChangeEvents(): Flow<RecyclerViewChildAttachStateChangeEvent> =
-    callbackFlow<RecyclerViewChildAttachStateChangeEvent> {
-        checkMainThread()
-        val listener = object : RecyclerView.OnChildAttachStateChangeListener {
-            override fun onChildViewAttachedToWindow(childView: View) {
-                safeOffer(
-                    RecyclerViewChildAttachStateChangeEvent.Attached(
-                        view = this@childAttachStateChangeEvents,
-                        child = childView
-                    )
+public fun RecyclerView.childAttachStateChangeEvents(): Flow<RecyclerViewChildAttachStateChangeEvent> = callbackFlow {
+    checkMainThread()
+    val listener = object : RecyclerView.OnChildAttachStateChangeListener {
+        override fun onChildViewAttachedToWindow(childView: View) {
+            trySend(
+                RecyclerViewChildAttachStateChangeEvent.Attached(
+                    view = this@childAttachStateChangeEvents,
+                    child = childView
                 )
-            }
-
-            override fun onChildViewDetachedFromWindow(childView: View) {
-                safeOffer(
-                    RecyclerViewChildAttachStateChangeEvent.Detached(
-                        view = this@childAttachStateChangeEvents,
-                        child = childView
-                    )
-                )
-            }
+            )
         }
-        addOnChildAttachStateChangeListener(listener)
-        awaitClose { removeOnChildAttachStateChangeListener(listener) }
-    }.conflate()
+
+        override fun onChildViewDetachedFromWindow(childView: View) {
+            trySend(
+                RecyclerViewChildAttachStateChangeEvent.Detached(
+                    view = this@childAttachStateChangeEvents,
+                    child = childView
+                )
+            )
+        }
+    }
+    addOnChildAttachStateChangeListener(listener)
+    awaitClose { removeOnChildAttachStateChangeListener(listener) }
+}.conflate()
 
 public sealed class RecyclerViewChildAttachStateChangeEvent {
     public abstract val view: RecyclerView

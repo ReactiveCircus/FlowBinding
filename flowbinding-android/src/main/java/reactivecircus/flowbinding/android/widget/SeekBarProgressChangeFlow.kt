@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.InitialValueFlow
 import reactivecircus.flowbinding.common.asInitialValueFlow
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [InitialValueFlow] of progress changes on the [SeekBar] instance
@@ -30,11 +29,11 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun SeekBar.progressChanges(): InitialValueFlow<Int> = callbackFlow<Int> {
+public fun SeekBar.progressChanges(): InitialValueFlow<Int> = callbackFlow {
     checkMainThread()
     val listener = object : SeekBar.OnSeekBarChangeListener {
         override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-            safeOffer(progress)
+            trySend(progress)
         }
 
         override fun onStartTrackingTouch(seekBar: SeekBar) = Unit

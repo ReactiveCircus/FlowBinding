@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.onStart
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of item selected events on the [NavigationView] instance
@@ -36,7 +35,8 @@ import reactivecircus.flowbinding.common.safeOffer
 public fun NavigationView.itemSelections(): Flow<MenuItem> = callbackFlow {
     checkMainThread()
     val listener = NavigationView.OnNavigationItemSelectedListener { item ->
-        safeOffer(item)
+        trySend(item)
+        true
     }
     setNavigationItemSelectedListener(listener)
     awaitClose { setNavigationItemSelectedListener(null) }

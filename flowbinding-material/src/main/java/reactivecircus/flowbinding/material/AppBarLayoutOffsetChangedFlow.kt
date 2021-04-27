@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of offset changed events on the [AppBarLayout] instance
@@ -32,7 +31,7 @@ import reactivecircus.flowbinding.common.safeOffer
 public fun AppBarLayout.offsetChanges(): Flow<Int> = callbackFlow {
     checkMainThread()
     val listener = AppBarLayout.OnOffsetChangedListener { _, verticalOffset ->
-        safeOffer(verticalOffset)
+        trySend(verticalOffset)
     }
     addOnOffsetChangedListener(listener)
     awaitClose { removeOnOffsetChangedListener(listener) }

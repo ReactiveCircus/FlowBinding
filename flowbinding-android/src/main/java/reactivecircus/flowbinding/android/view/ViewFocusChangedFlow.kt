@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.InitialValueFlow
 import reactivecircus.flowbinding.common.asInitialValueFlow
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [InitialValueFlow] of focus changed events on the [View] instance,
@@ -33,7 +32,7 @@ import reactivecircus.flowbinding.common.safeOffer
 public fun View.focusChanges(): InitialValueFlow<Boolean> = callbackFlow {
     checkMainThread()
     val listener = View.OnFocusChangeListener { _, hasFocus ->
-        safeOffer(hasFocus)
+        trySend(hasFocus)
     }
     onFocusChangeListener = listener
     awaitClose { onFocusChangeListener = null }

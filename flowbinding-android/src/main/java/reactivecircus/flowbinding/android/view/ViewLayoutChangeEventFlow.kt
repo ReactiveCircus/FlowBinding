@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of view layout change events on the [View] instance.
@@ -34,7 +33,7 @@ public fun View.layoutChangeEvents(): Flow<LayoutChangeEvent> = callbackFlow {
     checkMainThread()
     val listener =
         View.OnLayoutChangeListener { v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
-            safeOffer(
+            trySend(
                 LayoutChangeEvent(
                     view = v,
                     left = left,

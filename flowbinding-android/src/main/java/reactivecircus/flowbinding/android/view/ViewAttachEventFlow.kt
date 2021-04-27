@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of view attach events on the [View] instance
@@ -40,15 +39,15 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun View.attachEvents(): Flow<ViewAttachEvent> = callbackFlow<ViewAttachEvent> {
+public fun View.attachEvents(): Flow<ViewAttachEvent> = callbackFlow {
     checkMainThread()
     val listener = object : View.OnAttachStateChangeListener {
         override fun onViewAttachedToWindow(v: View) {
-            safeOffer(ViewAttachEvent.Attached(v))
+            trySend(ViewAttachEvent.Attached(v))
         }
 
         override fun onViewDetachedFromWindow(v: View) {
-            safeOffer(ViewAttachEvent.Detached(v))
+            trySend(ViewAttachEvent.Detached(v))
         }
     }
     addOnAttachStateChangeListener(listener)

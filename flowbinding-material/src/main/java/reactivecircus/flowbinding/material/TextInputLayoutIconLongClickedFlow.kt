@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of long clicked events on the [TextInputLayout] instance's start icon.
@@ -32,7 +31,8 @@ import reactivecircus.flowbinding.common.safeOffer
 public fun TextInputLayout.startIconLongClicks(): Flow<Unit> = callbackFlow {
     checkMainThread()
     val listener = View.OnLongClickListener {
-        safeOffer(Unit)
+        trySend(Unit)
+        true
     }
     setStartIconOnLongClickListener(listener)
     awaitClose { setStartIconOnLongClickListener(null) }
@@ -59,7 +59,8 @@ public fun TextInputLayout.startIconLongClicks(): Flow<Unit> = callbackFlow {
 public fun TextInputLayout.endIconLongClicks(): Flow<Unit> = callbackFlow {
     checkMainThread()
     val listener = View.OnLongClickListener {
-        safeOffer(Unit)
+        trySend(Unit)
+        true
     }
     setEndIconOnLongClickListener(listener)
     awaitClose { setEndIconOnLongClickListener(null) }
@@ -86,7 +87,8 @@ public fun TextInputLayout.endIconLongClicks(): Flow<Unit> = callbackFlow {
 public fun TextInputLayout.errorIconLongClicks(): Flow<Unit> = callbackFlow {
     checkMainThread()
     val listener = View.OnLongClickListener {
-        safeOffer(Unit)
+        trySend(Unit)
+        true
     }
     setErrorIconOnLongClickListener(listener)
     awaitClose { setErrorIconOnLongClickListener(null) }

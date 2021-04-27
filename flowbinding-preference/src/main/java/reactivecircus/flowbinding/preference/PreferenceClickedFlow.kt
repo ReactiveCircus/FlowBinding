@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of click events on the [Preference] instance.
@@ -33,7 +32,8 @@ import reactivecircus.flowbinding.common.safeOffer
 public fun Preference.preferenceClicks(): Flow<Unit> = callbackFlow {
     checkMainThread()
     val listener = Preference.OnPreferenceClickListener {
-        safeOffer(Unit)
+        trySend(Unit)
+        true
     }
     onPreferenceClickListener = listener
     awaitClose { onPreferenceClickListener = null }

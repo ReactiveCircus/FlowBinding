@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of fling events on the [RecyclerView] instance.
@@ -34,27 +33,26 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun RecyclerView.flingEvents(handled: (FlingEvent) -> Boolean = { true }): Flow<FlingEvent> =
-    callbackFlow<FlingEvent> {
-        checkMainThread()
-        val listener = object : RecyclerView.OnFlingListener() {
-            override fun onFling(velocityX: Int, velocityY: Int): Boolean {
-                val event = FlingEvent(
-                    view = this@flingEvents,
-                    velocityX = velocityX,
-                    velocityY = velocityY
-                )
-                return if (handled(event)) {
-                    safeOffer(event)
-                    true
-                } else {
-                    false
-                }
+public fun RecyclerView.flingEvents(handled: (FlingEvent) -> Boolean = { true }): Flow<FlingEvent> = callbackFlow {
+    checkMainThread()
+    val listener = object : RecyclerView.OnFlingListener() {
+        override fun onFling(velocityX: Int, velocityY: Int): Boolean {
+            val event = FlingEvent(
+                view = this@flingEvents,
+                velocityX = velocityX,
+                velocityY = velocityY
+            )
+            return if (handled(event)) {
+                trySend(event)
+                true
+            } else {
+                false
             }
         }
-        onFlingListener = listener
-        awaitClose { onFlingListener = null }
-    }.conflate()
+    }
+    onFlingListener = listener
+    awaitClose { onFlingListener = null }
+}.conflate()
 
 public data class FlingEvent(
     public val view: RecyclerView,

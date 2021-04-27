@@ -13,7 +13,6 @@ import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.InitialValueFlow
 import reactivecircus.flowbinding.common.asInitialValueFlow
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [InitialValueFlow] of after text change events on the [TextView] instance.
@@ -33,26 +32,25 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun TextView.afterTextChanges(): InitialValueFlow<AfterTextChangeEvent> =
-    callbackFlow<AfterTextChangeEvent> {
-        checkMainThread()
-        val listener = object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) = Unit
+public fun TextView.afterTextChanges(): InitialValueFlow<AfterTextChangeEvent> = callbackFlow {
+    checkMainThread()
+    val listener = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) = Unit
 
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) = Unit
+        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) = Unit
 
-            override fun afterTextChanged(s: Editable) {
-                safeOffer(AfterTextChangeEvent(view = this@afterTextChanges, editable = s))
-            }
+        override fun afterTextChanged(s: Editable) {
+            trySend(AfterTextChangeEvent(view = this@afterTextChanges, editable = s))
         }
-
-        addTextChangedListener(listener)
-        awaitClose { removeTextChangedListener(listener) }
     }
-        .conflate()
-        .asInitialValueFlow {
-            AfterTextChangeEvent(view = this@afterTextChanges, editable = editableText)
-        }
+
+    addTextChangedListener(listener)
+    awaitClose { removeTextChangedListener(listener) }
+}
+    .conflate()
+    .asInitialValueFlow {
+        AfterTextChangeEvent(view = this@afterTextChanges, editable = editableText)
+    }
 
 public data class AfterTextChangeEvent(
     public val view: TextView,

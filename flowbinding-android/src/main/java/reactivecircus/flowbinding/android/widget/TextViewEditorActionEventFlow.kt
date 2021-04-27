@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of editor action events on the [TextView] instance.
@@ -45,7 +44,7 @@ public fun TextView.editorActionEvents(handled: (EditorActionEvent) -> Boolean =
                 keyEvent = keyEvent
             )
             if (handled(event)) {
-                safeOffer(event)
+                trySend(event)
                 true
             } else {
                 false

@@ -13,7 +13,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of drag state change events on the [View] instance with a [SwipeDismissBehavior]
@@ -34,7 +33,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun View.swipeDismissDragStateChanges(): Flow<Int> = callbackFlow<Int> {
+public fun View.swipeDismissDragStateChanges(): Flow<Int> = callbackFlow {
     checkMainThread()
     val params = layoutParams
     check(params is CoordinatorLayout.LayoutParams) {
@@ -48,7 +47,7 @@ public fun View.swipeDismissDragStateChanges(): Flow<Int> = callbackFlow<Int> {
         override fun onDismiss(view: View) = Unit
 
         override fun onDragStateChanged(state: Int) {
-            safeOffer(state)
+            trySend(state)
         }
     }
     behavior.listener = listener

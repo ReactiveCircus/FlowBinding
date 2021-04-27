@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of system UI visibility change events on the [View] instance
@@ -45,7 +44,7 @@ import reactivecircus.flowbinding.common.safeOffer
 public fun View.systemUiVisibilityChanges(): Flow<Int> = callbackFlow {
     checkMainThread()
     val listener = View.OnSystemUiVisibilityChangeListener { flag ->
-        safeOffer(flag)
+        trySend(flag)
     }
     setOnSystemUiVisibilityChangeListener(listener)
     awaitClose { setOnSystemUiVisibilityChangeListener(null) }

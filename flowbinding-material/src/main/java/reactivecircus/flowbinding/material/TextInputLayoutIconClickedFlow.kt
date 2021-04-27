@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of clicked events on the [TextInputLayout] instance's start icon.
@@ -32,7 +31,7 @@ import reactivecircus.flowbinding.common.safeOffer
 public fun TextInputLayout.startIconClicks(): Flow<Unit> = callbackFlow {
     checkMainThread()
     val listener = View.OnClickListener {
-        safeOffer(Unit)
+        trySend(Unit)
     }
     setStartIconOnClickListener(listener)
     awaitClose { setStartIconOnClickListener(null) }
@@ -59,7 +58,7 @@ public fun TextInputLayout.startIconClicks(): Flow<Unit> = callbackFlow {
 public fun TextInputLayout.endIconClicks(): Flow<Unit> = callbackFlow {
     checkMainThread()
     val listener = View.OnClickListener {
-        safeOffer(Unit)
+        trySend(Unit)
     }
     setEndIconOnClickListener(listener)
     awaitClose { setEndIconOnClickListener(null) }
@@ -86,7 +85,7 @@ public fun TextInputLayout.endIconClicks(): Flow<Unit> = callbackFlow {
 public fun TextInputLayout.errorIconClicks(): Flow<Unit> = callbackFlow {
     checkMainThread()
     val listener = View.OnClickListener {
-        safeOffer(Unit)
+        trySend(Unit)
     }
     setErrorIconOnClickListener(listener)
     awaitClose { setErrorIconOnClickListener(null) }

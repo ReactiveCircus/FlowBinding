@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of page scroll events on the [ViewPager] instance.
@@ -30,7 +29,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun ViewPager.pageScrollEvents(): Flow<ViewPagerPageScrollEvent> = callbackFlow<ViewPagerPageScrollEvent> {
+public fun ViewPager.pageScrollEvents(): Flow<ViewPagerPageScrollEvent> = callbackFlow {
     checkMainThread()
     val listener = object : ViewPager.OnPageChangeListener {
         override fun onPageScrolled(
@@ -38,7 +37,7 @@ public fun ViewPager.pageScrollEvents(): Flow<ViewPagerPageScrollEvent> = callba
             positionOffset: Float,
             positionOffsetPixels: Int
         ) {
-            safeOffer(
+            trySend(
                 ViewPagerPageScrollEvent(
                     view = this@pageScrollEvents,
                     position = position,
