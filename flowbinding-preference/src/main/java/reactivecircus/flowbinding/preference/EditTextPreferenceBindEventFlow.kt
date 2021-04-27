@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of bind events on the [EditTextPreference] instance.
@@ -34,7 +33,7 @@ import reactivecircus.flowbinding.common.safeOffer
 public fun EditTextPreference.editTextBindEvents(): Flow<EditTextBindEvent> = callbackFlow {
     checkMainThread()
     val listener = EditTextPreference.OnBindEditTextListener {
-        safeOffer(EditTextBindEvent(it))
+        trySend(EditTextBindEvent(it))
     }
     setOnBindEditTextListener(listener)
     awaitClose { setOnBindEditTextListener(null) }

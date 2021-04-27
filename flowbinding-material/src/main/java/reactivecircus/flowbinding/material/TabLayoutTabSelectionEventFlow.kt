@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.onStart
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of tab selection events on the [TabLayout] instance
@@ -58,19 +57,19 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun TabLayout.tabSelectionEvents(): Flow<TabLayoutSelectionEvent> = callbackFlow<TabLayoutSelectionEvent> {
+public fun TabLayout.tabSelectionEvents(): Flow<TabLayoutSelectionEvent> = callbackFlow {
     checkMainThread()
     val listener = object : TabLayout.OnTabSelectedListener {
         override fun onTabSelected(tab: TabLayout.Tab) {
-            safeOffer(TabLayoutSelectionEvent.TabSelected(this@tabSelectionEvents, tab))
+            trySend(TabLayoutSelectionEvent.TabSelected(this@tabSelectionEvents, tab))
         }
 
         override fun onTabReselected(tab: TabLayout.Tab) {
-            safeOffer(TabLayoutSelectionEvent.TabReselected(this@tabSelectionEvents, tab))
+            trySend(TabLayoutSelectionEvent.TabReselected(this@tabSelectionEvents, tab))
         }
 
         override fun onTabUnselected(tab: TabLayout.Tab) {
-            safeOffer(TabLayoutSelectionEvent.TabUnselected(this@tabSelectionEvents, tab))
+            trySend(TabLayoutSelectionEvent.TabUnselected(this@tabSelectionEvents, tab))
         }
     }
     addOnTabSelectedListener(listener)

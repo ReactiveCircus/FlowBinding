@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of scroll events on the [AbsListView] instance.
@@ -30,7 +29,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun AbsListView.scrollEvents(): Flow<ScrollEvent> = callbackFlow<ScrollEvent> {
+public fun AbsListView.scrollEvents(): Flow<ScrollEvent> = callbackFlow {
     checkMainThread()
     val listener = object : AbsListView.OnScrollListener {
 
@@ -38,7 +37,7 @@ public fun AbsListView.scrollEvents(): Flow<ScrollEvent> = callbackFlow<ScrollEv
 
         override fun onScrollStateChanged(absListView: AbsListView, scrollState: Int) {
             currentScrollState = scrollState
-            safeOffer(
+            trySend(
                 ScrollEvent(
                     view = this@scrollEvents,
                     scrollState = scrollState,
@@ -55,7 +54,7 @@ public fun AbsListView.scrollEvents(): Flow<ScrollEvent> = callbackFlow<ScrollEv
             visibleItemCount: Int,
             totalItemCount: Int
         ) {
-            safeOffer(
+            trySend(
                 ScrollEvent(
                     view = this@scrollEvents,
                     scrollState = currentScrollState,

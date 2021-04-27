@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of item clicks on the [AdapterView] instance
@@ -33,7 +32,7 @@ import reactivecircus.flowbinding.common.safeOffer
 public fun <T : Adapter> AdapterView<T>.itemClicks(): Flow<Int> = callbackFlow {
     checkMainThread()
     val listener = AdapterView.OnItemClickListener { _, _, position, _ ->
-        safeOffer(position)
+        trySend(position)
     }
     onItemClickListener = listener
     awaitClose { onItemClickListener = null }

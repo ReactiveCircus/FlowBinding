@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.InitialValueFlow
 import reactivecircus.flowbinding.common.asInitialValueFlow
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [InitialValueFlow] of data change events on the [RecyclerView.Adapter] instance.
@@ -29,16 +28,15 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun <T : RecyclerView.Adapter<out RecyclerView.ViewHolder>> T.dataChanges(): InitialValueFlow<T> =
-    callbackFlow<T> {
-        checkMainThread()
-        val observer = object : RecyclerView.AdapterDataObserver() {
-            override fun onChanged() {
-                safeOffer(this@dataChanges)
-            }
+public fun <T : RecyclerView.Adapter<out RecyclerView.ViewHolder>> T.dataChanges(): InitialValueFlow<T> = callbackFlow {
+    checkMainThread()
+    val observer = object : RecyclerView.AdapterDataObserver() {
+        override fun onChanged() {
+            trySend(this@dataChanges)
         }
-        registerAdapterDataObserver(observer)
-        awaitClose { unregisterAdapterDataObserver(observer) }
     }
-        .conflate()
-        .asInitialValueFlow { this }
+    registerAdapterDataObserver(observer)
+    awaitClose { unregisterAdapterDataObserver(observer) }
+}
+    .conflate()
+    .asInitialValueFlow { this }

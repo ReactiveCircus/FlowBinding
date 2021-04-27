@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of scroll change events on the [NestedScrollView] instance.
@@ -34,7 +33,7 @@ import reactivecircus.flowbinding.common.safeOffer
 public fun NestedScrollView.scrollChangeEvents(): Flow<ScrollChangeEvent> = callbackFlow {
     checkMainThread()
     val listener = NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-        safeOffer(
+        trySend(
             ScrollChangeEvent(
                 view = v,
                 scrollX = scrollX,

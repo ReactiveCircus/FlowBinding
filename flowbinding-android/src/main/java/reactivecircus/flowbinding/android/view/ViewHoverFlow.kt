@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of hover events on the [View] instance.
@@ -39,17 +38,16 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun View.hovers(handled: (MotionEvent) -> Boolean = { true }): Flow<MotionEvent> =
-    callbackFlow<MotionEvent> {
-        checkMainThread()
-        val listener = View.OnHoverListener { _, event ->
-            if (handled(event)) {
-                safeOffer(event)
-                true
-            } else {
-                false
-            }
+public fun View.hovers(handled: (MotionEvent) -> Boolean = { true }): Flow<MotionEvent> = callbackFlow {
+    checkMainThread()
+    val listener = View.OnHoverListener { _, event ->
+        if (handled(event)) {
+            trySend(event)
+            true
+        } else {
+            false
         }
-        setOnHoverListener(listener)
-        awaitClose { setOnHoverListener(null) }
-    }.conflate()
+    }
+    setOnHoverListener(listener)
+    awaitClose { setOnHoverListener(null) }
+}.conflate()

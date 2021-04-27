@@ -12,7 +12,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of item long click events on the [AdapterView] instance.
@@ -48,7 +47,7 @@ public fun <T : Adapter> AdapterView<T>.itemLongClickEvents(
             id = id
         )
         if (handled(event)) {
-            safeOffer(event)
+            trySend(event)
             true
         } else {
             false

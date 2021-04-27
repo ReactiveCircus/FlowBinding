@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of action view events on the [MenuItem] instance
@@ -46,33 +45,32 @@ import reactivecircus.flowbinding.common.safeOffer
 @OptIn(ExperimentalCoroutinesApi::class)
 public fun MenuItem.actionViewEvents(
     handled: (MenuItemActionViewEvent) -> Boolean = { true }
-): Flow<MenuItemActionViewEvent> =
-    callbackFlow<MenuItemActionViewEvent> {
-        checkMainThread()
-        val listener = object : MenuItem.OnActionExpandListener {
-            override fun onMenuItemActionExpand(item: MenuItem): Boolean {
-                val event = MenuItemActionViewEvent.Expand(item)
-                return if (handled(event)) {
-                    safeOffer(event)
-                    true
-                } else {
-                    false
-                }
-            }
-
-            override fun onMenuItemActionCollapse(item: MenuItem): Boolean {
-                val event = MenuItemActionViewEvent.Collapse(item)
-                return if (handled(event)) {
-                    safeOffer(event)
-                    true
-                } else {
-                    false
-                }
+): Flow<MenuItemActionViewEvent> = callbackFlow {
+    checkMainThread()
+    val listener = object : MenuItem.OnActionExpandListener {
+        override fun onMenuItemActionExpand(item: MenuItem): Boolean {
+            val event = MenuItemActionViewEvent.Expand(item)
+            return if (handled(event)) {
+                trySend(event)
+                true
+            } else {
+                false
             }
         }
-        setOnActionExpandListener(listener)
-        awaitClose { setOnActionExpandListener(null) }
-    }.conflate()
+
+        override fun onMenuItemActionCollapse(item: MenuItem): Boolean {
+            val event = MenuItemActionViewEvent.Collapse(item)
+            return if (handled(event)) {
+                trySend(event)
+                true
+            } else {
+                false
+            }
+        }
+    }
+    setOnActionExpandListener(listener)
+    awaitClose { setOnActionExpandListener(null) }
+}.conflate()
 
 public sealed class MenuItemActionViewEvent {
     public abstract val menuItem: MenuItem

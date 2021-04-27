@@ -12,7 +12,6 @@ import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.InitialValueFlow
 import reactivecircus.flowbinding.common.asInitialValueFlow
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [InitialValueFlow] of checked state change events on the [RadioButton] instance
@@ -33,14 +32,14 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun RadioGroup.checkedChanges(): InitialValueFlow<Int> = callbackFlow<Int> {
+public fun RadioGroup.checkedChanges(): InitialValueFlow<Int> = callbackFlow {
     checkMainThread()
     val listener = object : RadioGroup.OnCheckedChangeListener {
         private var lastChecked = checkedRadioButtonId
         override fun onCheckedChanged(group: RadioGroup, checkedId: Int) {
             if (checkedId != lastChecked) {
                 lastChecked = checkedId
-                safeOffer(checkedId)
+                trySend(checkedId)
             }
         }
     }

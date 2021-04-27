@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.InitialValueFlow
 import reactivecircus.flowbinding.common.asInitialValueFlow
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [InitialValueFlow] of page selected events on the [ViewPager] instance
@@ -30,7 +29,7 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun ViewPager.pageSelections(): InitialValueFlow<Int> = callbackFlow<Int> {
+public fun ViewPager.pageSelections(): InitialValueFlow<Int> = callbackFlow {
     checkMainThread()
     val listener = object : ViewPager.OnPageChangeListener {
         override fun onPageScrolled(
@@ -40,7 +39,7 @@ public fun ViewPager.pageSelections(): InitialValueFlow<Int> = callbackFlow<Int>
         ) = Unit
 
         override fun onPageSelected(position: Int) {
-            safeOffer(position)
+            trySend(position)
         }
 
         override fun onPageScrollStateChanged(state: Int) = Unit

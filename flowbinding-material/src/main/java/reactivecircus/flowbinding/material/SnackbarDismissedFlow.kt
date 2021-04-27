@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of dismiss events on the [Snackbar] instance
@@ -30,11 +29,11 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun Snackbar.dismissEvents(): Flow<Int> = callbackFlow<Int> {
+public fun Snackbar.dismissEvents(): Flow<Int> = callbackFlow {
     checkMainThread()
     val callback = object : Snackbar.Callback() {
         override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
-            safeOffer(event)
+            trySend(event)
         }
     }
     addCallback(callback)

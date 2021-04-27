@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of item reselected events on the [BottomNavigationView] instance
@@ -33,7 +32,7 @@ import reactivecircus.flowbinding.common.safeOffer
 public fun BottomNavigationView.itemReselections(): Flow<MenuItem> = callbackFlow {
     checkMainThread()
     val listener = BottomNavigationView.OnNavigationItemReselectedListener { item ->
-        safeOffer(item)
+        trySend(item)
     }
     setOnNavigationItemReselectedListener(listener)
     awaitClose { setOnNavigationItemReselectedListener(null) }

@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.InitialValueFlow
 import reactivecircus.flowbinding.common.asInitialValueFlow
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [InitialValueFlow] of item selections on the [AdapterView] instance
@@ -32,15 +31,15 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun <T : Adapter> AdapterView<T>.itemSelections(): InitialValueFlow<Int> = callbackFlow<Int> {
+public fun <T : Adapter> AdapterView<T>.itemSelections(): InitialValueFlow<Int> = callbackFlow {
     checkMainThread()
     val listener = object : AdapterView.OnItemSelectedListener {
         override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-            safeOffer(position)
+            trySend(position)
         }
 
         override fun onNothingSelected(parent: AdapterView<*>) {
-            safeOffer(AdapterView.INVALID_POSITION)
+            trySend(AdapterView.INVALID_POSITION)
         }
     }
     onItemSelectedListener = listener

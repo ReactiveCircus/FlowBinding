@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of drag events on the [View] instance.
@@ -37,7 +36,7 @@ public fun View.drags(handled: (DragEvent) -> Boolean = { true }): Flow<DragEven
     checkMainThread()
     val listener = View.OnDragListener { _, event ->
         if (handled(event)) {
-            safeOffer(event)
+            trySend(event)
             true
         } else {
             false

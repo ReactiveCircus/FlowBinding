@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of touch events on the [View] instance.
@@ -39,18 +38,17 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun View.touches(handled: (MotionEvent) -> Boolean = { true }): Flow<MotionEvent> =
-    callbackFlow<MotionEvent> {
-        checkMainThread()
-        val listener = View.OnTouchListener { _, event ->
-            performClick()
-            if (handled(event)) {
-                safeOffer(event)
-                true
-            } else {
-                false
-            }
+public fun View.touches(handled: (MotionEvent) -> Boolean = { true }): Flow<MotionEvent> = callbackFlow {
+    checkMainThread()
+    val listener = View.OnTouchListener { _, event ->
+        performClick()
+        if (handled(event)) {
+            trySend(event)
+            true
+        } else {
+            false
         }
-        setOnTouchListener(listener)
-        awaitClose { setOnTouchListener(null) }
-    }.conflate()
+    }
+    setOnTouchListener(listener)
+    awaitClose { setOnTouchListener(null) }
+}.conflate()

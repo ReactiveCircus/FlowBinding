@@ -12,7 +12,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of scroll change events on the [View] instance.
@@ -36,7 +35,7 @@ import reactivecircus.flowbinding.common.safeOffer
 public fun View.scrollChangeEvents(): Flow<ScrollChangeEvent> = callbackFlow {
     checkMainThread()
     val listener = View.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-        safeOffer(
+        trySend(
             ScrollChangeEvent(
                 view = v,
                 scrollX = scrollX,

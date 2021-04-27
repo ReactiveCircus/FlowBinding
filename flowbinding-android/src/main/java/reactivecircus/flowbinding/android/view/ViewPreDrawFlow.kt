@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of pre-draw events on the [View] instance.
@@ -35,7 +34,7 @@ import reactivecircus.flowbinding.common.safeOffer
 public fun View.preDraws(proceedDrawingPass: () -> Boolean): Flow<Unit> = callbackFlow {
     checkMainThread()
     val listener = ViewTreeObserver.OnPreDrawListener {
-        safeOffer(Unit)
+        trySend(Unit)
         proceedDrawingPass()
     }
     viewTreeObserver.addOnPreDrawListener(listener)

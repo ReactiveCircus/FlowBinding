@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of on back pressed events on the [OnBackPressedDispatcher] instance.
@@ -33,11 +32,11 @@ import reactivecircus.flowbinding.common.safeOffer
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
 public fun OnBackPressedDispatcher.backPresses(owner: LifecycleOwner): Flow<Unit> =
-    callbackFlow<Unit> {
+    callbackFlow {
         checkMainThread()
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                safeOffer(Unit)
+                trySend(Unit)
             }
         }
         addCallback(owner, callback)

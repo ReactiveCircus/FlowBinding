@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.InitialValueFlow
 import reactivecircus.flowbinding.common.asInitialValueFlow
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [InitialValueFlow] of checked state changes on the [CompoundButton] instance
@@ -33,7 +32,7 @@ import reactivecircus.flowbinding.common.safeOffer
 public fun CompoundButton.checkedChanges(): InitialValueFlow<Boolean> = callbackFlow {
     checkMainThread()
     val listener = CompoundButton.OnCheckedChangeListener { _, isChecked ->
-        safeOffer(isChecked)
+        trySend(isChecked)
     }
     setOnCheckedChangeListener(listener)
     awaitClose { setOnCheckedChangeListener(null) }

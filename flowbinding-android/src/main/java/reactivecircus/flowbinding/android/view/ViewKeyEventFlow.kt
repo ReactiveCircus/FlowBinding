@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of key events on the [View] instance.
@@ -33,11 +32,11 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun View.keys(handled: (KeyEvent) -> Boolean = { true }): Flow<KeyEvent> = callbackFlow<KeyEvent> {
+public fun View.keys(handled: (KeyEvent) -> Boolean = { true }): Flow<KeyEvent> = callbackFlow {
     checkMainThread()
     val listener = View.OnKeyListener { _, _, event ->
         if (handled(event)) {
-            safeOffer(event)
+            trySend(event)
             true
         } else {
             false

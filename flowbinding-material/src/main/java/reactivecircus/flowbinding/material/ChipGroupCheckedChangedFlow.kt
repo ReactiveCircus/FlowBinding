@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.InitialValueFlow
 import reactivecircus.flowbinding.common.asInitialValueFlow
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [InitialValueFlow] of chip checked state change events on the [ChipGroup] instance
@@ -35,7 +34,7 @@ import reactivecircus.flowbinding.common.safeOffer
 public fun ChipGroup.chipCheckedChanges(): InitialValueFlow<Int> = callbackFlow {
     checkMainThread()
     val listener = ChipGroup.OnCheckedChangeListener { _, checkedId ->
-        safeOffer(checkedId)
+        trySend(checkedId)
     }
     setOnCheckedChangeListener(listener)
     awaitClose { setOnCheckedChangeListener(null) }

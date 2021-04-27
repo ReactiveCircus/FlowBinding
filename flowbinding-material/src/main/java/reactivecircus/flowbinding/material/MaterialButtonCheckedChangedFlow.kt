@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of material button checked state change events on the [MaterialButton] instance
@@ -32,7 +31,7 @@ import reactivecircus.flowbinding.common.safeOffer
 public fun MaterialButton.checkedChanges(): Flow<Boolean> = callbackFlow {
     checkMainThread()
     val listener = MaterialButton.OnCheckedChangeListener { _, isChecked ->
-        safeOffer(isChecked)
+        trySend(isChecked)
     }
     addOnCheckedChangeListener(listener)
     awaitClose { removeOnCheckedChangeListener(listener) }

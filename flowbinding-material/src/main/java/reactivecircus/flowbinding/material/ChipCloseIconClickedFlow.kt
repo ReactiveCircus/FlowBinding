@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of close icon click events on the [Chip] instance.
@@ -32,7 +31,7 @@ import reactivecircus.flowbinding.common.safeOffer
 public fun Chip.closeIconClicks(): Flow<Unit> = callbackFlow {
     checkMainThread()
     val listener = View.OnClickListener {
-        safeOffer(Unit)
+        trySend(Unit)
     }
     setOnCloseIconClickListener(listener)
     awaitClose { setOnCloseIconClickListener(null) }

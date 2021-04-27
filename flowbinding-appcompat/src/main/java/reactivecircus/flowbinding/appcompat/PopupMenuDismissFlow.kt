@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of dismiss events on the [PopupMenu] instance.
@@ -31,7 +30,7 @@ import reactivecircus.flowbinding.common.safeOffer
 public fun PopupMenu.dismisses(): Flow<Unit> = callbackFlow {
     checkMainThread()
     val listener = PopupMenu.OnDismissListener {
-        safeOffer(Unit)
+        trySend(Unit)
     }
     setOnDismissListener(listener)
     awaitClose { setOnDismissListener(null) }

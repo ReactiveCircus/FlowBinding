@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of click events on the [MenuItem] instance.
@@ -36,7 +35,7 @@ public fun MenuItem.clicks(handled: (MenuItem) -> Boolean = { true }): Flow<Unit
     checkMainThread()
     val listener = MenuItem.OnMenuItemClickListener {
         if (handled(it)) {
-            safeOffer(Unit)
+            trySend(Unit)
             true
         } else {
             false

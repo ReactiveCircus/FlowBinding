@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of scroll events on the [RecyclerView] instance.
@@ -30,11 +29,11 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun RecyclerView.scrollEvents(): Flow<RecyclerViewScrollEvent> = callbackFlow<RecyclerViewScrollEvent> {
+public fun RecyclerView.scrollEvents(): Flow<RecyclerViewScrollEvent> = callbackFlow {
     checkMainThread()
     val listener = object : RecyclerView.OnScrollListener() {
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-            safeOffer(
+            trySend(
                 RecyclerViewScrollEvent(
                     view = this@scrollEvents,
                     dx = dx,

@@ -13,7 +13,6 @@ import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.InitialValueFlow
 import reactivecircus.flowbinding.common.asInitialValueFlow
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [InitialValueFlow] of item selection events on the [AdapterView] instance
@@ -36,44 +35,43 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun <T : Adapter> AdapterView<T>.selectionEvents(): InitialValueFlow<AdapterViewSelectionEvent> =
-    callbackFlow<AdapterViewSelectionEvent> {
-        checkMainThread()
-        val listener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                safeOffer(
-                    AdapterViewSelectionEvent.ItemSelected(
-                        view = parent,
-                        selectedView = view,
-                        position = position,
-                        id = id
-                    )
-                )
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                safeOffer(
-                    AdapterViewSelectionEvent.NothingSelected(view = parent)
-                )
-            }
-        }
-        onItemSelectedListener = listener
-        awaitClose { onItemSelectedListener = null }
-    }
-        .conflate()
-        .asInitialValueFlow {
-            val selectedPosition = selectedItemPosition
-            if (selectedPosition == AdapterView.INVALID_POSITION) {
-                AdapterViewSelectionEvent.NothingSelected(view = this)
-            } else {
+public fun <T : Adapter> AdapterView<T>.selectionEvents(): InitialValueFlow<AdapterViewSelectionEvent> = callbackFlow {
+    checkMainThread()
+    val listener = object : AdapterView.OnItemSelectedListener {
+        override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+            trySend(
                 AdapterViewSelectionEvent.ItemSelected(
-                    view = this,
-                    selectedView = selectedView,
-                    position = selectedPosition,
-                    id = selectedItemId
+                    view = parent,
+                    selectedView = view,
+                    position = position,
+                    id = id
                 )
-            }
+            )
         }
+
+        override fun onNothingSelected(parent: AdapterView<*>) {
+            trySend(
+                AdapterViewSelectionEvent.NothingSelected(view = parent)
+            )
+        }
+    }
+    onItemSelectedListener = listener
+    awaitClose { onItemSelectedListener = null }
+}
+    .conflate()
+    .asInitialValueFlow {
+        val selectedPosition = selectedItemPosition
+        if (selectedPosition == AdapterView.INVALID_POSITION) {
+            AdapterViewSelectionEvent.NothingSelected(view = this)
+        } else {
+            AdapterViewSelectionEvent.ItemSelected(
+                view = this,
+                selectedView = selectedView,
+                position = selectedPosition,
+                id = selectedItemId
+            )
+        }
+    }
 
 public sealed class AdapterViewSelectionEvent {
     public abstract val view: AdapterView<*>

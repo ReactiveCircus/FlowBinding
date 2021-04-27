@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [Flow] of touch events on the [RangeSlider] instance.
@@ -28,15 +27,15 @@ import reactivecircus.flowbinding.common.safeOffer
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun RangeSlider.touchEvents(): Flow<RangeSliderTouchEvent> = callbackFlow<RangeSliderTouchEvent> {
+public fun RangeSlider.touchEvents(): Flow<RangeSliderTouchEvent> = callbackFlow {
     checkMainThread()
     val listener = object : RangeSlider.OnSliderTouchListener {
         override fun onStartTrackingTouch(rangeSlider: RangeSlider) {
-            safeOffer(RangeSliderTouchEvent.StartTracking(rangeSlider))
+            trySend(RangeSliderTouchEvent.StartTracking(rangeSlider))
         }
 
         override fun onStopTrackingTouch(rangeSlider: RangeSlider) {
-            safeOffer(RangeSliderTouchEvent.StopTracking(rangeSlider))
+            trySend(RangeSliderTouchEvent.StopTracking(rangeSlider))
         }
     }
     addOnSliderTouchListener(listener)

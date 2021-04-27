@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.conflate
 import reactivecircus.flowbinding.common.InitialValueFlow
 import reactivecircus.flowbinding.common.asInitialValueFlow
 import reactivecircus.flowbinding.common.checkMainThread
-import reactivecircus.flowbinding.common.safeOffer
 
 /**
  * Create a [InitialValueFlow] of change events on the [Slider] instance.
@@ -32,7 +31,7 @@ import reactivecircus.flowbinding.common.safeOffer
 public fun Slider.changeEvents(): InitialValueFlow<SliderChangeEvent> = callbackFlow {
     checkMainThread()
     val listener = Slider.OnChangeListener { slider, value, fromUser ->
-        safeOffer(
+        trySend(
             SliderChangeEvent(
                 slider = slider,
                 value = value,
