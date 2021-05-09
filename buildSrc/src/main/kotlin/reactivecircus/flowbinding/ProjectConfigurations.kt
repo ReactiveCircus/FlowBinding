@@ -1,5 +1,6 @@
 package reactivecircus.flowbinding
 
+import com.android.build.api.extension.LibraryAndroidComponentsExtension
 import com.android.build.gradle.LibraryExtension
 import com.android.build.gradle.TestedExtension
 import org.gradle.StartParameter
@@ -9,6 +10,8 @@ import org.gradle.api.provider.Property
 import org.gradle.api.tasks.Delete
 import org.gradle.api.tasks.testing.Test
 import org.gradle.api.tasks.testing.logging.TestLogEvent
+import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
@@ -28,10 +31,34 @@ fun Project.configureRootProject() {
     configureBinaryCompatibilityValidation()
 }
 
+
+/**
+ * Apply baseline project configurations for an Android Library project.
+ */
+internal fun Project.configureAndroidLibrary(startParameter: StartParameter) {
+    // common android configs
+    extensions.getByType<TestedExtension>().configureCommonAndroidOptions(startParameter)
+
+    // android variant configs
+    extensions.getByType<LibraryAndroidComponentsExtension>().configureAndroidLibraryVariants(project)
+
+    // android library configs
+    extensions.configure<LibraryExtension> {
+        packagingOptions {
+            pickFirst("META-INF/AL2.0")
+            pickFirst("META-INF/LGPL2.1")
+            pickFirst("META-INF/*.kotlin_module")
+        }
+    }
+
+    // disable unit tests for some build variants if `slimTests` project property is provided
+    project.configureSlimTests()
+}
+
 /**
  * Apply common configurations for all Android projects (Application and Library).
  */
-fun TestedExtension.configureCommonAndroidOptions(startParameter: StartParameter) {
+private fun TestedExtension.configureCommonAndroidOptions(startParameter: StartParameter) {
     setCompileSdkVersion(androidSdk.compileSdk)
     buildToolsVersion(androidSdk.buildTools)
 
@@ -55,38 +82,23 @@ fun TestedExtension.configureCommonAndroidOptions(startParameter: StartParameter
     }
 
     testOptions.animationsDisabled = true
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
 }
 
 /**
- * Apply configuration options for Android Library projects.
+ * Configure the Application Library Component based on build variants.
  */
 @Suppress("UnstableApiUsage")
-fun LibraryExtension.configureAndroidLibraryOptions(project: Project) {
+private fun LibraryAndroidComponentsExtension.configureAndroidLibraryVariants(project: Project) {
     project.plugins.withType<KotlinAndroidPluginWrapper> {
         // disable unit test tasks if the unitTest source set is empty
         if (!project.hasUnitTestSource) {
-            onVariants {
-                unitTest { enabled = false }
-            }
+            beforeUnitTests { it.enabled = false }
         }
 
         // disable android test tasks if the androidTest source set is empty
         if (!project.hasAndroidTestSource) {
-            onVariants {
-                androidTest { enabled = false }
-            }
+            beforeAndroidTests { it.enabled = false }
         }
-    }
-
-    packagingOptions {
-        pickFirst("META-INF/AL2.0")
-        pickFirst("META-INF/LGPL2.1")
-        pickFirst("META-INF/*.kotlin_module")
     }
 }
 
@@ -103,7 +115,7 @@ fun Project.configureForAllProjects(enableExplicitApi: Property<Boolean>) {
 
     tasks.withType<KotlinCompile>().configureEach {
         kotlinOptions {
-            jvmTarget = JavaVersion.VERSION_1_8.toString()
+            jvmTarget = JavaVersion.VERSION_11.toString()
             freeCompilerArgs = freeCompilerArgs + buildList {
                 addAll(additionalCompilerArgs)
                 if (enableExplicitApi.get() && !name.contains("test", ignoreCase = true)) {

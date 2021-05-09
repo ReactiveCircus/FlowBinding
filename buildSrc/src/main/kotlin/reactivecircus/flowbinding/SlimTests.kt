@@ -1,7 +1,7 @@
 package reactivecircus.flowbinding
 
-import com.android.build.gradle.LibraryExtension
-import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
+import com.android.build.api.extension.ApplicationAndroidComponentsExtension
+import com.android.build.api.extension.LibraryAndroidComponentsExtension
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.findByType
 import org.gradle.language.nativeplatform.internal.BuildType
@@ -19,16 +19,16 @@ import org.gradle.language.nativeplatform.internal.BuildType
 internal fun Project.configureSlimTests() {
     if (providers.gradleProperty(SLIM_TESTS_PROPERTY).forUseAtConfigurationTime().isPresent) {
         // disable unit test tasks on the release build type for Android Library projects
-        extensions.findByType<LibraryExtension>()?.run {
-            onVariants.withBuildType(BuildType.RELEASE.name) {
-                unitTest { enabled = false }
+        extensions.findByType<LibraryAndroidComponentsExtension>()?.run {
+            beforeUnitTests(selector().withBuildType(BuildType.RELEASE.name)) {
+                it.enabled = false
             }
         }
 
         // disable unit test tasks on the release build type for Android Application projects.
-        extensions.findByType<BaseAppModuleExtension>()?.run {
-            onVariants.withBuildType(BuildType.RELEASE.name) {
-                unitTest { enabled = false }
+        extensions.findByType<ApplicationAndroidComponentsExtension>()?.run {
+            beforeUnitTests(selector().withBuildType(BuildType.RELEASE.name)) {
+                it.enabled = false
             }
         }
     }
