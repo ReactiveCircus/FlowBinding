@@ -33,6 +33,6 @@ jobs:
           .buildscript/deploy_website.sh
         env:
           CI: true
-          JAVA_TOOL_OPTIONS: -Xmx4g
+          JAVA_TOOL_OPTIONS: -Xmx4g -XX:+UseParallelGC
           GRADLE_OPTS: -Dorg.gradle.daemon=false -Dkotlin.incremental=false
           DEPLOY_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}

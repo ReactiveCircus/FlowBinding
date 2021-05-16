@@ -22,7 +22,7 @@ jobs:
     name: Assemble
     runs-on: ubuntu-latest
     env:
-      JAVA_TOOL_OPTIONS: -Xmx4g
+      JAVA_TOOL_OPTIONS: -Xmx4g -XX:+UseParallelGC
 
     steps:
       - uses: actions/checkout@v2
@@ -46,7 +46,7 @@ jobs:
     name: Checks (unit tests, static analysis and binary compatibility API check)
     runs-on: ubuntu-latest
     env:
-      JAVA_TOOL_OPTIONS: -Xmx4g
+      JAVA_TOOL_OPTIONS: -Xmx4g -XX:+UseParallelGC
 
     steps:
       - uses: actions/checkout@v2
@@ -89,7 +89,7 @@ jobs:
 
     timeout-minutes: 30
     env:
-      JAVA_TOOL_OPTIONS: -Xmx4g
+      JAVA_TOOL_OPTIONS: -Xmx4g -XX:+UseParallelGC
       ENABLE_APP_VERSIONING: false
 
     steps:
@@ -125,7 +125,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     env:
-      JAVA_TOOL_OPTIONS: -Xmx4g
+      JAVA_TOOL_OPTIONS: -Xmx4g -XX:+UseParallelGC
       ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.SONATYPE_NEXUS_USERNAME }}
       ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.SONATYPE_NEXUS_PASSWORD }}
 
