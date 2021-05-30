@@ -3,7 +3,7 @@ package reactivecircus.flowbinding.material
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import com.google.android.material.textfield.TextInputLayout
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.longClickTextInputLayoutEndIcon
 import reactivecircus.blueprint.testing.action.longClickTextInputLayoutErrorIcon
@@ -27,7 +27,8 @@ class TextInputLayoutIconLongClickedFlowTest {
             recorder.assertNoMoreValues()
 
             longClickTextInputLayoutStartIcon(R.id.textInputLayout)
-            recorder.takeValue() shouldEqual Unit
+            assertThat(recorder.takeValue())
+                .isEqualTo(Unit)
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -47,7 +48,8 @@ class TextInputLayoutIconLongClickedFlowTest {
             recorder.assertNoMoreValues()
 
             longClickTextInputLayoutEndIcon(R.id.textInputLayout)
-            recorder.takeValue() shouldEqual Unit
+            assertThat(recorder.takeValue())
+                .isEqualTo(Unit)
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -72,7 +74,8 @@ class TextInputLayoutIconLongClickedFlowTest {
             recorder.assertNoMoreValues()
 
             longClickTextInputLayoutErrorIcon(R.id.textInputLayout)
-            recorder.takeValue() shouldEqual Unit
+            assertThat(recorder.takeValue())
+                .isEqualTo(Unit)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

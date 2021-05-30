@@ -3,7 +3,7 @@ package reactivecircus.flowbinding.viewpager
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import androidx.viewpager.widget.ViewPager
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.swipeLeftOnView
 import reactivecircus.blueprint.testing.action.swipeRightOnView
@@ -22,11 +22,13 @@ class ViewPagerPageSelectedFlowTest {
             val recorder = FlowRecorder<Int>(testScope)
             getViewById<ViewPager>(R.id.viewPager).pageSelections().recordWith(recorder)
 
-            recorder.takeValue() shouldEqual 0
+            assertThat(recorder.takeValue())
+                .isEqualTo(0)
             recorder.assertNoMoreValues()
 
             swipeLeftOnView(R.id.viewPager)
-            recorder.takeValue() shouldEqual 1
+            assertThat(recorder.takeValue())
+                .isEqualTo(1)
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -43,11 +45,13 @@ class ViewPagerPageSelectedFlowTest {
             val viewPager = getViewById<ViewPager>(R.id.viewPager)
             viewPager.pageSelections().recordWith(recorder)
 
-            recorder.takeValue() shouldEqual 0
+            assertThat(recorder.takeValue())
+                .isEqualTo(0)
             recorder.assertNoMoreValues()
 
             runOnUiThread { viewPager.currentItem = 1 }
-            recorder.takeValue() shouldEqual 1
+            assertThat(recorder.takeValue())
+                .isEqualTo(1)
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -69,7 +73,8 @@ class ViewPagerPageSelectedFlowTest {
             recorder.assertNoMoreValues()
 
             runOnUiThread { viewPager.currentItem = 1 }
-            recorder.takeValue() shouldEqual 1
+            assertThat(recorder.takeValue())
+                .isEqualTo(1)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

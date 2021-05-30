@@ -1,8 +1,8 @@
 package reactivecircus.flowbinding.android.view
 
 import androidx.test.filters.LargeTest
+import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.flow.filterIsInstance
-import org.amshove.kluent.shouldEqual
 import org.junit.Test
 import reactivecircus.flowbinding.android.fixtures.view.AndroidViewFragment
 import reactivecircus.flowbinding.android.testutil.TestMenuItem
@@ -25,7 +25,8 @@ class MenuItemActionViewEventFlowTest {
             recorder.assertNoMoreValues()
 
             menuItem.expandActionView()
-            recorder.takeValue().menuItem shouldEqual menuItem
+            assertThat(recorder.takeValue().menuItem)
+                .isEqualTo(menuItem)
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -71,7 +72,8 @@ class MenuItemActionViewEventFlowTest {
 
             menuItem.expandActionView()
             menuItem.collapseActionView()
-            recorder.takeValue().menuItem shouldEqual menuItem
+            assertThat(recorder.takeValue().menuItem)
+                .isEqualTo(menuItem)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

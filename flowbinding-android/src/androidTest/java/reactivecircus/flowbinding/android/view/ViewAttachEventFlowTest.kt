@@ -4,8 +4,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
+import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.flow.filterIsInstance
-import org.amshove.kluent.shouldEqual
 import org.junit.Test
 import reactivecircus.flowbinding.android.fixtures.view.AndroidViewFragment
 import reactivecircus.flowbinding.android.test.R
@@ -33,7 +33,8 @@ class ViewAttachEventFlowTest {
             recorder.assertNoMoreValues()
 
             runOnUiThread { viewGroup.addView(childView1) }
-            recorder.takeValue().view shouldEqual childView1
+            assertThat(recorder.takeValue().view)
+                .isEqualTo(childView1)
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -65,7 +66,8 @@ class ViewAttachEventFlowTest {
             recorder.assertNoMoreValues()
 
             runOnUiThread { viewGroup.removeView(childView1) }
-            recorder.takeValue().view shouldEqual childView1
+            assertThat(recorder.takeValue().view)
+                .isEqualTo(childView1)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

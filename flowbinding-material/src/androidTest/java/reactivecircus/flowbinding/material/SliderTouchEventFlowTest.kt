@@ -4,7 +4,7 @@ import android.view.MotionEvent
 import androidx.test.filters.LargeTest
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import com.google.android.material.slider.Slider
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.material.fixtures.MaterialFragment2
 import reactivecircus.flowbinding.material.test.R
@@ -28,7 +28,8 @@ class SliderTouchEventFlowTest {
             getInstrumentation().sendPointerSync(motionEventAtPosition(slider, MotionEvent.ACTION_DOWN, 20, 50))
             getInstrumentation().sendPointerSync(motionEventAtPosition(slider, MotionEvent.ACTION_MOVE, 50, 50))
             val touchEvent1 = recorder.takeValue() as SliderTouchEvent.StartTracking
-            touchEvent1.slider shouldEqual slider
+            assertThat(touchEvent1.slider)
+                .isEqualTo(slider)
             recorder.assertNoMoreValues()
 
             getInstrumentation().sendPointerSync(motionEventAtPosition(slider, MotionEvent.ACTION_MOVE, 100, 50))
@@ -36,7 +37,8 @@ class SliderTouchEventFlowTest {
 
             getInstrumentation().sendPointerSync(motionEventAtPosition(slider, MotionEvent.ACTION_UP, 100, 50))
             val touchEvent2 = recorder.takeValue() as SliderTouchEvent.StopTracking
-            touchEvent2.slider shouldEqual slider
+            assertThat(touchEvent2.slider)
+                .isEqualTo(slider)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

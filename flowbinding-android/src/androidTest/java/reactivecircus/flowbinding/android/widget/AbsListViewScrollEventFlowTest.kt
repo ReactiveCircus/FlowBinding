@@ -3,12 +3,10 @@ package reactivecircus.flowbinding.android.widget
 import android.widget.AbsListView
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
-import org.amshove.kluent.shouldBeGreaterThan
-import org.amshove.kluent.shouldEqual
-import org.amshove.kluent.shouldNotEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
-import reactivecircus.flowbinding.android.test.R
 import reactivecircus.flowbinding.android.fixtures.widget.AbsListFragment
+import reactivecircus.flowbinding.android.test.R
 import reactivecircus.flowbinding.testing.FlowRecorder
 import reactivecircus.flowbinding.testing.launchTest
 import reactivecircus.flowbinding.testing.recordWith
@@ -25,21 +23,31 @@ class AbsListViewScrollEventFlowTest {
             absListView.scrollEvents().recordWith(recorder)
 
             val event1 = recorder.takeValue()
-            event1.view shouldEqual absListView
-            event1.scrollState shouldEqual AbsListView.OnScrollListener.SCROLL_STATE_IDLE
-            event1.firstVisibleItem shouldEqual 0
-            event1.visibleItemCount shouldBeGreaterThan 0
-            event1.totalItemCount shouldEqual 50
+            assertThat(event1.view)
+                .isEqualTo(absListView)
+            assertThat(event1.scrollState)
+                .isEqualTo(AbsListView.OnScrollListener.SCROLL_STATE_IDLE)
+            assertThat(event1.firstVisibleItem)
+                .isEqualTo(0)
+            assertThat(event1.visibleItemCount)
+                .isGreaterThan(0)
+            assertThat(event1.totalItemCount)
+                .isEqualTo(50)
 
             runOnUiThread {
                 absListView.scrollListBy(1000)
             }
             val event2 = recorder.takeValue()
-            event2.view shouldEqual absListView
-            event2.scrollState shouldEqual AbsListView.OnScrollListener.SCROLL_STATE_IDLE
-            event2.firstVisibleItem shouldNotEqual 0
-            event2.visibleItemCount shouldBeGreaterThan 0
-            event2.totalItemCount shouldEqual 50
+            assertThat(event2.view)
+                .isEqualTo(absListView)
+            assertThat(event2.scrollState)
+                .isEqualTo(AbsListView.OnScrollListener.SCROLL_STATE_IDLE)
+            assertThat(event2.firstVisibleItem)
+                .isNotEqualTo(0)
+            assertThat(event2.visibleItemCount)
+                .isGreaterThan(0)
+            assertThat(event2.totalItemCount)
+                .isEqualTo(50)
 
             recorder.assertNoMoreValues()
 

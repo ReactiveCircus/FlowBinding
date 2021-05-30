@@ -5,7 +5,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.closeDrawer
 import reactivecircus.blueprint.testing.action.openDrawer
@@ -26,15 +26,18 @@ class DrawerLayoutDrawerStateChangedFlowTest {
 
             drawerLayout.drawerStateChanges(Gravity.START).recordWith(recorder)
 
-            recorder.takeValue() shouldEqual false
+            assertThat(recorder.takeValue())
+                .isFalse()
             recorder.assertNoMoreValues()
 
             openDrawer(R.id.drawerLayout)
-            recorder.takeValue() shouldEqual true
+            assertThat(recorder.takeValue())
+                .isTrue()
             recorder.assertNoMoreValues()
 
             closeDrawer(R.id.drawerLayout)
-            recorder.takeValue() shouldEqual false
+            assertThat(recorder.takeValue())
+                .isFalse()
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -52,17 +55,20 @@ class DrawerLayoutDrawerStateChangedFlowTest {
 
             drawerLayout.drawerStateChanges(Gravity.START).recordWith(recorder)
 
-            recorder.takeValue() shouldEqual false
+            assertThat(recorder.takeValue())
+                .isFalse()
             recorder.assertNoMoreValues()
 
             runOnUiThread { drawerLayout.openDrawer(Gravity.START) }
             getInstrumentation().waitForIdleSync()
-            recorder.takeValue() shouldEqual true
+            assertThat(recorder.takeValue())
+                .isTrue()
             recorder.assertNoMoreValues()
 
             runOnUiThread { drawerLayout.closeDrawer(Gravity.START) }
             getInstrumentation().waitForIdleSync()
-            recorder.takeValue() shouldEqual false
+            assertThat(recorder.takeValue())
+                .isFalse()
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -87,12 +93,14 @@ class DrawerLayoutDrawerStateChangedFlowTest {
 
             runOnUiThread { drawerLayout.openDrawer(Gravity.START) }
             getInstrumentation().waitForIdleSync()
-            recorder.takeValue() shouldEqual true
+            assertThat(recorder.takeValue())
+                .isTrue()
             recorder.assertNoMoreValues()
 
             runOnUiThread { drawerLayout.closeDrawer(Gravity.START) }
             getInstrumentation().waitForIdleSync()
-            recorder.takeValue() shouldEqual false
+            assertThat(recorder.takeValue())
+                .isFalse()
             recorder.assertNoMoreValues()
 
             cancelTestScope()

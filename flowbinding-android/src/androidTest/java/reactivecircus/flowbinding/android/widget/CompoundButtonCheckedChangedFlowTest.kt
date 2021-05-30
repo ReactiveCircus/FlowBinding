@@ -3,7 +3,7 @@ package reactivecircus.flowbinding.android.widget
 import android.widget.CompoundButton
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.clickView
 import reactivecircus.flowbinding.android.fixtures.widget.AndroidWidgetFragment
@@ -22,15 +22,18 @@ class CompoundButtonCheckedChangedFlowTest {
             getViewById<CompoundButton>(R.id.toggleButton)
                 .checkedChanges().recordWith(recorder)
 
-            recorder.takeValue() shouldEqual false
+            assertThat(recorder.takeValue())
+                .isFalse()
             recorder.assertNoMoreValues()
 
             clickView(R.id.toggleButton)
-            recorder.takeValue() shouldEqual true
+            assertThat(recorder.takeValue())
+                .isTrue()
             recorder.assertNoMoreValues()
 
             clickView(R.id.toggleButton)
-            recorder.takeValue() shouldEqual false
+            assertThat(recorder.takeValue())
+                .isFalse()
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -47,15 +50,18 @@ class CompoundButtonCheckedChangedFlowTest {
             val button = getViewById<CompoundButton>(R.id.toggleButton)
             button.checkedChanges().recordWith(recorder)
 
-            recorder.takeValue() shouldEqual false
+            assertThat(recorder.takeValue())
+                .isFalse()
             recorder.assertNoMoreValues()
 
             runOnUiThread { button.isChecked = true }
-            recorder.takeValue() shouldEqual true
+            assertThat(recorder.takeValue())
+                .isTrue()
             recorder.assertNoMoreValues()
 
             runOnUiThread { button.isChecked = false }
-            recorder.takeValue() shouldEqual false
+            assertThat(recorder.takeValue())
+                .isFalse()
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -79,7 +85,8 @@ class CompoundButtonCheckedChangedFlowTest {
             recorder.assertNoMoreValues()
 
             runOnUiThread { button.isChecked = true }
-            recorder.takeValue() shouldEqual true
+            assertThat(recorder.takeValue())
+                .isTrue()
             recorder.assertNoMoreValues()
 
             cancelTestScope()

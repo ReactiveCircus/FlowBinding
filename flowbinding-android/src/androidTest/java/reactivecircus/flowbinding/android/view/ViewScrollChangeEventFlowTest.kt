@@ -4,7 +4,7 @@ import android.os.Build
 import android.view.View
 import androidx.test.filters.LargeTest
 import androidx.test.filters.SdkSuppress
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.android.fixtures.view.AndroidViewFragment
 import reactivecircus.flowbinding.testing.FlowRecorder
@@ -27,11 +27,16 @@ class ViewScrollChangeEventFlowTest {
 
             view.scrollTo(10, 10)
             val event = recorder.takeValue()
-            event.view shouldEqual view
-            event.scrollX shouldEqual 10
-            event.scrollY shouldEqual 10
-            event.oldScrollX shouldEqual 0
-            event.oldScrollY shouldEqual 0
+            assertThat(event.view)
+                .isEqualTo(view)
+            assertThat(event.scrollX)
+                .isEqualTo(10)
+            assertThat(event.scrollY)
+                .isEqualTo(10)
+            assertThat(event.oldScrollX)
+                .isEqualTo(0)
+            assertThat(event.oldScrollY)
+                .isEqualTo(0)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

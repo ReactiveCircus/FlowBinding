@@ -3,8 +3,7 @@ package reactivecircus.flowbinding.android.widget
 import android.widget.ListView
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
-import org.amshove.kluent.shouldEqual
-import org.amshove.kluent.shouldNotBe
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.android.fixtures.widget.ListFragment
 import reactivecircus.flowbinding.android.test.R
@@ -29,10 +28,14 @@ class AdapterViewItemClickEventFlowTest {
                 listView.performItemClick(listView.getChildAt(2), 2, 2)
             }
             val event = recorder.takeValue()
-            event.view shouldEqual listView
-            event.clickedView shouldNotBe null
-            event.position shouldEqual 2
-            event.id shouldEqual 2
+            assertThat(event.view)
+                .isEqualTo(listView)
+            assertThat(event.clickedView)
+                .isNotNull()
+            assertThat(event.position)
+                .isEqualTo(2)
+            assertThat(event.id)
+                .isEqualTo(2)
 
             recorder.assertNoMoreValues()
 

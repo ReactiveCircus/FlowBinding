@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.swipeDownOnView
 import reactivecircus.blueprint.testing.action.swipeLeftOnView
@@ -35,9 +35,12 @@ class RecyclerViewScrollStateChangedFlowTest {
             recorder.assertNoMoreValues()
 
             swipeUpOnView(R.id.recyclerView)
-            recorder.takeValue() shouldEqual RecyclerView.SCROLL_STATE_DRAGGING
-            recorder.takeValue() shouldEqual RecyclerView.SCROLL_STATE_SETTLING
-            recorder.takeValue() shouldEqual RecyclerView.SCROLL_STATE_IDLE
+            assertThat(recorder.takeValue())
+                .isEqualTo(RecyclerView.SCROLL_STATE_DRAGGING)
+            assertThat(recorder.takeValue())
+                .isEqualTo(RecyclerView.SCROLL_STATE_SETTLING)
+            assertThat(recorder.takeValue())
+                .isEqualTo(RecyclerView.SCROLL_STATE_IDLE)
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -64,9 +67,12 @@ class RecyclerViewScrollStateChangedFlowTest {
             recorder.assertNoMoreValues()
 
             swipeLeftOnView(R.id.recyclerView)
-            recorder.takeValue() shouldEqual RecyclerView.SCROLL_STATE_DRAGGING
-            recorder.takeValue() shouldEqual RecyclerView.SCROLL_STATE_SETTLING
-            recorder.takeValue() shouldEqual RecyclerView.SCROLL_STATE_IDLE
+            assertThat(recorder.takeValue())
+                .isEqualTo(RecyclerView.SCROLL_STATE_DRAGGING)
+            assertThat(recorder.takeValue())
+                .isEqualTo(RecyclerView.SCROLL_STATE_SETTLING)
+            assertThat(recorder.takeValue())
+                .isEqualTo(RecyclerView.SCROLL_STATE_IDLE)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

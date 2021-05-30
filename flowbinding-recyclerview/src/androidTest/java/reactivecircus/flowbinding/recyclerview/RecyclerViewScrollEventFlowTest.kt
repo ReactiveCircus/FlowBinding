@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.recyclerview.fixtures.RecyclerViewFragment
 import reactivecircus.flowbinding.recyclerview.test.R
@@ -34,9 +34,12 @@ class RecyclerViewScrollEventFlowTest {
                 recyclerView.scrollBy(0, 50)
             }
             val event = recorder.takeValue()
-            event.view shouldEqual recyclerView
-            event.dx shouldEqual 0
-            event.dy shouldEqual 50
+            assertThat(event.view)
+                .isEqualTo(recyclerView)
+            assertThat(event.dx)
+                .isEqualTo(0)
+            assertThat(event.dy)
+                .isEqualTo(50)
 
             cancelTestScope()
             recorder.clearValues()
@@ -67,9 +70,12 @@ class RecyclerViewScrollEventFlowTest {
                 recyclerView.scrollBy(50, 0)
             }
             val event = recorder.takeValue()
-            event.view shouldEqual recyclerView
-            event.dx shouldEqual 50
-            event.dy shouldEqual 0
+            assertThat(event.view)
+                .isEqualTo(recyclerView)
+            assertThat(event.dx)
+                .isEqualTo(50)
+            assertThat(event.dy)
+                .isEqualTo(0)
 
             cancelTestScope()
             recorder.clearValues()

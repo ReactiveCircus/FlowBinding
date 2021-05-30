@@ -4,7 +4,7 @@ import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButtonToggleGroup
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.clickView
 import reactivecircus.flowbinding.material.fixtures.MaterialFragment1
@@ -25,11 +25,13 @@ class MaterialButtonCheckedChangedFlowTest {
             recorder.assertNoMoreValues()
 
             clickView(R.id.button1)
-            recorder.takeValue() shouldEqual true
+            assertThat(recorder.takeValue())
+                .isTrue()
             recorder.assertNoMoreValues()
 
             clickView(R.id.button2)
-            recorder.takeValue() shouldEqual false
+            assertThat(recorder.takeValue())
+                .isFalse()
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -50,11 +52,13 @@ class MaterialButtonCheckedChangedFlowTest {
             recorder.assertNoMoreValues()
 
             runOnUiThread { buttonGroup.check(R.id.button1) }
-            recorder.takeValue() shouldEqual true
+            assertThat(recorder.takeValue())
+                .isTrue()
             recorder.assertNoMoreValues()
 
             runOnUiThread { buttonGroup.uncheck(R.id.button1) }
-            recorder.takeValue() shouldEqual false
+            assertThat(recorder.takeValue())
+                .isFalse()
             recorder.assertNoMoreValues()
 
             cancelTestScope()

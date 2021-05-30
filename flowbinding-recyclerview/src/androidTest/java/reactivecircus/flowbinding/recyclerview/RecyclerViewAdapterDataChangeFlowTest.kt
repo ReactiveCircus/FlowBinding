@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.filters.LargeTest
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.recyclerview.fixtures.RecyclerViewFragment
 import reactivecircus.flowbinding.testing.FlowRecorder
@@ -22,14 +22,17 @@ class RecyclerViewAdapterDataChangeFlowTest {
 
             adapter.dataChanges().recordWith(recorder)
 
-            recorder.takeValue() shouldEqual adapter
+            assertThat(recorder.takeValue())
+                .isEqualTo(adapter)
             recorder.assertNoMoreValues()
 
             adapter.notifyDataSetChanged()
-            recorder.takeValue() shouldEqual adapter
+            assertThat(recorder.takeValue())
+                .isEqualTo(adapter)
 
             adapter.notifyDataSetChanged()
-            recorder.takeValue() shouldEqual adapter
+            assertThat(recorder.takeValue())
+                .isEqualTo(adapter)
 
             recorder.assertNoMoreValues()
 
@@ -53,7 +56,8 @@ class RecyclerViewAdapterDataChangeFlowTest {
             recorder.assertNoMoreValues()
 
             adapter.notifyDataSetChanged()
-            recorder.takeValue() shouldEqual adapter
+            assertThat(recorder.takeValue())
+                .isEqualTo(adapter)
 
             recorder.assertNoMoreValues()
 

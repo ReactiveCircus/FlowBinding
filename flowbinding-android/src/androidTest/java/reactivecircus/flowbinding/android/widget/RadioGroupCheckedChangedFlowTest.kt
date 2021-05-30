@@ -3,7 +3,7 @@ package reactivecircus.flowbinding.android.widget
 import android.widget.RadioGroup
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.clickView
 import reactivecircus.flowbinding.android.fixtures.widget.AndroidWidgetFragment
@@ -24,15 +24,18 @@ class RadioGroupCheckedChangedFlowTest {
             }
             radioGroup.checkedChanges().recordWith(recorder)
 
-            recorder.takeValue() shouldEqual R.id.radioButton1
+            assertThat(recorder.takeValue())
+                .isEqualTo(R.id.radioButton1)
             recorder.assertNoMoreValues()
 
             clickView(R.id.radioButton2)
-            recorder.takeValue() shouldEqual R.id.radioButton2
+            assertThat(recorder.takeValue())
+                .isEqualTo(R.id.radioButton2)
             recorder.assertNoMoreValues()
 
             clickView(R.id.radioButton3)
-            recorder.takeValue() shouldEqual R.id.radioButton3
+            assertThat(recorder.takeValue())
+                .isEqualTo(R.id.radioButton3)
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -51,15 +54,18 @@ class RadioGroupCheckedChangedFlowTest {
             }
             radioGroup.checkedChanges().recordWith(recorder)
 
-            recorder.takeValue() shouldEqual R.id.radioButton1
+            assertThat(recorder.takeValue())
+                .isEqualTo(R.id.radioButton1)
             recorder.assertNoMoreValues()
 
             runOnUiThread { radioGroup.check(R.id.radioButton2) }
-            recorder.takeValue() shouldEqual R.id.radioButton2
+            assertThat(recorder.takeValue())
+                .isEqualTo(R.id.radioButton2)
             recorder.assertNoMoreValues()
 
             runOnUiThread { radioGroup.check(R.id.radioButton1) }
-            recorder.takeValue() shouldEqual R.id.radioButton1
+            assertThat(recorder.takeValue())
+                .isEqualTo(R.id.radioButton1)
 
             cancelTestScope()
 
@@ -75,18 +81,21 @@ class RadioGroupCheckedChangedFlowTest {
             val radioGroup = getViewById<RadioGroup>(R.id.radioGroup)
             radioGroup.checkedChanges().recordWith(recorder)
 
-            recorder.takeValue() shouldEqual -1
+            assertThat(recorder.takeValue())
+                .isEqualTo(-1)
             recorder.assertNoMoreValues()
 
             clickView(R.id.radioButton1)
-            recorder.takeValue() shouldEqual R.id.radioButton1
+            assertThat(recorder.takeValue())
+                .isEqualTo(R.id.radioButton1)
             recorder.assertNoMoreValues()
 
             runOnUiThread {
                 radioGroup.clearCheck()
             }
 
-            recorder.takeValue() shouldEqual -1
+            assertThat(recorder.takeValue())
+                .isEqualTo(-1)
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -110,7 +119,8 @@ class RadioGroupCheckedChangedFlowTest {
             recorder.assertNoMoreValues()
 
             runOnUiThread { radioGroup.check(R.id.radioButton2) }
-            recorder.takeValue() shouldEqual R.id.radioButton2
+            assertThat(recorder.takeValue())
+                .isEqualTo(R.id.radioButton2)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

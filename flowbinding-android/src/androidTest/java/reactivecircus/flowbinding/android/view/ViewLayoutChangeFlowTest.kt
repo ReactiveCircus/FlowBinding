@@ -3,7 +3,7 @@ package reactivecircus.flowbinding.android.view
 import android.view.View
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.android.fixtures.view.AndroidViewFragment
 import reactivecircus.flowbinding.testing.FlowRecorder
@@ -26,7 +26,8 @@ class ViewLayoutChangeFlowTest {
             runOnUiThread {
                 view.layout(view.left - 5, view.top - 5, view.right, view.bottom)
             }
-            recorder.takeValue() shouldEqual Unit
+            assertThat(recorder.takeValue())
+                .isEqualTo(Unit)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

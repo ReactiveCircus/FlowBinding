@@ -4,8 +4,7 @@ import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import androidx.viewpager.widget.ViewPager
-import org.amshove.kluent.shouldBeGreaterThan
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.swipeLeftOnView
 import reactivecircus.blueprint.testing.action.swipeRightOnView
@@ -29,10 +28,14 @@ class ViewPagerPageScrolledFlowTest {
 
             swipeLeftOnView(R.id.viewPager)
             val event = recorder.takeValue()
-            event.view shouldEqual viewPager
-            event.position shouldEqual 0
-            event.positionOffset shouldBeGreaterThan 0f
-            event.positionOffsetPixel shouldBeGreaterThan 0
+            assertThat(event.view)
+                .isEqualTo(viewPager)
+            assertThat(event.position)
+                .isEqualTo(0)
+            assertThat(event.positionOffset)
+                .isGreaterThan(0f)
+            assertThat(event.positionOffsetPixel)
+                .isGreaterThan(0)
 
             cancelTestScope()
             recorder.clearValues()
@@ -54,10 +57,14 @@ class ViewPagerPageScrolledFlowTest {
             runOnUiThread { viewPager.currentItem = 1 }
             getInstrumentation().waitForIdleSync()
             val event = recorder.takeValue()
-            event.view shouldEqual viewPager
-            event.position shouldEqual 0
-            event.positionOffset shouldBeGreaterThan 0f
-            event.positionOffsetPixel shouldBeGreaterThan 0
+            assertThat(event.view)
+                .isEqualTo(viewPager)
+            assertThat(event.position)
+                .isEqualTo(0)
+            assertThat(event.positionOffset)
+                .isGreaterThan(0f)
+            assertThat(event.positionOffsetPixel)
+                .isGreaterThan(0)
 
             cancelTestScope()
             recorder.clearValues()

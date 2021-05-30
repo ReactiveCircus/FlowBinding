@@ -110,7 +110,6 @@ fun Project.configureForAllProjects(enableExplicitApi: Property<Boolean>) {
     repositories.apply {
         mavenCentral()
         google()
-        jcenter()
     }
 
     tasks.withType<KotlinCompile>().configureEach {

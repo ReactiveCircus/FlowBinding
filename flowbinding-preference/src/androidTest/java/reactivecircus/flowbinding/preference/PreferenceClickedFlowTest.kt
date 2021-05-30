@@ -3,7 +3,7 @@ package reactivecircus.flowbinding.preference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.test.filters.LargeTest
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.preference.fixtures.SettingsFragment
 import reactivecircus.flowbinding.testing.FlowRecorder
@@ -27,7 +27,8 @@ class PreferenceClickedFlowTest {
             recorder.assertNoMoreValues()
 
             clickView(preference.title)
-            recorder.takeValue() shouldEqual Unit
+            assertThat(recorder.takeValue())
+                .isEqualTo(Unit)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

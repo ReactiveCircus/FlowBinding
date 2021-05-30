@@ -6,7 +6,7 @@ import android.widget.AutoCompleteTextView
 import androidx.test.filters.LargeTest
 import androidx.test.filters.SdkSuppress
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.clearTextInView
 import reactivecircus.blueprint.testing.action.enterTextIntoView
@@ -38,7 +38,8 @@ class AutoCompleteTextViewDismissFlowTest {
 
             enterTextIntoView(R.id.autoCompleteTextView, "AB")
             runOnUiThread { textView.dismissDropDown() }
-            recorder.takeValue() shouldEqual Unit
+            assertThat(recorder.takeValue())
+                .isEqualTo(Unit)
 
             recorder.assertNoMoreValues()
 

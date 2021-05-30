@@ -4,7 +4,7 @@ import android.view.KeyEvent
 import android.view.View
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.android.fixtures.view.AndroidViewFragment
 import reactivecircus.flowbinding.testing.FlowRecorder
@@ -27,15 +27,19 @@ class ViewKeyEventFlowTest {
                 view.dispatchKeyEvent(KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ENTER))
             }
             val event1 = recorder.takeValue()
-            event1.action shouldEqual KeyEvent.ACTION_DOWN
-            event1.keyCode shouldEqual KeyEvent.KEYCODE_ENTER
+            assertThat(event1.action)
+                .isEqualTo(KeyEvent.ACTION_DOWN)
+            assertThat(event1.keyCode)
+                .isEqualTo(KeyEvent.KEYCODE_ENTER)
 
             runOnUiThread {
                 view.dispatchKeyEvent(KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_A))
             }
             val event2 = recorder.takeValue()
-            event2.action shouldEqual KeyEvent.ACTION_UP
-            event2.keyCode shouldEqual KeyEvent.KEYCODE_A
+            assertThat(event2.action)
+                .isEqualTo(KeyEvent.ACTION_UP)
+            assertThat(event2.keyCode)
+                .isEqualTo(KeyEvent.KEYCODE_A)
 
             cancelTestScope()
 

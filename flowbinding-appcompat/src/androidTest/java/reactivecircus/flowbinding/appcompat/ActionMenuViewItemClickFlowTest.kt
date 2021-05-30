@@ -3,7 +3,7 @@ package reactivecircus.flowbinding.appcompat
 import android.view.MenuItem
 import androidx.appcompat.widget.ActionMenuView
 import androidx.test.filters.LargeTest
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.appcompat.fixtures.AppCompatFragment
 import reactivecircus.flowbinding.testing.FlowRecorder
@@ -27,10 +27,12 @@ class ActionMenuViewItemClickFlowTest {
             recorder.assertNoMoreValues()
 
             menu.performIdentifierAction(1, 0)
-            recorder.takeValue() shouldEqual item1
+            assertThat(recorder.takeValue())
+                .isEqualTo(item1)
 
             menu.performIdentifierAction(2, 0)
-            recorder.takeValue() shouldEqual item2
+            assertThat(recorder.takeValue())
+                .isEqualTo(item2)
 
             recorder.assertNoMoreValues()
 

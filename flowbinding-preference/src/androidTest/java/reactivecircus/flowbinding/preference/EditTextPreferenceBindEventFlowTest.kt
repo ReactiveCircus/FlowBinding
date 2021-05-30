@@ -3,7 +3,7 @@ package reactivecircus.flowbinding.preference
 import androidx.preference.EditTextPreference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.test.filters.LargeTest
-import org.amshove.kluent.shouldBeInstanceOf
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.closeKeyboard
 import reactivecircus.blueprint.testing.action.pressBack
@@ -29,7 +29,8 @@ class EditTextPreferenceBindEventFlowTest {
             recorder.assertNoMoreValues()
 
             clickView(editTextPreference.title)
-            recorder.takeValue() shouldBeInstanceOf EditTextBindEvent::class
+            assertThat(recorder.takeValue())
+                .isInstanceOf(EditTextBindEvent::class.java)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

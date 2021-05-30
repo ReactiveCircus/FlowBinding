@@ -3,8 +3,8 @@ package reactivecircus.flowbinding.material
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import com.google.android.material.tabs.TabLayout
+import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.flow.filterIsInstance
-import org.amshove.kluent.shouldEqual
 import org.junit.Test
 import reactivecircus.flowbinding.material.fixtures.MaterialFragment2
 import reactivecircus.flowbinding.material.test.R
@@ -24,15 +24,18 @@ class TabLayoutTabSelectionEventFlowTest {
                 .filterIsInstance<TabLayoutSelectionEvent.TabSelected>()
                 .recordWith(recorder)
 
-            recorder.takeValue().tab.text shouldEqual tabLayout.getTabAt(0)?.text
+            assertThat(recorder.takeValue().tab.text)
+                .isEqualTo(tabLayout.getTabAt(0)?.text)
             recorder.assertNoMoreValues()
 
             runOnUiThread { tabLayout.getTabAt(1)?.select() }
-            recorder.takeValue().tab.text shouldEqual tabLayout.getTabAt(1)?.text
+            assertThat(recorder.takeValue().tab.text)
+                .isEqualTo(tabLayout.getTabAt(1)?.text)
             recorder.assertNoMoreValues()
 
             runOnUiThread { tabLayout.getTabAt(2)?.select() }
-            recorder.takeValue().tab.text shouldEqual tabLayout.getTabAt(2)?.text
+            assertThat(recorder.takeValue().tab.text)
+                .isEqualTo(tabLayout.getTabAt(2)?.text)
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -57,7 +60,8 @@ class TabLayoutTabSelectionEventFlowTest {
             recorder.assertNoMoreValues()
 
             runOnUiThread { tabLayout.getTabAt(1)?.select() }
-            recorder.takeValue().tab.text shouldEqual tabLayout.getTabAt(1)?.text
+            assertThat(recorder.takeValue().tab.text)
+                .isEqualTo(tabLayout.getTabAt(1)?.text)
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -79,11 +83,13 @@ class TabLayoutTabSelectionEventFlowTest {
             recorder.assertNoMoreValues()
 
             runOnUiThread { tabLayout.getTabAt(1)?.select() }
-            recorder.takeValue().tab.text shouldEqual tabLayout.getTabAt(0)?.text
+            assertThat(recorder.takeValue().tab.text)
+                .isEqualTo(tabLayout.getTabAt(0)?.text)
             recorder.assertNoMoreValues()
 
             runOnUiThread { tabLayout.getTabAt(2)?.select() }
-            recorder.takeValue().tab.text shouldEqual tabLayout.getTabAt(1)?.text
+            assertThat(recorder.takeValue().tab.text)
+                .isEqualTo(tabLayout.getTabAt(1)?.text)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

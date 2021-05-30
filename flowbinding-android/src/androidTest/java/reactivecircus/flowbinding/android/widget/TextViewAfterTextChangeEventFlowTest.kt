@@ -2,7 +2,7 @@ package reactivecircus.flowbinding.android.widget
 
 import android.widget.TextView
 import androidx.test.filters.LargeTest
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.android.fixtures.widget.AndroidWidgetFragment
 import reactivecircus.flowbinding.testing.FlowRecorder
@@ -20,20 +20,26 @@ class TextViewAfterTextChangeEventFlowTest {
             textView.afterTextChanges().recordWith(recorder)
 
             val initialEvent = recorder.takeValue()
-            initialEvent.view shouldEqual textView
-            initialEvent.editable shouldEqual null
+            assertThat(initialEvent.view)
+                .isEqualTo(textView)
+            assertThat(initialEvent.editable)
+                .isNull()
             recorder.assertNoMoreValues()
 
             textView.text = "A"
             val event1 = recorder.takeValue()
-            event1.view shouldEqual textView
-            event1.editable.toString() shouldEqual "A"
+            assertThat(event1.view)
+                .isEqualTo(textView)
+            assertThat(event1.editable.toString())
+                .isEqualTo("A")
             recorder.assertNoMoreValues()
 
             textView.text = "B"
             val event2 = recorder.takeValue()
-            event2.view shouldEqual textView
-            event2.editable.toString() shouldEqual "B"
+            assertThat(event2.view)
+                .isEqualTo(textView)
+            assertThat(event2.editable.toString())
+                .isEqualTo("B")
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -56,14 +62,18 @@ class TextViewAfterTextChangeEventFlowTest {
 
             textView.text = "A"
             val event1 = recorder.takeValue()
-            event1.view shouldEqual textView
-            event1.editable.toString() shouldEqual "A"
+            assertThat(event1.view)
+                .isEqualTo(textView)
+            assertThat(event1.editable.toString())
+                .isEqualTo("A")
             recorder.assertNoMoreValues()
 
             textView.text = "B"
             val event2 = recorder.takeValue()
-            event2.view shouldEqual textView
-            event2.editable.toString() shouldEqual "B"
+            assertThat(event2.view)
+                .isEqualTo(textView)
+            assertThat(event2.editable.toString())
+                .isEqualTo("B")
             recorder.assertNoMoreValues()
 
             cancelTestScope()

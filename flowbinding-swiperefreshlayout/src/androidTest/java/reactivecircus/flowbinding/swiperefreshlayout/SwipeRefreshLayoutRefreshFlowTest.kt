@@ -2,7 +2,7 @@ package reactivecircus.flowbinding.swiperefreshlayout
 
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.test.filters.LargeTest
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.swipeDownOnView
 import reactivecircus.flowbinding.swiperefreshlayout.fixtures.SwipeRefreshLayoutFragment
@@ -24,7 +24,8 @@ class SwipeRefreshLayoutRefreshFlowTest {
             recorder.assertNoMoreValues()
 
             swipeDownOnView(R.id.swipeRefreshLayout)
-            recorder.takeValue() shouldEqual Unit
+            assertThat(recorder.takeValue())
+                .isEqualTo(Unit)
 
             cancelTestScope()
             recorder.clearValues()

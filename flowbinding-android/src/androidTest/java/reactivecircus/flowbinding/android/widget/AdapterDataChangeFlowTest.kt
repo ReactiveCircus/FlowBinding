@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import android.widget.Adapter
 import android.widget.BaseAdapter
 import androidx.test.filters.LargeTest
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.android.fixtures.widget.ListFragment
 import reactivecircus.flowbinding.testing.FlowRecorder
@@ -23,14 +23,17 @@ class AdapterDataChangeFlowTest {
 
             adapter.dataChanges().recordWith(recorder)
 
-            recorder.takeValue() shouldEqual adapter
+            assertThat(recorder.takeValue())
+                .isEqualTo(adapter)
             recorder.assertNoMoreValues()
 
             adapter.notifyDataSetChanged()
-            recorder.takeValue() shouldEqual adapter
+            assertThat(recorder.takeValue())
+                .isEqualTo(adapter)
 
             adapter.notifyDataSetChanged()
-            recorder.takeValue() shouldEqual adapter
+            assertThat(recorder.takeValue())
+                .isEqualTo(adapter)
 
             recorder.assertNoMoreValues()
 
@@ -54,7 +57,8 @@ class AdapterDataChangeFlowTest {
             recorder.assertNoMoreValues()
 
             adapter.notifyDataSetChanged()
-            recorder.takeValue() shouldEqual adapter
+            assertThat(recorder.takeValue())
+                .isEqualTo(adapter)
 
             recorder.assertNoMoreValues()
 

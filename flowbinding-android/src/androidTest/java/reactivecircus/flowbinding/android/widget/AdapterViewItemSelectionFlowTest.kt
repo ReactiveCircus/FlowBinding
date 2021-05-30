@@ -3,7 +3,7 @@ package reactivecircus.flowbinding.android.widget
 import android.widget.ListView
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.android.fixtures.widget.ListFragment
 import reactivecircus.flowbinding.android.test.R
@@ -23,19 +23,22 @@ class AdapterViewItemSelectionFlowTest {
             }
             listView.itemSelections().recordWith(recorder)
 
-            recorder.takeValue() shouldEqual 0
+            assertThat(recorder.takeValue())
+                .isEqualTo(0)
             recorder.assertNoMoreValues()
 
             runOnUiThread {
                 listView.setSelection(2)
             }
-            recorder.takeValue() shouldEqual 2
+            assertThat(recorder.takeValue())
+                .isEqualTo(2)
             recorder.assertNoMoreValues()
 
             runOnUiThread {
                 listView.setSelection(0)
             }
-            recorder.takeValue() shouldEqual 0
+            assertThat(recorder.takeValue())
+                .isEqualTo(0)
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -63,7 +66,8 @@ class AdapterViewItemSelectionFlowTest {
             runOnUiThread {
                 listView.setSelection(2)
             }
-            recorder.takeValue() shouldEqual 2
+            assertThat(recorder.takeValue())
+                .isEqualTo(2)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

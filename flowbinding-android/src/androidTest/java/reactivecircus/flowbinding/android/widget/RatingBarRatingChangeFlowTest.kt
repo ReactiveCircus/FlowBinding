@@ -3,7 +3,7 @@ package reactivecircus.flowbinding.android.widget
 import android.widget.RatingBar
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.android.fixtures.widget.AndroidWidgetFragment
 import reactivecircus.flowbinding.android.test.R
@@ -21,15 +21,18 @@ class RatingBarRatingChangeFlowTest {
             val ratingBar = getViewById<RatingBar>(R.id.ratingBar)
             ratingBar.ratingChanges().recordWith(recorder)
 
-            recorder.takeValue() shouldEqual 0f
+            assertThat(recorder.takeValue())
+                .isEqualTo(0f)
             recorder.assertNoMoreValues()
 
             runOnUiThread { ratingBar.rating = 3f }
-            recorder.takeValue() shouldEqual 3f
+            assertThat(recorder.takeValue())
+                .isEqualTo(3f)
             recorder.assertNoMoreValues()
 
             runOnUiThread { ratingBar.rating = 5f }
-            recorder.takeValue() shouldEqual 5f
+            assertThat(recorder.takeValue())
+                .isEqualTo(5f)
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -51,7 +54,8 @@ class RatingBarRatingChangeFlowTest {
             recorder.assertNoMoreValues()
 
             runOnUiThread { ratingBar.rating = 3f }
-            recorder.takeValue() shouldEqual 3f
+            assertThat(recorder.takeValue())
+                .isEqualTo(3f)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

@@ -4,7 +4,7 @@ import android.view.View
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import com.google.android.material.chip.ChipGroup
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.clickView
 import reactivecircus.flowbinding.material.fixtures.MaterialFragment2
@@ -26,15 +26,18 @@ class ChipGroupCheckedChangedFlowTest {
             chipGroup.chipCheckedChanges()
                 .recordWith(recorder)
 
-            recorder.takeValue() shouldEqual R.id.chip1
+            assertThat(recorder.takeValue())
+                .isEqualTo(R.id.chip1)
             recorder.assertNoMoreValues()
 
             clickView(R.id.chip2)
-            recorder.takeValue() shouldEqual R.id.chip2
+            assertThat(recorder.takeValue())
+                .isEqualTo(R.id.chip2)
             recorder.assertNoMoreValues()
 
             clickView(R.id.chip3)
-            recorder.takeValue() shouldEqual R.id.chip3
+            assertThat(recorder.takeValue())
+                .isEqualTo(R.id.chip3)
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -54,15 +57,18 @@ class ChipGroupCheckedChangedFlowTest {
             chipGroup.chipCheckedChanges()
                 .recordWith(recorder)
 
-            recorder.takeValue() shouldEqual R.id.chip1
+            assertThat(recorder.takeValue())
+                .isEqualTo(R.id.chip1)
             recorder.assertNoMoreValues()
 
             runOnUiThread { chipGroup.check(R.id.chip2) }
-            recorder.takeValue() shouldEqual R.id.chip2
+            assertThat(recorder.takeValue())
+                .isEqualTo(R.id.chip2)
             recorder.assertNoMoreValues()
 
             runOnUiThread { chipGroup.check(R.id.chip1) }
-            recorder.takeValue() shouldEqual R.id.chip1
+            assertThat(recorder.takeValue())
+                .isEqualTo(R.id.chip1)
 
             cancelTestScope()
 
@@ -79,18 +85,21 @@ class ChipGroupCheckedChangedFlowTest {
             chipGroup.chipCheckedChanges()
                 .recordWith(recorder)
 
-            recorder.takeValue() shouldEqual View.NO_ID
+            assertThat(recorder.takeValue())
+                .isEqualTo(View.NO_ID)
             recorder.assertNoMoreValues()
 
             clickView(R.id.chip1)
-            recorder.takeValue() shouldEqual R.id.chip1
+            assertThat(recorder.takeValue())
+                .isEqualTo(R.id.chip1)
             recorder.assertNoMoreValues()
 
             runOnUiThread {
                 chipGroup.clearCheck()
             }
 
-            recorder.takeValue() shouldEqual View.NO_ID
+            assertThat(recorder.takeValue())
+                .isEqualTo(View.NO_ID)
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -114,7 +123,8 @@ class ChipGroupCheckedChangedFlowTest {
             recorder.assertNoMoreValues()
 
             runOnUiThread { chipGroup.check(R.id.chip2) }
-            recorder.takeValue() shouldEqual R.id.chip2
+            assertThat(recorder.takeValue())
+                .isEqualTo(R.id.chip2)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

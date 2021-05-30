@@ -2,7 +2,7 @@ package reactivecircus.flowbinding.appcompat
 
 import androidx.appcompat.widget.SearchView
 import androidx.test.filters.LargeTest
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.appcompat.fixtures.AppCompatFragment
 import reactivecircus.flowbinding.appcompat.test.R
@@ -20,15 +20,18 @@ class SearchViewQueryTextChangeFlowTest {
             val searchView = getViewById<SearchView>(R.id.searchView)
             searchView.queryTextChanges().recordWith(recorder)
 
-            recorder.takeValue().toString() shouldEqual ""
+            assertThat(recorder.takeValue().toString())
+                .isEmpty()
             recorder.assertNoMoreValues()
 
             searchView.setQuery("A", false)
-            recorder.takeValue().toString() shouldEqual "A"
+            assertThat(recorder.takeValue().toString())
+                .isEqualTo("A")
             recorder.assertNoMoreValues()
 
             searchView.setQuery("AB", false)
-            recorder.takeValue().toString() shouldEqual "AB"
+            assertThat(recorder.takeValue().toString())
+                .isEqualTo("AB")
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -52,7 +55,8 @@ class SearchViewQueryTextChangeFlowTest {
             recorder.assertNoMoreValues()
 
             searchView.setQuery("AB", false)
-            recorder.takeValue().toString() shouldEqual "AB"
+            assertThat(recorder.takeValue().toString())
+                .isEqualTo("AB")
             recorder.assertNoMoreValues()
 
             cancelTestScope()

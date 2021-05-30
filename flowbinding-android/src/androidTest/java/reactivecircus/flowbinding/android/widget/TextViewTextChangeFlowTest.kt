@@ -2,7 +2,7 @@ package reactivecircus.flowbinding.android.widget
 
 import android.widget.TextView
 import androidx.test.filters.LargeTest
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.android.fixtures.widget.AndroidWidgetFragment
 import reactivecircus.flowbinding.testing.FlowRecorder
@@ -21,15 +21,18 @@ class TextViewTextChangeFlowTest {
             }
             textView.textChanges().recordWith(recorder)
 
-            recorder.takeValue().toString() shouldEqual "ABC"
+            assertThat(recorder.takeValue().toString())
+                .isEqualTo("ABC")
             recorder.assertNoMoreValues()
 
             textView.text = "A"
-            recorder.takeValue().toString() shouldEqual "A"
+            assertThat(recorder.takeValue().toString())
+                .isEqualTo("A")
             recorder.assertNoMoreValues()
 
             textView.text = "AB"
-            recorder.takeValue().toString() shouldEqual "AB"
+            assertThat(recorder.takeValue().toString())
+                .isEqualTo("AB")
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -53,11 +56,13 @@ class TextViewTextChangeFlowTest {
             recorder.assertNoMoreValues()
 
             textView.text = "A"
-            recorder.takeValue().toString() shouldEqual "A"
+            assertThat(recorder.takeValue().toString())
+                .isEqualTo("A")
             recorder.assertNoMoreValues()
 
             textView.text = "AB"
-            recorder.takeValue().toString() shouldEqual "AB"
+            assertThat(recorder.takeValue().toString())
+                .isEqualTo("AB")
             recorder.assertNoMoreValues()
 
             cancelTestScope()

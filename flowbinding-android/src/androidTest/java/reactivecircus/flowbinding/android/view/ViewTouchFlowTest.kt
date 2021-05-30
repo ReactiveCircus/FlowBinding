@@ -3,7 +3,7 @@ package reactivecircus.flowbinding.android.view
 import android.view.MotionEvent
 import android.view.View
 import androidx.test.filters.LargeTest
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.android.fixtures.view.AndroidViewFragment
 import reactivecircus.flowbinding.testing.FlowRecorder
@@ -24,10 +24,12 @@ class ViewTouchFlowTest {
             recorder.assertNoMoreValues()
 
             view.dispatchTouchEvent(motionEventAtPosition(view, MotionEvent.ACTION_DOWN, 0, 50))
-            recorder.takeValue().action shouldEqual MotionEvent.ACTION_DOWN
+            assertThat(recorder.takeValue().action)
+                .isEqualTo(MotionEvent.ACTION_DOWN)
 
             view.dispatchTouchEvent(motionEventAtPosition(view, MotionEvent.ACTION_MOVE, 1, 50))
-            recorder.takeValue().action shouldEqual MotionEvent.ACTION_MOVE
+            assertThat(recorder.takeValue().action)
+                .isEqualTo(MotionEvent.ACTION_MOVE)
 
             cancelTestScope()
 

@@ -2,7 +2,7 @@ package reactivecircus.flowbinding.android.widget
 
 import android.widget.SearchView
 import androidx.test.filters.LargeTest
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.android.fixtures.widget.AndroidWidgetFragment
 import reactivecircus.flowbinding.android.test.R
@@ -21,20 +21,26 @@ class SearchViewQueryTextEventFlowTest {
             searchView.queryTextEvents().recordWith(recorder)
 
             val event1 = recorder.takeValue() as QueryTextEvent.QueryChanged
-            event1.view shouldEqual searchView
-            event1.queryText.toString() shouldEqual ""
+            assertThat(event1.view)
+                .isEqualTo(searchView)
+            assertThat(event1.queryText.toString())
+                .isEmpty()
             recorder.assertNoMoreValues()
 
             searchView.setQuery("A", false)
             val event2 = recorder.takeValue() as QueryTextEvent.QueryChanged
-            event2.view shouldEqual searchView
-            event2.queryText.toString() shouldEqual "A"
+            assertThat(event2.view)
+                .isEqualTo(searchView)
+            assertThat(event2.queryText.toString())
+                .isEqualTo("A")
             recorder.assertNoMoreValues()
 
             searchView.setQuery("AB", false)
             val event3 = recorder.takeValue() as QueryTextEvent.QueryChanged
-            event3.view shouldEqual searchView
-            event3.queryText.toString() shouldEqual "AB"
+            assertThat(event3.view)
+                .isEqualTo(searchView)
+            assertThat(event3.queryText.toString())
+                .isEqualTo("AB")
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -52,18 +58,24 @@ class SearchViewQueryTextEventFlowTest {
             searchView.queryTextEvents().recordWith(recorder)
 
             val event1 = recorder.takeValue() as QueryTextEvent.QueryChanged
-            event1.view shouldEqual searchView
-            event1.queryText.toString() shouldEqual ""
+            assertThat(event1.view)
+                .isEqualTo(searchView)
+            assertThat(event1.queryText.toString())
+                .isEmpty()
             recorder.assertNoMoreValues()
 
             searchView.setQuery("A", true)
             val event2 = recorder.takeValue() as QueryTextEvent.QueryChanged
-            event2.view shouldEqual searchView
-            event2.queryText.toString() shouldEqual "A"
+            assertThat(event2.view)
+                .isEqualTo(searchView)
+            assertThat(event2.queryText.toString())
+                .isEqualTo("A")
 
             val event3 = recorder.takeValue() as QueryTextEvent.QuerySubmitted
-            event3.view shouldEqual searchView
-            event3.queryText.toString() shouldEqual "A"
+            assertThat(event3.view)
+                .isEqualTo(searchView)
+            assertThat(event3.queryText.toString())
+                .isEqualTo("A")
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -88,8 +100,10 @@ class SearchViewQueryTextEventFlowTest {
 
             searchView.setQuery("AB", false)
             val event = recorder.takeValue() as QueryTextEvent.QueryChanged
-            event.view shouldEqual searchView
-            event.queryText.toString() shouldEqual "AB"
+            assertThat(event.view)
+                .isEqualTo(searchView)
+            assertThat(event.queryText.toString())
+                .isEqualTo("AB")
             recorder.assertNoMoreValues()
 
             cancelTestScope()

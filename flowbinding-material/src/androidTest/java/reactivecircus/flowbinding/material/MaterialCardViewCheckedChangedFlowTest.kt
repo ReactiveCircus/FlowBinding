@@ -3,7 +3,7 @@ package reactivecircus.flowbinding.material
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import com.google.android.material.card.MaterialCardView
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.material.fixtures.MaterialFragment1
 import reactivecircus.flowbinding.material.test.R
@@ -23,15 +23,18 @@ class MaterialCardViewCheckedChangedFlowTest {
             }
             cardView.checkedChanges().recordWith(recorder)
 
-            recorder.takeValue() shouldEqual false
+            assertThat(recorder.takeValue())
+                .isFalse()
             recorder.assertNoMoreValues()
 
             runOnUiThread { cardView.isChecked = true }
-            recorder.takeValue() shouldEqual true
+            assertThat(recorder.takeValue())
+                .isTrue()
             recorder.assertNoMoreValues()
 
             runOnUiThread { cardView.isChecked = false }
-            recorder.takeValue() shouldEqual false
+            assertThat(recorder.takeValue())
+                .isFalse()
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -58,7 +61,8 @@ class MaterialCardViewCheckedChangedFlowTest {
             recorder.assertNoMoreValues()
 
             runOnUiThread { cardView.isChecked = false }
-            recorder.takeValue() shouldEqual false
+            assertThat(recorder.takeValue())
+                .isFalse()
             recorder.assertNoMoreValues()
 
             cancelTestScope()

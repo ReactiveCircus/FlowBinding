@@ -3,7 +3,7 @@ package reactivecircus.flowbinding.android.widget
 import android.widget.RatingBar
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.android.fixtures.widget.AndroidWidgetFragment
 import reactivecircus.flowbinding.android.test.R
@@ -22,23 +22,32 @@ class RatingBarRatingChangeEventFlowTest {
             ratingBar.ratingChangeEvents().recordWith(recorder)
 
             val event1 = recorder.takeValue()
-            event1.view shouldEqual ratingBar
-            event1.rating shouldEqual 0f
-            event1.fromUser shouldEqual false
+            assertThat(event1.view)
+                .isEqualTo(ratingBar)
+            assertThat(event1.rating)
+                .isEqualTo(0f)
+            assertThat(event1.fromUser)
+                .isFalse()
             recorder.assertNoMoreValues()
 
             runOnUiThread { ratingBar.rating = 3f }
             val event2 = recorder.takeValue()
-            event2.view shouldEqual ratingBar
-            event2.rating shouldEqual 3f
-            event2.fromUser shouldEqual false
+            assertThat(event2.view)
+                .isEqualTo(ratingBar)
+            assertThat(event2.rating)
+                .isEqualTo(3f)
+            assertThat(event2.fromUser)
+                .isFalse()
             recorder.assertNoMoreValues()
 
             runOnUiThread { ratingBar.rating = 5f }
             val event3 = recorder.takeValue()
-            event3.view shouldEqual ratingBar
-            event3.rating shouldEqual 5f
-            event3.fromUser shouldEqual false
+            assertThat(event3.view)
+                .isEqualTo(ratingBar)
+            assertThat(event3.rating)
+                .isEqualTo(5f)
+            assertThat(event3.fromUser)
+                .isFalse()
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -61,9 +70,12 @@ class RatingBarRatingChangeEventFlowTest {
 
             runOnUiThread { ratingBar.rating = 3f }
             val event = recorder.takeValue()
-            event.view shouldEqual ratingBar
-            event.rating shouldEqual 3f
-            event.fromUser shouldEqual false
+            assertThat(event.view)
+                .isEqualTo(ratingBar)
+            assertThat(event.rating)
+                .isEqualTo(3f)
+            assertThat(event.fromUser)
+                .isFalse()
             recorder.assertNoMoreValues()
 
             cancelTestScope()

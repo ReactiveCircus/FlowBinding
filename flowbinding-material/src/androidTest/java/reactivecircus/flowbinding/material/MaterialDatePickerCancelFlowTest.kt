@@ -3,7 +3,7 @@ package reactivecircus.flowbinding.material
 import androidx.fragment.app.FragmentActivity
 import androidx.test.filters.LargeTest
 import com.google.android.material.datepicker.MaterialDatePicker
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.pressBack
 import reactivecircus.blueprint.testing.currentActivity
@@ -27,7 +27,8 @@ class MaterialDatePickerCancelFlowTest {
 
             picker.show((currentActivity() as FragmentActivity).supportFragmentManager, toString())
             pressBack()
-            recorder.takeValue() shouldEqual Unit
+            assertThat(recorder.takeValue())
+                .isEqualTo(Unit)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

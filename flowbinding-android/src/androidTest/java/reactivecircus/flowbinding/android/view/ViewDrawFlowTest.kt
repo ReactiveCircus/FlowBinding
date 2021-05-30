@@ -4,7 +4,7 @@ import android.os.Build
 import android.view.View
 import androidx.test.filters.LargeTest
 import androidx.test.filters.SdkSuppress
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.android.fixtures.view.AndroidViewFragment
 import reactivecircus.flowbinding.testing.FlowRecorder
@@ -26,7 +26,8 @@ class ViewDrawFlowTest {
             recorder.assertNoMoreValues()
 
             view.viewTreeObserver.dispatchOnDraw()
-            recorder.takeValue() shouldEqual Unit
+            assertThat(recorder.takeValue())
+                .isEqualTo(Unit)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

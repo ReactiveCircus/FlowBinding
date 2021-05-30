@@ -2,7 +2,7 @@ package reactivecircus.flowbinding.material
 
 import androidx.test.filters.LargeTest
 import com.google.android.material.appbar.AppBarLayout
-import org.amshove.kluent.shouldBeLessThan
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.swipeDownOnView
 import reactivecircus.blueprint.testing.action.swipeUpOnView
@@ -24,7 +24,8 @@ class AppBarLayoutOffsetChangedFlowTest {
             recorder.assertNoMoreValues()
 
             swipeUpOnView(R.id.materialTextView)
-            recorder.takeValue() shouldBeLessThan 0
+            assertThat(recorder.takeValue())
+                .isLessThan(0)
 
             cancelTestScope()
             recorder.clearValues()

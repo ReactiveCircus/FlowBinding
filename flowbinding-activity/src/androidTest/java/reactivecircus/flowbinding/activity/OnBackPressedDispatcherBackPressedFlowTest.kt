@@ -1,7 +1,7 @@
 package reactivecircus.flowbinding.activity
 
 import androidx.test.filters.LargeTest
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.pressBack
 import reactivecircus.flowbinding.activity.fixtures.ActivityFragment
@@ -19,7 +19,8 @@ class OnBackPressedDispatcherBackPressedFlowTest {
             fragment.requireActivity().onBackPressedDispatcher.backPresses(owner = fragment).recordWith(recorder)
 
             pressBack()
-            recorder.takeValue() shouldEqual Unit
+            assertThat(recorder.takeValue())
+                .isEqualTo(Unit)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

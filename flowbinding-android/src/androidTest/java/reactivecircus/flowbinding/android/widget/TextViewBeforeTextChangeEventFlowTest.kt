@@ -2,7 +2,7 @@ package reactivecircus.flowbinding.android.widget
 
 import android.widget.TextView
 import androidx.test.filters.LargeTest
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.android.fixtures.widget.AndroidWidgetFragment
 import reactivecircus.flowbinding.testing.FlowRecorder
@@ -22,29 +22,44 @@ class TextViewBeforeTextChangeEventFlowTest {
             textView.beforeTextChanges().recordWith(recorder)
 
             val initialEvent = recorder.takeValue()
-            initialEvent.view shouldEqual textView
-            initialEvent.text.toString() shouldEqual "ABC"
-            initialEvent.start shouldEqual 0
-            initialEvent.count shouldEqual 0
-            initialEvent.after shouldEqual 0
+            assertThat(initialEvent.view)
+                .isEqualTo(textView)
+            assertThat(initialEvent.text.toString())
+                .isEqualTo("ABC")
+            assertThat(initialEvent.start)
+                .isEqualTo(0)
+            assertThat(initialEvent.count)
+                .isEqualTo(0)
+            assertThat(initialEvent.after)
+                .isEqualTo(0)
             recorder.assertNoMoreValues()
 
             textView.text = "A"
             val event1 = recorder.takeValue()
-            event1.view shouldEqual textView
-            event1.text.toString() shouldEqual "ABC"
-            event1.start shouldEqual 0
-            event1.count shouldEqual 3
-            event1.after shouldEqual 1
+            assertThat(event1.view)
+                .isEqualTo(textView)
+            assertThat(event1.text.toString())
+                .isEqualTo("ABC")
+            assertThat(event1.start)
+                .isEqualTo(0)
+            assertThat(event1.count)
+                .isEqualTo(3)
+            assertThat(event1.after)
+                .isEqualTo(1)
             recorder.assertNoMoreValues()
 
             textView.text = "AB"
             val event2 = recorder.takeValue()
-            event2.view shouldEqual textView
-            event2.text.toString() shouldEqual "A"
-            event2.start shouldEqual 0
-            event2.count shouldEqual 1
-            event2.after shouldEqual 2
+            assertThat(event2.view)
+                .isEqualTo(textView)
+            assertThat(event2.text.toString())
+                .isEqualTo("A")
+            assertThat(event2.start)
+                .isEqualTo(0)
+            assertThat(event2.count)
+                .isEqualTo(1)
+            assertThat(event2.after)
+                .isEqualTo(2)
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -69,20 +84,30 @@ class TextViewBeforeTextChangeEventFlowTest {
 
             textView.text = "A"
             val event1 = recorder.takeValue()
-            event1.view shouldEqual textView
-            event1.text.toString() shouldEqual "ABC"
-            event1.start shouldEqual 0
-            event1.count shouldEqual 3
-            event1.after shouldEqual 1
+            assertThat(event1.view)
+                .isEqualTo(textView)
+            assertThat(event1.text.toString())
+                .isEqualTo("ABC")
+            assertThat(event1.start)
+                .isEqualTo(0)
+            assertThat(event1.count)
+                .isEqualTo(3)
+            assertThat(event1.after)
+                .isEqualTo(1)
             recorder.assertNoMoreValues()
 
             textView.text = "AB"
             val event2 = recorder.takeValue()
-            event2.view shouldEqual textView
-            event2.text.toString() shouldEqual "A"
-            event2.start shouldEqual 0
-            event2.count shouldEqual 1
-            event2.after shouldEqual 2
+            assertThat(event2.view)
+                .isEqualTo(textView)
+            assertThat(event2.text.toString())
+                .isEqualTo("A")
+            assertThat(event2.start)
+                .isEqualTo(0)
+            assertThat(event2.count)
+                .isEqualTo(1)
+            assertThat(event2.after)
+                .isEqualTo(2)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

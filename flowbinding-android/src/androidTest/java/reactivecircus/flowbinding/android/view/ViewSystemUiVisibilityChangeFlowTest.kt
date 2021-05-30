@@ -5,7 +5,7 @@ import android.view.View
 import androidx.test.filters.LargeTest
 import androidx.test.filters.SdkSuppress
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.android.fixtures.view.AndroidViewFragment
 import reactivecircus.flowbinding.testing.FlowRecorder
@@ -31,19 +31,22 @@ class ViewSystemUiVisibilityChangeFlowTest {
             runOnUiThread {
                 rootView.systemUiVisibility = View.SYSTEM_UI_FLAG_LOW_PROFILE
             }
-            recorder.takeValue() shouldEqual View.SYSTEM_UI_FLAG_LOW_PROFILE
+            assertThat(recorder.takeValue())
+                .isEqualTo(View.SYSTEM_UI_FLAG_LOW_PROFILE)
             recorder.assertNoMoreValues()
 
             runOnUiThread {
                 rootView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
             }
-            recorder.takeValue() shouldEqual View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+            assertThat(recorder.takeValue())
+                .isEqualTo(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION)
             recorder.assertNoMoreValues()
 
             runOnUiThread {
                 rootView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
             }
-            recorder.takeValue() shouldEqual View.SYSTEM_UI_FLAG_FULLSCREEN
+            assertThat(recorder.takeValue())
+                .isEqualTo(View.SYSTEM_UI_FLAG_FULLSCREEN)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

@@ -2,7 +2,7 @@ package reactivecircus.flowbinding.core
 
 import androidx.core.widget.NestedScrollView
 import androidx.test.filters.LargeTest
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.core.fixtures.CoreFragment
 import reactivecircus.flowbinding.core.test.R
@@ -25,11 +25,16 @@ class NestedScrollViewScrollChangeEventFlowTest {
 
             nestedScrollView.scrollTo(100, 0)
             val event = recorder.takeValue()
-            event.view shouldEqual nestedScrollView
-            event.scrollX shouldEqual 100
-            event.scrollY shouldEqual 0
-            event.oldScrollX shouldEqual 0
-            event.oldScrollY shouldEqual 0
+            assertThat(event.view)
+                .isEqualTo(nestedScrollView)
+            assertThat(event.scrollX)
+                .isEqualTo(100)
+            assertThat(event.scrollY)
+                .isEqualTo(0)
+            assertThat(event.oldScrollX)
+                .isEqualTo(0)
+            assertThat(event.oldScrollY)
+                .isEqualTo(0)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

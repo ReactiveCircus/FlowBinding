@@ -4,7 +4,7 @@ import android.view.MenuItem
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import com.google.android.material.navigation.NavigationView
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.openDrawer
 import reactivecircus.blueprint.testing.action.selectNavigationItem
@@ -26,12 +26,14 @@ class NavigationViewItemSelectedFlowTest {
             }
             navigationView.itemSelections().recordWith(recorder)
 
-            recorder.takeValue().itemId shouldEqual R.id.item1
+            assertThat(recorder.takeValue().itemId)
+                .isEqualTo(R.id.item1)
             recorder.assertNoMoreValues()
 
             openDrawer(R.id.drawerLayout)
             selectNavigationItem(R.id.navigationView, R.id.item2)
-            recorder.takeValue().itemId shouldEqual R.id.item2
+            assertThat(recorder.takeValue().itemId)
+                .isEqualTo(R.id.item2)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

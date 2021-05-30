@@ -4,7 +4,7 @@ import android.view.MotionEvent
 import android.widget.SeekBar
 import androidx.test.filters.LargeTest
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.android.fixtures.widget.AndroidWidgetFragment
 import reactivecircus.flowbinding.android.test.R
@@ -24,26 +24,34 @@ class SeekBarChangeEventFlowTest {
             seekBar.changeEvents().recordWith(recorder)
 
             val initialEvent = recorder.takeValue() as SeekBarChangeEvent.ProgressChanged
-            initialEvent.view shouldEqual seekBar
-            initialEvent.progress shouldEqual 0
-            initialEvent.fromUser shouldEqual false
+            assertThat(initialEvent.view)
+                .isEqualTo(seekBar)
+            assertThat(initialEvent.progress)
+                .isEqualTo(0)
+            assertThat(initialEvent.fromUser)
+                .isFalse()
             recorder.assertNoMoreValues()
 
             getInstrumentation().sendPointerSync(motionEventAtPosition(seekBar, MotionEvent.ACTION_DOWN, 0, 50))
             val startEvent = recorder.takeValue() as SeekBarChangeEvent.StartTracking
-            startEvent.view shouldEqual seekBar
+            assertThat(startEvent.view)
+                .isEqualTo(seekBar)
             recorder.assertNoMoreValues()
 
             getInstrumentation().sendPointerSync(motionEventAtPosition(seekBar, MotionEvent.ACTION_MOVE, 100, 50))
             val progressEvent = recorder.takeValue() as SeekBarChangeEvent.ProgressChanged
-            progressEvent.view shouldEqual seekBar
-            progressEvent.progress shouldEqual 100
-            progressEvent.fromUser shouldEqual true
+            assertThat(progressEvent.view)
+                .isEqualTo(seekBar)
+            assertThat(progressEvent.progress)
+                .isEqualTo(100)
+            assertThat(progressEvent.fromUser)
+                .isTrue()
             recorder.assertNoMoreValues()
 
             getInstrumentation().sendPointerSync(motionEventAtPosition(seekBar, MotionEvent.ACTION_UP, 100, 50))
             val stopEvent = recorder.takeValue() as SeekBarChangeEvent.StopTracking
-            stopEvent.view shouldEqual seekBar
+            assertThat(stopEvent.view)
+                .isEqualTo(seekBar)
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -61,23 +69,32 @@ class SeekBarChangeEventFlowTest {
             seekBar.changeEvents().recordWith(recorder)
 
             val initialEvent = recorder.takeValue() as SeekBarChangeEvent.ProgressChanged
-            initialEvent.view shouldEqual seekBar
-            initialEvent.progress shouldEqual 0
-            initialEvent.fromUser shouldEqual false
+            assertThat(initialEvent.view)
+                .isEqualTo(seekBar)
+            assertThat(initialEvent.progress)
+                .isEqualTo(0)
+            assertThat(initialEvent.fromUser)
+                .isFalse()
             recorder.assertNoMoreValues()
 
             seekBar.progress = 50
             val event1 = recorder.takeValue() as SeekBarChangeEvent.ProgressChanged
-            event1.view shouldEqual seekBar
-            event1.progress shouldEqual 50
-            event1.fromUser shouldEqual false
+            assertThat(event1.view)
+                .isEqualTo(seekBar)
+            assertThat(event1.progress)
+                .isEqualTo(50)
+            assertThat(event1.fromUser)
+                .isFalse()
             recorder.assertNoMoreValues()
 
             seekBar.progress = 75
             val event2 = recorder.takeValue() as SeekBarChangeEvent.ProgressChanged
-            event2.view shouldEqual seekBar
-            event2.progress shouldEqual 75
-            event2.fromUser shouldEqual false
+            assertThat(event2.view)
+                .isEqualTo(seekBar)
+            assertThat(event2.progress)
+                .isEqualTo(75)
+            assertThat(event2.fromUser)
+                .isFalse()
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -100,9 +117,12 @@ class SeekBarChangeEventFlowTest {
 
             seekBar.progress = 50
             val event = recorder.takeValue() as SeekBarChangeEvent.ProgressChanged
-            event.view shouldEqual seekBar
-            event.progress shouldEqual 50
-            event.fromUser shouldEqual false
+            assertThat(event.view)
+                .isEqualTo(seekBar)
+            assertThat(event.progress)
+                .isEqualTo(50)
+            assertThat(event.fromUser)
+                .isFalse()
             recorder.assertNoMoreValues()
 
             cancelTestScope()

@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.recyclerview.fixtures.RecyclerViewFragment
 import reactivecircus.flowbinding.recyclerview.test.R
@@ -30,9 +30,12 @@ class RecyclerViewFlingEventFlowTest {
 
             recyclerView.fling(0, 1000)
             val event = recorder.takeValue()
-            event.view shouldEqual recyclerView
-            event.velocityX shouldEqual 0
-            event.velocityY shouldEqual 1000
+            assertThat(event.view)
+                .isEqualTo(recyclerView)
+            assertThat(event.velocityX)
+                .isEqualTo(0)
+            assertThat(event.velocityY)
+                .isEqualTo(1000)
 
             cancelTestScope()
             recorder.clearValues()
@@ -58,9 +61,12 @@ class RecyclerViewFlingEventFlowTest {
 
             recyclerView.fling(1000, 0)
             val event = recorder.takeValue()
-            event.view shouldEqual recyclerView
-            event.velocityX shouldEqual 1000
-            event.velocityY shouldEqual 0
+            assertThat(event.view)
+                .isEqualTo(recyclerView)
+            assertThat(event.velocityX)
+                .isEqualTo(1000)
+            assertThat(event.velocityY)
+                .isEqualTo(0)
 
             cancelTestScope()
             recorder.clearValues()

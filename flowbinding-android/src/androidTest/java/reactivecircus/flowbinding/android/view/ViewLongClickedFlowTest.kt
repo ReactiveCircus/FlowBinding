@@ -2,7 +2,7 @@ package reactivecircus.flowbinding.android.view
 
 import android.view.View
 import androidx.test.filters.LargeTest
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.longClickView
 import reactivecircus.flowbinding.android.fixtures.view.AndroidViewFragment
@@ -24,7 +24,8 @@ class ViewLongClickedFlowTest {
             recorder.assertNoMoreValues()
 
             longClickView(R.id.button)
-            recorder.takeValue() shouldEqual Unit
+            assertThat(recorder.takeValue())
+                .isEqualTo(Unit)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

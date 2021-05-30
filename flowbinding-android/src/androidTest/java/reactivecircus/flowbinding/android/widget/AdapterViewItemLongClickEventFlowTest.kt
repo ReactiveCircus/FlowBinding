@@ -2,8 +2,7 @@ package reactivecircus.flowbinding.android.widget
 
 import android.widget.ListView
 import androidx.test.filters.LargeTest
-import org.amshove.kluent.shouldEqual
-import org.amshove.kluent.shouldNotBe
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.android.fixtures.widget.ListFragment
 import reactivecircus.flowbinding.android.test.R
@@ -27,10 +26,14 @@ class AdapterViewItemLongClickEventFlowTest {
 
             longClickAdapterViewItemAt(R.id.listView, 2)
             val event = recorder.takeValue()
-            event.view shouldEqual listView
-            event.longClickedView shouldNotBe null
-            event.position shouldEqual 2
-            event.id shouldEqual 2
+            assertThat(event.view)
+                .isEqualTo(listView)
+            assertThat(event.longClickedView)
+                .isNotNull()
+            assertThat(event.position)
+                .isEqualTo(2)
+            assertThat(event.id)
+                .isEqualTo(2)
 
             recorder.assertNoMoreValues()
 

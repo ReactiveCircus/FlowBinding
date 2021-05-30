@@ -3,7 +3,7 @@ package reactivecircus.flowbinding.navigation
 import androidx.navigation.findNavController
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.blueprint.testing.currentActivity
 import reactivecircus.flowbinding.navigation.fixtures.NavigationFragment
@@ -24,36 +24,48 @@ class NavControllerDestinationChangeEventFlowTest {
             navController.destinationChangeEvents().recordWith(recorder)
 
             val initialEvent = recorder.takeValue()
-            initialEvent.navController shouldEqual navController
-            initialEvent.destination.id shouldEqual R.id.fragmentA
-            initialEvent.arguments shouldEqual null
+            assertThat(initialEvent.navController)
+                .isEqualTo(navController)
+            assertThat(initialEvent.destination.id)
+                .isEqualTo(R.id.fragmentA)
+            assertThat(initialEvent.arguments)
+                .isNull()
             recorder.assertNoMoreValues()
 
             runOnUiThread {
                 navController.navigate(R.id.fragmentB)
             }
             val event1 = recorder.takeValue()
-            event1.navController shouldEqual navController
-            event1.destination.id shouldEqual R.id.fragmentB
-            event1.arguments shouldEqual null
+            assertThat(event1.navController)
+                .isEqualTo(navController)
+            assertThat(event1.destination.id)
+                .isEqualTo(R.id.fragmentB)
+            assertThat(event1.arguments)
+                .isNull()
             recorder.assertNoMoreValues()
 
             runOnUiThread {
                 navController.navigate(R.id.fragmentC)
             }
             val event2 = recorder.takeValue()
-            event2.navController shouldEqual navController
-            event2.destination.id shouldEqual R.id.fragmentC
-            event2.arguments shouldEqual null
+            assertThat(event2.navController)
+                .isEqualTo(navController)
+            assertThat(event2.destination.id)
+                .isEqualTo(R.id.fragmentC)
+            assertThat(event2.arguments)
+                .isNull()
             recorder.assertNoMoreValues()
 
             runOnUiThread {
                 navController.navigate(R.id.fragmentA)
             }
             val event3 = recorder.takeValue()
-            event3.navController shouldEqual navController
-            event3.destination.id shouldEqual R.id.fragmentA
-            event3.arguments shouldEqual null
+            assertThat(event3.navController)
+                .isEqualTo(navController)
+            assertThat(event3.destination.id)
+                .isEqualTo(R.id.fragmentA)
+            assertThat(event3.arguments)
+                .isNull()
             recorder.assertNoMoreValues()
 
             cancelTestScope()

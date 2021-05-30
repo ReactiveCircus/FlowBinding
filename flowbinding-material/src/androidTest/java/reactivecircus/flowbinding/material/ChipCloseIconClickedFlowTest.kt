@@ -3,7 +3,7 @@ package reactivecircus.flowbinding.material
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import com.google.android.material.chip.Chip
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.material.fixtures.MaterialFragment2
 import reactivecircus.flowbinding.material.test.R
@@ -24,7 +24,8 @@ class ChipCloseIconClickedFlowTest {
             recorder.assertNoMoreValues()
 
             runOnUiThread { chip1.performCloseIconClick() }
-            recorder.takeValue() shouldEqual Unit
+            assertThat(recorder.takeValue())
+                .isEqualTo(Unit)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

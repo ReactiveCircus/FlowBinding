@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
+import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.flow.filterIsInstance
-import org.amshove.kluent.shouldEqual
 import org.junit.Test
 import reactivecircus.flowbinding.recyclerview.fixtures.RecyclerViewFragment
 import reactivecircus.flowbinding.recyclerview.test.R
@@ -34,8 +34,10 @@ class RecyclerViewChildAttachStateChangeEventFlowTest {
                 recyclerView.adapter = simpleAdapter
             }
             val event = recorder.takeValue()
-            event.view shouldEqual recyclerView
-            event.child shouldEqual childView
+            assertThat(event.view)
+                .isEqualTo(recyclerView)
+            assertThat(event.child)
+                .isEqualTo(childView)
 
             cancelTestScope()
             recorder.clearValues()
@@ -68,8 +70,10 @@ class RecyclerViewChildAttachStateChangeEventFlowTest {
                 recyclerView.adapter = null
             }
             val event = recorder.takeValue()
-            event.view shouldEqual recyclerView
-            event.child shouldEqual childView
+            assertThat(event.view)
+                .isEqualTo(recyclerView)
+            assertThat(event.child)
+                .isEqualTo(childView)
 
             cancelTestScope()
             recorder.clearValues()

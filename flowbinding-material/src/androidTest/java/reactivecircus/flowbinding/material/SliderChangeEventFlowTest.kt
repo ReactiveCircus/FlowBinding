@@ -5,7 +5,7 @@ import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import com.google.android.material.slider.Slider
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.material.fixtures.MaterialFragment2
 import reactivecircus.flowbinding.material.test.R
@@ -25,24 +25,33 @@ class SliderChangeEventFlowTest {
             slider.changeEvents().recordWith(recorder)
 
             val sliderChangeEvent1 = recorder.takeValue()
-            sliderChangeEvent1.slider shouldEqual slider
-            sliderChangeEvent1.value shouldEqual 0f
-            sliderChangeEvent1.fromUser shouldEqual false
+            assertThat(sliderChangeEvent1.slider)
+                .isEqualTo(slider)
+            assertThat(sliderChangeEvent1.value)
+                .isEqualTo(0f)
+            assertThat(sliderChangeEvent1.fromUser)
+                .isFalse()
             recorder.assertNoMoreValues()
 
-            getInstrumentation().sendPointerSync(motionEventAtPosition(slider, MotionEvent.ACTION_DOWN, 20, 50))
+            getInstrumentation().sendPointerSync(motionEventAtPosition(slider, MotionEvent.ACTION_DOWN, 0, 50))
             getInstrumentation().sendPointerSync(motionEventAtPosition(slider, MotionEvent.ACTION_MOVE, 100, 50))
             val sliderChangeEvent2 = recorder.takeValue()
-            sliderChangeEvent2.slider shouldEqual slider
-            sliderChangeEvent2.value shouldEqual 1f
-            sliderChangeEvent2.fromUser shouldEqual true
+            assertThat(sliderChangeEvent2.slider)
+                .isEqualTo(slider)
+            assertThat(sliderChangeEvent2.value)
+                .isEqualTo(1f)
+            assertThat(sliderChangeEvent2.fromUser)
+                .isTrue()
             recorder.assertNoMoreValues()
 
             getInstrumentation().sendPointerSync(motionEventAtPosition(slider, MotionEvent.ACTION_MOVE, 0, 50))
             val sliderChangeEvent3 = recorder.takeValue()
-            sliderChangeEvent3.slider shouldEqual slider
-            sliderChangeEvent3.value shouldEqual 0f
-            sliderChangeEvent3.fromUser shouldEqual true
+            assertThat(sliderChangeEvent3.slider)
+                .isEqualTo(slider)
+            assertThat(sliderChangeEvent3.value)
+                .isEqualTo(0f)
+            assertThat(sliderChangeEvent3.fromUser)
+                .isTrue()
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -60,27 +69,36 @@ class SliderChangeEventFlowTest {
             slider.changeEvents().recordWith(recorder)
 
             val sliderChangeEvent1 = recorder.takeValue()
-            sliderChangeEvent1.slider shouldEqual slider
-            sliderChangeEvent1.value shouldEqual 0f
-            sliderChangeEvent1.fromUser shouldEqual false
+            assertThat(sliderChangeEvent1.slider)
+                .isEqualTo(slider)
+            assertThat(sliderChangeEvent1.value)
+                .isEqualTo(0f)
+            assertThat(sliderChangeEvent1.fromUser)
+                .isFalse()
             recorder.assertNoMoreValues()
 
             runOnUiThread {
                 slider.value = 0.5f
             }
             val sliderChangeEvent2 = recorder.takeValue()
-            sliderChangeEvent2.slider shouldEqual slider
-            sliderChangeEvent2.value shouldEqual 0.5f
-            sliderChangeEvent2.fromUser shouldEqual false
+            assertThat(sliderChangeEvent2.slider)
+                .isEqualTo(slider)
+            assertThat(sliderChangeEvent2.value)
+                .isEqualTo(0.5f)
+            assertThat(sliderChangeEvent2.fromUser)
+                .isFalse()
             recorder.assertNoMoreValues()
 
             runOnUiThread {
                 slider.value = 0.75f
             }
             val sliderChangeEvent3 = recorder.takeValue()
-            sliderChangeEvent3.slider shouldEqual slider
-            sliderChangeEvent3.value shouldEqual 0.75f
-            sliderChangeEvent3.fromUser shouldEqual false
+            assertThat(sliderChangeEvent3.slider)
+                .isEqualTo(slider)
+            assertThat(sliderChangeEvent3.value)
+                .isEqualTo(0.75f)
+            assertThat(sliderChangeEvent3.fromUser)
+                .isFalse()
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -107,9 +125,12 @@ class SliderChangeEventFlowTest {
                 slider.value = 0.5f
             }
             val sliderChangeEvent = recorder.takeValue()
-            sliderChangeEvent.slider shouldEqual slider
-            sliderChangeEvent.value shouldEqual 0.5f
-            sliderChangeEvent.fromUser shouldEqual false
+            assertThat(sliderChangeEvent.slider)
+                .isEqualTo(slider)
+            assertThat(sliderChangeEvent.value)
+                .isEqualTo(0.5f)
+            assertThat(sliderChangeEvent.fromUser)
+                .isFalse()
             recorder.assertNoMoreValues()
 
             cancelTestScope()

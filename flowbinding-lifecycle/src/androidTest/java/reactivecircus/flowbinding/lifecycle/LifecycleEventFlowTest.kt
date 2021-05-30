@@ -3,7 +3,7 @@ package reactivecircus.flowbinding.lifecycle
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.testing.TestLifecycleOwner
 import androidx.test.filters.LargeTest
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.lifecycle.fixtures.LifecycleFragment
 import reactivecircus.flowbinding.testing.FlowRecorder
@@ -21,15 +21,18 @@ class LifecycleEventFlowTest {
             owner.lifecycle.events().recordWith(recorder)
 
             owner.currentState = Lifecycle.State.CREATED
-            recorder.takeValue() shouldEqual Lifecycle.Event.ON_CREATE
+            assertThat(recorder.takeValue())
+                .isEqualTo(Lifecycle.Event.ON_CREATE)
             recorder.assertNoMoreValues()
 
             owner.currentState = Lifecycle.State.STARTED
-            recorder.takeValue() shouldEqual Lifecycle.Event.ON_START
+            assertThat(recorder.takeValue())
+                .isEqualTo(Lifecycle.Event.ON_START)
             recorder.assertNoMoreValues()
 
             owner.currentState = Lifecycle.State.RESUMED
-            recorder.takeValue() shouldEqual Lifecycle.Event.ON_RESUME
+            assertThat(recorder.takeValue())
+                .isEqualTo(Lifecycle.Event.ON_RESUME)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

@@ -4,7 +4,7 @@ import android.view.MenuItem
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.selectBottomNavigationItem
 import reactivecircus.flowbinding.material.fixtures.MaterialFragment2
@@ -23,14 +23,16 @@ class BottomNavigationViewItemSelectedFlowTest {
             val bottomNavigationView = getViewById<BottomNavigationView>(R.id.bottomNavigationView)
             bottomNavigationView.itemSelections().recordWith(recorder)
 
-            recorder.takeValue().itemId shouldEqual R.id.dest1
+            assertThat(recorder.takeValue().itemId)
+                .isEqualTo(R.id.dest1)
             recorder.assertNoMoreValues()
 
             selectBottomNavigationItem(
                 R.id.bottomNavigationView,
                 bottomNavigationView.menu.getItem(1).title.toString()
             )
-            recorder.takeValue().itemId shouldEqual R.id.dest2
+            assertThat(recorder.takeValue().itemId)
+                .isEqualTo(R.id.dest2)
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -50,11 +52,13 @@ class BottomNavigationViewItemSelectedFlowTest {
             val bottomNavigationView = getViewById<BottomNavigationView>(R.id.bottomNavigationView)
             bottomNavigationView.itemSelections().recordWith(recorder)
 
-            recorder.takeValue().itemId shouldEqual R.id.dest1
+            assertThat(recorder.takeValue().itemId)
+                .isEqualTo(R.id.dest1)
             recorder.assertNoMoreValues()
 
             runOnUiThread { bottomNavigationView.selectedItemId = R.id.dest2 }
-            recorder.takeValue().itemId shouldEqual R.id.dest2
+            assertThat(recorder.takeValue().itemId)
+                .isEqualTo(R.id.dest2)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

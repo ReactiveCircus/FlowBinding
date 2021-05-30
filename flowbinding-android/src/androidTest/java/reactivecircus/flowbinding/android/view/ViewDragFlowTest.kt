@@ -3,7 +3,7 @@ package reactivecircus.flowbinding.android.view
 import android.view.DragEvent
 import android.view.View
 import androidx.test.filters.LargeTest
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Ignore
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.longClickView
@@ -28,7 +28,8 @@ class ViewDragFlowTest {
             recorder.assertNoMoreValues()
 
             longClickView(R.id.draggableView)
-            recorder.takeValue().action shouldEqual DragEvent.ACTION_DRAG_STARTED
+            assertThat(recorder.takeValue().action)
+                .isEqualTo(DragEvent.ACTION_DRAG_STARTED)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

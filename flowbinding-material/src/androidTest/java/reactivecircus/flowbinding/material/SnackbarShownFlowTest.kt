@@ -2,7 +2,7 @@ package reactivecircus.flowbinding.material
 
 import androidx.test.filters.LargeTest
 import com.google.android.material.snackbar.Snackbar
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.blueprint.testing.asViewAction
 import reactivecircus.flowbinding.material.fixtures.MaterialFragment1
@@ -27,7 +27,8 @@ class SnackbarShownFlowTest {
             recorder.assertNoMoreValues()
 
             snackbar.show().asViewAction()
-            recorder.takeValue() shouldEqual Unit
+            assertThat(recorder.takeValue())
+                .isEqualTo(Unit)
 
             cancelTestScope()
             recorder.clearValues()

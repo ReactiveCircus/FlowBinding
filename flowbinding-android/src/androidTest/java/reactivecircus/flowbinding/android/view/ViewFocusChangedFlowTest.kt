@@ -3,7 +3,7 @@ package reactivecircus.flowbinding.android.view
 import android.widget.EditText
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.clickView
 import reactivecircus.flowbinding.android.fixtures.view.AndroidViewFragment
@@ -22,15 +22,18 @@ class ViewFocusChangedFlowTest {
             val editText = getViewById<EditText>(R.id.editText1)
             editText.focusChanges().recordWith(recorder)
 
-            recorder.takeValue() shouldEqual false
+            assertThat(recorder.takeValue())
+                .isFalse()
             recorder.assertNoMoreValues()
 
             clickView(R.id.editText1)
-            recorder.takeValue() shouldEqual true
+            assertThat(recorder.takeValue())
+                .isTrue()
             recorder.assertNoMoreValues()
 
             clickView(R.id.editText2)
-            recorder.takeValue() shouldEqual false
+            assertThat(recorder.takeValue())
+                .isFalse()
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -48,15 +51,18 @@ class ViewFocusChangedFlowTest {
             val editText2 = getViewById<EditText>(R.id.editText2)
             editText1.focusChanges().recordWith(recorder)
 
-            recorder.takeValue() shouldEqual false
+            assertThat(recorder.takeValue())
+                .isFalse()
             recorder.assertNoMoreValues()
 
             runOnUiThread { editText1.requestFocus() }
-            recorder.takeValue() shouldEqual true
+            assertThat(recorder.takeValue())
+                .isTrue()
             recorder.assertNoMoreValues()
 
             runOnUiThread { editText2.requestFocus() }
-            recorder.takeValue() shouldEqual false
+            assertThat(recorder.takeValue())
+                .isFalse()
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -80,7 +86,8 @@ class ViewFocusChangedFlowTest {
             recorder.assertNoMoreValues()
 
             clickView(R.id.editText2)
-            recorder.takeValue() shouldEqual false
+            assertThat(recorder.takeValue())
+                .isFalse()
             recorder.assertNoMoreValues()
 
             cancelTestScope()

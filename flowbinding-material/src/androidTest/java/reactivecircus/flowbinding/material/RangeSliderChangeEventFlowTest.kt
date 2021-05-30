@@ -5,7 +5,7 @@ import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import com.google.android.material.slider.RangeSlider
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.material.fixtures.MaterialFragment2
 import reactivecircus.flowbinding.material.test.R
@@ -25,24 +25,33 @@ class RangeSliderChangeEventFlowTest {
             rangeSlider.changeEvents().recordWith(recorder)
 
             val rangeSliderChangeEvent1 = recorder.takeValue()
-            rangeSliderChangeEvent1.rangeSlider shouldEqual rangeSlider
-            rangeSliderChangeEvent1.values shouldEqual listOf(0.0f)
-            rangeSliderChangeEvent1.fromUser shouldEqual false
+            assertThat(rangeSliderChangeEvent1.rangeSlider)
+                .isEqualTo(rangeSlider)
+            assertThat(rangeSliderChangeEvent1.values)
+                .isEqualTo(listOf(0.0f))
+            assertThat(rangeSliderChangeEvent1.fromUser)
+                .isFalse()
             recorder.assertNoMoreValues()
 
-            getInstrumentation().sendPointerSync(motionEventAtPosition(rangeSlider, MotionEvent.ACTION_DOWN, 20, 50))
+            getInstrumentation().sendPointerSync(motionEventAtPosition(rangeSlider, MotionEvent.ACTION_DOWN, 0, 50))
             getInstrumentation().sendPointerSync(motionEventAtPosition(rangeSlider, MotionEvent.ACTION_MOVE, 100, 50))
             val rangeSliderChangeEvent2 = recorder.takeValue()
-            rangeSliderChangeEvent2.rangeSlider shouldEqual rangeSlider
-            rangeSliderChangeEvent2.values shouldEqual listOf(100.0f)
-            rangeSliderChangeEvent2.fromUser shouldEqual true
+            assertThat(rangeSliderChangeEvent2.rangeSlider)
+                .isEqualTo(rangeSlider)
+            assertThat(rangeSliderChangeEvent2.values)
+                .isEqualTo(listOf(100.0f))
+            assertThat(rangeSliderChangeEvent2.fromUser)
+                .isTrue()
             recorder.assertNoMoreValues()
 
             getInstrumentation().sendPointerSync(motionEventAtPosition(rangeSlider, MotionEvent.ACTION_MOVE, 0, 50))
             val rangeSliderChangeEvent3 = recorder.takeValue()
-            rangeSliderChangeEvent3.rangeSlider shouldEqual rangeSlider
-            rangeSliderChangeEvent3.values shouldEqual listOf(0.0f)
-            rangeSliderChangeEvent3.fromUser shouldEqual true
+            assertThat(rangeSliderChangeEvent3.rangeSlider)
+                .isEqualTo(rangeSlider)
+            assertThat(rangeSliderChangeEvent3.values)
+                .isEqualTo(listOf(0.0f))
+            assertThat(rangeSliderChangeEvent3.fromUser)
+                .isTrue()
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -60,27 +69,37 @@ class RangeSliderChangeEventFlowTest {
             rangeSlider.changeEvents().recordWith(recorder)
 
             val rangeSliderChangeEvent1 = recorder.takeValue()
-            rangeSliderChangeEvent1.rangeSlider shouldEqual rangeSlider
-            rangeSliderChangeEvent1.values shouldEqual listOf(0.0f)
-            rangeSliderChangeEvent1.fromUser shouldEqual false
+
+            assertThat(rangeSliderChangeEvent1.rangeSlider)
+                .isEqualTo(rangeSlider)
+            assertThat(rangeSliderChangeEvent1.values)
+                .isEqualTo(listOf(0.0f))
+            assertThat(rangeSliderChangeEvent1.fromUser)
+                .isFalse()
             recorder.assertNoMoreValues()
 
             runOnUiThread {
                 rangeSlider.values = listOf(50.0f)
             }
             val rangeSliderChangeEvent2 = recorder.takeValue()
-            rangeSliderChangeEvent2.rangeSlider shouldEqual rangeSlider
-            rangeSliderChangeEvent2.values shouldEqual listOf(50.0f)
-            rangeSliderChangeEvent2.fromUser shouldEqual false
+            assertThat(rangeSliderChangeEvent2.rangeSlider)
+                .isEqualTo(rangeSlider)
+            assertThat(rangeSliderChangeEvent2.values)
+                .isEqualTo(listOf(50.0f))
+            assertThat(rangeSliderChangeEvent2.fromUser)
+                .isFalse()
             recorder.assertNoMoreValues()
 
             runOnUiThread {
                 rangeSlider.values = listOf(75.0f)
             }
             val rangeSliderChangeEvent3 = recorder.takeValue()
-            rangeSliderChangeEvent3.rangeSlider shouldEqual rangeSlider
-            rangeSliderChangeEvent3.values shouldEqual listOf(75.0f)
-            rangeSliderChangeEvent3.fromUser shouldEqual false
+            assertThat(rangeSliderChangeEvent3.rangeSlider)
+                .isEqualTo(rangeSlider)
+            assertThat(rangeSliderChangeEvent3.values)
+                .isEqualTo(listOf(75.0f))
+            assertThat(rangeSliderChangeEvent3.fromUser)
+                .isFalse()
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -107,9 +126,12 @@ class RangeSliderChangeEventFlowTest {
                 rangeSlider.values = listOf(50.0f)
             }
             val rangeSliderChangeEvent2 = recorder.takeValue()
-            rangeSliderChangeEvent2.rangeSlider shouldEqual rangeSlider
-            rangeSliderChangeEvent2.values shouldEqual listOf(50.0f)
-            rangeSliderChangeEvent2.fromUser shouldEqual false
+            assertThat(rangeSliderChangeEvent2.rangeSlider)
+                .isEqualTo(rangeSlider)
+            assertThat(rangeSliderChangeEvent2.values)
+                .isEqualTo(listOf(50.0f))
+            assertThat(rangeSliderChangeEvent2.fromUser)
+                .isFalse()
             recorder.assertNoMoreValues()
 
             cancelTestScope()

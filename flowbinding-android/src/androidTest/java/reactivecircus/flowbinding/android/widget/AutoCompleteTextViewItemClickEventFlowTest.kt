@@ -4,8 +4,7 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
-import org.amshove.kluent.shouldEqual
-import org.amshove.kluent.shouldNotBe
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.clearTextInView
 import reactivecircus.blueprint.testing.action.enterTextIntoView
@@ -38,10 +37,14 @@ class AutoCompleteTextViewItemClickEventFlowTest {
             enterTextIntoView(R.id.autoCompleteTextView, "AB")
             clickPopupItemAt(1)
             val event = recorder.takeValue()
-            event.view shouldNotBe null
-            event.clickedView shouldNotBe null
-            event.position shouldEqual 1
-            event.id shouldEqual 1
+            assertThat(event.view)
+                .isNotNull()
+            assertThat(event.clickedView)
+                .isNotNull()
+            assertThat(event.position)
+                .isEqualTo(1)
+            assertThat(event.id)
+                .isEqualTo(1)
 
             recorder.assertNoMoreValues()
 

@@ -3,8 +3,7 @@ package reactivecircus.flowbinding.android.widget
 import android.widget.ListView
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
-import org.amshove.kluent.shouldEqual
-import org.amshove.kluent.shouldNotBe
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.android.fixtures.widget.ListFragment
 import reactivecircus.flowbinding.android.test.R
@@ -25,30 +24,42 @@ class AdapterViewSelectionEventFlowTest {
             listView.selectionEvents().recordWith(recorder)
 
             val event1 = recorder.takeValue() as AdapterViewSelectionEvent.ItemSelected
-            event1.view shouldEqual listView
-            event1.selectedView shouldNotBe null
-            event1.position shouldEqual 0
-            event1.id shouldEqual 0
+            assertThat(event1.view)
+                .isEqualTo(listView)
+            assertThat(event1.selectedView)
+                .isNotNull()
+            assertThat(event1.position)
+                .isEqualTo(0)
+            assertThat(event1.id)
+                .isEqualTo(0)
             recorder.assertNoMoreValues()
 
             runOnUiThread {
                 listView.setSelection(2)
             }
             val event2 = recorder.takeValue() as AdapterViewSelectionEvent.ItemSelected
-            event2.view shouldEqual listView
-            event2.selectedView shouldNotBe null
-            event2.position shouldEqual 2
-            event2.id shouldEqual 2
+            assertThat(event2.view)
+                .isEqualTo(listView)
+            assertThat(event2.selectedView)
+                .isNotNull()
+            assertThat(event2.position)
+                .isEqualTo(2)
+            assertThat(event2.id)
+                .isEqualTo(2)
             recorder.assertNoMoreValues()
 
             runOnUiThread {
                 listView.setSelection(0)
             }
             val event3 = recorder.takeValue() as AdapterViewSelectionEvent.ItemSelected
-            event3.view shouldEqual listView
-            event3.selectedView shouldNotBe null
-            event3.position shouldEqual 0
-            event3.id shouldEqual 0
+            assertThat(event3.view)
+                .isEqualTo(listView)
+            assertThat(event3.selectedView)
+                .isNotNull()
+            assertThat(event3.position)
+                .isEqualTo(0)
+            assertThat(event3.id)
+                .isEqualTo(0)
             recorder.assertNoMoreValues()
 
             cancelTestScope()
@@ -77,10 +88,14 @@ class AdapterViewSelectionEventFlowTest {
                 listView.setSelection(2)
             }
             val event = recorder.takeValue() as AdapterViewSelectionEvent.ItemSelected
-            event.view shouldEqual listView
-            event.selectedView shouldNotBe null
-            event.position shouldEqual 2
-            event.id shouldEqual 2
+            assertThat(event.view)
+                .isEqualTo(listView)
+            assertThat(event.selectedView)
+                .isNotNull()
+            assertThat(event.position)
+                .isEqualTo(2)
+            assertThat(event.id)
+                .isEqualTo(2)
             recorder.assertNoMoreValues()
 
             cancelTestScope()

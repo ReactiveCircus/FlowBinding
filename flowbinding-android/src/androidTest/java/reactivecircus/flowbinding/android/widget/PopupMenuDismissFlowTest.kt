@@ -3,7 +3,7 @@ package reactivecircus.flowbinding.android.widget
 import android.widget.PopupMenu
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
-import org.amshove.kluent.shouldEqual
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.flowbinding.android.fixtures.widget.AndroidWidgetFragment
 import reactivecircus.flowbinding.testing.FlowRecorder
@@ -31,7 +31,8 @@ class PopupMenuDismissFlowTest {
             runOnUiThread {
                 popupMenu.dismiss()
             }
-            recorder.takeValue() shouldEqual Unit
+            assertThat(recorder.takeValue())
+                .isEqualTo(Unit)
 
             recorder.assertNoMoreValues()
 

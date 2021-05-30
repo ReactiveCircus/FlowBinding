@@ -3,7 +3,7 @@ package reactivecircus.flowbinding.material
 import android.view.View
 import androidx.test.filters.LargeTest
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import org.amshove.kluent.shouldBeGreaterThan
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import reactivecircus.blueprint.testing.action.swipeDownOnView
 import reactivecircus.blueprint.testing.action.swipeUpOnView
@@ -26,7 +26,8 @@ class BottomSheetBehaviorSlidedFlowTest {
             recorder.assertNoMoreValues()
 
             swipeUpOnView(R.id.textViewInBottomSheet)
-            recorder.takeValue() shouldBeGreaterThan 0f
+            assertThat(recorder.takeValue())
+                .isGreaterThan(0f)
 
             cancelTestScope()
             recorder.clearValues()
@@ -47,7 +48,8 @@ class BottomSheetBehaviorSlidedFlowTest {
             recorder.assertNoMoreValues()
 
             behavior.state = BottomSheetBehavior.STATE_EXPANDED
-            recorder.takeValue() shouldBeGreaterThan 0f
+            assertThat(recorder.takeValue())
+                .isGreaterThan(0f)
 
             cancelTestScope()
             recorder.clearValues()
