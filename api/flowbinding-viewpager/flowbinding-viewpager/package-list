@@ -1,5 +1,14 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
-
+$dokka.location:reactivecircus.flowbinding.viewpager////PointingToDeclaration/flowbinding-viewpager/reactivecircus.flowbinding.viewpager/index.html
+$dokka.location:reactivecircus.flowbinding.viewpager//pageScrollEvents/androidx.viewpager.widget.ViewPager#/PointingToDeclaration/flowbinding-viewpager/reactivecircus.flowbinding.viewpager/page-scroll-events.html
+$dokka.location:reactivecircus.flowbinding.viewpager//pageScrollStateChanges/androidx.viewpager.widget.ViewPager#/PointingToDeclaration/flowbinding-viewpager/reactivecircus.flowbinding.viewpager/page-scroll-state-changes.html
+$dokka.location:reactivecircus.flowbinding.viewpager//pageSelections/androidx.viewpager.widget.ViewPager#/PointingToDeclaration/flowbinding-viewpager/reactivecircus.flowbinding.viewpager/page-selections.html
+$dokka.location:reactivecircus.flowbinding.viewpager/ViewPagerPageScrollEvent///PointingToDeclaration/flowbinding-viewpager/reactivecircus.flowbinding.viewpager/-view-pager-page-scroll-event/index.html
+$dokka.location:reactivecircus.flowbinding.viewpager/ViewPagerPageScrollEvent/ViewPagerPageScrollEvent/#androidx.viewpager.widget.ViewPager#kotlin.Int#kotlin.Float#kotlin.Int/PointingToDeclaration/flowbinding-viewpager/reactivecircus.flowbinding.viewpager/-view-pager-page-scroll-event/-view-pager-page-scroll-event.html
+$dokka.location:reactivecircus.flowbinding.viewpager/ViewPagerPageScrollEvent/position/#/PointingToDeclaration/flowbinding-viewpager/reactivecircus.flowbinding.viewpager/-view-pager-page-scroll-event/position.html
+$dokka.location:reactivecircus.flowbinding.viewpager/ViewPagerPageScrollEvent/positionOffset/#/PointingToDeclaration/flowbinding-viewpager/reactivecircus.flowbinding.viewpager/-view-pager-page-scroll-event/position-offset.html
+$dokka.location:reactivecircus.flowbinding.viewpager/ViewPagerPageScrollEvent/positionOffsetPixel/#/PointingToDeclaration/flowbinding-viewpager/reactivecircus.flowbinding.viewpager/-view-pager-page-scroll-event/position-offset-pixel.html
+$dokka.location:reactivecircus.flowbinding.viewpager/ViewPagerPageScrollEvent/view/#/PointingToDeclaration/flowbinding-viewpager/reactivecircus.flowbinding.viewpager/-view-pager-page-scroll-event/view.html
 reactivecircus.flowbinding.viewpager
 

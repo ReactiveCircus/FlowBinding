@@ -1,5 +1,11 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
-
+$dokka.location:reactivecircus.flowbinding.navigation////PointingToDeclaration/flowbinding-navigation/reactivecircus.flowbinding.navigation/index.html
+$dokka.location:reactivecircus.flowbinding.navigation//destinationChangeEvents/androidx.navigation.NavController#/PointingToDeclaration/flowbinding-navigation/reactivecircus.flowbinding.navigation/destination-change-events.html
+$dokka.location:reactivecircus.flowbinding.navigation/DestinationChangeEvent///PointingToDeclaration/flowbinding-navigation/reactivecircus.flowbinding.navigation/-destination-change-event/index.html
+$dokka.location:reactivecircus.flowbinding.navigation/DestinationChangeEvent/DestinationChangeEvent/#androidx.navigation.NavController#androidx.navigation.NavDestination#android.os.Bundle?/PointingToDeclaration/flowbinding-navigation/reactivecircus.flowbinding.navigation/-destination-change-event/-destination-change-event.html
+$dokka.location:reactivecircus.flowbinding.navigation/DestinationChangeEvent/arguments/#/PointingToDeclaration/flowbinding-navigation/reactivecircus.flowbinding.navigation/-destination-change-event/arguments.html
+$dokka.location:reactivecircus.flowbinding.navigation/DestinationChangeEvent/destination/#/PointingToDeclaration/flowbinding-navigation/reactivecircus.flowbinding.navigation/-destination-change-event/destination.html
+$dokka.location:reactivecircus.flowbinding.navigation/DestinationChangeEvent/navController/#/PointingToDeclaration/flowbinding-navigation/reactivecircus.flowbinding.navigation/-destination-change-event/nav-controller.html
 reactivecircus.flowbinding.navigation
 

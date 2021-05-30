@@ -1,1 +1,0 @@
-sourceset_dependencies = '{":flowbinding-activity:dokkaHtml/androidTestRelease": [], ":flowbinding-activity:dokkaHtml/debug": [], ":flowbinding-activity:dokkaHtml/main": [], ":flowbinding-activity:dokkaHtml/release": [], ":flowbinding-activity:dokkaHtml/test": [], ":flowbinding-activity:dokkaHtml/testDebug": [], ":flowbinding-activity:dokkaHtml/testRelease": []}'

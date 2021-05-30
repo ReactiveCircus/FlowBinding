@@ -1,5 +1,6 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
-
+$dokka.location:reactivecircus.flowbinding.drawerlayout////PointingToDeclaration/flowbinding-drawerlayout/reactivecircus.flowbinding.drawerlayout/index.html
+$dokka.location:reactivecircus.flowbinding.drawerlayout//drawerStateChanges/androidx.drawerlayout.widget.DrawerLayout#kotlin.Int/PointingToDeclaration/flowbinding-drawerlayout/reactivecircus.flowbinding.drawerlayout/drawer-state-changes.html
 reactivecircus.flowbinding.drawerlayout
 

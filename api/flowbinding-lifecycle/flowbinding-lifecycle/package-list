@@ -1,5 +1,6 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
-
+$dokka.location:reactivecircus.flowbinding.lifecycle////PointingToDeclaration/flowbinding-lifecycle/reactivecircus.flowbinding.lifecycle/index.html
+$dokka.location:reactivecircus.flowbinding.lifecycle//events/androidx.lifecycle.Lifecycle#/PointingToDeclaration/flowbinding-lifecycle/reactivecircus.flowbinding.lifecycle/events.html
 reactivecircus.flowbinding.lifecycle
 

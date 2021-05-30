@@ -1,5 +1,23 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
-
+$dokka.location:reactivecircus.flowbinding.appcompat////PointingToDeclaration/flowbinding-appcompat/reactivecircus.flowbinding.appcompat/index.html
+$dokka.location:reactivecircus.flowbinding.appcompat//dismisses/androidx.appcompat.widget.PopupMenu#/PointingToDeclaration/flowbinding-appcompat/reactivecircus.flowbinding.appcompat/dismisses.html
+$dokka.location:reactivecircus.flowbinding.appcompat//itemClicks/androidx.appcompat.widget.ActionMenuView#/PointingToDeclaration/flowbinding-appcompat/reactivecircus.flowbinding.appcompat/item-clicks.html
+$dokka.location:reactivecircus.flowbinding.appcompat//itemClicks/androidx.appcompat.widget.PopupMenu#/PointingToDeclaration/flowbinding-appcompat/reactivecircus.flowbinding.appcompat/item-clicks.html
+$dokka.location:reactivecircus.flowbinding.appcompat//itemClicks/androidx.appcompat.widget.Toolbar#/PointingToDeclaration/flowbinding-appcompat/reactivecircus.flowbinding.appcompat/item-clicks.html
+$dokka.location:reactivecircus.flowbinding.appcompat//navigationClicks/androidx.appcompat.widget.Toolbar#/PointingToDeclaration/flowbinding-appcompat/reactivecircus.flowbinding.appcompat/navigation-clicks.html
+$dokka.location:reactivecircus.flowbinding.appcompat//queryTextChanges/androidx.appcompat.widget.SearchView#/PointingToDeclaration/flowbinding-appcompat/reactivecircus.flowbinding.appcompat/query-text-changes.html
+$dokka.location:reactivecircus.flowbinding.appcompat//queryTextEvents/androidx.appcompat.widget.SearchView#/PointingToDeclaration/flowbinding-appcompat/reactivecircus.flowbinding.appcompat/query-text-events.html
+$dokka.location:reactivecircus.flowbinding.appcompat/QueryTextEvent.QueryChanged///PointingToDeclaration/flowbinding-appcompat/reactivecircus.flowbinding.appcompat/-query-text-event/-query-changed/index.html
+$dokka.location:reactivecircus.flowbinding.appcompat/QueryTextEvent.QueryChanged/QueryChanged/#androidx.appcompat.widget.SearchView#kotlin.CharSequence/PointingToDeclaration/flowbinding-appcompat/reactivecircus.flowbinding.appcompat/-query-text-event/-query-changed/-query-changed.html
+$dokka.location:reactivecircus.flowbinding.appcompat/QueryTextEvent.QueryChanged/queryText/#/PointingToDeclaration/flowbinding-appcompat/reactivecircus.flowbinding.appcompat/-query-text-event/-query-changed/query-text.html
+$dokka.location:reactivecircus.flowbinding.appcompat/QueryTextEvent.QueryChanged/view/#/PointingToDeclaration/flowbinding-appcompat/reactivecircus.flowbinding.appcompat/-query-text-event/-query-changed/view.html
+$dokka.location:reactivecircus.flowbinding.appcompat/QueryTextEvent.QuerySubmitted///PointingToDeclaration/flowbinding-appcompat/reactivecircus.flowbinding.appcompat/-query-text-event/-query-submitted/index.html
+$dokka.location:reactivecircus.flowbinding.appcompat/QueryTextEvent.QuerySubmitted/QuerySubmitted/#androidx.appcompat.widget.SearchView#kotlin.CharSequence/PointingToDeclaration/flowbinding-appcompat/reactivecircus.flowbinding.appcompat/-query-text-event/-query-submitted/-query-submitted.html
+$dokka.location:reactivecircus.flowbinding.appcompat/QueryTextEvent.QuerySubmitted/queryText/#/PointingToDeclaration/flowbinding-appcompat/reactivecircus.flowbinding.appcompat/-query-text-event/-query-submitted/query-text.html
+$dokka.location:reactivecircus.flowbinding.appcompat/QueryTextEvent.QuerySubmitted/view/#/PointingToDeclaration/flowbinding-appcompat/reactivecircus.flowbinding.appcompat/-query-text-event/-query-submitted/view.html
+$dokka.location:reactivecircus.flowbinding.appcompat/QueryTextEvent///PointingToDeclaration/flowbinding-appcompat/reactivecircus.flowbinding.appcompat/-query-text-event/index.html
+$dokka.location:reactivecircus.flowbinding.appcompat/QueryTextEvent/queryText/#/PointingToDeclaration/flowbinding-appcompat/reactivecircus.flowbinding.appcompat/-query-text-event/query-text.html
+$dokka.location:reactivecircus.flowbinding.appcompat/QueryTextEvent/view/#/PointingToDeclaration/flowbinding-appcompat/reactivecircus.flowbinding.appcompat/-query-text-event/view.html
 reactivecircus.flowbinding.appcompat
 

@@ -1,1 +1,0 @@
-var pages = [{"name":"fun OnBackPressedDispatcher.backPresses(owner: LifecycleOwner): Flow<Unit>","description":"reactivecircus.flowbinding.activity.backPresses","location":"flowbinding-activity/reactivecircus.flowbinding.activity/back-presses.html","searchKeys":["backPresses","fun OnBackPressedDispatcher.backPresses(owner: LifecycleOwner): Flow<Unit>"]}]

@@ -1,5 +1,6 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
-
+$dokka.location:reactivecircus.flowbinding.swiperefreshlayout////PointingToDeclaration/flowbinding-swiperefreshlayout/reactivecircus.flowbinding.swiperefreshlayout/index.html
+$dokka.location:reactivecircus.flowbinding.swiperefreshlayout//refreshes/androidx.swiperefreshlayout.widget.SwipeRefreshLayout#/PointingToDeclaration/flowbinding-swiperefreshlayout/reactivecircus.flowbinding.swiperefreshlayout/refreshes.html
 reactivecircus.flowbinding.swiperefreshlayout
 

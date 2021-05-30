@@ -1,5 +1,13 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
-
+$dokka.location:reactivecircus.flowbinding.core////PointingToDeclaration/flowbinding-core/reactivecircus.flowbinding.core/index.html
+$dokka.location:reactivecircus.flowbinding.core//scrollChangeEvents/androidx.core.widget.NestedScrollView#/PointingToDeclaration/flowbinding-core/reactivecircus.flowbinding.core/scroll-change-events.html
+$dokka.location:reactivecircus.flowbinding.core/ScrollChangeEvent///PointingToDeclaration/flowbinding-core/reactivecircus.flowbinding.core/-scroll-change-event/index.html
+$dokka.location:reactivecircus.flowbinding.core/ScrollChangeEvent/ScrollChangeEvent/#android.view.View#kotlin.Int#kotlin.Int#kotlin.Int#kotlin.Int/PointingToDeclaration/flowbinding-core/reactivecircus.flowbinding.core/-scroll-change-event/-scroll-change-event.html
+$dokka.location:reactivecircus.flowbinding.core/ScrollChangeEvent/oldScrollX/#/PointingToDeclaration/flowbinding-core/reactivecircus.flowbinding.core/-scroll-change-event/old-scroll-x.html
+$dokka.location:reactivecircus.flowbinding.core/ScrollChangeEvent/oldScrollY/#/PointingToDeclaration/flowbinding-core/reactivecircus.flowbinding.core/-scroll-change-event/old-scroll-y.html
+$dokka.location:reactivecircus.flowbinding.core/ScrollChangeEvent/scrollX/#/PointingToDeclaration/flowbinding-core/reactivecircus.flowbinding.core/-scroll-change-event/scroll-x.html
+$dokka.location:reactivecircus.flowbinding.core/ScrollChangeEvent/scrollY/#/PointingToDeclaration/flowbinding-core/reactivecircus.flowbinding.core/-scroll-change-event/scroll-y.html
+$dokka.location:reactivecircus.flowbinding.core/ScrollChangeEvent/view/#/PointingToDeclaration/flowbinding-core/reactivecircus.flowbinding.core/-scroll-change-event/view.html
 reactivecircus.flowbinding.core
 
