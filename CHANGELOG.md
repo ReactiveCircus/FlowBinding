@@ -1,5 +1,27 @@
 # Change Log
 
+## 1.1.0
+
+### Added
+- New bindings for `MaterialTimePicker`:
+  - `fun <S> MaterialDatePicker<S>.cancels(): Flow<Unit>`
+  - `fun <S> MaterialDatePicker<S>.dismisses(): Flow<Unit>`
+  - `fun <S> MaterialDatePicker<S>.negativeButtonClicks(): Flow<Unit>`
+  - `fun <S> MaterialDatePicker<S>.positiveButtonClicks(): Flow<S>`
+
+### Changed
+- Kotlin 1.5.10.
+- Coroutines 1.5.0.
+- Material Components 1.3.0
+- AndroidX Activity 1.2.3.
+- AndroidX Annotation 1.2.0.
+- AndroidX AppCompat 1.3.0.
+- AndroidX Core 1.5.0.
+- AndroidX Fragment 1.3.4.
+- AndroidX Lifecycle 2.3.1.
+- AndroidX Navigation 2.3.5.
+- AndroidX RecyclerView 1.2.1.
+
 ## 1.0.0
 
 This is our first stable release! Thanks everyone for using FlowBinding, reporting bugs, providing feedback and sending PRs.
