@@ -3,10 +3,10 @@ package reactivecircus.flowbinding.material
 import android.view.MenuItem
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationBarView
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
-import reactivecircus.blueprint.testing.action.selectBottomNavigationItem
+import reactivecircus.blueprint.testing.action.selectNavigationBarItem
 import reactivecircus.flowbinding.material.fixtures.MaterialFragment2
 import reactivecircus.flowbinding.material.test.R
 import reactivecircus.flowbinding.testing.FlowRecorder
@@ -14,20 +14,24 @@ import reactivecircus.flowbinding.testing.launchTest
 import reactivecircus.flowbinding.testing.recordWith
 
 @LargeTest
-class BottomNavigationViewItemSelectedFlowTest {
+class NavigationBarViewItemReselectedFlowTest {
 
     @Test
-    fun bottomNavigationViewItemSelections_manual() {
+    fun navigationBarViewItemReselections_manual() {
         launchTest<MaterialFragment2> {
             val recorder = FlowRecorder<MenuItem>(testScope)
-            val bottomNavigationView = getViewById<BottomNavigationView>(R.id.bottomNavigationView)
-            bottomNavigationView.itemSelections().recordWith(recorder)
+            val bottomNavigationView = getViewById<NavigationBarView>(R.id.bottomNavigationView)
+            bottomNavigationView.itemReselections().recordWith(recorder)
 
-            assertThat(recorder.takeValue().itemId)
-                .isEqualTo(R.id.dest1)
             recorder.assertNoMoreValues()
 
-            selectBottomNavigationItem(
+            selectNavigationBarItem(
+                R.id.bottomNavigationView,
+                bottomNavigationView.menu.getItem(1).title.toString()
+            )
+            recorder.assertNoMoreValues()
+
+            selectNavigationBarItem(
                 R.id.bottomNavigationView,
                 bottomNavigationView.menu.getItem(1).title.toString()
             )
@@ -37,23 +41,24 @@ class BottomNavigationViewItemSelectedFlowTest {
 
             cancelTestScope()
 
-            selectBottomNavigationItem(
+            selectNavigationBarItem(
                 R.id.bottomNavigationView,
-                bottomNavigationView.menu.getItem(2).title.toString()
+                bottomNavigationView.menu.getItem(1).title.toString()
             )
             recorder.assertNoMoreValues()
         }
     }
 
     @Test
-    fun bottomNavigationViewItemSelections_programmatic() {
+    fun navigationBarViewItemReselections_programmatic() {
         launchTest<MaterialFragment2> {
             val recorder = FlowRecorder<MenuItem>(testScope)
-            val bottomNavigationView = getViewById<BottomNavigationView>(R.id.bottomNavigationView)
-            bottomNavigationView.itemSelections().recordWith(recorder)
+            val bottomNavigationView = getViewById<NavigationBarView>(R.id.bottomNavigationView)
+            bottomNavigationView.itemReselections().recordWith(recorder)
 
-            assertThat(recorder.takeValue().itemId)
-                .isEqualTo(R.id.dest1)
+            recorder.assertNoMoreValues()
+
+            runOnUiThread { bottomNavigationView.selectedItemId = R.id.dest2 }
             recorder.assertNoMoreValues()
 
             runOnUiThread { bottomNavigationView.selectedItemId = R.id.dest2 }
@@ -63,23 +68,8 @@ class BottomNavigationViewItemSelectedFlowTest {
 
             cancelTestScope()
 
-            runOnUiThread { bottomNavigationView.selectedItemId = R.id.dest3 }
+            runOnUiThread { bottomNavigationView.selectedItemId = R.id.dest2 }
             recorder.assertNoMoreValues()
-        }
-    }
-
-    @Test
-    fun bottomNavigationViewItemSelections_noMenu() {
-        launchTest<MaterialFragment2> {
-            val recorder = FlowRecorder<MenuItem>(testScope)
-            val bottomNavigationView = getViewById<BottomNavigationView>(R.id.bottomNavigationView).apply {
-                runOnUiThread { menu.clear() }
-            }
-            bottomNavigationView.itemSelections().recordWith(recorder)
-
-            recorder.assertNoMoreValues()
-
-            cancelTestScope()
         }
     }
 }

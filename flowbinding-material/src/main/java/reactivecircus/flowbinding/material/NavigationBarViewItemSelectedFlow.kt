@@ -2,7 +2,7 @@ package reactivecircus.flowbinding.material
 
 import android.view.MenuItem
 import androidx.annotation.CheckResult
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationBarView
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -12,12 +12,12 @@ import kotlinx.coroutines.flow.onStart
 import reactivecircus.flowbinding.common.checkMainThread
 
 /**
- * Create a [Flow] of item selected events on the [BottomNavigationView] instance
+ * Create a [Flow] of item selected events on the [NavigationBarView] instance
  * where the value emitted is the currently selected menu item.
  *
  * Note: if a [MenuItem] is already selected, it will be emitted immediately upon collection.
  *
- * Note: Created flow keeps a strong reference to the [BottomNavigationView] instance
+ * Note: Created flow keeps a strong reference to the [NavigationBarView] instance
  * until the coroutine that launched the flow collector is cancelled.
  *
  * Example of usage:
@@ -28,19 +28,24 @@ import reactivecircus.flowbinding.common.checkMainThread
  *          // handle menuItem
  *     }
  *     .launchIn(uiScope)
+ *
+ * navigationRailView.itemSelections()
+ *     .onEach { menuItem ->
+ *          // handle menuItem
+ *     }
+ *     .launchIn(uiScope)
  * ```
  */
-@Deprecated(message = "Use NavigationBarView.itemSelections(): Flow<MenuItem> instead.")
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun BottomNavigationView.itemSelections(): Flow<MenuItem> = callbackFlow {
+public fun NavigationBarView.itemSelections(): Flow<MenuItem> = callbackFlow {
     checkMainThread()
-    val listener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+    val listener = NavigationBarView.OnItemSelectedListener { item ->
         trySend(item)
         true
     }
-    setOnNavigationItemSelectedListener(listener)
-    awaitClose { setOnNavigationItemSelectedListener(null) }
+    setOnItemSelectedListener(listener)
+    awaitClose { setOnItemSelectedListener(null) }
 }
     .onStart {
         var selectedItem: MenuItem? = null

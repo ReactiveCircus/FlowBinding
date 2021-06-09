@@ -18,9 +18,9 @@ implementation "io.github.reactivecircus.flowbinding:flowbinding-material:${flow
 // AppBarLayout
 fun AppBarLayout.offsetChanges(): Flow<Int>
 
-// BottomNavigationView
-fun BottomNavigationView.itemReselections(): Flow<MenuItem>
-fun BottomNavigationView.itemSelections(): InitialValueFlow<MenuItem>
+// NavigationBarView
+fun NavigationBarView.itemReselections(): Flow<MenuItem>
+fun NavigationBarView.itemSelections(): InitialValueFlow<MenuItem>
 
 // BottomSheetBehavior
 fun View.bottomSheetSlides(): Flow<Float>
