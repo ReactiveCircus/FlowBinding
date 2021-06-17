@@ -8,7 +8,8 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.plugins.JavaLibraryPlugin
 import org.gradle.api.plugins.JavaPlugin
-import org.gradle.api.plugins.JavaPluginConvention
+import org.gradle.api.plugins.JavaPluginExtension
+import org.gradle.kotlin.dsl.getByType
 
 /**
  * A plugin that provides baseline gradle configurations for all projects, including:
@@ -40,7 +41,7 @@ class FlowBindingPlugin : Plugin<Project> {
             when (this) {
                 is JavaPlugin,
                 is JavaLibraryPlugin -> {
-                    project.convention.getPlugin(JavaPluginConvention::class.java).apply {
+                    project.extensions.getByType<JavaPluginExtension>().apply {
                         sourceCompatibility = JavaVersion.VERSION_11
                         targetCompatibility = JavaVersion.VERSION_11
                     }
