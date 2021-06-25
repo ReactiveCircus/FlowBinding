@@ -34,5 +34,5 @@ jobs:
         env:
           CI: true
           JAVA_TOOL_OPTIONS: -Xmx4g -XX:+UseParallelGC
-          GRADLE_OPTS: -Dorg.gradle.daemon=false -Dkotlin.incremental=false
+          GRADLE_OPTS: -Dkotlin.incremental=false -Dorg.gradle.jvmargs="-Xmx4g -XX:+HeapDumpOnOutOfMemoryError"
           DEPLOY_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
