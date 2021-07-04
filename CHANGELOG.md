@@ -1,5 +1,16 @@
 # Change Log
 
+## 1.2.0
+
+### Added
+- New bindings for `NavigationBarView` which works with both `BottomNavigationView` and the new `NavigationRailView`, deprecate bindings on `BottomNavigationView`.
+
+### Changed
+- Kotlin 1.5.20
+- Material Components 1.4.0
+- AndroidX Core 1.6.0
+- AndroidX Fragment 1.3.5
+  
 ## 1.1.0
 
 ### Added
