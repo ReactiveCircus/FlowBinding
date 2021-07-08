@@ -1,6 +1,0 @@
-$dokka.format:html-v1
-$dokka.linkExtension:html
-$dokka.location:reactivecircus.flowbinding.activity////PointingToDeclaration/flowbinding-activity/reactivecircus.flowbinding.activity/index.html
-$dokka.location:reactivecircus.flowbinding.activity//backPresses/androidx.activity.OnBackPressedDispatcher#androidx.lifecycle.LifecycleOwner/PointingToDeclaration/flowbinding-activity/reactivecircus.flowbinding.activity/back-presses.html
-reactivecircus.flowbinding.activity
-
