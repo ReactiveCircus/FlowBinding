@@ -167,4 +167,4 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-${{ github.job }}-
       - run: |
-          ./gradlew clean androidSourcesJar uploadArchives --no-daemon --no-parallel
+          ./gradlew clean androidSourcesJar publish --no-daemon --no-parallel
