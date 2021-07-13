@@ -3,7 +3,7 @@ rootProject.ext.versions = [
         androidLint                 : '27.2.2',
         mavenPublishPlugin          : '0.17.0',
         binaryCompatibilityValidator: '0.6.0',
-        kotlin                      : '1.5.20',
+        kotlin                      : '1.5.21',
         detekt                      : '1.17.1',
         kotlinx                     : [
                 coroutines: '1.5.1',
