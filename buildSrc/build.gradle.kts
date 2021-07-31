@@ -1,24 +1,22 @@
-apply(from = "dependencies.gradle")
-val versions: Map<Any, Any> by extra
-
 plugins {
     `kotlin-dsl`
 }
 
 repositories {
+    mavenCentral()
     google()
     gradlePluginPortal()
 }
 
-kotlinDslPluginOptions {
-    experimentalWarning.set(false)
-}
-
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.getValue("kotlin")}")
-    implementation("com.android.tools.build:gradle:${versions.getValue("androidGradlePlugin")}")
-    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${versions.getValue("detekt")}")
-    implementation("org.jetbrains.kotlinx:binary-compatibility-validator:${versions.getValue("binaryCompatibilityValidator")}")
+    // TODO: remove once https://github.com/gradle/gradle/issues/15383#issuecomment-779893192 is fixed
+    implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
+    implementation(libs.plugin.kotlin)
+    implementation(libs.plugin.dokka)
+    implementation(libs.plugin.agp)
+    implementation(libs.plugin.detekt)
+    implementation(libs.plugin.binaryCompatibilityValidator)
+    implementation(libs.plugin.mavenPublish)
 }
 
 gradlePlugin {

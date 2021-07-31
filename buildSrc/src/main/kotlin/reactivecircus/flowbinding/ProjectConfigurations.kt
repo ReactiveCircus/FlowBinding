@@ -1,6 +1,6 @@
 package reactivecircus.flowbinding
 
-import com.android.build.api.extension.LibraryAndroidComponentsExtension
+import com.android.build.api.variant.LibraryAndroidComponentsExtension
 import com.android.build.gradle.LibraryExtension
 import com.android.build.gradle.TestedExtension
 import org.gradle.StartParameter
@@ -12,6 +12,7 @@ import org.gradle.api.tasks.testing.Test
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.getByType
+import org.gradle.kotlin.dsl.repositories
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
@@ -27,6 +28,10 @@ fun Project.configureRootProject() {
     tasks.register("clean", Delete::class.java) {
         delete(rootProject.buildDir)
     }
+
+    // configure dokka
+    configureDokka()
+
     // configure binary compatibility validation (API checks)
     configureBinaryCompatibilityValidation()
 }
@@ -62,7 +67,7 @@ private fun TestedExtension.configureCommonAndroidOptions(startParameter: StartP
     setCompileSdkVersion(androidSdk.compileSdk)
     buildToolsVersion(androidSdk.buildTools)
 
-    defaultConfig.apply {
+    defaultConfig {
         // set minSdkVersion to 21 for android tests to avoid multi-dexing.
         val testTaskKeywords = listOf("androidTest", "connectedCheck")
         val isTestBuild = startParameter.taskNames.any { taskName ->
@@ -71,14 +76,14 @@ private fun TestedExtension.configureCommonAndroidOptions(startParameter: StartP
             }
         }
         if (!isTestBuild) {
-            minSdkVersion(androidSdk.minSdk)
+            minSdk = androidSdk.minSdk
         } else {
-            minSdkVersion(androidSdk.testMinSdk)
+            minSdk = androidSdk.testMinSdk
         }
-        targetSdkVersion(androidSdk.targetSdk)
+        targetSdk = androidSdk.targetSdk
 
         // only support English for now
-        resConfigs("en")
+        resourceConfigurations.add("en")
     }
 
     testOptions.animationsDisabled = true
@@ -92,12 +97,12 @@ private fun LibraryAndroidComponentsExtension.configureAndroidLibraryVariants(pr
     project.plugins.withType<KotlinAndroidPluginWrapper> {
         // disable unit test tasks if the unitTest source set is empty
         if (!project.hasUnitTestSource) {
-            beforeUnitTests { it.enabled = false }
+            beforeVariants { it.enableUnitTest = false }
         }
 
         // disable android test tasks if the androidTest source set is empty
         if (!project.hasAndroidTestSource) {
-            beforeAndroidTests { it.enabled = false }
+            beforeVariants { it.enableAndroidTest = false }
         }
     }
 }
@@ -107,7 +112,10 @@ private fun LibraryAndroidComponentsExtension.configureAndroidLibraryVariants(pr
  */
 @ExperimentalStdlibApi
 fun Project.configureForAllProjects(enableExplicitApi: Property<Boolean>) {
-    repositories.apply {
+    // apply and configure detekt plugin
+    configureDetektPlugin()
+
+    repositories {
         mavenCentral()
         google()
     }
