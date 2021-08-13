@@ -21,7 +21,7 @@ internal fun Project.configureDetektPlugin() {
 
     plugins.withType<DetektPlugin> {
         extensions.configure<DetektExtension> {
-            input = files("src/")
+            source = files("src/")
             config = files("${project.rootDir}/detekt.yml")
             buildUponDefaultConfig = true
             allRules = true
