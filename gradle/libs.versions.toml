@@ -1,8 +1,8 @@
 [versions]
 kotlin = "1.5.21"
 dokka = "1.5.0"
-androidGradlePlugin = "7.0.0"
-androidLint = "30.0.0"
+androidGradlePlugin = "7.0.1"
+androidLint = "30.0.1"
 gradleMavenPublishPlugin = "0.17.0"
 binaryCompatibilityValidator = "0.6.0"
 detekt = "1.18.0"
