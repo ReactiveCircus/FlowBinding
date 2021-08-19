@@ -15,7 +15,6 @@ import org.gradle.language.nativeplatform.internal.BuildType
  * `./gradlew test -PslimTests` will run unit tests for `debug` build variants
  * in Android App and Library projects, and all tests in JVM projects.
  */
-@Suppress("UnstableApiUsage")
 internal fun Project.configureSlimTests() {
     if (providers.gradleProperty(SLIM_TESTS_PROPERTY).forUseAtConfigurationTime().isPresent) {
         // disable unit test tasks on the release build type for Android Library projects

@@ -36,7 +36,6 @@ fun Project.configureRootProject() {
     configureBinaryCompatibilityValidation()
 }
 
-
 /**
  * Apply baseline project configurations for an Android Library project.
  */
@@ -49,10 +48,13 @@ internal fun Project.configureAndroidLibrary(startParameter: StartParameter) {
 
     // android library configs
     extensions.configure<LibraryExtension> {
+        @Suppress("UnstableApiUsage")
         packagingOptions {
-            pickFirst("META-INF/AL2.0")
-            pickFirst("META-INF/LGPL2.1")
-            pickFirst("META-INF/*.kotlin_module")
+            resources {
+                pickFirsts.add("META-INF/AL2.0")
+                pickFirsts.add("META-INF/LGPL2.1")
+                pickFirsts.add("META-INF/*.kotlin_module")
+            }
         }
     }
 
@@ -92,7 +94,6 @@ private fun TestedExtension.configureCommonAndroidOptions(startParameter: StartP
 /**
  * Configure the Application Library Component based on build variants.
  */
-@Suppress("UnstableApiUsage")
 private fun LibraryAndroidComponentsExtension.configureAndroidLibraryVariants(project: Project) {
     project.plugins.withType<KotlinAndroidPluginWrapper> {
         // disable unit test tasks if the unitTest source set is empty
