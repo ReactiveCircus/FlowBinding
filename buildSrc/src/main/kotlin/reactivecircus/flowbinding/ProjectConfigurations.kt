@@ -89,6 +89,11 @@ private fun TestedExtension.configureCommonAndroidOptions(startParameter: StartP
     }
 
     testOptions.animationsDisabled = true
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
 }
 
 /**
