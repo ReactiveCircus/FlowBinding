@@ -1,8 +1,5 @@
 package reactivecircus.flowbinding.common
 
-import androidx.annotation.RestrictTo
-import androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.onStart
@@ -10,8 +7,6 @@ import kotlinx.coroutines.flow.onStart
 /**
  * Converts a [Flow] to an [InitialValueFlow], taking an [initialValue] lambda for computing the initial value.
  */
-@RestrictTo(LIBRARY_GROUP)
-@OptIn(ExperimentalCoroutinesApi::class)
 public fun <T : Any> Flow<T>.asInitialValueFlow(initialValue: () -> T): InitialValueFlow<T> = InitialValueFlow(
     onStart {
         emit(initialValue())
