@@ -43,7 +43,6 @@ plugin-detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", v
 androidLint-lint = { module = "com.android.tools.lint:lint", version.ref = "androidLint"}
 androidLint-lintApi = { module = "com.android.tools.lint:lint-api", version.ref = "androidLint"}
 androidLint-lintTests = { module = "com.android.tools.lint:lint-tests", version.ref = "androidLint"}
-androidLint-testUtils = { module = "com.android.tools:testutils", version.ref = "androidLint"}
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
