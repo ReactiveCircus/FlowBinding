@@ -2,7 +2,7 @@
 kotlin = "1.5.31"
 dokka = "1.5.0"
 androidGradlePlugin = "7.0.2"
-androidLint = "30.0.1"
+androidLint = "30.0.2"
 gradleMavenPublishPlugin = "0.17.0"
 binaryCompatibilityValidator = "0.7.0"
 detekt = "1.18.1"
