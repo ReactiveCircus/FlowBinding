@@ -31,16 +31,9 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '15'
-      - uses: actions/cache@v2
+      - uses: gradle/gradle-build-action@v2
         with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-${{ github.job }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/*.versions.toml') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.kt') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ github.job }}-
-      - run: |
-          ./gradlew assemble
+          arguments: assemble
 
   checks:
     name: Checks (unit tests, static analysis and binary compatibility API check)
@@ -55,16 +48,9 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '15'
-      - uses: actions/cache@v2
+      - uses: gradle/gradle-build-action@v2
         with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-${{ github.job }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/*.versions.toml') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.kt') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ github.job }}-
-      - run: |
-          ./gradlew test apiCheck detekt lintDebug -PslimTests
+          arguments: test apiCheck detekt lintDebug -PslimTests
 
   instrumented-tests:
     name: Instrumented tests
@@ -101,15 +87,6 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '15'
-
-      - uses: actions/cache@v2
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-${{ github.job }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/*.versions.toml') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.kt') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ github.job }}-
 
       - uses: actions/cache@v2
         id: avd-cache
@@ -162,13 +139,6 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '15'
-      - uses: actions/cache@v2
+      - uses: gradle/gradle-build-action@v2
         with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-${{ github.job }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/*.versions.toml') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.kt') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ github.job }}-
-      - run: |
-          ./gradlew clean androidSourcesJar publish --no-daemon --no-parallel
+          arguments: clean androidSourcesJar publish --no-daemon --no-parallel
