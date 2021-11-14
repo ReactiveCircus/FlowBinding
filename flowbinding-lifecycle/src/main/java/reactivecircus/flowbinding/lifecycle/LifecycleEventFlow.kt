@@ -2,9 +2,7 @@ package reactivecircus.flowbinding.lifecycle
 
 import androidx.annotation.CheckResult
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.LifecycleEventObserver
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -32,13 +30,7 @@ import reactivecircus.flowbinding.common.checkMainThread
 @OptIn(ExperimentalCoroutinesApi::class)
 public fun Lifecycle.events(): Flow<Lifecycle.Event> = callbackFlow {
     checkMainThread()
-    val observer = object : LifecycleObserver {
-        @Suppress("UNUSED_PARAMETER")
-        @OnLifecycleEvent(Lifecycle.Event.ON_ANY)
-        fun onEvent(owner: LifecycleOwner, event: Lifecycle.Event) {
-            trySend(event)
-        }
-    }
+    val observer = LifecycleEventObserver { _, event -> trySend(event) }
     addObserver(observer)
     awaitClose { removeObserver(observer) }
 }
