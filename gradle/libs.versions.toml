@@ -1,6 +1,6 @@
 [versions]
 kotlin = "1.6.0"
-dokka = "1.5.31"
+dokka = "1.6.0"
 androidGradlePlugin = "7.0.3"
 androidLint = "30.0.3"
 gradleMavenPublishPlugin = "0.17.0"
