@@ -1,3 +1,5 @@
+@file:Suppress("MaximumLineLength", "MaxLineLength")
+
 package reactivecircus.flowbinding.lint
 
 import com.android.tools.lint.client.api.UElementHandler
@@ -54,7 +56,10 @@ class MissingListenerRemovalDetector : Detector(), SourceCodeScanner {
             explanation = """
                 Listeners or callbacks should be removed, unregistered or set to null \
                 in the `awaitClose` block within the `callbackFlow` implementation.""",
-            implementation = Implementation(MissingListenerRemovalDetector::class.java, EnumSet.of(Scope.JAVA_FILE)),
+            implementation = Implementation(
+                MissingListenerRemovalDetector::class.java,
+                EnumSet.of(Scope.JAVA_FILE)
+            ),
             priority = 10,
             category = Category.CORRECTNESS,
             severity = Severity.ERROR
@@ -96,7 +101,7 @@ class MissingListenerRemovalDetector : Detector(), SourceCodeScanner {
                         scope = node,
                         location = context.getLocation(node),
                         message = "A listener or callback has been added within the `callbackFlow`, " +
-                                "but it hasn't been removed / unregistered in the `awaitClose` block."
+                            "but it hasn't been removed / unregistered in the `awaitClose` block."
                     )
                 }
             }
@@ -157,7 +162,8 @@ class MissingListenerRemovalDetector : Detector(), SourceCodeScanner {
 
         fun isValidAddListenerExpression(node: UCallExpression): Boolean {
             node.methodIdentifier?.run {
-                val mightBeAddListenerMethod = name.matches(PATTERN_ADD_LISTENER_METHOD.toRegex()) ||
+                val mightBeAddListenerMethod =
+                    name.matches(PATTERN_ADD_LISTENER_METHOD.toRegex()) ||
                         name.matches(PATTERN_SET_LISTENER.toRegex())
                 // must have a non-null argument
                 if (mightBeAddListenerMethod &&
@@ -176,9 +182,9 @@ class MissingListenerRemovalDetector : Detector(), SourceCodeScanner {
                     // try to find the pattern `*Listener = listener`
                     is USimpleNameReferenceExpression -> {
                         if (leftOperand.identifier.endsWith(
-                            SUFFIX_LISTENER,
-                            ignoreCase = true
-                        ) && !node.rightOperand.isNullLiteralOrCastedNullLiteral()
+                                SUFFIX_LISTENER,
+                                ignoreCase = true
+                            ) && !node.rightOperand.isNullLiteralOrCastedNullLiteral()
                         ) {
                             return true
                         }
@@ -186,9 +192,9 @@ class MissingListenerRemovalDetector : Detector(), SourceCodeScanner {
                     is UQualifiedReferenceExpression -> {
                         // try to find the pattern `field.*Listener = listener`
                         if ((leftOperand.selector as USimpleNameReferenceExpression).identifier.endsWith(
-                            SUFFIX_LISTENER,
-                            ignoreCase = true
-                        ) &&
+                                SUFFIX_LISTENER,
+                                ignoreCase = true
+                            ) &&
                             !node.rightOperand.isNullLiteralOrCastedNullLiteral()
                         ) {
                             return true
@@ -204,11 +210,11 @@ class MissingListenerRemovalDetector : Detector(), SourceCodeScanner {
                 // must have a non-null argument for a remove* or unregister* method
                 // otherwise must have a null argument for a set*Listener method
                 if (node.valueArgumentCount == 1 && (
-                            name.matches(PATTERN_REMOVE_LISTENER_METHOD.toRegex()) &&
-                                    !node.valueArguments[0].isNullLiteralOrCastedNullLiteral() ||
-                                    name.matches(PATTERN_SET_LISTENER.toRegex()) &&
-                                    node.valueArguments[0].isNullLiteralOrCastedNullLiteral()
-                            )
+                    name.matches(PATTERN_REMOVE_LISTENER_METHOD.toRegex()) &&
+                        !node.valueArguments[0].isNullLiteralOrCastedNullLiteral() ||
+                        name.matches(PATTERN_SET_LISTENER.toRegex()) &&
+                        node.valueArguments[0].isNullLiteralOrCastedNullLiteral()
+                    )
                 ) {
                     return true
                 }
@@ -230,9 +236,9 @@ class MissingListenerRemovalDetector : Detector(), SourceCodeScanner {
                     is UQualifiedReferenceExpression -> {
                         // try to find the pattern `field.*Listener = null`
                         if ((leftOperand.selector as USimpleNameReferenceExpression).identifier.endsWith(
-                            SUFFIX_LISTENER,
-                            ignoreCase = true
-                        ) &&
+                                SUFFIX_LISTENER,
+                                ignoreCase = true
+                            ) &&
                             node.rightOperand.isNullLiteralOrCastedNullLiteral()
                         ) {
                             return true
@@ -249,8 +255,5 @@ class MissingListenerRemovalDetector : Detector(), SourceCodeScanner {
  * Check if expression is `null` or `null as Type?`
  */
 private fun UExpression.isNullLiteralOrCastedNullLiteral(): Boolean {
-    return isNullLiteral() ||
-            (this is UBinaryExpressionWithType &&
-                    operationKind is UastBinaryExpressionWithTypeKind.TypeCast &&
-                    operand.isNullLiteral())
+    return isNullLiteral() || (this is UBinaryExpressionWithType && operationKind is UastBinaryExpressionWithTypeKind.TypeCast && operand.isNullLiteral())
 }

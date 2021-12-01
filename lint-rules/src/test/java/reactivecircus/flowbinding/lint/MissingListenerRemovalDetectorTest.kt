@@ -13,15 +13,15 @@ class MissingListenerRemovalDetectorTest {
             .files(
                 kotlin(
                     """
-                fun View.clicks(): Flow<Unit> = callbackFlow {
-                    checkMainThread()
-                    val listener = View.OnClickListener {
-                        trySend(Unit)
-                    }
-                    setOnClickListener(listener)
-                    awaitClose { setOnClickListener(null) }
-                }.conflate()
-                """.trimIndent()
+                    fun View.clicks(): Flow<Unit> = callbackFlow {
+                        checkMainThread()
+                        val listener = View.OnClickListener {
+                            trySend(Unit)
+                        }
+                        setOnClickListener(listener)
+                        awaitClose { setOnClickListener(null) }
+                    }.conflate()
+                    """.trimIndent()
                 )
             )
             .allowMissingSdk()
@@ -36,23 +36,23 @@ class MissingListenerRemovalDetectorTest {
             .files(
                 kotlin(
                     """
-                fun NestedScrollView.scrollChangeEvents(): Flow<ScrollChangeEvent> = callbackFlow {
-                    checkMainThread()
-                    val listener = NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-                        trySend(
-                            ScrollChangeEvent(
-                                view = v,
-                                scrollX = scrollX,
-                                scrollY = scrollY,
-                                oldScrollX = oldScrollX,
-                                oldScrollY = oldScrollY
+                    fun NestedScrollView.scrollChangeEvents(): Flow<ScrollChangeEvent> = callbackFlow {
+                        checkMainThread()
+                        val listener = NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+                            trySend(
+                                ScrollChangeEvent(
+                                    view = v,
+                                    scrollX = scrollX,
+                                    scrollY = scrollY,
+                                    oldScrollX = oldScrollX,
+                                    oldScrollY = oldScrollY
+                                )
                             )
-                        )
-                    }
-                    setOnScrollChangeListener(listener)
-                    awaitClose { setOnScrollChangeListener(null as NestedScrollView.OnScrollChangeListener?) }
-                }.conflate()
-                """.trimIndent()
+                        }
+                        setOnScrollChangeListener(listener)
+                        awaitClose { setOnScrollChangeListener(null as NestedScrollView.OnScrollChangeListener?) }
+                    }.conflate()
+                    """.trimIndent()
                 )
             )
             .allowMissingSdk()
@@ -67,15 +67,15 @@ class MissingListenerRemovalDetectorTest {
             .files(
                 kotlin(
                     """
-                fun View.focusChanges(): Flow<Boolean> = callbackFlow {
-                    checkMainThread()
-                    val listener = View.OnFocusChangeListener { _, hasFocus ->
-                        trySend(hasFocus)
-                    }
-                    onFocusChangeListener = listener
-                    awaitClose { onFocusChangeListener = null }
-                }.conflate()
-                """.trimIndent()
+                    fun View.focusChanges(): Flow<Boolean> = callbackFlow {
+                        checkMainThread()
+                        val listener = View.OnFocusChangeListener { _, hasFocus ->
+                            trySend(hasFocus)
+                        }
+                        onFocusChangeListener = listener
+                        awaitClose { onFocusChangeListener = null }
+                    }.conflate()
+                    """.trimIndent()
                 )
             )
             .allowMissingSdk()
@@ -90,19 +90,19 @@ class MissingListenerRemovalDetectorTest {
             .files(
                 kotlin(
                     """
-                fun View.dismisses(): Flow<View> = callbackFlow> {
-                    checkMainThread()
-                    val behavior = params.behavior
-                    val listener = object : SwipeDismissBehavior.OnDismissListener {
-                        override fun onDismiss(view: View) {
-                            trySend(view)
+                    fun View.dismisses(): Flow<View> = callbackFlow> {
+                        checkMainThread()
+                        val behavior = params.behavior
+                        val listener = object : SwipeDismissBehavior.OnDismissListener {
+                            override fun onDismiss(view: View) {
+                                trySend(view)
+                            }
+                            override fun onDragStateChanged(state: Int) = Unit
                         }
-                        override fun onDragStateChanged(state: Int) = Unit
-                    }
-                    behavior.listener = listener
-                    awaitClose { behavior.listener = null }
-                }.conflate()
-                """.trimIndent()
+                        behavior.listener = listener
+                        awaitClose { behavior.listener = null }
+                    }.conflate()
+                    """.trimIndent()
                 )
             )
             .allowMissingSdk()
@@ -117,16 +117,16 @@ class MissingListenerRemovalDetectorTest {
             .files(
                 kotlin(
                     """
-                fun View.layoutChanges(): Flow<Unit> = callbackFlow {
-                    checkMainThread()
-                    val listener =
-                        View.OnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
-                            trySend(Unit)
-                        }
-                    addOnLayoutChangeListener(listener)
-                    awaitClose { removeOnLayoutChangeListener(listener) }
-                }.conflate()
-                """.trimIndent()
+                    fun View.layoutChanges(): Flow<Unit> = callbackFlow {
+                        checkMainThread()
+                        val listener =
+                            View.OnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
+                                trySend(Unit)
+                            }
+                        addOnLayoutChangeListener(listener)
+                        awaitClose { removeOnLayoutChangeListener(listener) }
+                    }.conflate()
+                    """.trimIndent()
                 )
             )
             .allowMissingSdk()
@@ -141,17 +141,17 @@ class MissingListenerRemovalDetectorTest {
             .files(
                 kotlin(
                     """
-                fun Snackbar.shownEvents(): Flow<Unit> = callbackFlow {
-                    checkMainThread()
-                    val callback = object : Snackbar.Callback() {
-                        override fun onShown(sb: Snackbar?) {
-                            trySend(Unit)
+                    fun Snackbar.shownEvents(): Flow<Unit> = callbackFlow {
+                        checkMainThread()
+                        val callback = object : Snackbar.Callback() {
+                            override fun onShown(sb: Snackbar?) {
+                                trySend(Unit)
+                            }
                         }
-                    }
-                    this@shownEvents.addCallback(callback)
-                    awaitClose { removeCallback(callback) }
-                }.conflate()
-                """.trimIndent()
+                        this@shownEvents.addCallback(callback)
+                        awaitClose { removeCallback(callback) }
+                    }.conflate()
+                    """.trimIndent()
                 )
             )
             .allowMissingSdk()
@@ -166,18 +166,18 @@ class MissingListenerRemovalDetectorTest {
             .files(
                 kotlin(
                     """
-                fun Lifecycle.events(): Flow<Lifecycle.Event> = callbackFlow {
-                    checkMainThread()
-                    val observer = object : LifecycleObserver {
-                        @OnLifecycleEvent(Lifecycle.Event.ON_ANY)
-                        fun onEvent(owner: LifecycleOwner, event: Lifecycle.Event) {
-                            trySend(event)
+                    fun Lifecycle.events(): Flow<Lifecycle.Event> = callbackFlow {
+                        checkMainThread()
+                        val observer = object : LifecycleObserver {
+                            @OnLifecycleEvent(Lifecycle.Event.ON_ANY)
+                            fun onEvent(owner: LifecycleOwner, event: Lifecycle.Event) {
+                                trySend(event)
+                            }
                         }
-                    }
-                    addObserver(observer)
-                    awaitClose { removeObserver(observer) }
-                }.conflate()
-                """.trimIndent()
+                        addObserver(observer)
+                        awaitClose { removeObserver(observer) }
+                    }.conflate()
+                    """.trimIndent()
                 )
             )
             .allowMissingSdk()
@@ -192,17 +192,17 @@ class MissingListenerRemovalDetectorTest {
             .files(
                 kotlin(
                     """
-                fun ViewPager2.pageScrollStateChanges(): Flow<Int> = callbackFlow {
-                    checkMainThread()
-                    val callback = object : ViewPager2.OnPageChangeCallback() {
-                        override fun onPageScrollStateChanged(state: Int) {
-                            trySend(state)
+                    fun ViewPager2.pageScrollStateChanges(): Flow<Int> = callbackFlow {
+                        checkMainThread()
+                        val callback = object : ViewPager2.OnPageChangeCallback() {
+                            override fun onPageScrollStateChanged(state: Int) {
+                                trySend(state)
+                            }
                         }
-                    }
-                    registerOnPageChangeCallback(callback)
-                    awaitClose { unregisterOnPageChangeCallback(callback) }
-                }.conflate()
-                """.trimIndent()
+                        registerOnPageChangeCallback(callback)
+                        awaitClose { unregisterOnPageChangeCallback(callback) }
+                    }.conflate()
+                    """.trimIndent()
                 )
             )
             .allowMissingSdk()
@@ -217,14 +217,14 @@ class MissingListenerRemovalDetectorTest {
             .files(
                 kotlin(
                     """
-                fun View.clicks(): Flow<Unit> = callbackFlow {
-                    checkMainThread()
-                    val listener = View.OnClickListener {
-                        trySend(Unit)
-                    }
-                    setOnClickListener(listener)
-                }.conflate()
-                """.trimIndent()
+                    fun View.clicks(): Flow<Unit> = callbackFlow {
+                        checkMainThread()
+                        val listener = View.OnClickListener {
+                            trySend(Unit)
+                        }
+                        setOnClickListener(listener)
+                    }.conflate()
+                    """.trimIndent()
                 )
             )
             .allowMissingSdk()
@@ -236,7 +236,7 @@ class MissingListenerRemovalDetectorTest {
                     fun View.clicks(): Flow<Unit> = callbackFlow {
                                                     ^
                     1 errors, 0 warnings
-            """.trimIndent()
+                """.trimIndent()
             )
     }
 
@@ -246,15 +246,15 @@ class MissingListenerRemovalDetectorTest {
             .files(
                 kotlin(
                     """
-                fun View.clicks(): Flow<Unit> = callbackFlow {
-                    checkMainThread()
-                    val listener = View.OnClickListener {
-                        trySend(Unit)
-                    }
-                    setOnClickListener(listener)
-                    awaitClose { setOnClickListener(listener) }
-                }.conflate()
-                """.trimIndent()
+                    fun View.clicks(): Flow<Unit> = callbackFlow {
+                        checkMainThread()
+                        val listener = View.OnClickListener {
+                            trySend(Unit)
+                        }
+                        setOnClickListener(listener)
+                        awaitClose { setOnClickListener(listener) }
+                    }.conflate()
+                    """.trimIndent()
                 )
             )
             .allowMissingSdk()
@@ -276,15 +276,15 @@ class MissingListenerRemovalDetectorTest {
             .files(
                 kotlin(
                     """
-                fun View.focusChanges(): Flow<Boolean> = callbackFlow {
-                    checkMainThread()
-                    val listener = View.OnFocusChangeListener { _, hasFocus ->
-                        trySend(hasFocus)
-                    }
-                    onFocusChangeListener = listener
-                    awaitClose { }
-                }.conflate()
-                """.trimIndent()
+                    fun View.focusChanges(): Flow<Boolean> = callbackFlow {
+                        checkMainThread()
+                        val listener = View.OnFocusChangeListener { _, hasFocus ->
+                            trySend(hasFocus)
+                        }
+                        onFocusChangeListener = listener
+                        awaitClose { }
+                    }.conflate()
+                    """.trimIndent()
                 )
             )
             .allowMissingSdk()
@@ -306,19 +306,19 @@ class MissingListenerRemovalDetectorTest {
             .files(
                 kotlin(
                     """
-                fun View.dismisses(): Flow<View> = callbackFlow {
-                    checkMainThread()
-                    val behavior = params.behavior
-                    val listener = object : SwipeDismissBehavior.OnDismissListener {
-                        override fun onDismiss(view: View) {
-                            trySend(view)
+                    fun View.dismisses(): Flow<View> = callbackFlow {
+                        checkMainThread()
+                        val behavior = params.behavior
+                        val listener = object : SwipeDismissBehavior.OnDismissListener {
+                            override fun onDismiss(view: View) {
+                                trySend(view)
+                            }
+                            override fun onDragStateChanged(state: Int) = Unit
                         }
-                        override fun onDragStateChanged(state: Int) = Unit
-                    }
-                    behavior.listener = listener
-                    awaitClose { }
-                }.conflate()
-                """.trimIndent()
+                        behavior.listener = listener
+                        awaitClose { }
+                    }.conflate()
+                    """.trimIndent()
                 )
             )
             .allowMissingSdk()
@@ -340,16 +340,16 @@ class MissingListenerRemovalDetectorTest {
             .files(
                 kotlin(
                     """
-                fun View.layoutChanges(): Flow<Unit> = callbackFlow {
-                    checkMainThread()
-                    val listener =
-                        View.OnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
-                            trySend(Unit)
-                        }
-                    addOnLayoutChangeListener(listener)
-                    awaitClose { }
-                }.conflate()
-                """.trimIndent()
+                    fun View.layoutChanges(): Flow<Unit> = callbackFlow {
+                        checkMainThread()
+                        val listener =
+                            View.OnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
+                                trySend(Unit)
+                            }
+                        addOnLayoutChangeListener(listener)
+                        awaitClose { }
+                    }.conflate()
+                    """.trimIndent()
                 )
             )
             .allowMissingSdk()
@@ -371,17 +371,17 @@ class MissingListenerRemovalDetectorTest {
             .files(
                 kotlin(
                     """
-                fun Snackbar.shownEvents(): Flow<Unit> = callbackFlow {
-                    checkMainThread()
-                    val callback = object : Snackbar.Callback() {
-                        override fun onShown(sb: Snackbar?) {
-                            trySend(Unit)
+                    fun Snackbar.shownEvents(): Flow<Unit> = callbackFlow {
+                        checkMainThread()
+                        val callback = object : Snackbar.Callback() {
+                            override fun onShown(sb: Snackbar?) {
+                                trySend(Unit)
+                            }
                         }
-                    }
-                    this@shownEvents.addCallback(callback)
-                    awaitClose { }
-                }.conflate()
-                """.trimIndent()
+                        this@shownEvents.addCallback(callback)
+                        awaitClose { }
+                    }.conflate()
+                    """.trimIndent()
                 )
             )
             .allowMissingSdk()
@@ -403,17 +403,17 @@ class MissingListenerRemovalDetectorTest {
             .files(
                 kotlin(
                     """
-                fun ViewPager2.pageScrollStateChanges(): Flow<Int> = callbackFlow {
-                    checkMainThread()
-                    val callback = object : ViewPager2.OnPageChangeCallback() {
-                        override fun onPageScrollStateChanged(state: Int) {
-                            trySend(state)
+                    fun ViewPager2.pageScrollStateChanges(): Flow<Int> = callbackFlow {
+                        checkMainThread()
+                        val callback = object : ViewPager2.OnPageChangeCallback() {
+                            override fun onPageScrollStateChanged(state: Int) {
+                                trySend(state)
+                            }
                         }
-                    }
-                    registerOnPageChangeCallback(callback)
-                    awaitClose { }
-                }.conflate()
-                """.trimIndent()
+                        registerOnPageChangeCallback(callback)
+                        awaitClose { }
+                    }.conflate()
+                    """.trimIndent()
                 )
             )
             .allowMissingSdk()
@@ -435,12 +435,12 @@ class MissingListenerRemovalDetectorTest {
             .files(
                 kotlin(
                     """
-                fun View.test(): Flow<Unit> = callbackFlow {
-                    val listener = View.OnClickListener {
-                        trySend(Unit)
-                    }
-                }.conflate()
-                """.trimIndent()
+                    fun View.test(): Flow<Unit> = callbackFlow {
+                        val listener = View.OnClickListener {
+                            trySend(Unit)
+                        }
+                    }.conflate()
+                    """.trimIndent()
                 )
             )
             .allowMissingSdk()
