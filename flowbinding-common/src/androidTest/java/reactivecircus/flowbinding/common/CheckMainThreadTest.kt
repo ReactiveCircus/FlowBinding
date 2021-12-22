@@ -7,7 +7,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.single
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import org.junit.Test
 
 @MediumTest
@@ -21,13 +21,13 @@ class CheckMainThreadTest {
 
     @Test
     @UiThreadTest
-    fun checkMainThread_onMainThread() = runBlockingTest {
+    fun checkMainThread_onMainThread() = runTest {
         assertThat(mainThreadFlow.single())
             .isTrue()
     }
 
     @Test
-    fun checkMainThread_notMainThread() = runBlockingTest {
+    fun checkMainThread_notMainThread() = runTest {
         assertThrows<IllegalStateException> { mainThreadFlow.collect() }
     }
 }
