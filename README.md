@@ -207,7 +207,7 @@ limitations under the License.
 [kotlin-weekly]: https://mailchi.mp/kotlinweekly/kotlin-weekly-170
 [article]: https://dev.to/ychescale9/binding-android-ui-with-kotlin-flow-22ok
 [maven-central]: https://search.maven.org/search?q=g:io.github.reactivecircus.flowbinding
-[snap]: https://oss.sonatype.org/content/repositories/snapshots/
+[snap]: https://s01.oss.sonatype.org/content/repositories/snapshots/
 [rxbinding]: https://github.com/JakeWharton/RxBinding
 [jake]: https://github.com/JakeWharton
 [flow]: https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/

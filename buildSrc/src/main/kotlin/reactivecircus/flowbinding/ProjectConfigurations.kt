@@ -3,6 +3,9 @@ package reactivecircus.flowbinding
 import com.android.build.api.variant.LibraryAndroidComponentsExtension
 import com.android.build.gradle.LibraryExtension
 import com.android.build.gradle.TestedExtension
+import com.vanniktech.maven.publish.MavenPublishPlugin
+import com.vanniktech.maven.publish.MavenPublishPluginExtension
+import com.vanniktech.maven.publish.SonatypeHost
 import org.gradle.StartParameter
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
@@ -44,7 +47,8 @@ internal fun Project.configureAndroidLibrary(startParameter: StartParameter) {
     extensions.getByType<TestedExtension>().configureCommonAndroidOptions(startParameter)
 
     // android variant configs
-    extensions.getByType<LibraryAndroidComponentsExtension>().configureAndroidLibraryVariants(project)
+    extensions.getByType<LibraryAndroidComponentsExtension>()
+        .configureAndroidLibraryVariants(project)
 
     // android library configs
     extensions.configure<LibraryExtension> {
@@ -121,6 +125,9 @@ fun Project.configureForAllProjects(enableExplicitApi: Property<Boolean>) {
     // apply and configure detekt plugin
     configureDetektPlugin()
 
+    // configure maven publishing plugin if applied to the project
+    configureMavenPublishing()
+
     repositories {
         mavenCentral()
         google()
@@ -148,19 +155,22 @@ fun Project.configureForAllProjects(enableExplicitApi: Property<Boolean>) {
 
 private val Project.hasUnitTestSource: Boolean
     get() {
-        extensions.findByType(KotlinAndroidProjectExtension::class.java)?.sourceSets?.findByName("test")?.let {
-            if (it.kotlin.files.isNotEmpty()) return true
-        }
-        extensions.findByType(KotlinProjectExtension::class.java)?.sourceSets?.findByName("test")?.let {
-            if (it.kotlin.files.isNotEmpty()) return true
-        }
+        extensions.findByType(KotlinAndroidProjectExtension::class.java)?.sourceSets?.findByName("test")
+            ?.let {
+                if (it.kotlin.files.isNotEmpty()) return true
+            }
+        extensions.findByType(KotlinProjectExtension::class.java)?.sourceSets?.findByName("test")
+            ?.let {
+                if (it.kotlin.files.isNotEmpty()) return true
+            }
         return false
     }
 
 private val Project.hasAndroidTestSource: Boolean
     get() {
-        extensions.findByType(KotlinAndroidProjectExtension::class.java)?.sourceSets?.findByName("androidTest")?.let {
-            if (it.kotlin.files.isNotEmpty()) return true
-        }
+        extensions.findByType(KotlinAndroidProjectExtension::class.java)?.sourceSets?.findByName("androidTest")
+            ?.let {
+                if (it.kotlin.files.isNotEmpty()) return true
+            }
         return false
     }
