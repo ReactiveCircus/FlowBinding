@@ -2,28 +2,32 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>LayoutChangeEvent</title>
-</head><body><link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script><script type="text/javascript" src="../../../scripts/main.js" async></script>
+</head><body><link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><link href="../../../styles/prism.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script><script type="text/javascript" src="../../../scripts/main.js" defer></script><script type="text/javascript" src="../../../scripts/prism.js" async></script><script>const storage = localStorage.getItem("dokka-dark-mode")
+const savedDarkMode = storage ? JSON.parse(storage) : false
+if(savedDarkMode === true){
+    document.getElementsByTagName("html")[0].classList.add("theme-dark")
+}</script>
+
   
+    <div class="navigation-wrapper" id="navigation-wrapper">
+      <div id="leftToggler"><span class="icon-toggler"></span></div>
+      <div class="library-name"><a href="../../../index.html"><span>FlowBinding</span></a></div>
+      <div></div>
+      <div class="pull-right d-flex"><button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+      </div>
+    </div>
     <div id="container">
-      <div id="leftColumn"><a href="../../../index.html">
-            <div id="logo"></div>
-          </a>
-        <div id="paneSearch"></div>
+      <div id="leftColumn">
         <div id="sideMenu"></div>
       </div>
       <div id="main">
-        <script type="text/javascript" src="../../../scripts/main.js"></script><div id="leftToggler"><span class="icon-toggler"></span></div>
-
         <div class="main-content" id="content" pageids="flowbinding-android::reactivecircus.flowbinding.android.view/LayoutChangeEvent///PointingToDeclaration//1232684812">
-          <div class="navigation-wrapper" id="navigation-wrapper">
-            <div class="breadcrumbs"><a href="../../index.html">flowbinding-android</a>/<a href="../index.html">reactivecircus.flowbinding.android.view</a>/<a href="index.html">LayoutChangeEvent</a></div>
-            <div class="pull-right d-flex">
-              <div id="searchBar"></div>
-            </div>
-          </div>
+          <div class="breadcrumbs"><a href="../../index.html">flowbinding-android</a>/<a href="../index.html">reactivecircus.flowbinding.android.view</a>/<a href="index.html">LayoutChangeEvent</a></div>
           <div class="cover ">
             <h1 class="cover"><span>Layout</span><wbr><span>Change</span><wbr><span><span>Event</span></span></h1>
-            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":flowbinding-android:dokkaHtmlPartial/release"><div class="symbol monospace">data class <a href="index.html">LayoutChangeEvent</a>(view: <a href="https://developer.android.com/reference/kotlin/android/view/View.html">View</a>, left: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>, top: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>, right: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>, bottom: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>, oldLeft: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>, oldTop: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>, oldRight: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>, oldBottom: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":flowbinding-android:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">LayoutChangeEvent</a><span class="token punctuation">(</span>view<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/view/View.html">View</a><span class="token punctuation">, </span>left<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span>top<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span>right<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span>bottom<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span>oldLeft<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span>oldTop<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span>oldRight<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span>oldBottom<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
           </div>
           <div class="tabbedcontent">
             <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Properties">Properties</button></div>
@@ -32,12 +36,14 @@
               <div class="table" data-togglable="Properties"><a data-name="-827834001%2FProperties%2F1232684812" anchor-label="bottom" id="-827834001%2FProperties%2F1232684812" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release"></a>
                 <div class="table-row" data-filterable-current=":flowbinding-android:dokkaHtmlPartial/release" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="bottom.html">bottom</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-827834001%2FProperties%2F1232684812"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="bottom.html">bottom</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-827834001%2FProperties%2F1232684812"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":flowbinding-android:dokkaHtmlPartial/release"><a data-name="-827834001%2FProperties%2F1232684812" anchor-label="bottom" id="-827834001%2FProperties%2F1232684812" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release"></a><div class="symbol monospace">val <a href="bottom.html">bottom</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":flowbinding-android:dokkaHtmlPartial/release"><a data-name="-827834001%2FProperties%2F1232684812" anchor-label="bottom" id="-827834001%2FProperties%2F1232684812" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="bottom.html">bottom</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -45,12 +51,14 @@
 <a data-name="-1709013421%2FProperties%2F1232684812" anchor-label="left" id="-1709013421%2FProperties%2F1232684812" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release"></a>
                 <div class="table-row" data-filterable-current=":flowbinding-android:dokkaHtmlPartial/release" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="left.html">left</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1709013421%2FProperties%2F1232684812"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="left.html">left</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1709013421%2FProperties%2F1232684812"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":flowbinding-android:dokkaHtmlPartial/release"><a data-name="-1709013421%2FProperties%2F1232684812" anchor-label="left" id="-1709013421%2FProperties%2F1232684812" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release"></a><div class="symbol monospace">val <a href="left.html">left</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":flowbinding-android:dokkaHtmlPartial/release"><a data-name="-1709013421%2FProperties%2F1232684812" anchor-label="left" id="-1709013421%2FProperties%2F1232684812" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="left.html">left</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -58,12 +66,14 @@
 <a data-name="921089582%2FProperties%2F1232684812" anchor-label="oldBottom" id="921089582%2FProperties%2F1232684812" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release"></a>
                 <div class="table-row" data-filterable-current=":flowbinding-android:dokkaHtmlPartial/release" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="old-bottom.html">oldBottom</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="921089582%2FProperties%2F1232684812"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="old-bottom.html">oldBottom</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="921089582%2FProperties%2F1232684812"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":flowbinding-android:dokkaHtmlPartial/release"><a data-name="921089582%2FProperties%2F1232684812" anchor-label="oldBottom" id="921089582%2FProperties%2F1232684812" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release"></a><div class="symbol monospace">val <a href="old-bottom.html">oldBottom</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":flowbinding-android:dokkaHtmlPartial/release"><a data-name="921089582%2FProperties%2F1232684812" anchor-label="oldBottom" id="921089582%2FProperties%2F1232684812" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="old-bottom.html">oldBottom</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -71,12 +81,14 @@
 <a data-name="-1734009134%2FProperties%2F1232684812" anchor-label="oldLeft" id="-1734009134%2FProperties%2F1232684812" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release"></a>
                 <div class="table-row" data-filterable-current=":flowbinding-android:dokkaHtmlPartial/release" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="old-left.html">oldLeft</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1734009134%2FProperties%2F1232684812"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="old-left.html">oldLeft</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1734009134%2FProperties%2F1232684812"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":flowbinding-android:dokkaHtmlPartial/release"><a data-name="-1734009134%2FProperties%2F1232684812" anchor-label="oldLeft" id="-1734009134%2FProperties%2F1232684812" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release"></a><div class="symbol monospace">val <a href="old-left.html">oldLeft</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":flowbinding-android:dokkaHtmlPartial/release"><a data-name="-1734009134%2FProperties%2F1232684812" anchor-label="oldLeft" id="-1734009134%2FProperties%2F1232684812" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="old-left.html">oldLeft</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -84,12 +96,14 @@
 <a data-name="-981267611%2FProperties%2F1232684812" anchor-label="oldRight" id="-981267611%2FProperties%2F1232684812" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release"></a>
                 <div class="table-row" data-filterable-current=":flowbinding-android:dokkaHtmlPartial/release" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="old-right.html">oldRight</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-981267611%2FProperties%2F1232684812"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="old-right.html">oldRight</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-981267611%2FProperties%2F1232684812"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":flowbinding-android:dokkaHtmlPartial/release"><a data-name="-981267611%2FProperties%2F1232684812" anchor-label="oldRight" id="-981267611%2FProperties%2F1232684812" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release"></a><div class="symbol monospace">val <a href="old-right.html">oldRight</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":flowbinding-android:dokkaHtmlPartial/release"><a data-name="-981267611%2FProperties%2F1232684812" anchor-label="oldRight" id="-981267611%2FProperties%2F1232684812" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="old-right.html">oldRight</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -97,12 +111,14 @@
 <a data-name="853618508%2FProperties%2F1232684812" anchor-label="oldTop" id="853618508%2FProperties%2F1232684812" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release"></a>
                 <div class="table-row" data-filterable-current=":flowbinding-android:dokkaHtmlPartial/release" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="old-top.html">oldTop</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="853618508%2FProperties%2F1232684812"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="old-top.html">oldTop</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="853618508%2FProperties%2F1232684812"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":flowbinding-android:dokkaHtmlPartial/release"><a data-name="853618508%2FProperties%2F1232684812" anchor-label="oldTop" id="853618508%2FProperties%2F1232684812" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release"></a><div class="symbol monospace">val <a href="old-top.html">oldTop</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":flowbinding-android:dokkaHtmlPartial/release"><a data-name="853618508%2FProperties%2F1232684812" anchor-label="oldTop" id="853618508%2FProperties%2F1232684812" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="old-top.html">oldTop</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -110,12 +126,14 @@
 <a data-name="-206400508%2FProperties%2F1232684812" anchor-label="right" id="-206400508%2FProperties%2F1232684812" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release"></a>
                 <div class="table-row" data-filterable-current=":flowbinding-android:dokkaHtmlPartial/release" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="right.html">right</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-206400508%2FProperties%2F1232684812"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="right.html">right</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-206400508%2FProperties%2F1232684812"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":flowbinding-android:dokkaHtmlPartial/release"><a data-name="-206400508%2FProperties%2F1232684812" anchor-label="right" id="-206400508%2FProperties%2F1232684812" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release"></a><div class="symbol monospace">val <a href="right.html">right</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":flowbinding-android:dokkaHtmlPartial/release"><a data-name="-206400508%2FProperties%2F1232684812" anchor-label="right" id="-206400508%2FProperties%2F1232684812" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="right.html">right</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -123,12 +141,14 @@
 <a data-name="-1639427157%2FProperties%2F1232684812" anchor-label="top" id="-1639427157%2FProperties%2F1232684812" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release"></a>
                 <div class="table-row" data-filterable-current=":flowbinding-android:dokkaHtmlPartial/release" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="top.html">top</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1639427157%2FProperties%2F1232684812"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="top.html">top</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1639427157%2FProperties%2F1232684812"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":flowbinding-android:dokkaHtmlPartial/release"><a data-name="-1639427157%2FProperties%2F1232684812" anchor-label="top" id="-1639427157%2FProperties%2F1232684812" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release"></a><div class="symbol monospace">val <a href="top.html">top</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":flowbinding-android:dokkaHtmlPartial/release"><a data-name="-1639427157%2FProperties%2F1232684812" anchor-label="top" id="-1639427157%2FProperties%2F1232684812" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="top.html">top</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -136,12 +156,14 @@
 <a data-name="-960464523%2FProperties%2F1232684812" anchor-label="view" id="-960464523%2FProperties%2F1232684812" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release"></a>
                 <div class="table-row" data-filterable-current=":flowbinding-android:dokkaHtmlPartial/release" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="view.html">view</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-960464523%2FProperties%2F1232684812"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="view.html">view</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-960464523%2FProperties%2F1232684812"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":flowbinding-android:dokkaHtmlPartial/release"><a data-name="-960464523%2FProperties%2F1232684812" anchor-label="view" id="-960464523%2FProperties%2F1232684812" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release"></a><div class="symbol monospace">val <a href="view.html">view</a>: <a href="https://developer.android.com/reference/kotlin/android/view/View.html">View</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":flowbinding-android:dokkaHtmlPartial/release"><a data-name="-960464523%2FProperties%2F1232684812" anchor-label="view" id="-960464523%2FProperties%2F1232684812" data-filterable-set=":flowbinding-android:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="view.html">view</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/view/View.html">View</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -150,7 +172,7 @@
             </div>
           </div>
         </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
       </div>
     </div>
   
