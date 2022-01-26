@@ -6,7 +6,7 @@ plugins {
 
 android {
     lint {
-        disable("FragmentGradleConfiguration")
+        disable.add("FragmentGradleConfiguration")
     }
 }
 

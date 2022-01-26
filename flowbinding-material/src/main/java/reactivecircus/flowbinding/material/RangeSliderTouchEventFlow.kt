@@ -1,5 +1,6 @@
 package reactivecircus.flowbinding.material
 
+import android.annotation.SuppressLint
 import androidx.annotation.CheckResult
 import com.google.android.material.slider.RangeSlider
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -30,10 +31,12 @@ import reactivecircus.flowbinding.common.checkMainThread
 public fun RangeSlider.touchEvents(): Flow<RangeSliderTouchEvent> = callbackFlow {
     checkMainThread()
     val listener = object : RangeSlider.OnSliderTouchListener {
+        @SuppressLint("RestrictedApi")
         override fun onStartTrackingTouch(rangeSlider: RangeSlider) {
             trySend(RangeSliderTouchEvent.StartTracking(rangeSlider))
         }
 
+        @SuppressLint("RestrictedApi")
         override fun onStopTrackingTouch(rangeSlider: RangeSlider) {
             trySend(RangeSliderTouchEvent.StopTracking(rangeSlider))
         }

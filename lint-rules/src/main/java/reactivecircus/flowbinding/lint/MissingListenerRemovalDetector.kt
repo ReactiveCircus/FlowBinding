@@ -22,6 +22,7 @@ import org.jetbrains.uast.USimpleNameReferenceExpression
 import org.jetbrains.uast.UastBinaryExpressionWithTypeKind
 import org.jetbrains.uast.UastBinaryOperator
 import org.jetbrains.uast.isNullLiteral
+import org.jetbrains.uast.skipParenthesizedExprDown
 import org.jetbrains.uast.visitor.AbstractUastVisitor
 import java.util.EnumSet
 
@@ -211,9 +212,9 @@ class MissingListenerRemovalDetector : Detector(), SourceCodeScanner {
                 // otherwise must have a null argument for a set*Listener method
                 if (node.valueArgumentCount == 1 && (
                     name.matches(PATTERN_REMOVE_LISTENER_METHOD.toRegex()) &&
-                        !node.valueArguments[0].isNullLiteralOrCastedNullLiteral() ||
+                        node.valueArguments[0].skipParenthesizedExprDown()?.isNullLiteralOrCastedNullLiteral() == false ||
                         name.matches(PATTERN_SET_LISTENER.toRegex()) &&
-                        node.valueArguments[0].isNullLiteralOrCastedNullLiteral()
+                        node.valueArguments[0].skipParenthesizedExprDown()?.isNullLiteralOrCastedNullLiteral() == true
                     )
                 ) {
                     return true
@@ -228,7 +229,7 @@ class MissingListenerRemovalDetector : Detector(), SourceCodeScanner {
                     // try to find the pattern `*Listener = null`
                     is USimpleNameReferenceExpression -> {
                         if (leftOperand.identifier.endsWith(SUFFIX_LISTENER, ignoreCase = true) &&
-                            node.rightOperand.isNullLiteralOrCastedNullLiteral()
+                            node.rightOperand.skipParenthesizedExprDown()?.isNullLiteralOrCastedNullLiteral() == true
                         ) {
                             return true
                         }
@@ -239,7 +240,7 @@ class MissingListenerRemovalDetector : Detector(), SourceCodeScanner {
                                 SUFFIX_LISTENER,
                                 ignoreCase = true
                             ) &&
-                            node.rightOperand.isNullLiteralOrCastedNullLiteral()
+                            node.rightOperand.skipParenthesizedExprDown()?.isNullLiteralOrCastedNullLiteral() == true
                         ) {
                             return true
                         }
