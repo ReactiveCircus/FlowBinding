@@ -14,20 +14,13 @@ jobs:
     name: Generate API docs and deploy website
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: gradle/wrapper-validation-action@v1
-      - uses: actions/setup-java@v2
+      - uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
           java-version: '17'
-      - uses: actions/cache@v2
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-${{ github.job }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/*.versions.toml') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.kt') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ github.job }}-
+      - uses: gradle/gradle-build-action@v2
       - run: |
           pip3 install mkdocs-material mkdocs-minify-plugin
           .buildscript/deploy_website.sh
