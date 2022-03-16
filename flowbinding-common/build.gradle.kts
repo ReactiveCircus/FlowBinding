@@ -11,6 +11,7 @@ flowBinding {
 }
 
 android {
+    namespace = "reactivecircus.flowbinding.common"
     // TODO remove once https://issuetracker.google.com/issues/161586464 is fixed
     buildFeatures.androidResources = true
 

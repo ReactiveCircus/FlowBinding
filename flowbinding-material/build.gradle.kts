@@ -11,6 +11,7 @@ flowBinding {
 }
 
 android {
+    namespace = "reactivecircus.flowbinding.material"
     defaultConfig {
         testApplicationId = "reactivecircus.flowbinding.material.test"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

@@ -11,6 +11,7 @@ flowBinding {
 }
 
 android {
+    namespace = "reactivecircus.flowbinding.swiperefreshlayout"
     defaultConfig {
         testApplicationId = "reactivecircus.flowbinding.swiperefreshlayout.test"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

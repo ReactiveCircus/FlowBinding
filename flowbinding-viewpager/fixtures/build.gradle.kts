@@ -4,10 +4,14 @@ plugins {
     kotlin("android")
 }
 
-android.buildFeatures {
-    viewBinding = true
-    androidResources = true
+android {
+    namespace = "reactivecircus.flowbinding.viewpager.fixtures"
+    buildFeatures {
+        viewBinding = true
+        androidResources = true
+    }
 }
+
 
 dependencies {
     implementation(libs.androidx.viewPager)

@@ -11,6 +11,7 @@ flowBinding {
 }
 
 android {
+    namespace = "reactivecircus.flowbinding.recyclerview"
     defaultConfig {
         testApplicationId = "reactivecircus.flowbinding.recyclerview.test"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

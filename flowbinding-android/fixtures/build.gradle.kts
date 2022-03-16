@@ -4,9 +4,12 @@ plugins {
     kotlin("android")
 }
 
-android.buildFeatures {
-    viewBinding = true
-    androidResources = true
+android {
+    namespace = "reactivecircus.flowbinding.android.fixtures"
+    buildFeatures {
+        viewBinding = true
+        androidResources = true
+    }
 }
 
 dependencies {

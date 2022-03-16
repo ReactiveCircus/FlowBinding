@@ -11,6 +11,7 @@ flowBinding {
 }
 
 android {
+    namespace = "reactivecircus.flowbinding.viewpager"
     defaultConfig {
         testApplicationId = "reactivecircus.flowbinding.viewpager.test"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

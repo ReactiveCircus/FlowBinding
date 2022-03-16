@@ -5,6 +5,7 @@ plugins {
 }
 
 android {
+    namespace = "reactivecircus.flowbinding.testing"
     lint {
         disable.add("FragmentGradleConfiguration")
     }
