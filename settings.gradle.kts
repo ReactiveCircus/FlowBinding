@@ -1,5 +1,13 @@
 rootProject.name = "FlowBinding"
 
+@Suppress("UnstableApiUsage")
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+        google()
+    }
+}
+
 include(":flowbinding-common")
 
 include(":flowbinding-android")
