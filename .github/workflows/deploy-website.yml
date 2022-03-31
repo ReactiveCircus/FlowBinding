@@ -19,7 +19,7 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
-          java-version: '17'
+          java-version: '18'
       - uses: gradle/gradle-build-action@v2
       - run: |
           pip3 install mkdocs-material mkdocs-minify-plugin
