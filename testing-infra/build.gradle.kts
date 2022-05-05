@@ -13,7 +13,6 @@ android {
 
 dependencies {
     implementation(libs.kotlinx.coroutines.core)
-    implementation(libs.material)
 
     api(libs.blueprint.testingRobot)
     api(libs.androidx.fragment.testing)
