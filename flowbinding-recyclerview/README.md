@@ -20,4 +20,6 @@ fun RecyclerView.childAttachStateChangeEvents(): Flow<RecyclerViewChildAttachSta
 fun RecyclerView.flingEvents(handled: (FlingEvent) -> Boolean = { true }): Flow<FlingEvent>
 fun RecyclerView.scrollEvents(): Flow<RecyclerViewScrollEvent>
 fun RecyclerView.scrollStateChanges(): Flow<Int>
+fun RecyclerView.loadMoreFlowVertically(): Flow<Boolean>
+fun RecyclerView.loadMoreFlowHorizontally(): Flow<Boolean>
 ```
