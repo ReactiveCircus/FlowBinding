@@ -26,14 +26,15 @@ import reactivecircus.flowbinding.common.checkMainThread
  */
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun RecyclerView.loadMoreFlowVertically(): Flow<Int> = callbackFlow {
+public fun RecyclerView.loadMoreFlowVertically(): Flow<Boolean> = callbackFlow {
     checkMainThread()
     val listener = object : RecyclerView.OnScrollListener() {
         override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
             if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
-                trySend(newState)
+                trySend(true)
+            } else {
+                trySend(false)
             }
-
         }
     }
     addOnScrollListener(listener)
@@ -43,14 +44,15 @@ public fun RecyclerView.loadMoreFlowVertically(): Flow<Int> = callbackFlow {
 
 @CheckResult
 @OptIn(ExperimentalCoroutinesApi::class)
-public fun RecyclerView.loadMoreFlowHorizontally(): Flow<Int> = callbackFlow {
+public fun RecyclerView.loadMoreFlowHorizontally(): Flow<Boolean> = callbackFlow {
     checkMainThread()
     val listener = object : RecyclerView.OnScrollListener() {
         override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
             if (!recyclerView.canScrollHorizontally(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
-                trySend(newState)
+                trySend(true)
+            } else {
+                trySend(false)
             }
-
         }
     }
     addOnScrollListener(listener)
