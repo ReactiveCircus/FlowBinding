@@ -139,7 +139,7 @@ fun Project.configureForAllProjects(enableExplicitApi: Property<Boolean>) {
     }
 
     tasks.withType<Test>().configureEach {
-        maxParallelForks = Runtime.getRuntime().availableProcessors() * 2
+        maxParallelForks = (Runtime.getRuntime().availableProcessors() / 2).coerceAtLeast(1)
         testLogging {
             events(TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED)
         }
