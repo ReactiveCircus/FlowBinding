@@ -14,7 +14,7 @@ on:
 
 env:
   CI: true
-  GRADLE_OPTS: -Dkotlin.incremental=false -Dorg.gradle.jvmargs="-Xmx4g -XX:+HeapDumpOnOutOfMemoryError"
+  GRADLE_OPTS: -Dkotlin.incremental.useClasspathSnapshot=false -Dorg.gradle.jvmargs="-Xmx4g -XX:+HeapDumpOnOutOfMemoryError"
   TERM: dumb
 
 jobs:
