@@ -1,39 +1,54 @@
+<!doctype html>
 <html>
-  <head>
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>itemClicks</title>
-</head><body><link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>
-    <script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script><link href="../../styles/style.css" rel="Stylesheet"><link href="../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../styles/main.css" rel="Stylesheet"><link href="../../styles/prism.css" rel="Stylesheet"><link href="../../styles/logo-styles.css" rel="Stylesheet"><script type="text/javascript" src="../../scripts/clipboard.js" async></script><script type="text/javascript" src="../../scripts/navigation-loader.js" async></script><script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script><script type="text/javascript" src="../../scripts/main.js" defer></script><script type="text/javascript" src="../../scripts/prism.js" async></script><script>const storage = localStorage.getItem("dokka-dark-mode")
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
 const savedDarkMode = storage ? JSON.parse(storage) : false
 if(savedDarkMode === true){
     document.getElementsByTagName("html")[0].classList.add("theme-dark")
 }</script>
-
-  
-    <div class="navigation-wrapper" id="navigation-wrapper">
-      <div id="leftToggler"><span class="icon-toggler"></span></div>
-      <div class="library-name"><a href="../../index.html"><span>FlowBinding</span></a></div>
-      <div></div>
-      <div class="pull-right d-flex"><button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../scripts/prism.js" async></script></head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+<a href="../../index.html">
+<span>FlowBinding</span>            </a>    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
         <div id="searchBar"></div>
-      </div>
     </div>
-    <div id="container">
-      <div id="leftColumn">
+</div>
+<div id="container">
+    <div id="leftColumn">
         <div id="sideMenu"></div>
-      </div>
-      <div id="main">
-        <div class="main-content" id="content" pageids="flowbinding-android::reactivecircus.flowbinding.android.widget//itemClicks/android.widget.AdapterView[TypeParam(bounds=[android.widget.Adapter])]#/PointingToDeclaration//1232684812">
-          <div class="breadcrumbs"><a href="../index.html">flowbinding-android</a>/<a href="index.html">reactivecircus.flowbinding.android.widget</a>/<a href="item-clicks.html">itemClicks</a></div>
-          <div class="cover ">
-            <h1 class="cover"><span>item</span><wbr><span><span>Clicks</span></span></h1>
-          </div>
-          <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":flowbinding-android:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><a href="https://developer.android.com/reference/kotlin/androidx/annotation/CheckResult.html"><span class="token annotation">CheckResult</span></a></div></div><span class="token keyword"></span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="item-clicks.html">T</a><span class="token operator"> : </span><a href="https://developer.android.com/reference/kotlin/android/widget/Adapter.html">Adapter</a><span class="token operator">&gt; </span><a href="https://developer.android.com/reference/kotlin/android/widget/AdapterView.html">AdapterView</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="item-clicks.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="item-clicks.html"><span class="token function">itemClicks</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Create a <span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span> of item clicks on the <a href="https://developer.android.com/reference/kotlin/android/widget/AdapterView.html">AdapterView</a> instance where the value emitted is the position of the item clicked.</p><p class="paragraph">Note: Created flow keeps a strong reference to the <a href="https://developer.android.com/reference/kotlin/android/widget/AdapterView.html">AdapterView</a> instance until the coroutine that launched the flow collector is cancelled.</p><p class="paragraph">Example of usage:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">adapterView.itemClickEvents()<br>    .onEach { position -&gt;<br>         // handle adapter view item clicked<br>    }<br>    .launchIn(uiScope)</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><br><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><a href="https://developer.android.com/reference/kotlin/androidx/annotation/CheckResult.html"><span class="token annotation">CheckResult</span></a></div></div><span class="token keyword"></span><span class="token keyword">fun </span><a href="https://developer.android.com/reference/kotlin/android/widget/PopupMenu.html">PopupMenu</a><span class="token punctuation">.</span><a href="item-clicks.html"><span class="token function">itemClicks</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/android/view/MenuItem.html">MenuItem</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Create a <span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span> of item clicked events on the <a href="https://developer.android.com/reference/kotlin/android/widget/PopupMenu.html">PopupMenu</a> instance where the value emitted is the clicked menu item.</p><p class="paragraph">Note: Created flow keeps a strong reference to the <a href="https://developer.android.com/reference/kotlin/android/widget/PopupMenu.html">PopupMenu</a> instance until the coroutine that launched the flow collector is cancelled.</p><p class="paragraph">Example of usage:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">popupMenu.itemClicks()<br>    .onEach { menuItem -&gt;<br>         // handle menuItem<br>    }<br>    .launchIn(uiScope)</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-        </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageids="flowbinding-android::reactivecircus.flowbinding.android.widget//itemClicks/android.widget.AdapterView[TypeParam(bounds=[android.widget.Adapter])]#/PointingToDeclaration//1232684812">
+  <div class="breadcrumbs"><a href="../index.html">flowbinding-android</a><span class="delimiter">/</span><a href="index.html">reactivecircus.flowbinding.android.widget</a><span class="delimiter">/</span><a href="item-clicks.html">itemClicks</a></div>
+  <div class="cover ">
+    <h1 class="cover"><span>item</span><wbr><span><span>Clicks</span></span></h1>
+  </div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":flowbinding-android:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><a href="https://developer.android.com/reference/kotlin/androidx/annotation/CheckResult.html"><span class="token annotation">CheckResult</span></a></div></div><span class="token keyword"></span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="item-clicks.html">T</a><span class="token operator"> : </span><a href="https://developer.android.com/reference/kotlin/android/widget/Adapter.html">Adapter</a><span class="token operator">&gt; </span><a href="https://developer.android.com/reference/kotlin/android/widget/AdapterView.html">AdapterView</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="item-clicks.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="item-clicks.html"><span class="token function">itemClicks</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Create a <span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span> of item clicks on the <a href="https://developer.android.com/reference/kotlin/android/widget/AdapterView.html">AdapterView</a> instance where the value emitted is the position of the item clicked.</p><p class="paragraph">Note: Created flow keeps a strong reference to the <a href="https://developer.android.com/reference/kotlin/android/widget/AdapterView.html">AdapterView</a> instance until the coroutine that launched the flow collector is cancelled.</p><p class="paragraph">Example of usage:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">adapterView.itemClickEvents()<br>    .onEach { position -&gt;<br>         // handle adapter view item clicked<br>    }<br>    .launchIn(uiScope)</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><br><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><a href="https://developer.android.com/reference/kotlin/androidx/annotation/CheckResult.html"><span class="token annotation">CheckResult</span></a></div></div><span class="token keyword"></span><span class="token keyword">fun </span><a href="https://developer.android.com/reference/kotlin/android/widget/PopupMenu.html">PopupMenu</a><span class="token punctuation">.</span><a href="item-clicks.html"><span class="token function">itemClicks</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/android/view/MenuItem.html">MenuItem</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Create a <span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span> of item clicked events on the <a href="https://developer.android.com/reference/kotlin/android/widget/PopupMenu.html">PopupMenu</a> instance where the value emitted is the clicked menu item.</p><p class="paragraph">Note: Created flow keeps a strong reference to the <a href="https://developer.android.com/reference/kotlin/android/widget/PopupMenu.html">PopupMenu</a> instance until the coroutine that launched the flow collector is cancelled.</p><p class="paragraph">Example of usage:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">popupMenu.itemClicks()<br>    .onEach { menuItem -&gt;<br>         // handle menuItem<br>    }<br>    .launchIn(uiScope)</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
       </div>
     </div>
-  
-</body></html>
+</div>
 
+</body></html>
 
