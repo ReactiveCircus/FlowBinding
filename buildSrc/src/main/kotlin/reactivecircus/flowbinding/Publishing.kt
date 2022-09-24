@@ -14,7 +14,7 @@ import org.gradle.kotlin.dsl.withType
 internal fun Project.configureMavenPublishing() {
     plugins.withType<MavenPublishBasePlugin> {
         extensions.configure<MavenPublishBaseExtension> {
-            publishToMavenCentral(SonatypeHost.S01)
+            publishToMavenCentral(SonatypeHost.S01, automaticRelease = true)
             signAllPublications()
         }
     }
