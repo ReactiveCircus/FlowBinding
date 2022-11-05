@@ -21,8 +21,11 @@ jobs:
           distribution: 'zulu'
           java-version: '18'
       - uses: gradle/gradle-build-action@v2
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
       - run: |
-          pip3 install mkdocs-material mkdocs-minify-plugin
+          pip install mkdocs-material mkdocs-minify-plugin
           .buildscript/deploy_website.sh
         env:
           CI: true
