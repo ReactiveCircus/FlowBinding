@@ -4,10 +4,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>DestinationChangeEvent</title>
 <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
-const savedDarkMode = storage ? JSON.parse(storage) : false
-if(savedDarkMode === true){
-    document.getElementsByTagName("html")[0].classList.add("theme-dark")
-}</script>
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
 <link href="../../../styles/style.css" rel="Stylesheet">
 <link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
@@ -18,7 +26,8 @@ if(savedDarkMode === true){
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer></script>
-<script type="text/javascript" src="../../../scripts/prism.js" async></script></head>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
 <body>
 <div class="navigation-wrapper" id="navigation-wrapper">
     <div id="leftToggler"><span class="icon-toggler"></span></div>
@@ -38,10 +47,10 @@ if(savedDarkMode === true){
     </div>
     <div id="main">
 <div class="main-content" id="content" pageids="flowbinding-navigation::reactivecircus.flowbinding.navigation/DestinationChangeEvent///PointingToDeclaration//-777406135">
-  <div class="breadcrumbs"><a href="../../index.html">flowbinding-navigation</a><span class="delimiter">/</span><a href="../index.html">reactivecircus.flowbinding.navigation</a><span class="delimiter">/</span><a href="index.html">DestinationChangeEvent</a></div>
+  <div class="breadcrumbs"><a href="../../index.html">flowbinding-navigation</a><span class="delimiter">/</span><a href="../index.html">reactivecircus.flowbinding.navigation</a><span class="delimiter">/</span><span class="current">DestinationChangeEvent</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Destination</span><wbr><span>Change</span><wbr><span><span>Event</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":flowbinding-navigation:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">DestinationChangeEvent</a><span class="token punctuation">(</span><span class="parameters wrapped"><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>navController<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/navigation/NavController.html">NavController</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>destination<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/navigation/NavDestination.html">NavDestination</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>arguments<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/os/Bundle.html">Bundle</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":flowbinding-navigation:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">DestinationChangeEvent</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>navController<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/navigation/NavController.html">NavController</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>destination<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/navigation/NavDestination.html">NavDestination</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>arguments<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/os/Bundle.html">Bundle</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
@@ -57,7 +66,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":flowbinding-navigation:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-destination-change-event.html"><span class="token function">DestinationChangeEvent</span></a><span class="token punctuation">(</span><span class="parameters wrapped"><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;navController<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/navigation/NavController.html">NavController</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;destination<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/navigation/NavDestination.html">NavDestination</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;arguments<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/os/Bundle.html">Bundle</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":flowbinding-navigation:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-destination-change-event.html"><span class="token function">DestinationChangeEvent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">navController<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/navigation/NavController.html">NavController</a><span class="token punctuation">, </span></span><span class="parameter ">destination<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/navigation/NavDestination.html">NavDestination</a><span class="token punctuation">, </span></span><span class="parameter ">arguments<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/os/Bundle.html">Bundle</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span></div></div></div>
               </div>
             </div>
           </div>
@@ -74,7 +83,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":flowbinding-navigation:dokkaHtmlPartial/release"><a data-name="979554198%2FProperties%2F-777406135" anchor-label="arguments" id="979554198%2FProperties%2F-777406135" data-filterable-set=":flowbinding-navigation:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="arguments.html">arguments</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/os/Bundle.html">Bundle</a><span class="token operator">?</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":flowbinding-navigation:dokkaHtmlPartial/release"><a data-name="979554198%2FProperties%2F-777406135" anchor-label="arguments" id="979554198%2FProperties%2F-777406135" data-filterable-set=":flowbinding-navigation:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="arguments.html">arguments</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/os/Bundle.html">Bundle</a><span class="token operator">?</span></div></div></div>
               </div>
             </div>
           </div>
@@ -89,7 +98,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":flowbinding-navigation:dokkaHtmlPartial/release"><a data-name="-1750096866%2FProperties%2F-777406135" anchor-label="destination" id="-1750096866%2FProperties%2F-777406135" data-filterable-set=":flowbinding-navigation:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="destination.html">destination</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/navigation/NavDestination.html">NavDestination</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":flowbinding-navigation:dokkaHtmlPartial/release"><a data-name="-1750096866%2FProperties%2F-777406135" anchor-label="destination" id="-1750096866%2FProperties%2F-777406135" data-filterable-set=":flowbinding-navigation:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="destination.html">destination</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/navigation/NavDestination.html">NavDestination</a></div></div></div>
               </div>
             </div>
           </div>
@@ -104,7 +113,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":flowbinding-navigation:dokkaHtmlPartial/release"><a data-name="608928877%2FProperties%2F-777406135" anchor-label="navController" id="608928877%2FProperties%2F-777406135" data-filterable-set=":flowbinding-navigation:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="nav-controller.html">navController</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/navigation/NavController.html">NavController</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":flowbinding-navigation:dokkaHtmlPartial/release"><a data-name="608928877%2FProperties%2F-777406135" anchor-label="navController" id="608928877%2FProperties%2F-777406135" data-filterable-set=":flowbinding-navigation:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="nav-controller.html">navController</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/navigation/NavController.html">NavController</a></div></div></div>
               </div>
             </div>
           </div>
