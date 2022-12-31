@@ -3,8 +3,6 @@ package reactivecircus.flowbinding
 import com.android.build.api.variant.LibraryAndroidComponentsExtension
 import com.android.build.gradle.LibraryExtension
 import com.android.build.gradle.TestedExtension
-import com.vanniktech.maven.publish.MavenPublishPlugin
-import com.vanniktech.maven.publish.SonatypeHost
 import org.gradle.StartParameter
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
@@ -15,6 +13,7 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.withType
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
 import org.jetbrains.kotlin.gradle.plugin.KotlinAndroidPluginWrapper
@@ -127,14 +126,16 @@ fun Project.configureForAllProjects(enableExplicitApi: Property<Boolean>) {
     configureMavenPublishing()
 
     tasks.withType<KotlinCompile>().configureEach {
-        kotlinOptions {
-            jvmTarget = JavaVersion.VERSION_11.toString()
-            freeCompilerArgs = freeCompilerArgs + buildList {
-                addAll(additionalCompilerArgs)
-                if (enableExplicitApi.get() && !name.contains("test", ignoreCase = true)) {
-                    add("-Xexplicit-api=strict")
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
+            freeCompilerArgs.set(
+                buildList {
+                    addAll(additionalCompilerArgs)
+                    if (enableExplicitApi.get() && !name.contains("test", ignoreCase = true)) {
+                        add("-Xexplicit-api=strict")
+                    }
                 }
-            }
+            )
         }
     }
 
